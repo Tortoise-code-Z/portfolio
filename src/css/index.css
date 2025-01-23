@@ -10,4 +10,5 @@
 body {
     font-family: "Geologica-regular";
     color: var(--text-white);
+    background-color: var(--bcc-black);
 }
