@@ -19,6 +19,11 @@
 }
 
 @font-face {
+    font-family: "Geologica-medium";
+    src: url(../assets/fonts/Geologica/static/Geologica-Medium.ttf);
+}
+
+@font-face {
     font-family: "Geologica-extralLight";
     src: url(../assets/fonts/Geologica/static/Geologica-ExtraLight.ttf);
 }
