@@ -9,6 +9,11 @@
 }
 
 @font-face {
+    font-family: "Geologica-semibold";
+    src: url(../assets/fonts/Geologica/static/Geologica-SemiBold.ttf);
+}
+
+@font-face {
     font-family: "Geologica-regular";
     src: url(../assets/fonts/Geologica/static/Geologica-Regular.ttf);
 }
