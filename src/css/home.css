@@ -15,18 +15,25 @@
     align-items: center;
     font-family: "Geologica-thin";
     font-size: 3rem;
-    transition: opacity 3s linear;
 }
 
 .welcome-actions {
-    opacity: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     gap: 50px;
-    transition: opacity 1.5s linear;
     text-align: center;
+    animation: wa-opacity 2s linear;
+}
+
+@keyframes wa-opacity {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .audioBtn {
@@ -88,6 +95,7 @@
     background-image: url(../assets/images/Header-Image.jpg);
     background-position: center;
     background-size: cover;
+    /* background-attachment: fixed; */
     position: relative;
 }
 
