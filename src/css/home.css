@@ -17,6 +17,10 @@
     font-size: 3rem;
 }
 
+.pe-none {
+    pointer-events: none;
+}
+
 .welcome-actions {
     display: flex;
     justify-content: center;
@@ -24,19 +28,31 @@
     flex-direction: column;
     gap: 50px;
     text-align: center;
-    animation: wa-opacity 2s linear;
+    animation: welcome 1s linear forwards;
 }
 
-@keyframes wa-opacity {
+.wa-opacity-0 {
+    animation: opacity-0 0.5s linear;
+}
+
+.ws-opacity-0 {
+    animation: opacity-0 2s linear 1s forwards;
+}
+
+.display-none {
+    display: none;
+}
+
+@keyframes opacity-0 {
     0% {
-        opacity: 0;
-    }
-    100% {
         opacity: 1;
     }
+    100% {
+        opacity: 0;
+    }
 }
 
-.audioBtn {
+.welcome-btn {
     background-color: transparent;
     padding: 20px 25px;
     border-radius: 100px;
@@ -48,7 +64,7 @@
     transition: all 0.3s linear;
 }
 
-.audioBtn:hover {
+.welcome-btn:hover {
     background-color: var(--bcc-white);
     color: var(--text-black);
     font-weight: bold;
@@ -77,14 +93,9 @@
     0% {
         opacity: 0;
     }
-    30% {
-        opacity: 100%;
-    }
-    70% {
-        opacity: 100%;
-    }
+
     100% {
-        opacity: 0;
+        opacity: 1;
     }
 }
 
@@ -119,7 +130,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    padding: 30px 7.5%;
+    padding: 30px 3%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -136,6 +147,8 @@
 
     text-decoration: none;
     color: var(--text-white);
+    transition: color 0.1s linear;
+    font-family: "Geologica-bold";
 }
 
 .header-content {
