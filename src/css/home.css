@@ -136,6 +136,7 @@
     justify-content: space-between;
     align-items: center;
     z-index: 10;
+    transition: transform 0.5s ease-in-out;
 }
 
 .navbar-link {
@@ -149,6 +150,10 @@
     color: var(--text-white);
     transition: color 0.1s linear;
     font-family: "Geologica-bold";
+}
+
+.navbar-hidden {
+    transform: translateY(-100%);
 }
 
 .header-content {

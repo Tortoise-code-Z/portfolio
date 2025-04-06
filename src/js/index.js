@@ -1,20 +1,46 @@
 import { addClass, removeClass, replaceClass } from "./utils/utils";
 
+//* ------------------------------------- VARIABLES -------------------------------------*/
+
 const welcomeBtn = document.querySelector(".welcome-btn");
 const welcomeScreen = document.querySelector(".welcome-screen");
 const welcomeActions = document.querySelector(".welcome-actions");
 const body = document.querySelector("body");
 const navbar = document.querySelector(".navbar");
+let prevScrollTop = 0;
 
-welcomeActions.addEventListener("animationend", () => {
-    welcomeScreenTransition();
-});
+//* ------------------------------------- INICIALIZACIÓN DE APP -------------------------------------*/
 
-window.addEventListener("scroll", () => {
-    navbarScrolActions();
-});
+const init = () => {
+    welcomeActions.addEventListener("animationend", () => {
+        welcomeScreenTransition();
+    });
 
-const navbarScrolActions = () => {
+    window.addEventListener("scroll", () => {
+        navbarScrollActions();
+    });
+};
+
+//* ------------------------------------- FUNCIONES -------------------------------------*/
+
+const navbarScrollActions = () => {
+    navbarColorLinks();
+    navbarHide();
+};
+
+const navbarHide = () => {
+    const scrollTop = Math.round(window.scrollY);
+
+    if (scrollTop > prevScrollTop) {
+        addClass(navbar, "navbar-hidden");
+    } else {
+        removeClass(navbar, "navbar-hidden");
+    }
+
+    prevScrollTop = scrollTop;
+};
+
+const navbarColorLinks = () => {
     const navbarLinks = Array.from(document.querySelectorAll(".navbar-link"));
     const scrollTop = Math.round(window.scrollY);
 
@@ -93,3 +119,6 @@ const welcomeScreenTransition = () => {
         );
     });
 };
+
+/* ------------------------------------- EJECUCION DE APP -------------------------------------*/
+init();

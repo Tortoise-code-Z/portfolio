@@ -3,7 +3,7 @@ export const addClass = (element, classToAdd) => {
 };
 
 export const removeClass = (element, classToRemove) => {
-    element.classList.remove(classToAdd);
+    element.classList.remove(classToRemove);
 };
 
 export const replaceClass = (element, newClass, classToReplace) => {
