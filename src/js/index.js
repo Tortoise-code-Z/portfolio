@@ -121,4 +121,5 @@ const welcomeScreenTransition = () => {
 };
 
 /* ------------------------------------- EJECUCION DE APP -------------------------------------*/
+
 init();
