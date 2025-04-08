@@ -17,6 +17,20 @@
     font-size: 3rem;
 }
 
+.tb-move {
+    position: relative;
+    transform: translateY(-100px);
+    opacity: 0;
+}
+
+.transiton-all-5ms {
+    transition: 0.5s all ease;
+}
+
+.transiton-all-1s {
+    transition: 1s all ease;
+}
+
 .pe-none {
     pointer-events: none;
 }
@@ -395,17 +409,15 @@ img {
 
 .s-works .title-h2 {
     color: var(--text-white);
-    padding-bottom: 100px;
     text-align: center;
     font-size: clamp(3rem, calc(3rem + (100vw - 23.4375rem) * 0.09696), 8rem);
     font-family: "Geologica-bold";
-    position: sticky;
-    top: 0;
-    left: 0;
+    padding: 50px 0;
 }
 
 .sw-works-container {
     background-color: var(--bcc-black);
+    padding-top: 100px;
 }
 
 .sw-work-item-container {
@@ -425,6 +437,39 @@ img {
     align-items: center;
     position: relative;
     overflow: hidden;
+}
+
+.sw-title-container,
+.sc-title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.sw-title-container {
+    position: sticky;
+    top: 0;
+    left: 0;
+}
+
+.cursor-simulator {
+    width: 5px;
+    height: 150px;
+    background-color: rgba(255, 255, 255, 0.5);
+    animation: cursor 1s infinite steps(2);
+}
+
+@keyframes cursor {
+    0%,
+    49% {
+        opacity: 1;
+    }
+
+    50%,
+    100% {
+        opacity: 0;
+    }
 }
 
 .sw-work-item > * {
@@ -468,7 +513,7 @@ img {
 .sw-proyect-link {
     position: relative;
     z-index: 30;
-    transition: all 2s ease;
+    transition: all 1s ease;
     display: block;
     overflow: hidden;
     perspective: 1000px;
@@ -477,13 +522,6 @@ img {
 .sw-item-img {
     width: min(85vw, 500px);
     height: min(85vw, 500px);
-}
-
-.sw-proyect-link:hover {
-    transform: scale(1.1) rotateX(-10deg);
-    rotate: 1deg;
-    border-radius: 10px;
-    box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.8);
 }
 
 .sw-item-img img {
@@ -754,8 +792,8 @@ img {
         padding: 150px 0;
     }
 
-    .s-works .title-h2 {
-        padding-bottom: 150px;
+    .sw-works-container {
+        padding-top: 150px;
     }
 
     .s-career {
@@ -777,8 +815,8 @@ img {
         padding: 200px 0;
     }
 
-    .s-works .title-h2 {
-        padding-bottom: 200px;
+    .sw-works-container {
+        padding-top: 200px;
     }
 
     .s-about,
