@@ -1,25 +1,26 @@
-import { addClass, removeClass, replaceClass } from "./utils/utils";
+import {
+    addClass,
+    removeClass,
+    replaceClass,
+    containsClass,
+    setStyle,
+    getWindowScrollTop,
+    createIntersectionObserver,
+    writteDeleteMachine,
+} from "./utils/utils";
 
 //* ------------------------------------- VARIABLES -------------------------------------*/
 
-const welcomeBtn = document.querySelector(".welcome-btn");
-const welcomeScreen = document.querySelector(".welcome-screen");
-const welcomeActions = document.querySelector(".welcome-actions");
 const body = document.querySelector("body");
-const navbar = document.querySelector(".navbar");
 let prevScrollTop = 0;
 
 //* ------------------------------------- INICIALIZACIÓN DE APP -------------------------------------*/
 
 const init = () => {
-    welcomeActions.addEventListener("animationend", () => {
-        welcomeScreenTransition();
-    });
+    const welcomeMsg = document.querySelector(".welcome-actions");
 
-    window.addEventListener("scroll", () => {
-        navbarScrollActions();
-        prevScrollTop = Math.round(window.scrollY);
-    });
+    addWelcMsgAnimationEvent(welcomeMsg);
+    addWindowScrollEvent();
 
     writteMachineObserver();
     topToBelowMovementObserver();
@@ -27,37 +28,75 @@ const init = () => {
 
 //* ------------------------------------- FUNCIONES -------------------------------------*/
 
-const createIntersectionObserver = (
-    elements,
-    callback,
-    parametersCallback = [],
-    options = {},
-    observeOnce = false
-) => {
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                const itemParametersCallback = parametersCallback.find(
-                    (item) => item.element === entry.target
-                );
+// Attach/add events functions
 
-                if (itemParametersCallback) {
-                    callback(itemParametersCallback);
-                } else {
-                    callback(entry.target);
-                }
-
-                if (observeOnce) observer.unobserve(entry.target);
-            }
-        });
-    }, options);
-
-    elements.forEach((element) => observer.observe(element));
+const addWelcMsgAnimationEvent = (welcomeMsg) => {
+    welcomeMsg.addEventListener("animationend", handleAnimationWelcomeEvent);
 };
 
-const navbarScrollActions = () => {
+const addWindowScrollEvent = () => {
+    window.addEventListener("scroll", handleScrollWindowEvent);
+};
+
+const addWelcomeBtnClickEvent = (welcomeBtn) => {
+    welcomeBtn.addEventListener("click", handleWelcomeBtnClickEvent);
+};
+
+const addWelcMsgDisapearAnimationEvent = (welcomeMsg) => {
+    welcomeMsg.addEventListener("animationend", handleWelcMsgAnimationEvent);
+};
+
+const addWelcomeScreenAnimationEvent = (welcomeScreen) => {
+    welcomeScreen.addEventListener(
+        "animationend",
+        handleWelcScreenAnimationEvent
+    );
+};
+
+// Handle events functions
+
+const handleWelcomeBtnClickEvent = (event) => {
+    const welcomeMsg = document.querySelector(".welcome-actions");
+    const welcomeScreen = document.querySelector(".welcome-screen");
+
+    addClass(event.target, "pe-none");
+    addClass(welcomeMsg, "wa-opacity-0");
+
+    addWelcMsgDisapearAnimationEvent(welcomeMsg);
+    addWelcomeScreenAnimationEvent(welcomeScreen);
+};
+
+const handleScrollWindowEvent = () => {
     navbarColorLinks();
     navbarHide();
+    setWindowPrevScrollTop(getWindowScrollTop());
+};
+
+const handleAnimationWelcomeEvent = () => {
+    const welcomeBtn = document.querySelector(".welcome-btn");
+    addWelcomeBtnClickEvent(welcomeBtn);
+};
+
+const handleWelcMsgAnimationEvent = (event) => {
+    const welcomeScreen = document.querySelector(".welcome-screen");
+    event.stopPropagation();
+    addClass(event.target, "display-none");
+    addClass(welcomeScreen, "ws-opacity-0");
+    setStyle(body, "overflow", "auto");
+};
+
+const handleWelcScreenAnimationEvent = (event) => {
+    addClass(event.target, "display-none");
+};
+
+// Functions
+
+const setWindowPrevScrollTop = (value) => {
+    prevScrollTop = value;
+};
+
+const getWindowPrevScrollTop = () => {
+    return prevScrollTop;
 };
 
 const topToBelowMovementObserver = () => {
@@ -88,7 +127,7 @@ const topToBelowMovementObserver = () => {
         topToBelowMovement,
         [],
         {
-            threshold: 1,
+            threshold: 0.1,
         },
         true
     );
@@ -134,69 +173,11 @@ const writteMachineObserver = () => {
     );
 };
 
-const writteDeleteMachine = async (data) => {
-    await deleteMachine(data);
-    await writteMachine(data);
-};
-
-const deleteMachine = async (data) => {
-    const { element, textToDelete, delayToDelete } = data;
-
-    for (let i = textToDelete.length; i >= 0; i--) {
-        element.textContent = textToDelete.substring(0, i);
-        await new Promise((resolve) => setTimeout(resolve, delayToDelete));
-    }
-};
-
-const writteMachine = async (data) => {
-    const { element, textToWrite, delayToWrite } = data;
-
-    for (let i = 0; i < textToWrite.length; i++) {
-        element.textContent += textToWrite[i];
-        await new Promise((resolve) => setTimeout(resolve, delayToWrite));
-    }
-};
-
-const scrollUp = () => {
-    const scrollTop = window.scrollY;
-
-    if (prevScrollTop >= scrollTop) {
-        return true;
-    }
-
-    return false;
-};
-
-const scrollDown = () => {
-    const scrollTop = Math.round(window.scrollY);
-
-    if (prevScrollTop < scrollTop) {
-        return true;
-    }
-
-    return false;
-};
-
-const offsetTopObserver = (coordY) => {
-    const scrollTop = Math.round(window.scrollY);
-    return scrollTop >= coordY;
-};
-
-const offsetRangeObserver = (top, bottom) => {
-    const scrollTop = window.scrollY;
-    console.log(scrollTop, top);
-    return scrollTop > top && scrollTop < bottom;
-};
-
-const offsetBottomObserver = (coordY) => {
-    const scrollTop = Math.round(window.scrollY);
-    return scrollTop >= coordY;
-};
-
 const navbarHide = () => {
-    const scrollTop = Math.round(window.scrollY);
+    const navbar = document.querySelector(".navbar");
+    const scrollTop = getWindowScrollTop();
 
-    if (scrollTop > prevScrollTop) {
+    if (scrollTop > getWindowPrevScrollTop()) {
         addClass(navbar, "navbar-hidden");
     } else {
         removeClass(navbar, "navbar-hidden");
@@ -205,15 +186,20 @@ const navbarHide = () => {
 
 const navbarColorLinks = () => {
     const navbarLinks = Array.from(document.querySelectorAll(".navbar-link"));
-    const scrollTop = Math.round(window.scrollY);
+    const navbar = document.querySelector(".navbar");
+    const scrollTop = getWindowScrollTop();
 
     const aboutSection = document.querySelector(".s-about");
     const skillsSection = document.querySelector(".s-skills");
-    const seeAllWorksBtnContainer = document.querySelector(".sw-action-btn");
 
     const aboutSectionTop = document.querySelector(".s-about").offsetTop;
     const skillsSectionTop = document.querySelector(".s-skills").offsetTop;
 
+    const seeAllWorksBtnContainer = document.querySelector(".sw-action-btn");
+
+    let colorLinks = "var(--text-white)";
+
+    // Conditions
     const aboutSectionBottom =
         aboutSection.offsetTop + aboutSection.clientHeight;
     const skillsSectionBottom =
@@ -230,56 +216,13 @@ const navbarColorLinks = () => {
                 seeAllWorksBtnContainer.clientHeight &&
         scrollTop < skillsSectionBottom - navbar.clientHeight / 2;
 
+    // Execution
     if (aboutCondition || skillsCondition) {
-        navbarLinks.forEach((link) => {
-            link.style.color = "var(--text-black)";
-        });
-
-        return;
+        colorLinks = "var(--bcc-black)";
     }
 
     navbarLinks.forEach((link) => {
-        link.style.color = "var(--text-white)";
-    });
-};
-
-const welcomeActionAnimationEnd = (event) => {
-    // Evita que el evento se propague al padre
-    event.stopPropagation();
-
-    addClass(welcomeActions, "display-none");
-    body.style.overflow = "auto";
-    addClass(welcomeScreen, "ws-opacity-0");
-
-    welcomeActions.removeEventListener(
-        "animationend",
-        welcomeActionAnimationEnd
-    );
-};
-
-const welcomeScreenAnimationEnd = () => {
-    addClass(welcomeScreen, "display-none");
-
-    welcomeActions.removeEventListener(
-        "animationend",
-        welcomeScreenAnimationEnd
-    );
-};
-
-const welcomeScreenTransition = () => {
-    welcomeBtn.addEventListener("click", () => {
-        addClass(welcomeBtn, "pe-none");
-        addClass(welcomeActions, "wa-opacity-0");
-
-        welcomeActions.addEventListener(
-            "animationend",
-            welcomeActionAnimationEnd
-        );
-
-        welcomeScreen.addEventListener(
-            "animationend",
-            welcomeScreenAnimationEnd
-        );
+        setStyle(link, "color", colorLinks);
     });
 };
 
