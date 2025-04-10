@@ -1,0 +1,117 @@
+{
+    "aboutDesc": [
+        "Comencé a programar de forma independiente en 2022 con CSS Y HTML. Luego de unos meses estudiando, decidí comenzar un curso superior fullstack.",
+        "En él, puse a prueba mis habilidades tanto en el lado del cliente como en el backend. Sin embargo, no hay nada que me haya fascinado más que el frontend. Tanto diseñar como programar layouts es una pasión de la que quiero seguir aprendiendo y aportando a todo el que requiera de mi trabajo.",
+        "El 9 de noviembre de 2024 finalicé el curso con una nota media de 9.86. Ahora, sigo estudiando por mi cuenta cursos de React + typescript y Git para ofrecer mi mejor versión en este mundo."
+    ],
+
+    "strengths": [
+        {
+            "name": "Trabajador",
+            "svg": ""
+        },
+        {
+            "name": "Comunicación",
+            "svg": ""
+        },
+        {
+            "name": "Perseverancia",
+            "svg": ""
+        }
+    ],
+    "works": [
+        {
+            "name": "Astrohub",
+            "year": "2024",
+            "type": "Curse Work",
+            "tools": ["html", "css", "javascript", "php", "mysql"],
+            "backgroundImg": "/src/assets/images/Astrohub-Proyect.webp",
+            "workImg": "/src/assets/images/Astrohub-Proyect-Caricature.jpg",
+            "githubURL": "",
+            "workURL": ""
+        },
+        {
+            "name": "ChessMate",
+            "year": "2023",
+            "type": "Curse Work",
+            "tools": ["html", "css", "javascript"],
+            "backgroundImg": "/src/assets/images/457857.jpg",
+            "workImg": "/src/assets/images/ChessMate-Proyect-Caricature.jpg",
+            "githubURL": "",
+            "workURL": ""
+        },
+        {
+            "name": "3 in line (remaster)",
+            "year": "2023",
+            "type": "Private Work",
+            "tools": ["html", "css", "javascript"],
+            "backgroundImg": "/src/assets/images/universe.jpg",
+            "workImg": "/src/assets/images/3inline(remaster)-Proyect-Caricature.jpg",
+            "githubURL": "",
+            "workURL": ""
+        }
+    ],
+    "skills": {
+        "webDevelopment": ["html", "css", "javascript", "php", "mysql"],
+        "FrameworksLibraries": ["bootstrap", "reacr + typescript"],
+        "toolsWorkflow": ["git", "github", "npm", "figma"]
+    },
+    "career": [
+        {
+            "academy": ["MasterD", "Academy"],
+            "curse": "Fullstack programing web developer",
+            "tools": [
+                "html",
+                "css",
+                "javascript",
+                "php",
+                "mysql",
+                "apache",
+                "git"
+            ],
+            "note": {
+                "state": true,
+                "value": "9.87"
+            },
+            "hours": "948h",
+            "year": "2023/2024",
+            "finished": true
+        },
+        {
+            "academy": ["hola", "mundo", "academy"],
+            "curse": "React / Typescript course",
+            "tools": ["react", "typescript"],
+            "note": {
+                "state": false,
+                "value": ""
+            },
+            "hours": "13h",
+            "year": "2025",
+            "finished": false
+        },
+        {
+            "academy": ["hola", "mundo", "academy"],
+            "curse": "Git / Github course",
+            "tools": ["git", "github"],
+            "note": {
+                "state": false,
+                "value": ""
+            },
+            "hours": "5h",
+            "year": "2025",
+            "finished": false
+        },
+        {
+            "academy": ["hola", "mundo", "academy"],
+            "curse": "Typescript course",
+            "tools": ["typescript"],
+            "note": {
+                "state": false,
+                "value": ""
+            },
+            "hours": "5h",
+            "year": "2025",
+            "finished": false
+        }
+    ]
+}

@@ -9,6 +9,8 @@ import {
     writteDeleteMachine,
 } from "./utils/utils";
 
+import { createWorkItems } from "./components/works.js";
+
 //* ------------------------------------- VARIABLES -------------------------------------*/
 
 const body = document.querySelector("body");
@@ -17,6 +19,7 @@ let prevScrollTop = 0;
 //* ------------------------------------- INICIALIZACIÓN DE APP -------------------------------------*/
 
 const init = () => {
+    // createWorkItems(document.querySelector(".sw-works-container"));
     const welcomeMsg = document.querySelector(".welcome-actions");
 
     addWelcMsgAnimationEvent(welcomeMsg);

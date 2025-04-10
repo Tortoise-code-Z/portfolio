@@ -98,3 +98,19 @@ export const writteMachine = async (data) => {
         await new Promise((resolve) => setTimeout(resolve, delayToWrite));
     }
 };
+
+export const createElement = (type) => {
+    return document.createElement(type);
+};
+
+export const appendElement = (child, parent) => {
+    parent.appendChild(child);
+};
+
+export const setAttribute = (element, attribute, value) => {
+    element.setAttribute(attribute, value);
+};
+
+export const setText = (element, value) => {
+    element.innerText = value;
+};
