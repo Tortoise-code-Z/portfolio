@@ -10,6 +10,7 @@ import {
 } from "./utils/utils";
 
 import { createWorkItems } from "./components/works.js";
+import { createAboutDesc } from "./components/aboutInfo.js";
 
 //* ------------------------------------- VARIABLES -------------------------------------*/
 
@@ -20,6 +21,7 @@ let prevScrollTop = 0;
 
 const init = () => {
     createWorkItems(document.querySelector(".sw-works-container"));
+    createAboutDesc(document.querySelector(".sa-desc"));
     const welcomeMsg = document.querySelector(".welcome-actions");
 
     addWelcMsgAnimationEvent(welcomeMsg);
