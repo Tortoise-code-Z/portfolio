@@ -63,6 +63,14 @@
     display: none;
 }
 
+.align-right {
+    align-items: flex-end !important;
+}
+
+.text-align-right {
+    text-align: right;
+}
+
 @keyframes opacity-0 {
     0% {
         opacity: 1;
@@ -580,6 +588,7 @@ img {
     background-color: var(--bcc-black);
     color: var(--text-white);
 }
+
 /* Skills section */
 
 .s-skills {
@@ -863,5 +872,9 @@ img {
 
     .sa-desc {
         gap: 50px;
+    }
+
+    .ss-skills-container {
+        gap: 70px;
     }
 }

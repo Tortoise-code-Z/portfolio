@@ -126,7 +126,7 @@ export const createeElement = ({
 } = {}) => {
     const element = document.createElement(tag);
 
-    if (classNames.length) element.classList.add(...classNames);
+    if (classNames.length) element.className = classNames.join(" ");
 
     for (const [key, value] of Object.entries(attributes)) {
         element.setAttribute(key, value);
