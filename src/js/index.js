@@ -11,6 +11,7 @@ import {
 import { createWorkItems } from "./components/works.js";
 import { createAboutDesc } from "./components/aboutInfo.js";
 import { createSkillsItems } from "./components/skills.js";
+import { createCourses } from "./components/courses.js";
 
 //* ------------------------------------- VARIABLES -------------------------------------*/
 
@@ -20,6 +21,7 @@ let prevScrollTop = 0;
 //* ------------------------------------- INICIALIZACIÓN DE APP -------------------------------------*/
 
 const init = () => {
+    createCourses(document.querySelector(".s-career"));
     createSkillsItems(document.querySelector(".ss-skills-container"));
     createWorkItems(document.querySelector(".sw-works-container"));
     createAboutDesc(document.querySelector(".sa-desc"));

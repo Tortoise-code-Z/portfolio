@@ -86,10 +86,13 @@
             },
             "hours": "948h",
             "year": "2023/2024",
-            "finished": true
+            "isFinished": {
+                "state": true,
+                "msg": "in progress"
+            }
         },
         {
-            "academy": ["hola", "mundo", "academy"],
+            "academy": ["Hola", "mundo", "academy"],
             "curse": "React / Typescript course",
             "tools": ["react", "typescript"],
             "note": {
@@ -98,10 +101,13 @@
             },
             "hours": "13h",
             "year": "2025",
-            "finished": false
+            "isFinished": {
+                "state": false,
+                "msg": "in progress"
+            }
         },
         {
-            "academy": ["hola", "mundo", "academy"],
+            "academy": ["Hola", "mundo", "academy"],
             "curse": "Git / Github course",
             "tools": ["git", "github"],
             "note": {
@@ -110,10 +116,13 @@
             },
             "hours": "5h",
             "year": "2025",
-            "finished": false
+            "isFinished": {
+                "state": false,
+                "msg": "in progress"
+            }
         },
         {
-            "academy": ["hola", "mundo", "academy"],
+            "academy": ["Hola", "mundo", "academy"],
             "curse": "Typescript course",
             "tools": ["typescript"],
             "note": {
@@ -122,7 +131,10 @@
             },
             "hours": "5h",
             "year": "2025",
-            "finished": false
+            "isFinished": {
+                "state": false,
+                "msg": "in progress"
+            }
         }
     ]
 }

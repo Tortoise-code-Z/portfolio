@@ -265,6 +265,26 @@ export const createImg = ({
     });
 };
 
+export const createSpan = ({
+    tag = "span",
+    classNames = [],
+    attributes = {},
+    events = {},
+    innerText = "",
+    innerHTML = "",
+    parent = null,
+} = {}) => {
+    return createeElement({
+        tag,
+        classNames,
+        attributes,
+        events,
+        innerText,
+        innerHTML,
+        parent,
+    });
+};
+
 export const createFragment = () => {
     return document.createDocumentFragment();
 };
