@@ -51,21 +51,22 @@
             "workURL": ""
         }
     ],
-    "skills": {
-        "webDevelopment": {
+    "skills": [
+        {
             "title": "Web Development",
             "tools": ["html", "css", "javascript", "php", "mysql"]
         },
 
-        "frameworksLibraries": {
+        {
             "title": "Frameworks / Libraries",
             "tools": ["bootstrap", "reacr + typescript"]
         },
-        "toolsWorkflow": {
+        {
             "title": "Development tools / Workflow",
             "tools": ["git", "github", "npm", "figma"]
         }
-    },
+    ],
+
     "career": [
         {
             "academy": ["MasterD", "Academy"],

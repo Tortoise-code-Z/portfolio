@@ -10,8 +10,8 @@ import {
 export const createSkillsItems = (parent) => {
     const skills = bbdd.skills;
 
-    Object.entries(skills).forEach(([key, value], index) => {
-        createSkillsItem(parent, value, index);
+    skills.forEach((skill, index) => {
+        createSkillsItem(parent, skill, index);
     });
 };
 
