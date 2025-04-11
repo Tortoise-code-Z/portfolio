@@ -1,10 +1,13 @@
 import bbdd from "../../json/bbdd.json";
 import {
-    addClass,
-    createElement,
     appendElement,
-    setAttribute,
-    setText,
+    createLink,
+    createFigure,
+    createDiv,
+    createImg,
+    createPar,
+    createHtag,
+    createFragment,
 } from "../utils/utils";
 
 export const createWorkItems = (parent) => {
@@ -15,133 +18,83 @@ export const createWorkItems = (parent) => {
 };
 
 const createWorkItem = (parent, data) => {
-    const {
-        name,
-        year,
-        type,
-        tools,
-        backgroundImg,
-        githubURL,
-        workImg,
-        workUrl,
-    } = data;
+    const { name, year, type, tools, backgroundImg, githubURL, workImg } = data;
 
-    const fragment = document.createDocumentFragment();
+    // Temporal box
+    const fragment = createFragment();
 
-    const itemContainer = createWorkItemContainer(fragment);
+    const workContainer = createDiv({
+        parent: fragment,
+        classNames: ["sw-work-item-container"],
+    });
 
-    const item = createWorkItemBox(itemContainer);
+    const work = createDiv({
+        parent: workContainer,
+        classNames: ["sw-work-item"],
+    });
 
-    const itemLink = createWorkItemLink(item, githubURL, name);
-    const itemLinkFigure = createWorkItemLinkFig(itemLink);
-    createWorkItemLinkImg(itemLinkFigure, name, workImg);
-    createWorkItemBackgImg(item, backgroundImg);
+    const workLink = createLink({
+        classNames: ["sw-proyect-link"],
+        parent: work,
+        attributes: { href: githubURL || "#", title: `${name} Proyect` },
+    });
 
-    const itemData = createWorkItemData(item);
-    createWorkItemDataYear(itemData, year);
-    createWorkItemDataProyectName(itemData, name);
-    createWorkItemDataType(itemData, type);
-    createWorkItemDataTools(itemData, tools);
+    const workLinkFigure = createFigure({
+        classNames: ["sw-item-img"],
+        parent: workLink,
+    });
+
+    // workLink image
+    createImg({
+        parent: workLinkFigure,
+        attributes: {
+            src: workImg,
+            title: `${name} Proyect`,
+            alt: `${name} Proyect`,
+        },
+    });
+
+    // Background work image
+    createImg({
+        parent: work,
+        classNames: ["sw-wi-bccimg"],
+        attributes: { src: backgroundImg },
+    });
+
+    const workData = createDiv({
+        parent: work,
+        classNames: ["sw-item-data"],
+    });
+
+    // Proyect year
+    createPar({
+        parent: workData,
+        classNames: ["sw-item-date"],
+        innerText: year,
+    });
+
+    // Proyect name
+    createHtag({
+        level: 3,
+        classNames: ["title-h3"],
+        innerText: name,
+    });
+
+    // Proyect type
+    createDiv({
+        parent: workData,
+        classNames: ["sw-item-type"],
+        innerText: type,
+    });
+
+    // Proyect tools
+    createDiv({
+        parent: workData,
+        classNames: ["sw-item-tools"],
+        innerText: tools.join(" · "),
+    });
 
     appendElement(fragment, parent);
-};
-
-const createWorkItemContainer = (parent) => {
-    const element = createElement("div");
-    addClass(element, "sw-work-item-container");
-    appendElement(element, parent);
-
-    return element;
-};
-
-const createWorkItemBox = (parent) => {
-    const element = createElement("div");
-    addClass(element, "sw-work-item");
-    appendElement(element, parent);
-
-    return element;
-};
-
-const createWorkItemLink = (parent, githubURL, proyectName) => {
-    const element = createElement("a");
-    addClass(element, "sw-proyect-link");
-    setAttribute(element, "href", githubURL || "#");
-    setAttribute(element, "title", `${proyectName} Proyect`);
-    appendElement(element, parent);
-
-    return element;
-};
-
-const createWorkItemLinkFig = (parent) => {
-    const element = createElement("figure");
-    addClass(element, "sw-item-img");
-    appendElement(element, parent);
-
-    return element;
-};
-
-const createWorkItemLinkImg = (parent, proyectName, workImg) => {
-    const element = createElement("img");
-    setAttribute(element, "src", workImg);
-    setAttribute(element, "title", `${proyectName} Proyect`);
-    setAttribute(element, "alt", `${proyectName} Proyect`);
-
-    appendElement(element, parent);
-
-    return element;
-};
-
-const createWorkItemBackgImg = (parent, backgroundImg) => {
-    const element = createElement("img");
-    addClass(element, "sw-wi-bccimg");
-    setAttribute(element, "src", backgroundImg);
-    appendElement(element, parent);
-
-    return element;
-};
-
-const createWorkItemData = (parent) => {
-    const element = createElement("div");
-    addClass(element, "sw-item-data");
-    appendElement(element, parent);
-
-    return element;
-};
-
-const createWorkItemDataYear = (parent, year) => {
-    const element = createElement("div");
-    addClass(element, "sw-item-date");
-    setText(element, year);
-    appendElement(element, parent);
-
-    return element;
-};
-
-const createWorkItemDataProyectName = (parent, name) => {
-    const element = createElement("h3");
-    addClass(element, "title-h3");
-    setText(element, name);
-    appendElement(element, parent);
-
-    return element;
-};
-
-const createWorkItemDataType = (parent, type) => {
-    const element = createElement("div");
-    addClass(element, "sw-item-type");
-    setText(element, type);
-    appendElement(element, parent);
-
-    return element;
-};
-
-const createWorkItemDataTools = (parent, tools) => {
-    const element = createElement("div");
-    addClass(element, "sw-item-tools");
-    setText(element, tools.join(" · "));
-    appendElement(element, parent);
-
-    return element;
 };
 
 // FORMA QUE DEBERÍA TENER EL ITEM

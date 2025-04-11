@@ -114,3 +114,157 @@ export const setAttribute = (element, attribute, value) => {
 export const setText = (element, value) => {
     element.innerText = value;
 };
+
+export const createeElement = ({
+    tag = "",
+    classNames = [],
+    attributes = {},
+    events = {},
+    innerText = "",
+    innerHTML = "",
+    parent = null,
+} = {}) => {
+    const element = document.createElement(tag);
+
+    if (classNames.length) element.classList.add(...classNames);
+
+    for (const [key, value] of Object.entries(attributes)) {
+        element.setAttribute(key, value);
+    }
+
+    for (const [event, handler] of Object.entries(events)) {
+        element.addEventListener(event, handler);
+    }
+
+    if (innerText) element.innerText = innerText;
+    if (innerHTML) element.innerHTML = innerHTML;
+
+    if (parent) parent.appendChild(element);
+
+    return element;
+};
+
+export const createLink = ({
+    tag = "a",
+    classNames = [],
+    attributes = {},
+    events = {},
+    innerText = "",
+    innerHTML = "",
+    parent = null,
+} = {}) => {
+    return createeElement({
+        tag,
+        classNames,
+        attributes,
+        events,
+        innerText,
+        innerHTML,
+        parent,
+    });
+};
+
+export const createFigure = ({
+    tag = "figure",
+    classNames = [],
+    attributes = {},
+    events = {},
+    innerText = "",
+    innerHTML = "",
+    parent = null,
+} = {}) => {
+    return createeElement({
+        tag,
+        classNames,
+        attributes,
+        events,
+        innerText,
+        innerHTML,
+        parent,
+    });
+};
+
+export const createDiv = ({
+    tag = "div",
+    classNames = [],
+    attributes = {},
+    events = {},
+    innerText = "",
+    innerHTML = "",
+    parent = null,
+} = {}) => {
+    return createeElement({
+        tag,
+        classNames,
+        attributes,
+        events,
+        innerText,
+        innerHTML,
+        parent,
+    });
+};
+
+export const createPar = ({
+    tag = "p",
+    classNames = [],
+    attributes = {},
+    events = {},
+    innerText = "",
+    innerHTML = "",
+    parent = null,
+} = {}) => {
+    return createeElement({
+        tag,
+        classNames,
+        attributes,
+        events,
+        innerText,
+        innerHTML,
+        parent,
+    });
+};
+
+export const createHtag = ({
+    level = 1,
+    tag = "h",
+    classNames = [],
+    attributes = {},
+    events = {},
+    innerText = "",
+    innerHTML = "",
+    parent = null,
+} = {}) => {
+    return createeElement({
+        tag: `${tag}${level}`,
+        classNames,
+        attributes,
+        events,
+        innerText,
+        innerHTML,
+        parent,
+    });
+};
+
+export const createImg = ({
+    tag = "img",
+    classNames = [],
+    attributes = {},
+    events = {},
+    innerText = "",
+    innerHTML = "",
+    parent = null,
+} = {}) => {
+    return createeElement({
+        tag,
+        classNames,
+        attributes,
+        events,
+        innerText,
+        innerHTML,
+        parent,
+    });
+};
+
+export const createFragment = () => {
+    return document.createDocumentFragment();
+};

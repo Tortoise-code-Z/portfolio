@@ -17,10 +17,16 @@
     font-size: 3rem;
 }
 
-.tb-move {
+.tb-move-off {
     position: relative;
     transform: translateY(-100px);
     opacity: 0;
+}
+
+.tb-move-on {
+    transform: translateY(0);
+    opacity: 1;
+    transition: all 1s ease-out;
 }
 
 .transiton-all-5ms {

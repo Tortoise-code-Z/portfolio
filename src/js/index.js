@@ -19,7 +19,7 @@ let prevScrollTop = 0;
 //* ------------------------------------- INICIALIZACIÓN DE APP -------------------------------------*/
 
 const init = () => {
-    // createWorkItems(document.querySelector(".sw-works-container"));
+    createWorkItems(document.querySelector(".sw-works-container"));
     const welcomeMsg = document.querySelector(".welcome-actions");
 
     addWelcMsgAnimationEvent(welcomeMsg);
@@ -103,30 +103,10 @@ const getWindowPrevScrollTop = () => {
 };
 
 const topToBelowMovementObserver = () => {
-    const aboutTitle = document.querySelector(".sa-about-title");
-    const aboutDesc = document.querySelector(".sa-desc");
-    const aboutStrengths = document.querySelector(".sa-dev-strengths");
-    const skillsElements = Array.from(document.querySelectorAll(".ss-wd-item"));
-    const careerSlidesElements = Array.from(
-        document.querySelectorAll(".sc-centername")
-    );
-    const careerElements = Array.from(
-        document.querySelectorAll(".sc-course-data")
-    );
-    const skillsTitleElements = Array.from(
-        document.querySelectorAll(".s-skills .title-h3")
-    );
+    const tbMovesItems = document.querySelectorAll(".tb-move-off");
 
     createIntersectionObserver(
-        [
-            aboutTitle,
-            aboutDesc,
-            aboutStrengths,
-            ...skillsElements,
-            ...skillsTitleElements,
-            ...careerElements,
-            ...careerSlidesElements,
-        ],
+        [...tbMovesItems],
         topToBelowMovement,
         [],
         {
@@ -137,7 +117,7 @@ const topToBelowMovementObserver = () => {
 };
 
 const topToBelowMovement = (element) => {
-    removeClass(element, "tb-move");
+    replaceClass(element, "tb-move-off", "tb-move-on");
 };
 
 const writteMachineObserver = () => {
