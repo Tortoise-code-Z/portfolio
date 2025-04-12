@@ -15,6 +15,7 @@
     align-items: center;
     font-family: "Geologica-thin";
     font-size: 3rem;
+    padding: 7.5%;
 }
 
 .tb-move-off {
@@ -502,9 +503,10 @@ img {
 
 .sw-item-data {
     position: absolute;
-    bottom: 10%;
-    left: 0;
-    padding-left: 5.5%;
+    bottom: 15%;
+    right: 50%;
+    transform: translate(50%, 50%);
+    padding-right: 5.5%;
     font-size: clamp(
         0.875rem,
         calc(0.875rem + (100vw - 23.4375rem) * 0.00187),
@@ -512,8 +514,10 @@ img {
     );
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 5px;
-    z-index: 25;
+    z-index: 999;
 }
 
 .sw-proyect-link {
@@ -526,8 +530,8 @@ img {
 }
 
 .sw-item-img {
-    width: min(85vw, 500px);
-    height: min(85vw, 500px);
+    width: min(85vw, 70vh);
+    height: min(85vw, 70vh);
 }
 
 .sw-item-img img {
@@ -545,6 +549,7 @@ img {
 
 .sw-item-tools {
     font-family: "Geologica-thin";
+    text-align: center;
 }
 
 .sw-action-btn {
@@ -723,18 +728,28 @@ img {
 
 .footer {
     width: 100%;
-    height: 100vh;
+    height: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.f-content {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 40px;
+    flex: 1;
 }
 
 .footer .title-h2 {
     padding: 0 20px;
     text-align: center;
-    font-size: clamp(3rem, calc(3rem + (100vw - 23.4375rem) * 0.09696), 8rem);
+    font-size: clamp(3rem, calc(3rem + (100vw - 23.4375rem) * 0.05818), 6rem);
     font-family: "Geologica-bold";
     color: var(--bcc-white);
 }
@@ -742,10 +757,20 @@ img {
 .footer .f-dev-name {
     font-size: clamp(
         1rem,
-        calc(1rem + (100vw - 23.4375rem) * 0.00375),
-        1.25rem
+        calc(1.1rem + (100vw - 23.4375rem) * 0.0097),
+        1.5rem
     );
-    font-family: "Geologica-regular";
+    font-family: "Geologica-thin";
+    opacity: 0.7;
+}
+
+.footer .f-dev-prof {
+    font-size: clamp(
+        1rem,
+        calc(1.1rem + (100vw - 23.4375rem) * 0.0097),
+        1.5rem
+    );
+    font-family: "Geologica-thin";
     text-transform: uppercase;
 }
 
@@ -754,9 +779,39 @@ img {
     text-decoration: none;
 }
 
-.footer .f-link svg {
-    width: 10vw;
-    height: 10vw;
+.footer .f-link svg,
+.f-email-container svg {
+    width: min(10vw, 40px);
+    height: min(10vw, 40px);
+}
+
+.f-contact {
+    /* flex: 1; */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5%;
+    /* border: 1px solid red; */
+}
+
+.f-email-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--bcc-white);
+}
+
+.f-email {
+    font-size: clamp(
+        1rem,
+        calc(1rem + (100vw - 23.4375rem) * 0.00375),
+        1.25rem
+    );
+
+    display: none;
 }
 
 /* Keyframes */
@@ -789,15 +844,10 @@ img {
 }
 
 /* Media querys */
-
-@media all and (max-height: 500px) {
-    .sw-item-img {
-        width: 100vh;
-        height: 100vh;
-    }
-
+@media all and (max-height: 450px) {
     .sw-item-data {
-        text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.7);
+        bottom: 50% !important;
+        right: 10% !important;
     }
 }
 
@@ -818,9 +868,15 @@ img {
         width: 200px;
     }
 
+    .f-email {
+        display: flex;
+    }
+
     .sw-item-data {
-        width: 100%;
-        padding-left: 5%;
+        padding-right: 5%;
+
+        bottom: 10%;
+        right: 50%;
     }
 }
 
@@ -829,6 +885,11 @@ img {
         padding: 200px 0;
     }
 
+    .sw-item-data {
+        padding-right: 7.5%;
+        bottom: 50%;
+        right: 10%;
+    }
     .sw-works-container {
         padding-top: 200px;
     }
@@ -877,18 +938,7 @@ img {
         gap: 70px;
     }
 
-    .footer .f-link svg {
-        width: 5vw;
-        height: 5vw;
-    }
-
-    .footer .f-dev-prof {
-        font-size: clamp(
-            1rem,
-            calc(1rem + (100vw - 23.4375rem) * 0.00375),
-            1.25rem
-        );
-        /* color: #f8f8f830; */
-        font-family: "Geologica-thin";
+    .f-contact {
+        padding: 2% 3%;
     }
 }
