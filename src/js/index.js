@@ -13,20 +13,20 @@ import { createAboutDesc } from "./components/aboutInfo.js";
 import { createSkillsItems } from "./components/skills.js";
 import { createCourses } from "./components/courses.js";
 
-//* ------------------------------------- VARIABLES -------------------------------------*/
+/* -------------------------- VARIABLES -------------------------- */
 
 const body = document.querySelector("body");
 let prevScrollTop = 0;
 
-//* ------------------------------------- INICIALIZACIÓN DE APP -------------------------------------*/
+/* -------------------------- INICIALIZACIÓN DE APP -------------------------- */
 
 const init = () => {
-    createCourses(document.querySelector(".s-career"));
-    createSkillsItems(document.querySelector(".ss-skills-container"));
-    createWorkItems(document.querySelector(".sw-works-container"));
     createAboutDesc(document.querySelector(".sa-desc"));
-    const welcomeMsg = document.querySelector(".welcome-actions");
+    createWorkItems(document.querySelector(".sw-works-container"));
+    createSkillsItems(document.querySelector(".ss-skills-container"));
+    createCourses(document.querySelector(".s-career"));
 
+    const welcomeMsg = document.querySelector(".welcome-actions");
     addWelcMsgAnimationEvent(welcomeMsg);
     addWindowScrollEvent();
 
@@ -34,7 +34,7 @@ const init = () => {
     topToBelowMovementObserver();
 };
 
-//* ------------------------------------- FUNCIONES -------------------------------------*/
+/* -------------------------- FUNCIONES -------------------------- */
 
 // Attach/add events functions
 
@@ -214,6 +214,6 @@ const navbarColorLinks = () => {
     });
 };
 
-/* ------------------------------------- EJECUCION DE APP -------------------------------------*/
+/* -------------------------- EJECUCION DE APP -------------------------- */
 
 init();
