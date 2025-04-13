@@ -6,6 +6,10 @@ import {
     getWindowScrollTop,
     createIntersectionObserver,
     writteDeleteMachine,
+    getOffsetTop,
+    getClientHeight,
+    getOffsetBottom,
+    isOnRange,
 } from "./utils/utils";
 
 import { createWorkItems } from "./components/works.js";
@@ -161,38 +165,38 @@ const navbarHide = () => {
 const navbarColorLinks = () => {
     const navbarLinks = Array.from(document.querySelectorAll(".navbar-link"));
     const navbar = document.querySelector(".navbar");
-
-    const scrollTop = getWindowScrollTop();
-
     const aboutSection = document.querySelector(".s-about");
     const skillsSection = document.querySelector(".s-skills");
-
-    const aboutSectionTop = aboutSection.offsetTop;
-    const skillsSectionTop = skillsSection.offsetTop;
-
     const seeAllWorksBtnContainer = document.querySelector(".sw-action-btn");
 
-    let colorLinks = "var(--text-white)";
+    const aboutSectionTop = getOffsetTop(aboutSection);
+    const skillsSectionTop = getOffsetTop(skillsSection);
+    const skillsSectionBottom = getOffsetBottom(skillsSection);
+    const aboutSectionBottom = getOffsetBottom(aboutSection);
 
-    const aboutSectionBottom =
-        aboutSection.offsetTop + aboutSection.clientHeight;
-    const skillsSectionBottom =
-        skillsSection.offsetTop + skillsSection.clientHeight;
+    const seeAllWorksBtnContainerHeight = getClientHeight(
+        seeAllWorksBtnContainer
+    );
+    const navbarHeight = getClientHeight(navbar);
+
+    let colorLinks = "var(--text-white)";
+    const scrollTop = getWindowScrollTop();
 
     // Conditions
 
-    const aboutCondition =
-        scrollTop >= aboutSectionTop - navbar.clientHeight / 2 &&
-        scrollTop < aboutSectionBottom - navbar.clientHeight / 2;
+    const isInAboutRange = isOnRange(
+        scrollTop,
+        aboutSectionTop - navbarHeight / 2,
+        aboutSectionBottom - navbarHeight / 2
+    );
 
-    const skillsCondition =
-        scrollTop >=
-            skillsSectionTop -
-                navbar.clientHeight / 2 -
-                seeAllWorksBtnContainer.clientHeight &&
-        scrollTop < skillsSectionBottom - navbar.clientHeight / 2;
+    const isInSkillsRange = isOnRange(
+        scrollTop,
+        skillsSectionTop - navbarHeight / 2 - seeAllWorksBtnContainerHeight,
+        skillsSectionBottom - navbarHeight / 2
+    );
 
-    if (aboutCondition || skillsCondition) {
+    if (isInAboutRange || isInSkillsRange) {
         colorLinks = "var(--bcc-black)";
     }
 

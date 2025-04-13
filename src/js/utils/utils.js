@@ -22,29 +22,36 @@ export const getWindowScrollTop = () => {
     return Math.floor(window.scrollY);
 };
 
-export const scrollUp = () => {
-    const scrollTop = getWindowScrollTop();
-
-    if (prevScrollTop >= scrollTop) {
-        return true;
-    }
-
-    return false;
+export const getOffsetTop = (element) => {
+    return element.offsetTop;
 };
 
-export const offsetTopObserver = (coordY) => {
-    const scrollTop = getWindowScrollTop();
-    return scrollTop >= coordY;
+export const getClientHeight = (element) => {
+    return element.clientHeight;
 };
 
-export const offsetRangeObserver = (top, bottom) => {
-    const scrollTop = getWindowScrollTop();
-    return scrollTop > top && scrollTop < bottom;
+export const getOffsetBottom = (element) => {
+    return element.offsetTop + element.clientHeight;
 };
 
-export const offsetBottomObserver = (coordY) => {
-    const scrollTop = getWindowScrollTop();
-    return scrollTop >= coordY;
+export const isOnRange = (valueToCheck, min, max) => {
+    return valueToCheck >= min && valueToCheck <= max;
+};
+
+export const isEqualMajor = (valueToCheck, valueToCompare) => {
+    return valueToCheck >= valueToCompare;
+};
+
+export const isMajor = (valueToCheck, valueToCompare) => {
+    return valueToCheck > valueToCompare;
+};
+
+export const isEqualMinor = (valueToCheck, valueToCompare) => {
+    return valueToCheck <= valueToCompare;
+};
+
+export const isMinor = (valueToCheck, valueToCompare) => {
+    return valueToCheck < valueToCompare;
 };
 
 export const createIntersectionObserver = (
