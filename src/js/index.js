@@ -21,14 +21,19 @@ let prevScrollTop = 0;
 /* -------------------------- INICIALIZACIÓN DE APP -------------------------- */
 
 const init = () => {
-    createAboutDesc(document.querySelector(".sa-desc"));
-    createWorkItems(document.querySelector(".sw-works-container"));
-    createSkillsItems(document.querySelector(".ss-skills-container"));
-    createCourses(document.querySelector(".s-career"));
-
+    const descContainer = document.querySelector(".sa-desc");
+    const worksContainer = document.querySelector(".sw-works-container");
+    const skillsContainer = document.querySelector(".ss-skills-container");
+    const coursesContainer = document.querySelector(".s-career");
     const welcomeMsg = document.querySelector(".welcome-actions");
-    addWelcMsgAnimationEvent(welcomeMsg);
-    addWindowScrollEvent();
+
+    createAboutDesc(descContainer);
+    createWorkItems(worksContainer);
+    createSkillsItems(skillsContainer);
+    createCourses(coursesContainer);
+
+    attachEvent(welcomeMsg, "animationend", handleAnimationEndWelcome);
+    attachEvent(window, "scroll", handleScrollWindow);
 
     writteMachineObserver();
     topToBelowMovementObserver();
@@ -36,56 +41,37 @@ const init = () => {
 
 /* -------------------------- FUNCIONES -------------------------- */
 
-// Attach/add events functions
+// Attach/add events function
 
-const addWelcMsgAnimationEvent = (welcomeMsg) => {
-    welcomeMsg.addEventListener("animationend", handleAnimationWelcomeEvent);
-};
-
-const addWindowScrollEvent = () => {
-    window.addEventListener("scroll", handleScrollWindowEvent);
-};
-
-const addWelcomeBtnClickEvent = (welcomeBtn) => {
-    welcomeBtn.addEventListener("click", handleWelcomeBtnClickEvent);
-};
-
-const addWelcMsgDisapearAnimationEvent = (welcomeMsg) => {
-    welcomeMsg.addEventListener("animationend", handleWelcMsgAnimationEvent);
-};
-
-const addWelcomeScreenAnimationEvent = (welcomeScreen) => {
-    welcomeScreen.addEventListener(
-        "animationend",
-        handleWelcScreenAnimationEvent
-    );
+const attachEvent = (element, event, functionToAttach) => {
+    element.addEventListener(event, functionToAttach);
 };
 
 // Handle events functions
 
-const handleWelcomeBtnClickEvent = (event) => {
+const handleClickWelcomeBtn = (event) => {
     const welcomeMsg = document.querySelector(".welcome-actions");
     const welcomeScreen = document.querySelector(".welcome-screen");
 
     addClass(event.target, "pe-none");
     addClass(welcomeMsg, "wa-opacity-0");
 
-    addWelcMsgDisapearAnimationEvent(welcomeMsg);
-    addWelcomeScreenAnimationEvent(welcomeScreen);
+    attachEvent(welcomeMsg, "animationend", handleAnimationEndWlcMsg);
+    attachEvent(welcomeScreen, "animationend", handleAnimationEndWelcScreen);
 };
 
-const handleScrollWindowEvent = () => {
+const handleScrollWindow = () => {
     navbarColorLinks();
     navbarHide();
     setWindowPrevScrollTop(getWindowScrollTop());
 };
 
-const handleAnimationWelcomeEvent = () => {
+const handleAnimationEndWelcome = () => {
     const welcomeBtn = document.querySelector(".welcome-btn");
-    addWelcomeBtnClickEvent(welcomeBtn);
+    attachEvent(welcomeBtn, "click", handleClickWelcomeBtn);
 };
 
-const handleWelcMsgAnimationEvent = (event) => {
+const handleAnimationEndWlcMsg = (event) => {
     const welcomeScreen = document.querySelector(".welcome-screen");
     event.stopPropagation();
     addClass(event.target, "display-none");
@@ -93,7 +79,7 @@ const handleWelcMsgAnimationEvent = (event) => {
     setStyle(body, "overflow", "auto");
 };
 
-const handleWelcScreenAnimationEvent = (event) => {
+const handleAnimationEndWelcScreen = (event) => {
     addClass(event.target, "display-none");
 };
 
@@ -175,23 +161,25 @@ const navbarHide = () => {
 const navbarColorLinks = () => {
     const navbarLinks = Array.from(document.querySelectorAll(".navbar-link"));
     const navbar = document.querySelector(".navbar");
+
     const scrollTop = getWindowScrollTop();
 
     const aboutSection = document.querySelector(".s-about");
     const skillsSection = document.querySelector(".s-skills");
 
-    const aboutSectionTop = document.querySelector(".s-about").offsetTop;
-    const skillsSectionTop = document.querySelector(".s-skills").offsetTop;
+    const aboutSectionTop = aboutSection.offsetTop;
+    const skillsSectionTop = skillsSection.offsetTop;
 
     const seeAllWorksBtnContainer = document.querySelector(".sw-action-btn");
 
     let colorLinks = "var(--text-white)";
 
-    // Conditions
     const aboutSectionBottom =
         aboutSection.offsetTop + aboutSection.clientHeight;
     const skillsSectionBottom =
         skillsSection.offsetTop + skillsSection.clientHeight;
+
+    // Conditions
 
     const aboutCondition =
         scrollTop >= aboutSectionTop - navbar.clientHeight / 2 &&
@@ -204,10 +192,11 @@ const navbarColorLinks = () => {
                 seeAllWorksBtnContainer.clientHeight &&
         scrollTop < skillsSectionBottom - navbar.clientHeight / 2;
 
-    // Execution
     if (aboutCondition || skillsCondition) {
         colorLinks = "var(--bcc-black)";
     }
+
+    // Execution
 
     navbarLinks.forEach((link) => {
         setStyle(link, "color", colorLinks);
