@@ -2,6 +2,8 @@
 
 /* ------------------------ HEADER ------------------------*/
 
+/* Welcome screen */
+
 .welcome-screen {
     position: fixed;
     top: 0;
@@ -18,22 +20,6 @@
     padding: 7.5%;
 }
 
-.tb-move-off {
-    position: relative;
-    transform: translateY(-100px);
-    opacity: 0;
-}
-
-.tb-move-on {
-    transform: translateY(0);
-    opacity: 1;
-    transition: all 1s ease-out;
-}
-
-.pe-none {
-    pointer-events: none;
-}
-
 .welcome-actions {
     display: flex;
     justify-content: center;
@@ -44,59 +30,9 @@
     animation: welcome 1s linear forwards;
 }
 
-.wa-opacity-0 {
-    animation: opacity-0 0.5s linear;
-}
-
-.ws-opacity-0 {
-    animation: opacity-0 2s linear 1s forwards;
-}
-
-.display-none {
-    display: none;
-}
-
-.align-right {
-    align-items: flex-end !important;
-}
-
-.text-align-right {
-    text-align: right;
-}
-
-@keyframes opacity-0 {
-    0% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-
 .welcome-btn {
-    background-color: transparent;
-    padding: 20px 25px;
-    border-radius: 100px;
-    border: 1px solid var(--text-white);
-    color: var(--text-white);
-    font-family: "Geologica-thin";
-    font-size: 1.1rem;
-    cursor: pointer;
     transition: all 0.3s linear;
-}
-
-.welcome-btn:hover {
-    background-color: var(--bcc-white);
-    color: var(--text-black);
-    font-weight: bold;
-}
-
-.opacity-1 {
-    opacity: 1 !important;
-}
-
-.opacity-0 {
-    opacity: 0 !important;
+    font-family: "Geologica-thin" !important;
 }
 
 .welcome-an {
@@ -106,18 +42,12 @@
     animation-fill-mode: forwards;
 }
 
-.transitioned {
-    transition: all 1s linear;
+.wa-opacity-0 {
+    animation: opacity-0 0.5s linear;
 }
 
-@keyframes welcome {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
+.ws-opacity-0 {
+    animation: opacity-0 2s linear 1s forwards;
 }
 
 .header {
@@ -167,8 +97,6 @@
         1rem
     );
 
-    text-decoration: none;
-    color: var(--text-white);
     transition: color 0.1s linear;
     font-family: "Geologica-bold";
 }
@@ -204,20 +132,6 @@
     animation-iteration-count: infinite;
 }
 
-@keyframes floating {
-    0% {
-        transform: translateY(-10px);
-    }
-
-    50% {
-        transform: translateY(10px);
-    }
-
-    100% {
-        transform: translateY(-10px);
-    }
-}
-
 h1 {
     font-size: clamp(
         1rem,
@@ -225,11 +139,6 @@ h1 {
         1.25rem
     );
     font-family: "Geologica-light";
-}
-
-.section {
-    width: 100%;
-    padding: 100px 0;
 }
 
 /* ------------------------ MAIN ------------------------*/
@@ -288,7 +197,6 @@ section .title-h2 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     gap: 20px;
 }
 
@@ -467,18 +375,6 @@ img {
     animation: cursor 1s infinite steps(2);
 }
 
-@keyframes cursor {
-    0%,
-    49% {
-        opacity: 1;
-    }
-
-    50%,
-    100% {
-        opacity: 0;
-    }
-}
-
 .sw-work-item > * {
     position: relative;
 }
@@ -562,28 +458,23 @@ img {
     position: relative;
 }
 
-.button {
-    border: none;
-    background-color: transparent;
-}
-
-.sw-action-btn .link-btn {
-    color: #0e0e0e;
-    border: 1px solid #0e0e0e;
-    padding: 20px 35px;
-    border-radius: 100px;
-    font-family: "Geologica-medium";
+.sw-action-btn .all-works-link {
     font-size: clamp(
         1rem,
         calc(1rem + (100vw - 23.4375rem) * 0.00187),
         1.125rem
     );
-    text-decoration: none;
-    transition: ease all 0.3s;
 }
-.sw-action-btn .link-btn:hover {
-    background-color: var(--bcc-black);
-    color: var(--text-white);
+
+.pop-up {
+    padding: 20px;
+    color: var(--bcc-white);
+    font-size: 14px;
+    max-width: 200px;
+}
+
+.pop-up-warning {
+    background-color: rgb(206, 187, 88);
 }
 
 /* Skills section */
@@ -616,10 +507,6 @@ img {
     );
 }
 
-.ss-title-frameworks {
-    text-align: end;
-}
-
 .ss-wdi-frameworks {
     display: flex;
     flex-direction: column;
@@ -640,6 +527,7 @@ img {
 }
 
 /* Career section */
+
 .s-career {
     display: flex;
     flex-direction: column;
@@ -774,11 +662,6 @@ img {
     text-transform: uppercase;
 }
 
-.footer .f-link {
-    color: var(--bcc-white);
-    text-decoration: none;
-}
-
 .footer .f-link svg,
 .f-email-container svg {
     width: min(10vw, 40px);
@@ -786,13 +669,11 @@ img {
 }
 
 .f-contact {
-    /* flex: 1; */
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 5%;
-    /* border: 1px solid red; */
 }
 
 .f-email-container {
@@ -800,8 +681,6 @@ img {
     flex-direction: row;
     align-items: center;
     gap: 10px;
-    text-decoration: none;
-    color: var(--bcc-white);
 }
 
 .f-email {
@@ -843,6 +722,51 @@ img {
     }
 }
 
+@keyframes opacity-0 {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes welcome {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes cursor {
+    0%,
+    49% {
+        opacity: 1;
+    }
+
+    50%,
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes floating {
+    0% {
+        transform: translateY(-10px);
+    }
+
+    50% {
+        transform: translateY(10px);
+    }
+
+    100% {
+        transform: translateY(-10px);
+    }
+}
+
 /* Media querys */
 @media all and (max-height: 450px) {
     .sw-item-data {
@@ -852,10 +776,6 @@ img {
 }
 
 @media all and (min-width: 768px) {
-    .section {
-        padding: 150px 0;
-    }
-
     .sw-works-container {
         padding-top: 150px;
     }
@@ -881,10 +801,6 @@ img {
 }
 
 @media all and (min-width: 1024px) {
-    .section {
-        padding: 200px 0;
-    }
-
     .sw-item-data {
         padding-right: 7.5%;
         bottom: 50%;

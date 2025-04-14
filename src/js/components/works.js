@@ -48,9 +48,11 @@ const createWorkItem = (parent, data) => {
     createImg({
         parent: workLinkFigure,
         attributes: {
-            src: workImg,
+            src: workImg.src,
             title: `${name} Proyect`,
             alt: `${name} Proyect`,
+            width: workImg.width,
+            heigth: workImg.heigth,
         },
     });
 
@@ -58,7 +60,11 @@ const createWorkItem = (parent, data) => {
     createImg({
         parent: work,
         classNames: ["sw-wi-bccimg"],
-        attributes: { src: backgroundImg },
+        attributes: {
+            src: backgroundImg.src,
+            width: backgroundImg.width,
+            heigth: backgroundImg.heigth,
+        },
     });
 
     const workData = createDiv({

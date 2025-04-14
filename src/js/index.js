@@ -33,6 +33,7 @@ const init = () => {
     const coursesContainer = document.querySelector(".s-career");
     const strengthsContainer = document.querySelector(".sa-strengths");
     const welcomeMsg = document.querySelector(".welcome-actions");
+    const allWorksLink = document.querySelector(".all-works-link");
 
     createAboutDesc(descContainer);
     createStrengths(strengthsContainer);

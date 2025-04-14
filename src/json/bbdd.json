@@ -25,8 +25,16 @@
             "year": "2024",
             "type": "Curse Work",
             "tools": ["html", "css", "javascript", "php", "mysql"],
-            "backgroundImg": "/src/assets/images/Astrohub-Proyect.webp",
-            "workImg": "/src/assets/images/Astrohub-Proyect-Caricature.jpg",
+            "backgroundImg": {
+                "src": "/src/assets/images/Astrohub-Proyect.png",
+                "width": "1896",
+                "heigth": "845"
+            },
+            "workImg": {
+                "src": "/src/assets/images/Astrohub-Proyect-Caricature.jpg",
+                "width": "600",
+                "heigth": "600"
+            },
             "githubURL": "",
             "workURL": ""
         },
@@ -35,8 +43,16 @@
             "year": "2023",
             "type": "Curse Work",
             "tools": ["html", "css", "javascript"],
-            "backgroundImg": "/src/assets/images/457857.jpg",
-            "workImg": "/src/assets/images/ChessMate-Proyect-Caricature.jpg",
+            "backgroundImg": {
+                "src": "/src/assets/images/ChessMate-Proyect.png",
+                "width": "1920",
+                "heigth": "918"
+            },
+            "workImg": {
+                "src": "/src/assets/images/ChessMate-Proyect-Caricature.jpg",
+                "width": "600",
+                "heigth": "600"
+            },
             "githubURL": "",
             "workURL": ""
         },
@@ -45,8 +61,16 @@
             "year": "2023",
             "type": "Private Work",
             "tools": ["html", "css", "javascript"],
-            "backgroundImg": "/src/assets/images/universe.jpg",
-            "workImg": "/src/assets/images/3inline(remaster)-Proyect-Caricature.jpg",
+            "backgroundImg": {
+                "src": "/src/assets/images/3inline(remaster)-Proyect.png",
+                "width": "1669",
+                "heigth": "918"
+            },
+            "workImg": {
+                "src": "/src/assets/images/3inline(remaster)-Proyect-Caricature.jpg",
+                "width": "600",
+                "heigth": "600"
+            },
             "githubURL": "",
             "workURL": ""
         }
