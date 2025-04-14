@@ -469,12 +469,45 @@ img {
 .pop-up {
     padding: 20px;
     color: var(--bcc-white);
-    font-size: 14px;
-    max-width: 200px;
+    font-size: 16px;
+    margin: 0 auto;
 }
 
-.pop-up-warning {
-    background-color: rgb(206, 187, 88);
+.temporal-pop-up {
+    position: fixed;
+    left: 50%;
+    bottom: 0;
+    z-index: 999;
+    border-radius: 5px;
+    box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.1);
+    text-shadow: 1px 3px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    animation: temporal-pop-up 3s ease-out forwards;
+    width: min(500px, 90%);
+}
+
+.warning-pop-up {
+    background-color: rgb(248, 194, 16);
+}
+
+@keyframes temporal-pop-up {
+    0% {
+        transform: translate(-50%, 100%);
+    }
+
+    10% {
+        transform: translate(-50%, -50%);
+    }
+    90% {
+        transform: translate(-50%, -50%);
+    }
+
+    100% {
+        transform: translate(-50%, 100%);
+    }
 }
 
 /* Skills section */

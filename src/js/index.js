@@ -18,6 +18,7 @@ import { createAboutDesc } from "./components/aboutInfo.js";
 import { createSkillsItems } from "./components/skills.js";
 import { createCourses } from "./components/courses.js";
 import { createStrengths } from "./components/strengths.js";
+import { createTemporalPopup } from "./components/popup.js";
 
 /* -------------------------- VARIABLES -------------------------- */
 
@@ -43,6 +44,7 @@ const init = () => {
 
     attachEvent(welcomeMsg, "animationend", handleAnimationEndWelcome);
     attachEvent(window, "scroll", handleScrollWindow);
+    attachEvent(allWorksLink, "click", handleClickAllWorksBtn);
 
     writteMachineObserver();
     topToBelowMovementObserver();
@@ -51,6 +53,15 @@ const init = () => {
 /* -------------------------- FUNCIONES -------------------------- */
 
 // Handle events functions
+
+const handleClickAllWorksBtn = (event) => {
+    createTemporalPopup(
+        body,
+        "¡Página en proceso! Próximamente disponible.",
+        "warning",
+        event.target
+    );
+};
 
 const handleClickWelcomeBtn = (event) => {
     const welcomeMsg = document.querySelector(".welcome-actions");
