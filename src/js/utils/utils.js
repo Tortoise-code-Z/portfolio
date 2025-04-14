@@ -58,6 +58,10 @@ export const isMinor = (valueToCheck, valueToCompare) => {
     return valueToCheck < valueToCompare;
 };
 
+export const setHTML = (element, htmlData) => {
+    element.innerHTML = htmlData;
+};
+
 export const createIntersectionObserver = (
     elements,
     callback,
@@ -65,7 +69,6 @@ export const createIntersectionObserver = (
     options = {},
     observeOnce = false
 ) => {
-    console.log(options);
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
@@ -110,10 +113,6 @@ export const writteMachine = async (data) => {
     }
 };
 
-export const createElement = (type) => {
-    return document.createElement(type);
-};
-
 export const appendElement = (child, parent) => {
     parent.appendChild(child);
 };
@@ -124,6 +123,10 @@ export const setAttribute = (element, attribute, value) => {
 
 export const setText = (element, value) => {
     element.innerText = value;
+};
+
+export const setClassName = (element, classNames = []) => {
+    element.className = classNames.join(" ");
 };
 
 export const createeElement = ({
@@ -137,20 +140,20 @@ export const createeElement = ({
 } = {}) => {
     const element = document.createElement(tag);
 
-    if (classNames.length) element.className = classNames.join(" ");
+    if (classNames.length) setClassName(element, classNames);
 
     for (const [key, value] of Object.entries(attributes)) {
-        element.setAttribute(key, value);
+        setAttribute(element, key, value);
     }
 
     for (const [event, handler] of Object.entries(events)) {
-        element.addEventListener(event, handler);
+        attachEvent(element, event, handler);
     }
 
-    if (innerText) element.innerText = innerText;
-    if (innerHTML) element.innerHTML = innerHTML;
+    if (innerText) setText(element, innerText);
+    if (innerHTML) setHTML(element, innerHTML);
 
-    if (parent) parent.appendChild(element);
+    if (parent) appendElement(element, parent);
 
     return element;
 };
