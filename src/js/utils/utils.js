@@ -1,3 +1,7 @@
+export const attachEvent = (element, event, functionToAttach) => {
+    element.addEventListener(event, functionToAttach);
+};
+
 export const addClass = (element, classToAdd) => {
     element.classList.add(classToAdd);
 };

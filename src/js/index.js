@@ -10,12 +10,14 @@ import {
     getClientHeight,
     getOffsetBottom,
     isOnRange,
+    attachEvent,
 } from "./utils/utils";
 
 import { createWorkItems } from "./components/works.js";
 import { createAboutDesc } from "./components/aboutInfo.js";
 import { createSkillsItems } from "./components/skills.js";
 import { createCourses } from "./components/courses.js";
+import { createStrengths } from "./components/strengths.js";
 
 /* -------------------------- VARIABLES -------------------------- */
 
@@ -29,9 +31,11 @@ const init = () => {
     const worksContainer = document.querySelector(".sw-works-container");
     const skillsContainer = document.querySelector(".ss-skills-container");
     const coursesContainer = document.querySelector(".s-career");
+    const strengthsContainer = document.querySelector(".sa-strengths");
     const welcomeMsg = document.querySelector(".welcome-actions");
 
     createAboutDesc(descContainer);
+    createStrengths(strengthsContainer);
     createWorkItems(worksContainer);
     createSkillsItems(skillsContainer);
     createCourses(coursesContainer);
@@ -44,12 +48,6 @@ const init = () => {
 };
 
 /* -------------------------- FUNCIONES -------------------------- */
-
-// Attach/add events function
-
-const attachEvent = (element, event, functionToAttach) => {
-    element.addEventListener(event, functionToAttach);
-};
 
 // Handle events functions
 
