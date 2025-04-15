@@ -38,6 +38,7 @@ const createWorkItem = (parent, data) => {
         parent: work,
         attributes: {
             target: "_blank",
+            rel: "noopener noreferrer",
             href: githubURL || "#",
             title: `${name} Proyect`,
         },
