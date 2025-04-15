@@ -21,6 +21,24 @@
     ],
     "works": [
         {
+            "name": "Portfolio",
+            "year": "2025",
+            "type": "Private Work",
+            "tools": ["html", "css", "javascript", "git"],
+            "backgroundImg": {
+                "src": "/src/assets/images/Portfolio-Proyect.png",
+                "width": "1920",
+                "heigth": "921"
+            },
+            "workImg": {
+                "src": "/src/assets/images/Portfolio-Caricatura1.jpg",
+                "width": "600",
+                "heigth": "600"
+            },
+            "githubURL": "https://github.com/Tortoise-code-Z/portfolio",
+            "workURL": ""
+        },
+        {
             "name": "Astrohub",
             "year": "2024",
             "type": "Curse Work",
@@ -35,43 +53,7 @@
                 "width": "600",
                 "heigth": "600"
             },
-            "githubURL": "",
-            "workURL": ""
-        },
-        {
-            "name": "ChessMate",
-            "year": "2023",
-            "type": "Curse Work",
-            "tools": ["html", "css", "javascript"],
-            "backgroundImg": {
-                "src": "/src/assets/images/ChessMate-Proyect.png",
-                "width": "1920",
-                "heigth": "918"
-            },
-            "workImg": {
-                "src": "/src/assets/images/ChessMate-Proyect-Caricature.jpg",
-                "width": "600",
-                "heigth": "600"
-            },
-            "githubURL": "",
-            "workURL": ""
-        },
-        {
-            "name": "3 in line (remaster)",
-            "year": "2023",
-            "type": "Private Work",
-            "tools": ["html", "css", "javascript"],
-            "backgroundImg": {
-                "src": "/src/assets/images/3inline(remaster)-Proyect.png",
-                "width": "1669",
-                "heigth": "918"
-            },
-            "workImg": {
-                "src": "/src/assets/images/3inline(remaster)-Proyect-Caricature.jpg",
-                "width": "600",
-                "heigth": "600"
-            },
-            "githubURL": "",
+            "githubURL": "https://github.com/Tortoise-code-Z/Astrohub",
             "workURL": ""
         }
     ],
@@ -124,36 +106,6 @@
                 "value": ""
             },
             "hours": "13h",
-            "year": "2025",
-            "isFinished": {
-                "state": false,
-                "msg": "in progress"
-            }
-        },
-        {
-            "academy": ["Hola", "mundo", "academy"],
-            "curse": "Git / Github course",
-            "tools": ["git", "github"],
-            "note": {
-                "state": false,
-                "value": ""
-            },
-            "hours": "5h",
-            "year": "2025",
-            "isFinished": {
-                "state": false,
-                "msg": "in progress"
-            }
-        },
-        {
-            "academy": ["Hola", "mundo", "academy"],
-            "curse": "Typescript course",
-            "tools": ["typescript"],
-            "note": {
-                "state": false,
-                "value": ""
-            },
-            "hours": "5h",
             "year": "2025",
             "isFinished": {
                 "state": false,

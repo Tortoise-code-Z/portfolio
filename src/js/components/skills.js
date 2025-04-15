@@ -49,27 +49,3 @@ const createSkillsItem = (parent, data, index) => {
 
     appendElement(fragment, parent);
 };
-
-/**
- * 
- *  <h3 class="title-h3 ss-title-webdev tb-move-off">Web developent</h3>
-    <div class="ss-wd-item tb-move-off">
-        <p># HTLM</p>
-        <p># CSS</p>
-        <p># JAVASCRIPT</p>
-        <p># PHP</p>
-        <p># MYSQL</p>
-    </div>
-    <h3 class="title-h3 ss-title-frameworks tb-move-off">Frameworks / Libraries</h3>
-    <div class="ss-wd-item ss-wdi-frameworks tb-move-off">
-        <p># BOOTSTRAP</p>
-        <p># REACT + TYPESCRIPT</p>
-    </div>
-    <h3 class="title-h3  ss-title-tools tb-move-off">Development tools / Workflow</h3>
-    <div class="ss-wd-item tb-move-off">
-        <p># GIT</p>
-        <p># GITHUB</p>
-        <p># NPM</p>
-        <p># FIGMA</p>
-    </div>
- */

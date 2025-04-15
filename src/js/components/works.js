@@ -36,7 +36,11 @@ const createWorkItem = (parent, data) => {
     const workLink = createLink({
         classNames: ["sw-proyect-link"],
         parent: work,
-        attributes: { href: githubURL || "#", title: `${name} Proyect` },
+        attributes: {
+            target: "_blank",
+            href: githubURL || "#",
+            title: `${name} Proyect`,
+        },
     });
 
     const workLinkFigure = createFigure({
@@ -81,6 +85,7 @@ const createWorkItem = (parent, data) => {
 
     // Proyect name
     createHtag({
+        parent: workData,
         level: 3,
         classNames: ["title-h3"],
         innerText: name,
@@ -102,26 +107,3 @@ const createWorkItem = (parent, data) => {
 
     appendElement(fragment, parent);
 };
-
-// FORMA QUE DEBERÍA TENER EL ITEM
-
-/**
-    <div class="sw-work-item-container">
-        <div class="sw-work-item">
-            <a href="#" class="sw-proyect-link" title="Astrohub Proyect">
-                <figure class="sw-item-img">
-                    <img src="./src/assets/images/Astrohub-Proyect-Caricature.jpg" alt="Astrohub proyect"
-                        title="Astrohub Proyect">
-                </figure>
-            </a>
-            <img class="sw-wi-bccimg" src="./src/assets/images/Astrohub-Proyect.webp" alt="">
-
-            <div class="sw-item-data">
-                <p class="sw-item-date">2024</p>
-                <h3 class="title-h3">Astrohub</h3>
-                <p class="sw-item-type">Curse work</p>
-                <div class="sw-item-tools">html · css · javascript · php · mysql</div>
-            </div>
-        </div>
-    </div>
- */
