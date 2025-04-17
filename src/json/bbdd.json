@@ -26,12 +26,12 @@
             "type": "Private Work",
             "tools": ["html", "css", "javascript", "git"],
             "backgroundImg": {
-                "src": "/src/assets/images/Portfolio-Proyect.png",
+                "src": "/portfolio/src/assets/images/Portfolio-Proyect.png",
                 "width": "1920",
                 "heigth": "921"
             },
             "workImg": {
-                "src": "/src/assets/images/Portfolio-Caricatura1.jpg",
+                "src": "/portfolio/src/assets/images/Portfolio-Caricatura1.jpg",
                 "width": "600",
                 "heigth": "600"
             },
@@ -44,12 +44,12 @@
             "type": "Curse Work",
             "tools": ["html", "css", "javascript", "php", "mysql"],
             "backgroundImg": {
-                "src": "/src/assets/images/Astrohub-Proyect.png",
+                "src": "/portfolio/src/assets/images/Astrohub-Proyect.png",
                 "width": "1896",
                 "heigth": "845"
             },
             "workImg": {
-                "src": "/src/assets/images/Astrohub-Proyect-Caricature.jpg",
+                "src": "/portfolio/src/assets/images/Astrohub-Proyect-Caricature.jpg",
                 "width": "600",
                 "heigth": "600"
             },
