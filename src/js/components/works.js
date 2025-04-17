@@ -66,7 +66,7 @@ const createWorkItem = (parent, data) => {
         parent: work,
         classNames: ["sw-wi-bccimg"],
         attributes: {
-            src: backgroundImg.src,
+            src: `${import.meta.env.BASE_URL}${backgroundImg.src}`,
             width: backgroundImg.width,
             heigth: backgroundImg.heigth,
         },
