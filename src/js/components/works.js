@@ -53,7 +53,7 @@ const createWorkItem = (parent, data) => {
     createImg({
         parent: workLinkFigure,
         attributes: {
-            src: workImg.src,
+            src: `${import.meta.env.BASE_URL}${workImg.src}`,
             title: `${name} Proyect`,
             alt: `${name} Proyect`,
             width: workImg.width,
