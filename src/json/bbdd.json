@@ -60,16 +60,16 @@
     "skills": [
         {
             "title": "Web Development",
-            "tools": ["html", "css", "javascript", "php", "mysql"]
+            "tools": ["html", "css", "javascript", "php", "mysql", "apache"]
         },
 
         {
             "title": "Frameworks / Libraries",
-            "tools": ["bootstrap", "reacr + typescript"]
+            "tools": ["bootstrap", "react + typescript"]
         },
         {
             "title": "Development tools / Workflow",
-            "tools": ["git", "github", "npm", "figma"]
+            "tools": ["git", "github", "figma", "virtual machines"]
         }
     ],
 

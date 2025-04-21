@@ -16,7 +16,8 @@
     justify-content: center;
     align-items: center;
     font-family: "Geologica-thin";
-    font-size: 3rem;
+    font-size: 2rem;
+    font-size: clamp(2rem, calc(2rem + (100vw - 23.4375rem) * 0.01939), 3rem);
     padding: 7.5%;
 }
 
@@ -81,7 +82,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    padding: 30px 3%;
+    padding: 20px 5%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -180,7 +181,6 @@ section .title-h2 {
 
 .sa-dev-data {
     padding: 0 7.5%;
-
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -195,19 +195,15 @@ section .title-h2 {
 .sa-about-title {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 20px;
+    gap: 30px;
 }
 
 .sa-mobile-about {
     font-family: "Geologica-bold";
     text-align: center;
-    font-size: clamp(
-        2rem,
-        calc(2rem + (100vw - 23.4375rem) * 0.03568),
-        4.375rem
-    );
+    font-size: clamp(3rem, calc(3rem + (100vw - 23.4375rem) * 0.09696), 8rem);
 }
 
 img {
@@ -223,9 +219,15 @@ img {
     gap: 10px;
 }
 
+.dev-img {
+    width: 300px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
 .dev-img img {
-    width: 150px;
-    height: auto;
+    width: 100%;
+    height: max-content;
 }
 
 .sa-dev-name {
@@ -256,7 +258,6 @@ img {
         calc(1rem + (100vw - 23.4375rem) * 0.00242),
         1.125rem
     );
-    text-align: center;
 }
 
 .sa-desc p {
@@ -832,10 +833,6 @@ img {
         gap: 100px;
     }
 
-    .dev-img img {
-        width: 200px;
-    }
-
     .f-email {
         display: flex;
     }
@@ -865,19 +862,16 @@ img {
     .sa-dev-data {
         gap: 50px;
     }
-    .sa-about-title {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .dev-img img {
-        width: 300px;
-    }
 
     .sa-mobile-about {
         display: none;
+    }
+
+    .sa-about-title {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
     }
 
     .sa-about {
@@ -885,8 +879,8 @@ img {
         font-family: "Geologica-bold";
         font-size: clamp(
             2rem,
-            calc(2rem + (100vw - 23.4375rem) * 0.03568),
-            4.375rem
+            calc(2rem + (100vw - 23.4375rem) * 0.05818),
+            5rem
         );
     }
 
@@ -904,5 +898,8 @@ img {
 
     .f-contact {
         padding: 2% 3%;
+    }
+    .navbar {
+        padding: 30px 5%;
     }
 }
