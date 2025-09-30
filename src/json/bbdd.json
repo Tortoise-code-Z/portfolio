@@ -26,12 +26,12 @@
             "type": "Private Work",
             "tools": ["html", "css", "javascript", "git"],
             "backgroundImg": {
-                "src": "images/Portfolio-Proyect.webp",
+                "src": "Portfolio-Proyect.webp",
                 "width": "1920",
                 "heigth": "921"
             },
             "workImg": {
-                "src": "images/Portfolio-Caricatura1.webp",
+                "src": "Portfolio-Caricatura1.webp",
                 "width": "600",
                 "heigth": "600"
             },
@@ -44,12 +44,12 @@
             "type": "Private Work",
             "tools": ["React", "Typescript", "Git"],
             "backgroundImg": {
-                "src": "images/Chessmate.webp",
+                "src": "Chessmate.webp",
                 "width": "1920",
                 "heigth": "922"
             },
             "workImg": {
-                "src": "images/Chessmate-Caricatura.webp",
+                "src": "Chessmate-Caricatura.webp",
                 "width": "1280",
                 "heigth": "1280"
             },
@@ -62,12 +62,12 @@
             "type": "Curse Work",
             "tools": ["html", "css", "javascript", "php", "mysql"],
             "backgroundImg": {
-                "src": "images/Astrohub-Proyect.webp",
+                "src": "Astrohub-Proyect.webp",
                 "width": "1896",
                 "heigth": "845"
             },
             "workImg": {
-                "src": "images/Astrohub-Proyect-Caricature.webp",
+                "src": "Astrohub-Proyect-Caricature.webp",
                 "width": "600",
                 "heigth": "600"
             },

@@ -1,39 +1,39 @@
 @font-face {
     font-family: "Geologica-extraBold";
-    src: url(/portfolio/fonts/Geologica/static/Geologica-ExtraBold.ttf);
+    src: url(../assets/fonts/Geologica/static/Geologica-ExtraBold.ttf);
 }
 
 @font-face {
     font-family: "Geologica-bold";
-    src: url(/portfolio/fonts/Geologica/static/Geologica-Bold.ttf);
+    src: url(../assets/fonts/Geologica/static/Geologica-Bold.ttf);
 }
 
 @font-face {
     font-family: "Geologica-semibold";
-    src: url(/portfolio/fonts/Geologica/static/Geologica-SemiBold.ttf);
+    src: url(../assets/fonts/Geologica/static/Geologica-SemiBold.ttf);
 }
 
 @font-face {
     font-family: "Geologica-regular";
-    src: url(/portfolio/fonts/Geologica/static/Geologica-Regular.ttf);
+    src: url(../assets/fonts/Geologica/static/Geologica-Regular.ttf);
 }
 
 @font-face {
     font-family: "Geologica-light";
-    src: url(fonts/Geologica/static/Geologica-Light.ttf);
+    src: url(../assets/fonts/Geologica/static/Geologica-Light.ttf);
 }
 
 @font-face {
     font-family: "Geologica-medium";
-    src: url(/portfolio/fonts/Geologica/static/Geologica-Medium.ttf);
+    src: url(../assets/fonts/Geologica/static/Geologica-Medium.ttf);
 }
 
 @font-face {
     font-family: "Geologica-extralLight";
-    src: url(/portfolio/fonts/Geologica/static/Geologica-ExtraLight.ttf);
+    src: url(../assets/fonts/Geologica/static/Geologica-ExtraLight.ttf);
 }
 
 @font-face {
     font-family: "Geologica-thin";
-    src: url(/portfolio/fonts/Geologica/static/Geologica-Thin.ttf);
+    src: url(../assets/fonts/Geologica/static/Geologica-Thin.ttf);
 }
