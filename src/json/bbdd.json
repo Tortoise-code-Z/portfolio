@@ -26,12 +26,12 @@
             "type": "Private Work",
             "tools": ["html", "css", "javascript", "git"],
             "backgroundImg": {
-                "src": "/images/Portfolio-Proyect.png",
+                "src": "/images/Portfolio-Proyect.webp",
                 "width": "1920",
                 "heigth": "921"
             },
             "workImg": {
-                "src": "/images/Portfolio-Caricatura1.jpg",
+                "src": "/images/Portfolio-Caricatura1.webp",
                 "width": "600",
                 "heigth": "600"
             },
@@ -39,17 +39,35 @@
             "workURL": ""
         },
         {
+            "name": "Chessmate",
+            "year": "2025",
+            "type": "Private Work",
+            "tools": ["React", "Typescript", "Git"],
+            "backgroundImg": {
+                "src": "/images/Chessmate.webp",
+                "width": "1920",
+                "heigth": "922"
+            },
+            "workImg": {
+                "src": "/images/Chessmate-Caricatura.webp",
+                "width": "1280",
+                "heigth": "1280"
+            },
+            "githubURL": "https://github.com/Tortoise-code-Z/Chessmate-react",
+            "workURL": "https://tortoise-code-z.github.io/Chessmate-react/"
+        },
+        {
             "name": "Astrohub",
             "year": "2024",
             "type": "Curse Work",
             "tools": ["html", "css", "javascript", "php", "mysql"],
             "backgroundImg": {
-                "src": "/images/Astrohub-Proyect.png",
+                "src": "/images/Astrohub-Proyect.webp",
                 "width": "1896",
                 "heigth": "845"
             },
             "workImg": {
-                "src": "/images/Astrohub-Proyect-Caricature.jpg",
+                "src": "/images/Astrohub-Proyect-Caricature.webp",
                 "width": "600",
                 "heigth": "600"
             },
@@ -60,12 +78,20 @@
     "skills": [
         {
             "title": "Web Development",
-            "tools": ["html", "css", "javascript", "php", "mysql", "apache"]
+            "tools": [
+                "html",
+                "css",
+                "javascript",
+                "typescript",
+                "php",
+                "mysql",
+                "apache"
+            ]
         },
 
         {
             "title": "Frameworks / Libraries",
-            "tools": ["bootstrap", "react + typescript"]
+            "tools": ["bootstrap", "tailwind", "react + typescript"]
         },
         {
             "title": "Development tools / Workflow",
@@ -108,7 +134,7 @@
             "hours": "13h",
             "year": "2025",
             "isFinished": {
-                "state": false,
+                "state": true,
                 "msg": "in progress"
             }
         }

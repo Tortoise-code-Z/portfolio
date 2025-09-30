@@ -40,6 +40,11 @@ body {
 a {
     text-decoration: none;
     color: var(--bcc-white);
+    transition: 0.3s all !important;
+}
+
+a:hover {
+    opacity: 0.8;
 }
 
 button,
@@ -52,7 +57,9 @@ button,
     border: none;
     font-family: "Geologica-regular";
     color: var(--bcc-white);
-    transition: ease all 0.3s;
+    transition: ease all 0.3s !important;
+    opacity: 1 !important;
+    text-align: center;
 }
 
 .btn-primary {

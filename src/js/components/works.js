@@ -12,13 +12,23 @@ import {
 
 export const createWorkItems = (parent) => {
     const works = bbdd.works;
+
     works.forEach((data) => {
-        createWorkItem(parent, data);
+        createWorkItem(parent, data, bbdd);
     });
 };
 
 const createWorkItem = (parent, data) => {
-    const { name, year, type, tools, backgroundImg, githubURL, workImg } = data;
+    const {
+        name,
+        year,
+        type,
+        tools,
+        backgroundImg,
+        githubURL,
+        workImg,
+        workURL,
+    } = data;
 
     // Temporal box
     const fragment = createFragment();
@@ -105,6 +115,19 @@ const createWorkItem = (parent, data) => {
         classNames: ["sw-item-tools"],
         innerText: tools.join(" · "),
     });
+
+    workURL &&
+        createLink({
+            classNames: ["button", "btn-primary", "sw-link-github"],
+            parent: workData,
+            attributes: {
+                target: "_blank",
+                rel: "noopener noreferrer",
+                href: workURL || "#",
+                title: `Ver ${name} página web`,
+            },
+            innerText: "Ver página web",
+        });
 
     appendElement(fragment, parent);
 };
