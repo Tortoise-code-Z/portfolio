@@ -11,7 +11,7 @@ import {
     getOffsetBottom,
     isOnRange,
     attachEvent,
-} from "./utils/utils";
+} from "./utils/utils.js";
 
 import { createWorkItems } from "./components/works.js";
 import { createAboutDesc } from "./components/aboutInfo.js";
