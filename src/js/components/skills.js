@@ -1,4 +1,4 @@
-import bbdd from "../../json/bbdd.json";
+import bbdd from "../../const/bbdd.js";
 import {
     appendElement,
     createDiv,

@@ -1,4 +1,4 @@
-import bbdd from "../../json/bbdd.json";
+import bbdd from "../../const/bbdd.js";
 import { createPar } from "../utils/utils.js";
 
 export const createAboutDesc = (parent) => {
