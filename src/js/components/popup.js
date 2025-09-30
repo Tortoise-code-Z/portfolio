@@ -6,7 +6,7 @@ import {
     createFragment,
     createPar,
     removeClass,
-} from "../utils/utils";
+} from "../utils/utils.js";
 
 export const createTemporalPopup = (parent, data, type = "", button) => {
     const fragment = createFragment();

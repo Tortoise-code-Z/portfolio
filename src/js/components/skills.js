@@ -5,7 +5,7 @@ import {
     createFragment,
     createHtag,
     createPar,
-} from "../utils/utils";
+} from "../utils/util.js";
 
 export const createSkillsItems = (parent) => {
     const skills = bbdd.skills;

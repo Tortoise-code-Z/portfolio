@@ -9,7 +9,7 @@ import {
     createPar,
     createHtag,
     createFragment,
-} from "../utils/utils";
+} from "../utils/utils.js";
 
 export const createWorkItems = (parent) => {
     const works = bbdd.works;

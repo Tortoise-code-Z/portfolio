@@ -1,5 +1,5 @@
 import bbdd from "../../json/bbdd.json";
-import { createPar } from "../utils/utils";
+import { createPar } from "../utils/utils.js";
 
 export const createAboutDesc = (parent) => {
     const descriptions = bbdd.aboutDesc;

@@ -7,7 +7,7 @@ import {
     createHtag,
     createPar,
     createSpan,
-} from "../utils/utils";
+} from "../utils/utils.js";
 
 export const createCourses = (parent) => {
     const courses = bbdd.career;

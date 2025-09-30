@@ -4,7 +4,7 @@ import {
     createDiv,
     createFragment,
     createPar,
-} from "../utils/utils";
+} from "../utils/utils.js";
 
 export const createStrengths = (parent) => {
     const strengths = bbdd.strengths;
