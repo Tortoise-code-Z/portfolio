@@ -64,7 +64,7 @@ const createWorkItem = (parent, data) => {
     createImg({
         parent: workLinkFigure,
         attributes: {
-            src: `${import.meta.env.BASE_URL}${workImg.src}`,
+            src: `${import.meta.env.BASE_URL}src/assets/images/${workImg.src}`,
             title: `${name} Proyect`,
             alt: `${name} Proyect`,
             width: workImg.width,
@@ -77,7 +77,9 @@ const createWorkItem = (parent, data) => {
         parent: work,
         classNames: ["sw-wi-bccimg"],
         attributes: {
-            src: `${import.meta.env.BASE_URL}${backgroundImg.src}`,
+            src: `${import.meta.env.BASE_URL}src/assets/images/${
+                backgroundImg.src
+            }`,
             width: backgroundImg.width,
             heigth: backgroundImg.heigth,
         },
