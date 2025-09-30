@@ -24,24 +24,6 @@ const bbdd = {
     ],
     works: [
         {
-            name: "Portfolio",
-            year: "2025",
-            type: "Private Work",
-            tools: ["html", "css", "javascript", "git"],
-            backgroundImg: {
-                src: "Portfolio-Proyect.webp",
-                width: "1920",
-                heigth: "921",
-            },
-            workImg: {
-                src: "Portfolio-Caricatura1.webp",
-                width: "600",
-                heigth: "600",
-            },
-            githubURL: "https://github.com/Tortoise-code-Z/portfolio",
-            workURL: "",
-        },
-        {
             name: "Chessmate",
             year: "2025",
             type: "Private Work",
@@ -58,6 +40,24 @@ const bbdd = {
             },
             githubURL: "https://github.com/Tortoise-code-Z/Chessmate-react",
             workURL: "https://tortoise-code-z.github.io/Chessmate-react/",
+        },
+        {
+            name: "Portfolio",
+            year: "2025",
+            type: "Private Work",
+            tools: ["html", "css", "javascript", "git"],
+            backgroundImg: {
+                src: "Portfolio-Proyect.webp",
+                width: "1920",
+                heigth: "921",
+            },
+            workImg: {
+                src: "Portfolio-Caricatura1.webp",
+                width: "600",
+                heigth: "600",
+            },
+            githubURL: "https://github.com/Tortoise-code-Z/portfolio",
+            workURL: "",
         },
         {
             name: "Astrohub",

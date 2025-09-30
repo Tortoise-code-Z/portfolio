@@ -55,12 +55,7 @@ const init = () => {
 // Handle events functions
 
 const handleClickAllWorksBtn = (event) => {
-    createTemporalPopup(
-        body,
-        "¡Página en proceso! Próximamente disponible.",
-        "warning",
-        event.target
-    );
+    createTemporalPopup(body, "Página en proceso", "warning", event.target);
 };
 
 const handleClickWelcomeBtn = (event) => {
