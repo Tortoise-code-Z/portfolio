@@ -1,4 +1,4 @@
-export const bbdd = {
+const bbdd = {
     aboutDesc: [
         "Comencé a programar de forma independiente en 2022 con CSS Y HTML. Luego de unos meses estudiando, decidí comenzar un curso superior fullstack.",
         "En él, puse a prueba mis habilidades tanto en el lado del cliente como en el backend. Sin embargo, no hay nada que me haya fascinado más que el frontend. Tanto diseñar como programar layouts es una pasión de la que quiero seguir aprendiendo y aportando a todo el que requiera de mi trabajo.",
@@ -143,3 +143,5 @@ export const bbdd = {
         },
     ],
 };
+
+export default bbdd;
