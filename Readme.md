@@ -1,12 +1,8 @@
 # Portfolio web - Víctor Pérez - Desarrollador Frontend
 
-## 👋 Hola
+## 👋 Hola, bienvenido a mi portfolio
 
-Soy un **desarrollador frontend apasionado** por crear experiencias web modernas, rápidas y visualmente atractivas. Me encanta transformar diseños en **interfaces interactivas y responsive**, siempre cuidando la **usabilidad** y el **detalle en cada proyecto**.
-
-En mi portfolio encontrarás **proyectos reales** construidos con tecnologías modernas como **React, TypeScript, Vite, CSS Modules y más**, donde también he incorporado herramientas de **IA como copiloto** para optimizar flujos y generar ideas innovadoras.
-
-💡 Mi objetivo: combinar **diseño y desarrollo** para crear aplicaciones web que sean tanto **funcionales** como **impactantes visualmente**, y que ofrezcan experiencias únicas a los usuarios.
+En él encontrarás **proyectos reales** construidos con tecnologías modernas como **React, TypeScript, Vite, CSS Modules y más**, donde también he incorporado herramientas de **IA como copiloto** para optimizar flujos y generar ideas innovadoras.
 
 ![Portfolio](./src/assets/images/screenshots/screenshot-hero.png)
 
