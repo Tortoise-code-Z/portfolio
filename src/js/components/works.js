@@ -1,4 +1,5 @@
 import bbdd from "../../const/bbdd.js";
+import { getImage } from "../utils/images.js";
 
 import {
     appendElement,
@@ -64,7 +65,7 @@ const createWorkItem = (parent, data) => {
     createImg({
         parent: workLinkFigure,
         attributes: {
-            src: `/portfolio/src/assets/images/${workImg.src}`,
+            src: getImage(workImg.src),
             title: `${name} Proyect`,
             alt: `${name} Proyect`,
             width: workImg.width,
@@ -77,7 +78,7 @@ const createWorkItem = (parent, data) => {
         parent: work,
         classNames: ["sw-wi-bccimg"],
         attributes: {
-            src: `/portfolio/src/assets/images/${backgroundImg.src}`,
+            src: getImage(backgroundImg.src),
             width: backgroundImg.width,
             heigth: backgroundImg.heigth,
         },
