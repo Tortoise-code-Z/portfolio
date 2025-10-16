@@ -1,6 +1,5 @@
 import bbdd from "../../const/bbdd.js";
 import { getImage } from "../utils/images.js";
-
 import {
     appendElement,
     createLink,
