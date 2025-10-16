@@ -1,7 +1,7 @@
 export const getImage = (name, folders = []) => {
     
     const folderPath = folders.length > 0 ? `${folders.join("/")}/` : "";
-    return new URL(`../assets/images/${folderPath}${name}`, import.meta.url)
+    return new URL(`../../assets/images/${folderPath}${name}`, import.meta.url)
         .href;
 };
 
