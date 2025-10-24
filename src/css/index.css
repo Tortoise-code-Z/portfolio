@@ -32,6 +32,13 @@ body {
     overflow: hidden;
 }
 
+.title-white {
+    color: rgb(var(--text-white));
+}
+.title-black {
+    color: rgb(var(--text-black));
+}
+
 .section {
     width: 100%;
     padding: 100px 0;
