@@ -184,7 +184,7 @@ const navbarColorLinks = () => {
     );
     const navbarHeight = getClientHeight(navbar);
 
-    let colorLinks = "var(--text-white)";
+    let colorLinks = "rgb(var(--text-white))";
     const scrollTop = getWindowScrollTop();
 
     // Conditions
@@ -202,7 +202,7 @@ const navbarColorLinks = () => {
     );
 
     if (isInAboutRange || isInSkillsRange) {
-        colorLinks = "var(--bcc-black)";
+        colorLinks = "rgb(var(--bcc-black))";
     }
 
     // Execution

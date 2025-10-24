@@ -147,8 +147,8 @@ h1 {
 /* About section */
 
 .s-about {
-    background-color: var(--bcc-white);
-    color: var(--text-black);
+    background-color: rgb(var(--bcc-white));
+    color: rgb(var(--text-black));
     display: flex;
     flex-direction: column;
     gap: 50px;
@@ -324,7 +324,7 @@ img {
 }
 
 .s-works .title-h2 {
-    color: var(--text-white);
+    color: rgb(var(--text-white));
     text-align: center;
     font-size: clamp(3rem, calc(3rem + (100vw - 23.4375rem) * 0.09696), 8rem);
     font-family: "Geologica-bold";
@@ -332,7 +332,7 @@ img {
 }
 
 .sw-works-container {
-    background-color: var(--bcc-black);
+    background-color: rgb(var(--bcc-black));
     padding-top: 100px;
     display: flex;
     flex-direction: column;
@@ -476,7 +476,7 @@ img {
 }
 
 .sw-action-btn {
-    background-color: var(--bcc-white);
+    background-color: rgb(var(--bcc-white));
     width: 100%;
     height: 150px;
     display: flex;
@@ -495,7 +495,7 @@ img {
 
 .pop-up {
     padding: 20px;
-    color: var(--bcc-white);
+    color: rgb(var(--bcc-white));
     font-size: 16px;
     margin: 0 auto;
 }
@@ -540,8 +540,8 @@ img {
 /* Skills section */
 
 .s-skills {
-    background-color: var(--bcc-white);
-    color: var(--text-black);
+    background-color: rgb(var(--bcc-white));
+    color: rgb(var(--text-black));
     display: flex;
     flex-direction: column;
     gap: 50px;
@@ -595,7 +595,7 @@ img {
 }
 
 .s-career .title-h2 {
-    color: var(--text-white);
+    color: rgb(var(--text-white));
     font-family: "Geologica-bold";
     text-align: center;
     font-size: clamp(3rem, calc(3rem + (100vw - 23.4375rem) * 0.09696), 8rem);
@@ -699,7 +699,7 @@ img {
     text-align: center;
     font-size: clamp(3rem, calc(3rem + (100vw - 23.4375rem) * 0.05818), 6rem);
     font-family: "Geologica-bold";
-    color: var(--bcc-white);
+    color: rgb(var(--bcc-white));
 }
 
 .footer .f-dev-name {

@@ -10,8 +10,8 @@
 
 body {
     font-family: "Geologica-regular";
-    color: var(--text-white);
-    background-color: var(--bcc-black);
+    color: rgb(var(--text-white));
+    background-color: rgb(var(--bcc-black));
 }
 
 body::-webkit-scrollbar {
@@ -32,6 +32,13 @@ body {
     overflow: hidden;
 }
 
+.title-white {
+    color: rgb(var(--text-white));
+}
+.title-black {
+    color: rgb(var(--text-black));
+}
+
 .section {
     width: 100%;
     padding: 100px 0;
@@ -39,7 +46,7 @@ body {
 
 a {
     text-decoration: none;
-    color: var(--bcc-white);
+    color: rgb(var(--bcc-white));
     transition: 0.3s all !important;
 }
 
@@ -56,32 +63,32 @@ button,
     cursor: pointer;
     border: none;
     font-family: "Geologica-regular";
-    color: var(--bcc-white);
+    color: rgb(var(--bcc-white));
     transition: ease all 0.3s !important;
     opacity: 1 !important;
     text-align: center;
 }
 
 .btn-primary {
-    color: var(--text-white);
-    border: 1px solid var(--text-white);
-    background-color: var(--bcc-black);
+    color: rgb(var(--text-white));
+    border: 1px solid rgb(var(--text-white));
+    background-color: rgb(var(--bcc-black));
 }
 
 .btn-primary:hover {
-    background-color: var(--bcc-white);
-    color: var(--text-black);
+    background-color: rgb(var(--bcc-white));
+    color: rgb(var(--text-black));
 }
 
 .btn-secondary {
-    color: var(--text-black);
-    border: 1px solid var(--text-black);
-    background-color: var(--bcc-white);
+    color: rgb(var(--text-black));
+    border: 1px solid rgb(var(--text-black));
+    background-color: rgb(var(--bcc-white));
 }
 
 .btn-secondary:hover {
-    background-color: var(--bcc-black);
-    color: var(--text-white);
+    background-color: rgb(var(--bcc-black));
+    color: rgb(var(--text-white));
 }
 
 .align-right {
