@@ -4,6 +4,7 @@ export const getImage = (name, folders = []) => {
         .href;
 };
 
+
 export const getImageSize = (itemToSplit, dimension) => {
     if (!itemToSplit || itemToSplit.length === 0) return undefined;
     const splitNumber = dimension === "width" ? 0 : 1;
