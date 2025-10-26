@@ -21,15 +21,15 @@ export const createWorkItems = (parent) => {
 
 const createWorkItem = (parent, data) => {
     const {
+        id,
         name,
         year,
-        type,
-        tools,
-        backgroundImg,
-        githubURL,
-        workImg,
-        workURL,
+        visibility,
+        techStack: {tools:{fastTools}},
+        images: { workImg, backgroundImg },
+        links: { github, demo },
     } = data;
+
 
     // Temporal box
     const fragment = createFragment();
@@ -50,7 +50,7 @@ const createWorkItem = (parent, data) => {
         attributes: {
             target: "_blank",
             rel: "noopener noreferrer",
-            href: githubURL || "#",
+            href: github || `#`,
             title: `${name} Proyect`,
         },
     });
@@ -107,24 +107,24 @@ const createWorkItem = (parent, data) => {
     createDiv({
         parent: workData,
         classNames: ["sw-item-type"],
-        innerText: type,
+        innerText: `${visibility[0].toUpperCase()}${visibility.slice(1)} proyect`,
     });
 
     // Proyect tools
     createDiv({
         parent: workData,
         classNames: ["sw-item-tools"],
-        innerText: tools.join(" · "),
+        innerText: fastTools.map((tool) => `${tool.tool[0].toUpperCase()}${tool.tool.slice(1)}`).join(" · "),
     });
 
-    workURL &&
+    demo &&
         createLink({
             classNames: ["button", "btn-primary", "sw-link-github"],
             parent: workData,
             attributes: {
                 target: "_blank",
                 rel: "noopener noreferrer",
-                href: workURL || "#",
+                href: demo || "#",
                 title: `Ver ${name} página web`,
             },
             innerText: "Ver página web",
