@@ -178,6 +178,26 @@ export const createLink = ({
     });
 };
 
+export const createButton = ({
+    tag = "button",
+    classNames = [],
+    attributes = {},
+    events = {},
+    innerText = "",
+    innerHTML = "",
+    parent = null,
+} = {}) => {
+    return createeElement({
+        tag,
+        classNames,
+        attributes,
+        events,
+        innerText,
+        innerHTML,
+        parent,
+    });
+};
+
 export const createFigure = ({
     tag = "figure",
     classNames = [],

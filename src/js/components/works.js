@@ -9,7 +9,9 @@ import {
     createPar,
     createHtag,
     createFragment,
+    createButton,
 } from "../utils/utils.js";
+import { createModal } from "./modal.js";
 
 export const createWorkItems = (parent) => {
     const works = bbdd.works;
@@ -44,14 +46,55 @@ const createWorkItem = (parent, data) => {
         classNames: ["sw-work-item"],
     });
 
-    const workLink = createLink({
+    const workChildModal = createDiv({
+        classNames: ["sw-child-modal"],
+    });
+
+    const workChildModalTitle = createHtag({
+        parent: workChildModal,
+        level: 2,
+        classNames: ["sw-child-modal-title"],
+        innerText: `${name} Proyect`,
+    });
+
+    const workChildAsk = createDiv({
+        parent: workChildModal,
+        classNames: ["sw-child-modal-ask"],
+        innerText: "¿Qúe desea hacer?",
+    });
+
+    const workChildModalLinks = createDiv({
+        parent: workChildModal,
+        classNames: ["sw-child-modal-links"],
+    });
+
+    const modalLinks = [{name: "Github", link: github}, {name: "Demo", link: demo}, {name: "Más detalles", link:  `${import.meta.env.BASE_URL}src/templates/work_detail.html?id=${id}`}];
+
+    modalLinks.forEach((link) => {
+        createLink({
+            parent: workChildModalLinks,
+            classNames: ["sw-child-modal-link", "button", "btn-primary"],
+            attributes: {
+                href: link.link,
+                target: "_blank",
+                rel: "noopener noreferrer",
+            },
+            innerText: link.name,
+        });
+    });
+
+    const workLink = createButton({
         classNames: ["sw-proyect-link"],
         parent: work,
         attributes: {
-            target: "_blank",
-            rel: "noopener noreferrer",
-            href: github || `#`,
             title: `${name} Proyect`,
+        },
+        events: {
+            click: () => {
+                const body = document.querySelector("body");
+                body.style.overflow = "hidden";
+                createModal(workContainer, workChildModal, ["sw-modal"]);
+            },
         },
     });
 
@@ -117,18 +160,18 @@ const createWorkItem = (parent, data) => {
         innerText: fastTools.map((tool) => `${tool.tool[0].toUpperCase()}${tool.tool.slice(1)}`).join(" · "),
     });
 
-    demo &&
-        createLink({
-            classNames: ["button", "btn-primary", "sw-link-github"],
-            parent: workData,
-            attributes: {
-                target: "_blank",
-                rel: "noopener noreferrer",
-                href: demo || "#",
-                title: `Ver ${name} página web`,
-            },
-            innerText: "Ver página web",
-        });
+    // demo &&
+    //     createLink({
+    //         classNames: ["button", "btn-primary", "sw-link-github"],
+    //         parent: workData,
+    //         attributes: {
+    //             target: "_blank",
+    //             rel: "noopener noreferrer",
+    //             href: demo || "#",
+    //             title: `Ver ${name} página web`,
+    //         },
+    //         innerText: "Ver página web",
+    //     });
 
     appendElement(fragment, parent);
 };
