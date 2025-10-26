@@ -20,7 +20,7 @@ export const tools = {
     php: "php",
     mysql: "mysql",
     apache: "apache",
-    js: "jsvascript",
+    js: "javascript",
     css: "css",
     html: "html",
 };

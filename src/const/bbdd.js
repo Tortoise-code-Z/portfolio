@@ -17,15 +17,15 @@ const bbdd = {
     strengths: [
         {
             name: "Trabajador",
-            iconRef: 1,
+            iconRef: svg.worker,
         },
         {
             name: "Comunicación",
-            iconRef: 2,
+            iconRef: svg.comunication,
         },
         {
             name: "Perseverancia",
-            iconRef: 3,
+            iconRef: svg.perseverance,
         },
     ],
     works: [
@@ -407,12 +407,12 @@ const bbdd = {
                     },
                 ],
                 backgroundImg: {
-                    src: "screenshot-hero.png",
+                    src: "Portfolio-Proyect.webp",
                     width: "1920",
                     heigth: "911",
                 },
                 workImg: {
-                    src: "Portfolio-Caricatura.webp",
+                    src: "Portfolio-Caricatura1.webp",
                     width: "1280",
                     heigth: "1280",
                 },
@@ -636,12 +636,12 @@ const bbdd = {
                     },
                 ],
                 backgroundImg: {
-                    src: "screenshot-inicio.png",
+                    src: "Astrohub-Proyect.webp",
                     width: "1920",
                     heigth: "911",
                 },
                 workImg: {
-                    src: "Astrohub-Caricatura.webp",
+                    src: "Astrohub-Proyect-Caricature.webp",
                     width: "1280",
                     heigth: "1280",
                 },
