@@ -5,7 +5,7 @@ import {
     tools,
     typeWeb,
     visibility,
-} from "./bbdd_consts";
+} from "./bbdd_consts.js";
 
 const bbdd = {
     aboutDesc: [
