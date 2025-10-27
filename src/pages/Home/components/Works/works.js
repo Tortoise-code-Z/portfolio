@@ -1,6 +1,7 @@
-import bbdd from "../../const/bbdd.js";
-import { svg } from "../../const/bbdd_consts.js";
-import { getImage } from "../utils/images.js";
+import bbdd from "../../../../const/database/bbdd.js";
+
+import { svg } from "../../../../const/database/bbdd_consts.js";
+import { getImage } from "../../../../js/utils/images.js";
 import {
   appendElement,
   createLink,
@@ -11,8 +12,8 @@ import {
   createHtag,
   createFragment,
   createButton,
-} from "../utils/utils.js";
-import { createModal } from "./modal.js";
+} from "../../../../js/utils/utils.js";
+import { createModal } from "../../../../components/Modal/modal.js";
 
 export const createWorkItems = (parent) => {
   const works = bbdd.works;

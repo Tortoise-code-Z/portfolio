@@ -11,14 +11,14 @@ import {
   getOffsetBottom,
   isOnRange,
   attachEvent,
-} from "./utils/utils.js";
+} from "../../js/utils/utils.js";
 
-import { createWorkItems } from "./components/works.js";
-import { createAboutDesc } from "./components/aboutInfo.js";
-import { createSkillsItems } from "./components/skills.js";
-import { createCourses } from "./components/courses.js";
-import { createStrengths } from "./components/strengths.js";
-import { createTemporalPopup } from "./components/popup.js";
+import { createWorkItems } from "./components/Works/works.js";
+import { createAboutDesc } from "./components/AboutDesc/aboutInfo.js";
+import { createSkillsItems } from "./components/Skills/skills.js";
+import { createCourses } from "./components/CareerCourses/courses.js";
+import { createStrengths } from "./components/StrengthsSlide/strengths.js";
+import { createTemporalPopup } from "../../components/Popup/popup.js";
 
 /* -------------------------- VARIABLES -------------------------- */
 

@@ -3,8 +3,9 @@ import {
   attachEvent,
   createDiv,
   createSpan,
-} from "../utils/utils";
-import "../../css/modal.css";
+} from "../../js/utils/utils.js";
+
+import "./modal.css";
 
 const initialPaintForce = (item, classname) => {
   setTimeout(() => {

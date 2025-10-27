@@ -1,5 +1,3 @@
-@import url(./index.css);
-
 /* ------------------------ HEADER ------------------------*/
 
 /* Welcome screen */
@@ -55,7 +53,7 @@
   width: 100%;
   height: 100vh;
   padding: 0 7.5%;
-  background-image: url(../assets/images/Header-Image1.webp);
+  background-image: url(../../assets/images/Header-Image1.webp);
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
