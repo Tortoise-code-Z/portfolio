@@ -62,6 +62,42 @@ export const setHTML = (element, htmlData) => {
     element.innerHTML = htmlData;
 };
 
+const writteMachineObserver = () => {
+  const worksTitle = document.querySelector(".s-works .title-h2 span");
+  const worksTextToDelete = worksTitle.textContent;
+  const worksTextToWrite = "ORKS";
+  const careerTitle = document.querySelector(".s-career .title-h2 span");
+  const careerTextToDelete = careerTitle.textContent;
+  const careerTextToWrite = "AREER";
+
+  const parametersCallback = [
+    {
+      element: worksTitle,
+      textToDelete: worksTextToDelete,
+      textToWrite: worksTextToWrite,
+      delayToWrite: 80,
+      delayToDelete: 80,
+    },
+    {
+      element: careerTitle,
+      textToDelete: careerTextToDelete,
+      textToWrite: careerTextToWrite,
+      delayToWrite: 80,
+      delayToDelete: 80,
+    },
+  ];
+
+  createIntersectionObserver(
+    [worksTitle, careerTitle],
+    writteDeleteMachine,
+    parametersCallback,
+    {
+      threshold: 1,
+    },
+    true
+  );
+};
+
 export const createIntersectionObserver = (
     elements,
     callback,
