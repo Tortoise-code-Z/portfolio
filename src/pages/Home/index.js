@@ -19,6 +19,7 @@ import { createSkillsItems } from "./components/Skills/skills.js";
 import { createCourses } from "./components/CareerCourses/courses.js";
 import { createStrengths } from "./components/StrengthsSlide/strengths.js";
 import { createTemporalPopup } from "../../components/Popup/popup.js";
+import createNavbar from "../../components/Navbar/navbar.js";
 
 /* -------------------------- VARIABLES -------------------------- */
 
@@ -35,6 +36,14 @@ const init = () => {
   const strengthsContainer = document.querySelector(".sa-strengths");
   const welcomeMsg = document.querySelector(".welcome-actions");
   const allWorksLink = document.querySelector(".all-works-link");
+
+  // Changes
+  const header = document.querySelector(".header");
+
+  const navbar = createNavbar();
+  header.prepend(navbar);
+
+  // Changes End
 
   createAboutDesc(descContainer);
   createStrengths(strengthsContainer);
@@ -161,14 +170,14 @@ const navbarHide = () => {
   const scrollTop = getWindowScrollTop();
 
   if (scrollTop > getWindowPrevScrollTop()) {
-    addClass(navbar, "navbar-hidden");
+    addClass(navbar, "navbar--hidden");
   } else {
-    removeClass(navbar, "navbar-hidden");
+    removeClass(navbar, "navbar--hidden");
   }
 };
 
 const navbarColorLinks = () => {
-  const navbarLinks = Array.from(document.querySelectorAll(".navbar-link"));
+  const navbarLinks = Array.from(document.querySelectorAll(".navbar__link"));
   const navbar = document.querySelector(".navbar");
   const aboutSection = document.querySelector(".s-about");
   const skillsSection = document.querySelector(".s-skills");
