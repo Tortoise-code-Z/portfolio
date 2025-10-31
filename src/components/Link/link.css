@@ -1,0 +1,15 @@
+.link {
+  text-decoration: none;
+  color: #fff;
+}
+
+.link--as-button {
+}
+
+.link--inline {
+  transition: 0.3s all ease;
+}
+
+.link--inline:hover {
+  opacity: 0.5;
+}

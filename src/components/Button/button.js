@@ -47,7 +47,6 @@ export default function Button({
 
   // button
   return createButton({
-    tag: "button",
     classNames: [
       `button-${variant}`,
       `button-${variant}--${theme}`,

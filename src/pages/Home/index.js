@@ -1,4 +1,5 @@
 import Button from "../../components/Button/button";
+import Link from "../../components/Link/link";
 import { svg } from "../../const/database/bbdd_consts";
 
 const main = document.querySelector(".home-main");
@@ -14,4 +15,26 @@ const button = Button({
   title: "maricoooo",
 });
 
+const link = Link({
+  variant: "primary",
+  text: "Clicka aquí",
+  theme: "light",
+  icon: svg.chatgpt,
+  disabled: false,
+  title: "maricoooo",
+  isButton: true,
+  target: "_blank",
+  href: "https://www.twitch.tv/videos/2605299920",
+  flexReverse: true,
+});
+
+const link2 = Link({
+  text: "Clicka aquí",
+  title: "maricoooo",
+  target: "_blank",
+  href: "https://www.twitch.tv/videos/2605299920",
+});
+
 main.appendChild(button);
+main.appendChild(link);
+main.appendChild(link2);
