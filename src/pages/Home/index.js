@@ -1,4 +1,5 @@
 import Button from "../../components/Button/button";
+import FloatingTitle from "../../components/FloatingTitle/floatingTitle";
 import Link from "../../components/Link/link";
 import { svg } from "../../const/database/bbdd_consts";
 
@@ -35,6 +36,14 @@ const link2 = Link({
   href: "https://www.twitch.tv/videos/2605299920",
 });
 
+const title = FloatingTitle({
+  text: "hola mundo",
+  icon: svg.calendar,
+  theme: "light",
+  iconPosition: "left",
+});
+
 main.appendChild(button);
 main.appendChild(link);
 main.appendChild(link2);
+main.appendChild(title);

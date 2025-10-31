@@ -1,0 +1,51 @@
+.floating-title {
+  width: fit-content;
+  height: fit-content;
+  padding: 0 var(--padding-page);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.floating-title__text {
+  font-family: Geologica-bold;
+}
+
+.floating-title__text--dark {
+  color: var(--text-black);
+}
+.floating-title__text--light {
+  color: var(--text-light);
+}
+
+.floating-title__icon {
+  font-size: 1.1rem;
+}
+
+.floating-title__icon--dark {
+  color: var(--text-black);
+}
+
+.floating-title__icon--light {
+  color: var(--text-light);
+}
+
+.floating-title--animation {
+  position: relative;
+  animation-name: floating-title-an;
+  animation-duration: 10s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes floating-title-an {
+  0% {
+    transform: translateY(-5px);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(-5px);
+  }
+}

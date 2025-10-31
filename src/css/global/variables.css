@@ -6,4 +6,7 @@
 
   --section-vertical-padding-desktop: 150px;
   --section-vertical-padding-mobile: 100px;
+
+  --padding-page: 7.5%;
+  --padding-page-mobile: 5%;
 }
