@@ -110,16 +110,55 @@ export const attachEvent = (element, event, functionToAttach) => {
   element.addEventListener(event, functionToAttach);
 };
 
-export function validateProp(name, value, type, allowedValues) {
-  if (typeof value !== type)
-    throw new TypeError(
-      `"${name}" -> Debe ser de tipo ${type}. Recibido: ${typeof value}.`
-    );
+export function validateProp(name, value, type, allowedValues = null) {
+  // Permitir múltiples tipos (por ejemplo, ['string', 'number'])
+  const types = Array.isArray(type) ? type : [type];
 
-  if (allowedValues && !allowedValues.includes(value))
-    throw new Error(
-      `"${name}" -> Solo se permiten los valores ${allowedValues.join(
+  const isHTMLElementType = types.includes("HTMLElement");
+
+  // --- 1. Validar HTMLElement ---
+  if (isHTMLElementType) {
+    const isHTMLElement =
+      typeof HTMLElement !== "undefined" && value instanceof HTMLElement;
+
+    if (!isHTMLElement) {
+      throw new TypeError(
+        `"${name}" → Debe ser de tipo HTMLElement. Recibido: ${
+          value?.constructor?.name || typeof value
+        }`
+      );
+    }
+  }
+
+  // --- 2. Validar arrays ---
+  else if (types.includes("array")) {
+    if (!Array.isArray(value)) {
+      throw new TypeError(
+        `"${name}" → Debe ser un array. Recibido: ${typeof value}`
+      );
+    }
+  }
+
+  // --- 3. Validar tipos primitivos ---
+  else {
+    const valueType = typeof value;
+    if (!types.includes(valueType)) {
+      throw new TypeError(
+        `"${name}" → Debe ser de tipo ${types.join(
+          " o "
+        )}. Recibido: ${valueType}`
+      );
+    }
+  }
+
+  // --- 4. Validar valores permitidos ---
+  if (allowedValues && !allowedValues.includes(value)) {
+    throw new RangeError(
+      `"${name}" → Solo se permiten los valores: ${allowedValues.join(
         ", "
-      )}. Recibido: ${value}.`
+      )}. Recibido: ${value}`
     );
+  }
+
+  return true; // ✅ Si pasa todas las validaciones
 }
