@@ -3,11 +3,8 @@
   color: #fff;
 }
 
-.link--as-button {
-}
-
 .link--inline {
-  transition: 0.3s all ease;
+  transition: 0.3s all ease !important;
 }
 
 .link--inline:hover {
