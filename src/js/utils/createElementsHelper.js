@@ -11,7 +11,6 @@ export const createElement = ({
   parent = null,
 } = {}) => {
   const element = document.createElement(tag);
-  console.log(element);
 
   if (classNames.length) setClassName(element, classNames);
 

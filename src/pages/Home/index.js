@@ -1,6 +1,7 @@
 import Button from "../../components/Button/button";
 import FloatingTitle from "../../components/FloatingTitle/floatingTitle";
 import Link from "../../components/Link/link";
+import WritteMachineTitle from "../../components/WritteMachineTitle/writteMachineTitle";
 import { svg } from "../../const/database/bbdd_consts";
 
 const main = document.querySelector(".home-main");
@@ -43,7 +44,14 @@ const title = FloatingTitle({
   iconPosition: "left",
 });
 
+const writteTitle = WritteMachineTitle({
+  fixText: "W",
+  dinamicInitText: "SORK",
+  dinamicFinalText: "ORKS",
+});
+
 main.appendChild(button);
 main.appendChild(link);
 main.appendChild(link2);
 main.appendChild(title);
+main.appendChild(writteTitle);

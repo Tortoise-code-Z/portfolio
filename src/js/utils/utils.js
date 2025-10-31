@@ -63,6 +63,7 @@ export const createIntersectionObserver = (
 };
 
 export const writteDeleteMachine = async (data) => {
+  console.log(data);
   await deleteMachine(data);
   await writteMachine(data);
 };
