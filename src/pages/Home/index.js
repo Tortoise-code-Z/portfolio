@@ -2,6 +2,7 @@ import Button from "../../components/Button/button";
 import FloatingTitle from "../../components/FloatingTitle/floatingTitle";
 import Link from "../../components/Link/link";
 import Navbar from "../../components/Navbar/navbar";
+import NoteMsg from "../../components/noteMsg/noteMsg";
 import WritteMachineTitle from "../../components/WritteMachineTitle/writteMachineTitle";
 import { svg } from "../../const/database/bbdd_consts";
 
@@ -53,9 +54,15 @@ const writteTitle = WritteMachineTitle({
 
 const navbar = Navbar();
 
+const note = NoteMsg({
+  desc: "Jajaja si señor.",
+  type: "warning",
+});
+
 main.appendChild(button);
 main.appendChild(link);
 main.appendChild(link2);
 main.appendChild(title);
 main.appendChild(writteTitle);
 main.appendChild(navbar);
+main.appendChild(note);
