@@ -4,6 +4,7 @@ import {
     addClass,
     append,
     removeClass,
+    setStyle,
     setText,
 } from "../../js/utils/domHelpers";
 import "./imagesSlider.css";
@@ -128,6 +129,8 @@ export default function ImagesSlider({ images = [] } = {}) {
             );
 
             addClass(imageInDom, `images-slider__slide--out-to-${direction}`);
+
+            setText(imageLabel, images[imageIndex].alt);
 
             // add active class to actual image to show
             imageContainer.addEventListener("animationend", () => {
