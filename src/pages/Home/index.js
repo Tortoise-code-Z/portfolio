@@ -9,6 +9,7 @@ import bbdd from "../../const/database/bbdd";
 import { svg } from "../../const/database/bbdd_consts";
 import SlideStrengths from "./components/SlideStrengths/slideStrengths";
 import InfiniteSlider from "../../components/InfiniteSlider/infiniteSlider";
+import ImagesSlider from "../../components/ImagesSlider/imagesSlider";
 
 const main = document.querySelector(".home-main");
 
@@ -70,6 +71,10 @@ const slider = InfiniteSlider({
     direction: "right",
 });
 
+const imagesSlider = ImagesSlider({
+    images: bbdd.works[0].images.screenshots,
+});
+
 main.appendChild(button);
 main.appendChild(link);
 main.appendChild(link2);
@@ -78,3 +83,4 @@ main.appendChild(writteTitle);
 main.appendChild(navbar);
 main.appendChild(note);
 main.appendChild(slider);
+main.appendChild(imagesSlider);
