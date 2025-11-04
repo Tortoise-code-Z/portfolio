@@ -93,10 +93,6 @@
   align-items: center;
 }
 
-.images-slider__button--next {
-  transform: rotate(180deg);
-}
-
 .images-slider__bullets {
   width: 100%;
   display: flex;
