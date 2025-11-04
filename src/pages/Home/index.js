@@ -14,65 +14,69 @@ import ImagesSlider from "../../components/ImagesSlider/imagesSlider";
 const main = document.querySelector(".home-main");
 
 const button = Button({
-    variant: "secondary",
-    text: "Clicka aquí",
-    theme: "dark",
-    icon: svg.chatgpt,
-    flexReverse: true,
-    onClick: () => console.log("hola mundo"),
-    disabled: false,
-    title: "maricoooo",
+  variant: "secondary",
+  text: "Clicka aquí",
+  theme: "dark",
+  icon: svg.chatgpt,
+  flexReverse: true,
+  onClick: () => console.log("hola mundo"),
+  disabled: false,
+  title: "maricoooo",
 });
 
 const link = Link({
-    variant: "primary",
-    text: "Clicka aquí",
-    theme: "light",
-    icon: svg.chatgpt,
-    disabled: false,
-    title: "maricoooo",
-    isButton: true,
-    target: "_blank",
-    href: "https://www.twitch.tv/videos/2605299920",
-    flexReverse: true,
+  variant: "primary",
+  text: "Clicka aquí",
+  theme: "light",
+  icon: svg.chatgpt,
+  disabled: false,
+  title: "maricoooo",
+  isButton: true,
+  target: "_blank",
+  href: "https://www.twitch.tv/videos/2605299920",
+  flexReverse: true,
 });
 
 const link2 = Link({
-    text: "Clicka aquí",
-    title: "maricoooo",
-    target: "_blank",
-    href: "https://www.twitch.tv/videos/2605299920",
+  text: "Clicka aquí",
+  title: "maricoooo",
+  target: "_blank",
+  href: "https://www.twitch.tv/videos/2605299920",
 });
 
 const title = FloatingTitle({
-    text: "hola mundo",
-    icon: svg.calendar,
-    theme: "light",
-    iconPosition: "left",
+  text: "hola mundo",
+  icon: svg.calendar,
+  theme: "light",
+  iconPosition: "left",
 });
 
 const writteTitle = WritteMachineTitle({
-    fixText: "W",
-    dinamicInitText: "SORK",
-    dinamicFinalText: "ORKS",
+  fixText: "W",
+  dinamicInitText: "SORK",
+  dinamicFinalText: "ORKS",
 });
 
 const navbar = Navbar();
 
 const note = NoteMsg({
-    desc: "Jajaja si señor.",
-    type: "warning",
+  desc: "Jajaja si señor.",
+  type: "warning",
 });
 
 const slider = InfiniteSlider({
-    slideComponent: SlideStrengths,
-    dataSlides: bbdd.strengths,
-    duplicationSlides: 4,
-    direction: "right",
+  slideComponent: SlideStrengths,
+  dataSlides: bbdd.strengths,
+  duplicationSlides: 4,
+  direction: "right",
 });
 
 const imagesSlider = ImagesSlider({
-    images: bbdd.works[0].images.screenshots,
+  images: bbdd.works[0].images.screenshots,
+});
+
+const imagesSlider2 = ImagesSlider({
+  images: bbdd.works[2].images.screenshots,
 });
 
 main.appendChild(button);
@@ -84,3 +88,4 @@ main.appendChild(navbar);
 main.appendChild(note);
 main.appendChild(slider);
 main.appendChild(imagesSlider);
+main.appendChild(imagesSlider2);

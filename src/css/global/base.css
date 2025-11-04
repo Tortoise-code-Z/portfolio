@@ -1,19 +1,19 @@
 body {
-    font-family: "Geologica-regular";
-    color: rgb(var(--text-white));
-    background-color: rgb(var(--bcc-black));
+  font-family: "Geologica-regular";
+  color: rgb(var(--text-white));
+  background-color: rgb(var(--bcc-black));
 }
 
 body::-webkit-scrollbar {
-    width: 10px;
+  width: 10px;
 }
 
 body::-webkit-scrollbar-track {
-    background: transparent !important;
-    margin: 0px 10px;
+  background: transparent !important;
+  margin: 0px 10px;
 }
 
 body::-webkit-scrollbar-thumb {
-    background-color: #2f2f2f;
-    border-radius: 5px;
+  background-color: #2f2f2f;
+  border-radius: 5px;
 }
