@@ -10,6 +10,7 @@ import { svg } from "../../const/database/bbdd_consts";
 import SlideStrengths from "./components/SlideStrengths/slideStrengths";
 import InfiniteSlider from "../../components/InfiniteSlider/infiniteSlider";
 import ImagesSlider from "../../components/ImagesSlider/imagesSlider";
+import Cards from "../../components/Cards/Cards";
 
 const main = document.querySelector(".home-main");
 
@@ -79,6 +80,12 @@ const imagesSlider2 = ImagesSlider({
   images: bbdd.works[2].images.screenshots,
 });
 
+const cards = Cards({
+  data: bbdd.works[0].development_process.cards,
+});
+
+console.log(cards);
+
 main.appendChild(button);
 main.appendChild(link);
 main.appendChild(link2);
@@ -89,3 +96,4 @@ main.appendChild(note);
 main.appendChild(slider);
 main.appendChild(imagesSlider);
 main.appendChild(imagesSlider2);
+main.appendChild(cards);
