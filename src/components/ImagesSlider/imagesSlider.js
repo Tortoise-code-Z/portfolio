@@ -6,7 +6,6 @@ import {
   containsClass,
   removeClass,
   setAttribute,
-  setStyle,
   setText,
 } from "../../js/utils/domHelpers";
 import "./imagesSlider.css";
@@ -15,19 +14,39 @@ import cloneTemplate from "../../js/utils/cloneTemplate";
 
 import template from "./imagesSlider.html?raw";
 import { attachEvent } from "../../js/utils/utils";
+import Button from "../Button/button";
+import { svg } from "../../const/database/bbdd_consts";
 
 export default function ImagesSlider({ images = [] } = {}) {
   let imageIndex = 0;
   let canClick = true;
 
-  const clone = cloneTemplate(template, "images-slider-template");
-  const root = clone.firstElementChild;
+  const root = cloneTemplate(
+    template,
+    "images-slider-template"
+  ).firstElementChild;
 
   const imageLabel = root.querySelector(".images-slider__label");
   const sliderTrack = root.querySelector(".images-slider__track");
   const bulletsContainer = root.querySelector(".images-slider__bullets");
-  const nextButton = root.querySelector(".images-slider__button--next");
-  const previousButton = root.querySelector(".images-slider__button--previous");
+  const buttonsContainer = root.querySelector(".images-slider__buttons");
+
+  const nextButton = Button({
+    variant: "arrow",
+    icon: svg.arrowRight,
+    title: "Next",
+    theme: "light",
+    onClick: () => turnSlide("next"),
+    classNames: ["images-slider__button--next"],
+  });
+
+  const previousButton = Button({
+    variant: "arrow",
+    icon: svg.arrowLeft,
+    title: "Previous",
+    theme: "light",
+    onClick: () => turnSlide("previous"),
+  });
 
   const imageContainer = createFigure({
     classNames: ["images-slider__slide", "images-slider__slide--active"],
@@ -98,6 +117,7 @@ export default function ImagesSlider({ images = [] } = {}) {
   append(imageContainer, [imageToShow]);
   append(sliderTrack, [imageContainer]);
   append(root, [sliderBg]);
+  append(buttonsContainer, [previousButton, nextButton]);
   bullets.forEach((bullet) => append(bulletsContainer, [bullet]));
 
   //   slide function auxiliar functions
@@ -210,9 +230,6 @@ export default function ImagesSlider({ images = [] } = {}) {
     }
   };
 
-  nextButton.addEventListener("click", () => turnSlide("next"));
-  previousButton.addEventListener("click", () => turnSlide("previous"));
-
   // slider
-  return clone;
+  return root;
 }

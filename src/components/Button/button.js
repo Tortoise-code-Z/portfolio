@@ -7,10 +7,11 @@ export default function Button({
   theme = "dark",
   disabled = false,
   title = "Click",
-  text = "Button",
+  text = "",
   flexReverse = false,
   onClick = () => {},
   icon = "",
+  classNames = [],
 } = {}) {
   // keys to recibe
   const allowedKeys = [
@@ -22,6 +23,7 @@ export default function Button({
     "text",
     "icon",
     "flexReverse",
+    "classNames",
   ];
 
   // warning unknown keys
@@ -32,7 +34,7 @@ export default function Button({
   });
 
   // options of each prop
-  const validVariants = ["primary", "secondary"];
+  const validVariants = ["primary", "secondary", "arrow"];
   const validThemes = ["dark", "light"];
 
   // validations
@@ -53,6 +55,7 @@ export default function Button({
       variant === "primary" ? "button-primary--transparent" : null,
       flexReverse ? "u-flex-row-reverse" : null,
       disabled ? `button-${variant}--disabled` : null,
+      ...classNames,
     ].filter(Boolean),
     attributes: {
       title: title,
