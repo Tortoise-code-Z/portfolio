@@ -1,9 +1,8 @@
-import { createFragment } from "../../js/utils/createElementsHelper";
-import { append } from "../../js/utils/domHelpers";
-import Hero from "./components/Hero";
+import cloneTemplate from "../../../../js/utils/cloneTemplate";
 import "./index.css";
+import template from "./index.html?raw";
 
-export default function Home({ ...props } = {}) {
+export default function Hero({ ...props } = {}) {
     // keys to receive
     const allowedKeys = ["currentPath", "params", "queries", "navigate"];
 
@@ -13,7 +12,7 @@ export default function Home({ ...props } = {}) {
             console.warn(
                 "Propiedad desconocida: ",
                 key,
-                "en Home. Será ignorada."
+                "en Hero. Será ignorada."
             );
         }
     });
@@ -21,11 +20,7 @@ export default function Home({ ...props } = {}) {
     // options of each prop
     const validProps = [];
 
-    // validations
-    // validateProp('prop', prop, 'string', validProps);
-
-    const fragment = createFragment();
-    append(fragment, [Hero()]);
-
-    return fragment;
+    // box
+    const hero = cloneTemplate(template, "home-hero-template");
+    return hero;
 }
