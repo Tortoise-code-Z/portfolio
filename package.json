@@ -10,5 +10,8 @@
   },
   "devDependencies": {
     "vite": "^6.0.1"
+  },
+  "dependencies": {
+    "shell-io": "github:Tortoise-code-Z/Shell-io"
   }
 }
