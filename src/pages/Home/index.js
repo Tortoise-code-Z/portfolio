@@ -1,10 +1,12 @@
 import { createFragment } from "../../js/utils/createElementsHelper";
 import { append } from "../../js/utils/domHelpers";
+import { warningUnknownKeys } from "../../js/utils/utils";
 import Hero from "./components/Hero";
+import Profile from "./components/Profile";
 import "./index.css";
 
 export default function Home({ ...props } = {}) {
-    // keys to receive
+    // // keys to receive
     const allowedKeys = ["currentPath", "params", "queries", "navigate"];
 
     // warning unknown keys
@@ -18,14 +20,11 @@ export default function Home({ ...props } = {}) {
         }
     });
 
-    // options of each prop
-    const validProps = [];
-
-    // validations
-    // validateProp('prop', prop, 'string', validProps);
-
     const fragment = createFragment();
-    append(fragment, [Hero()]);
+
+    let manolo = "manolo";
+
+    append(fragment, [Hero({ manolo }), Profile()]);
 
     return fragment;
 }
