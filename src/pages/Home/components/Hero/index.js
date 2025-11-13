@@ -4,14 +4,8 @@ import "./index.css";
 import template from "./index.html?raw";
 
 export default function Hero({} = {}) {
-    warningUnknownKeys(arguments, [
-        "currentPath",
-        "params",
-        "queries",
-        "navigate",
-    ]);
+    warningUnknownKeys(arguments, []);
 
-    // box
     const hero = cloneTemplate(template, "home-hero-template");
     return hero;
 }
