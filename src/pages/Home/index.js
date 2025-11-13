@@ -1,6 +1,7 @@
 import { createFragment } from "../../js/utils/createElementsHelper";
 import { append } from "../../js/utils/domHelpers";
 import { warningUnknownKeys } from "../../js/utils/utils";
+import Career from "./components/CareerCourses";
 import Hero from "./components/Hero";
 import Profile from "./components/Profile";
 import Skills from "./components/Skills";
@@ -19,7 +20,7 @@ export default function Home({ ...props } = {}) {
 
     let manolo = "manolo";
 
-    append(fragment, [Hero(), Profile(), Works(), Skills()]);
+    append(fragment, [Hero(), Profile(), Works(), Skills(), Career()]);
 
     return fragment;
 }
