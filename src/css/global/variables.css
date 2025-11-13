@@ -1,14 +1,17 @@
 :root {
-  --text-white: 247, 247, 247; /* #f7f7f7 */
-  --text-black: 51, 51, 51; /* #333333 */
-  --bcc-white: 248, 248, 248; /* #f8f8f8 */
-  --bcc-black: 14, 14, 14; /* #0e0e0e */
+    --text-white: 247, 247, 247; /* #f7f7f7 */
+    --text-black: 51, 51, 51; /* #333333 */
+    --bcc-white: 248, 248, 248; /* #f8f8f8 */
+    --bcc-black: 14, 14, 14; /* #0e0e0e */
 
-  --section-vertical-padding-desktop: 150px;
-  --section-vertical-padding-mobile: 100px;
+    --section-vertical-padding-desktop: 100px;
+    --section-vertical-padding-mobile: 50px;
 
-  --padding-page: 7.5%;
-  --padding-page-mobile: 5%;
+    --padding-page: 5%;
+    --padding-page-mobile: 3%;
 
-  --navbar-height: 70px;
+    --navbar-height: 70px;
+
+    --viewport-max-width: 93.75rem;
+    --viewport-min-width: 23.438rem;
 }
