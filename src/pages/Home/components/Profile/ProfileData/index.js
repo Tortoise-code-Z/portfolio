@@ -4,21 +4,10 @@ import { append } from "../../../../../js/utils/domHelpers";
 import template from "../profile.html?raw";
 import bbdd from "../../../../../const/database/bbdd";
 import AboutImg from "../../../../../assets/images/about.gif";
+import { warningUnknownKeys } from "../../../../../js/utils/utils";
 
 export default function ProfileData() {
-    // keys to receive
-    const allowedKeys = ["currentPath", "params", "queries", "navigate"];
-
-    // warning unknown keys
-    Object.keys(arguments[0] || {}).forEach((key) => {
-        if (!allowedKeys.includes(key)) {
-            console.warn(
-                "Propiedad desconocida: ",
-                key,
-                "en ProfileData. Será ignorada."
-            );
-        }
-    });
+    warningUnknownKeys(arguments, []);
 
     const profile = cloneTemplate(template, "about-profile-template");
 

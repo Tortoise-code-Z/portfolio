@@ -4,21 +4,10 @@ import { append } from "../../../../js/utils/domHelpers.js";
 import ProfileData from "./ProfileData/index.js";
 import Strengths from "./Strengths/index.js";
 import "./index.css";
+import { warningUnknownKeys } from "../../../../js/utils/utils.js";
 
-export default function Profile({ ...props } = {}) {
-    // keys to receive
-    const allowedKeys = ["currentPath", "params", "queries", "navigate"];
-
-    // warning unknown keys
-    Object.keys(arguments[0] || {}).forEach((key) => {
-        if (!allowedKeys.includes(key)) {
-            console.warn(
-                "Propiedad desconocida: ",
-                key,
-                "en Profile. Será ignorada."
-            );
-        }
-    });
+export default function Profile({} = {}) {
+    warningUnknownKeys(arguments, []);
 
     // section container
 

@@ -163,7 +163,6 @@ export function validateProp(name, value, type, allowedValues = null) {
 }
 
 export const warningUnknownKeys = (args, allowedKeys) => {
-    console.log("args", args);
     // warning unknown keys
     Object.keys(args[0] || {}).forEach((key) => {
         if (!allowedKeys.includes(key)) {

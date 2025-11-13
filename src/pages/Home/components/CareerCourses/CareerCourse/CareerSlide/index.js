@@ -6,7 +6,6 @@ import {
 import "./index.css";
 
 export default function CareerSlide({ data } = {}) {
-    console.log("data", data);
     warningUnknownKeys(arguments, ["data"]);
 
     // options of each prop

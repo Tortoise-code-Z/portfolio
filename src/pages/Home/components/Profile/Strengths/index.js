@@ -2,21 +2,10 @@ import InfiniteSlider from "../../../../../components/InfiniteSlider/infiniteSli
 import bbdd from "../../../../../const/database/bbdd";
 import { createElement } from "../../../../../js/utils/createElementsHelper";
 import { append } from "../../../../../js/utils/domHelpers";
+import { warningUnknownKeys } from "../../../../../js/utils/utils";
 
 export default function Strengths() {
-    // keys to receive
-    const allowedKeys = ["currentPath", "params", "queries", "navigate"];
-
-    // warning unknown keys
-    Object.keys(arguments[0] || {}).forEach((key) => {
-        if (!allowedKeys.includes(key)) {
-            console.warn(
-                "Propiedad desconocida: ",
-                key,
-                "en Strengths. Será ignorada."
-            );
-        }
-    });
+    warningUnknownKeys(arguments, []);
 
     const strengthsContainer = createElement({
         tag: "div",

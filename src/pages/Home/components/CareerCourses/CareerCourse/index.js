@@ -8,7 +8,6 @@ import { append } from "../../../../../js/utils/domHelpers";
 import { createElement } from "../../../../../js/utils/createElementsHelper";
 
 export default function CareerCourse({ data } = {}) {
-    console.log("data", data.academy);
     warningUnknownKeys(arguments, ["data"]);
 
     // options of each prop
