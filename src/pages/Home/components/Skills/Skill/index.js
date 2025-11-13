@@ -1,0 +1,46 @@
+import { createElement } from "../../../../../js/utils/createElementsHelper";
+import { append } from "../../../../../js/utils/domHelpers";
+import {
+    validateProp,
+    warningUnknownKeys,
+} from "../../../../../js/utils/utils";
+
+export default function Skill({ skill } = {}) {
+    warningUnknownKeys(arguments, ["skill"]);
+
+    // options of each prop
+    // const validProps = [];
+
+    // validations
+    validateProp("skill", skill, "object");
+
+    const container = createElement({
+        tag: "div",
+        classNames: ["s-skills__skill"],
+    });
+
+    const title = createElement({
+        tag: "h3",
+        classNames: ["s-skills__skill-title"],
+        innerText: skill.title,
+    });
+
+    const description = createElement({
+        tag: "div",
+        classNames: ["s-skills__skill-desc"],
+    });
+
+    skill.tools.forEach((tool) => {
+        const toolSpan = createElement({
+            tag: "span",
+            classNames: ["s-skills__skill-desc-item"],
+            innerText: `#${tool}`,
+        });
+
+        append(description, [toolSpan]);
+    });
+
+    append(container, [title, description]);
+
+    return container;
+}
