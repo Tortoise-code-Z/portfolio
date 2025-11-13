@@ -54,7 +54,7 @@ export default function DefaultLayout({ ...props } = {}) {
         isButton: true,
         variant: "secondary",
         theme: "dark",
-        icon: svg.calendar,
+        icon: svg.email,
         href: "#",
         title: "Email",
         text: "victorperez.brmte@passmail.com",
