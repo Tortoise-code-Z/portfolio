@@ -8,8 +8,8 @@
 .slider__track {
     display: flex;
     width: fit-content;
-    gap: 100px;
-    padding: 0 50px;
+    gap: 110px;
+    padding: 0 55px;
 }
 
 .slider__track--animation-3-right {
@@ -92,4 +92,11 @@
     to {
         transform: translateX(0);
     } /* Mueve solo una "tercera parte" si hay 3 grupos */
+}
+
+@media all and (max-width: 500px) {
+    .slider__track {
+        gap: 70px;
+        padding: 0 35px;
+    }
 }

@@ -1,10 +1,11 @@
 import cloneTemplate from "../../../../../js/utils/cloneTemplate";
 import { createElement } from "../../../../../js/utils/createElementsHelper";
 import { append } from "../../../../../js/utils/domHelpers";
-import template from "../profile.html?raw";
+import template from "./profile.html?raw";
 import bbdd from "../../../../../const/database/bbdd";
 import AboutImg from "../../../../../assets/images/about.gif";
 import { warningUnknownKeys } from "../../../../../js/utils/utils";
+import "./index.css";
 
 export default function ProfileData() {
     warningUnknownKeys(arguments, []);

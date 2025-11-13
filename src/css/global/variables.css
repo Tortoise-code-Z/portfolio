@@ -4,13 +4,13 @@
     --bcc-white: 248, 248, 248; /* #f8f8f8 */
     --bcc-black: 14, 14, 14; /* #0e0e0e */
 
-    --section-vertical-padding-desktop: 100px;
+    --section-vertical-padding: 150px;
     --section-vertical-padding-mobile: 50px;
 
-    --padding-page: 5%;
+    --padding-page: 7.5%;
     --padding-page-mobile: 3%;
 
-    --navbar-height: 70px;
+    --navbar-height: 100px;
 
     --viewport-max-width: 93.75rem;
     --viewport-min-width: 23.438rem;

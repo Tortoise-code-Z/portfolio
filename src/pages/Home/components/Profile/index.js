@@ -5,6 +5,7 @@ import ProfileData from "./ProfileData/index.js";
 import Strengths from "./Strengths/index.js";
 import "./index.css";
 import { warningUnknownKeys } from "../../../../js/utils/utils.js";
+import { svg } from "../../../../const/database/bbdd_consts.js";
 
 export default function Profile({} = {}) {
     warningUnknownKeys(arguments, []);
@@ -19,8 +20,8 @@ export default function Profile({} = {}) {
     // title
 
     const title = FloatingTitle({
-        text: "Profile",
-        icon: "👨🏻‍💻",
+        text: "PROFILE",
+        icon: svg.arrowRightDown,
         theme: "dark",
         iconPosition: "right",
     });

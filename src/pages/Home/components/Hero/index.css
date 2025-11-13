@@ -13,7 +13,9 @@
         url("../../../../assets/images/Header-Image1.webp");
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
+
+    background-attachment: fixed;
+
     padding: 0 5%;
 }
 
