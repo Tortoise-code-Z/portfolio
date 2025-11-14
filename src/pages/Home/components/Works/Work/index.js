@@ -5,6 +5,7 @@ import {
     warningUnknownKeys,
 } from "../../../../../js/utils/utils";
 import template from "./work.html?raw";
+import "./index.css";
 
 export default function Work({ data } = {}) {
     warningUnknownKeys(arguments, ["data"]);

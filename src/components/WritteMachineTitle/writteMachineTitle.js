@@ -8,12 +8,18 @@ import {
 import "./writteMachineTitle.css";
 
 export default function WritteMachineTitle({
+    classNames = [],
     fixText = "",
     dinamicInitText = "",
     dinamicFinalText = "",
 } = {}) {
     // keys to recibe
-    const allowedKeys = ["fixText", "dinamicFinalText", "dinamicInitText"];
+    const allowedKeys = [
+        "fixText",
+        "dinamicFinalText",
+        "dinamicInitText",
+        "classNames",
+    ];
 
     // warning unknown keys
     Object.keys(arguments[0] || {}).forEach((key) => {
@@ -28,10 +34,11 @@ export default function WritteMachineTitle({
     validateProp("fixText", fixText, "string");
     validateProp("dinamicInitText", dinamicInitText, "string");
     validateProp("dinamicFinalText", dinamicFinalText, "string");
+    validateProp("classNames", classNames, "array");
 
     const title = createHtag({
         level: 2,
-        classNames: ["writte-machine-title"],
+        classNames: ["writte-machine-title", ...classNames],
     });
 
     // fix-span

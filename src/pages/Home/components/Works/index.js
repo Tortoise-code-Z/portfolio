@@ -21,6 +21,7 @@ export default function Works({} = {}) {
     });
 
     const title = WritteMachineTitle({
+        classNames: ["s-works__title"],
         fixText: "W",
         dinamicInitText: "rkos",
         dinamicFinalText: "orks",

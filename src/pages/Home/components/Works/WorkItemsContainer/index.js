@@ -3,7 +3,7 @@ import { createDiv } from "../../../../../js/utils/createElementsHelper";
 import { append } from "../../../../../js/utils/domHelpers";
 import { warningUnknownKeys } from "../../../../../js/utils/utils";
 import Work from "../Work";
-// import { validateProp } from "../../js/utils/utils";
+import "./index.css";
 
 export default function WorkItemsContainer({} = {}) {
     warningUnknownKeys(arguments, []);
