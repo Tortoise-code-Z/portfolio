@@ -8,6 +8,7 @@ import { validateProp } from "../../js/utils/utils";
 import "./floatingTitle.css";
 
 export default function FloatingTitle({
+    upperCase = false,
     text = "",
     icon = "",
     level = 2,
@@ -15,7 +16,14 @@ export default function FloatingTitle({
     iconPosition = "right",
 } = {}) {
     // keys to recibe
-    const allowedKeys = ["text", "icon", "level", "theme", "iconPosition"];
+    const allowedKeys = [
+        "text",
+        "icon",
+        "level",
+        "theme",
+        "iconPosition",
+        "upperCase",
+    ];
 
     // warning unknown keys
     Object.keys(arguments[0] || {}).forEach((key) => {
@@ -34,6 +42,7 @@ export default function FloatingTitle({
     // validations
     validateProp("text", text, "string");
     validateProp("icon", icon, "string");
+    validateProp("upperCase", upperCase, "boolean");
     validateProp("level", level, "number", validHTags);
     validateProp("theme", theme, "string", validThemes);
     validateProp("iconPosition", iconPosition, "string", validIconPositions);
@@ -43,7 +52,8 @@ export default function FloatingTitle({
             "floating-title",
             "floating-title--animation",
             iconPosition === "left" ? "u-flex-row-reverse" : null,
-        ],
+            upperCase ? "floating-title__text--upperCase" : null,
+        ].filter(Boolean),
     });
 
     const title = createHtag({

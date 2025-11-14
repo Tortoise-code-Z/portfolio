@@ -1,6 +1,7 @@
 .s-works {
     width: 100%;
     padding: var(--section-vertical-padding) 0;
+    padding-bottom: 0px;
     display: flex;
     flex-direction: column;
     justify-content: center;

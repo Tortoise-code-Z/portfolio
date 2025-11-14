@@ -7,6 +7,10 @@
     padding: 0 var(--padding-page);
 }
 
+.floating-title__text--upperCase {
+    text-transform: uppercase;
+}
+
 .floating-title__text {
     font-family: Geologica-thin;
     font-size: 1rem;

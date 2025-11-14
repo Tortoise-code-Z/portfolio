@@ -1,5 +1,6 @@
 import FloatingTitle from "../../../../components/FloatingTitle/floatingTitle";
 import bbdd from "../../../../const/database/bbdd";
+import { svg } from "../../../../const/database/bbdd_consts";
 import { createElement } from "../../../../js/utils/createElementsHelper";
 import { append } from "../../../../js/utils/domHelpers";
 import { warningUnknownKeys } from "../../../../js/utils/utils";
@@ -21,8 +22,9 @@ export default function Skills({} = {}) {
     });
 
     const title = FloatingTitle({
+        upperCase: true,
         text: "Skills",
-        icon: "👨🏻‍💻",
+        icon: svg.arrowRightDown,
         theme: "dark",
         iconPosition: "right",
     });
@@ -32,8 +34,10 @@ export default function Skills({} = {}) {
         classNames: ["s-skills__items-container"],
     });
 
-    bbdd.skills.forEach((skill) =>
-        append(skillItemsContainer, [Skill({ skill })])
+    bbdd.skills.forEach((skill, index) =>
+        append(skillItemsContainer, [
+            Skill({ skill, flexReverse: index % 2 !== 0 }),
+        ])
     );
 
     append(section, [title, skillItemsContainer]);

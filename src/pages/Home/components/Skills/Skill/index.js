@@ -4,19 +4,24 @@ import {
     validateProp,
     warningUnknownKeys,
 } from "../../../../../js/utils/utils";
+import "./index.css";
 
-export default function Skill({ skill } = {}) {
-    warningUnknownKeys(arguments, ["skill"]);
+export default function Skill({ skill, flexReverse = false } = {}) {
+    warningUnknownKeys(arguments, ["skill", "flexReverse"]);
 
     // options of each prop
     // const validProps = [];
 
     // validations
     validateProp("skill", skill, "object");
+    validateProp("flexReverse", flexReverse, "boolean");
 
     const container = createElement({
         tag: "div",
-        classNames: ["s-skills__skill"],
+        classNames: [
+            "s-skills__skill",
+            flexReverse ? "s-skills__skill--reverse" : null,
+        ].filter(Boolean),
     });
 
     const title = createElement({
@@ -30,10 +35,13 @@ export default function Skill({ skill } = {}) {
         classNames: ["s-skills__skill-desc"],
     });
 
-    skill.tools.forEach((tool) => {
+    skill.tools.forEach((tool, index) => {
         const toolSpan = createElement({
             tag: "span",
-            classNames: ["s-skills__skill-desc-item"],
+            classNames: [
+                "s-skills__skill-desc-item",
+                index % 2 !== 0 ? "s-skills__skill-item--opacity0-7" : null,
+            ].filter(Boolean),
             innerText: `#${tool}`,
         });
 
