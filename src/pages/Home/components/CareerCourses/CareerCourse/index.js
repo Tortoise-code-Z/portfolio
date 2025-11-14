@@ -6,15 +6,23 @@ import InfiniteSlider from "../../../../../components/InfiniteSlider/infiniteSli
 import CareerSlide from "./CareerSlide";
 import { append } from "../../../../../js/utils/domHelpers";
 import { createElement } from "../../../../../js/utils/createElementsHelper";
+import "./index.css";
 
-export default function CareerCourse({ data } = {}) {
-    warningUnknownKeys(arguments, ["data"]);
+export default function CareerCourse({ data, directionSlide = "left" } = {}) {
+    warningUnknownKeys(arguments, ["data", "directionSlide"]);
 
     // options of each prop
-    // const validProps = [];
+    const validDirectionSlideProps = ["left", "right"];
 
     // validations
     validateProp("data", data, "object");
+
+    validateProp(
+        "directionSlide",
+        directionSlide,
+        "string",
+        validDirectionSlideProps
+    );
 
     const container = createElement({
         tag: "div",
@@ -25,7 +33,7 @@ export default function CareerCourse({ data } = {}) {
         slideComponent: CareerSlide,
         dataSlides: [data.academy],
         duplicationSlides: 5,
-        direction: "left",
+        direction: directionSlide,
     });
 
     const dataCourse = createElement({

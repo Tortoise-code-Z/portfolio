@@ -21,6 +21,7 @@ export default function Career({} = {}) {
     });
 
     const title = WritteMachineTitle({
+        classNames: ["s-career__title"],
         fixText: "C",
         dinamicInitText: "reera",
         dinamicFinalText: "areer",
@@ -31,8 +32,13 @@ export default function Career({} = {}) {
         classNames: ["s-career__courses"],
     });
 
-    bbdd.career.forEach((item) => {
-        append(courses, [CareerCourse({ data: item })]);
+    bbdd.career.forEach((item, index) => {
+        append(courses, [
+            CareerCourse({
+                data: item,
+                directionSlide: index % 2 === 0 ? "left" : "right",
+            }),
+        ]);
     });
 
     append(section, [title, courses]);

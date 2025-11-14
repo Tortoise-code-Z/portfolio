@@ -760,7 +760,7 @@ const bbdd = {
 
     career: [
         {
-            academy: "MasterD Academy",
+            academy: "MasterD#Academy",
             curse: "Fullstack programing web developer",
             tools: [
                 "html",
@@ -783,7 +783,7 @@ const bbdd = {
             },
         },
         {
-            academy: "Hola mundo academy",
+            academy: "Hola#Mundo#Academy",
             curse: "React / Typescript course",
             tools: ["react", "typescript"],
             note: {
