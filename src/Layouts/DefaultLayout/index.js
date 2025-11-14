@@ -9,6 +9,7 @@ import cloneTemplate from "../../js/utils/cloneTemplate.js";
 import template from "./defaultFooter.html?raw";
 import Link from "../../components/Link/link.js";
 import { svg } from "../../const/database/bbdd_consts.js";
+import "./defaultFooter.css";
 
 export default function DefaultLayout({ ...props } = {}) {
     warningUnknownKeys(arguments, [
