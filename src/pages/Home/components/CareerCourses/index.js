@@ -2,7 +2,11 @@ import WritteMachineTitle from "../../../../components/WritteMachineTitle/writte
 import bbdd from "../../../../const/database/bbdd";
 import { createElement } from "../../../../js/utils/createElementsHelper";
 import { append } from "../../../../js/utils/domHelpers";
-import { warningUnknownKeys } from "../../../../js/utils/utils";
+import {
+    attachEvent,
+    navbarObserver,
+    warningUnknownKeys,
+} from "../../../../js/utils/utils";
 import CareerCourse from "./CareerCourse";
 import "./index.css";
 
@@ -18,7 +22,12 @@ export default function Career({} = {}) {
     const section = createElement({
         tag: "section",
         classNames: ["s-career"],
+        attributes: {
+            "data-navbar-color": "white",
+        },
     });
+
+    attachEvent(document, "DOMContentLoaded", () => navbarObserver(section));
 
     const title = WritteMachineTitle({
         classNames: ["s-career__title"],

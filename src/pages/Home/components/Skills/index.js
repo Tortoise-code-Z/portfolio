@@ -3,7 +3,11 @@ import bbdd from "../../../../const/database/bbdd";
 import { svg } from "../../../../const/database/bbdd_consts";
 import { createElement } from "../../../../js/utils/createElementsHelper";
 import { append } from "../../../../js/utils/domHelpers";
-import { warningUnknownKeys } from "../../../../js/utils/utils";
+import {
+    attachEvent,
+    navbarObserver,
+    warningUnknownKeys,
+} from "../../../../js/utils/utils";
 import "./index.css";
 import Skill from "./Skill";
 
@@ -19,7 +23,12 @@ export default function Skills({} = {}) {
     const section = createElement({
         tag: "section",
         classNames: ["s-skills"],
+        attributes: {
+            "data-navbar-color": "black",
+        },
     });
+
+    attachEvent(document, "DOMContentLoaded", () => navbarObserver(section));
 
     const title = FloatingTitle({
         upperCase: true,

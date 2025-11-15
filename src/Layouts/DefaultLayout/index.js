@@ -2,7 +2,11 @@ import {
     createElement,
     createFragment,
 } from "../../js/utils/createElementsHelper";
-import { warningUnknownKeys } from "../../js/utils/utils";
+import {
+    attachEvent,
+    navbarObserver,
+    warningUnknownKeys,
+} from "../../js/utils/utils";
 import Navbar from "../../components/Navbar/navbar.js";
 import { append } from "../../js/utils/domHelpers.js";
 import cloneTemplate from "../../js/utils/cloneTemplate.js";
@@ -37,6 +41,10 @@ export default function DefaultLayout({ ...props } = {}) {
         template,
         "default-footer-template"
     ).querySelector(".default-fouter");
+
+    attachEvent(document, "DOMContentLoaded", () =>
+        navbarObserver(defaultFooter)
+    );
 
     const actions = defaultFooter.querySelector(".default-footer__actions");
     const github = Link({

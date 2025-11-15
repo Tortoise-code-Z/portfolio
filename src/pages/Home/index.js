@@ -1,6 +1,9 @@
 import { createFragment } from "../../js/utils/createElementsHelper";
 import { append } from "../../js/utils/domHelpers";
-import { warningUnknownKeys } from "../../js/utils/utils";
+import {
+    createIntersectionObserver,
+    warningUnknownKeys,
+} from "../../js/utils/utils";
 import Career from "./components/CareerCourses";
 import Hero from "./components/Hero";
 import Profile from "./components/Profile";
@@ -17,8 +20,6 @@ export default function Home({ ...props } = {}) {
     ]);
 
     const fragment = createFragment();
-
-    let manolo = "manolo";
 
     append(fragment, [Hero(), Profile(), Works(), Skills(), Career()]);
 

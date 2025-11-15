@@ -1,5 +1,9 @@
 import { createElement } from "../../../../js/utils/createElementsHelper";
-import { warningUnknownKeys } from "../../../../js/utils/utils";
+import {
+    attachEvent,
+    navbarObserver,
+    warningUnknownKeys,
+} from "../../../../js/utils/utils";
 import WritteMachineTitle from "../../../../components/WritteMachineTitle/writteMachineTitle.js";
 // import { validateProp } from "../../js/utils/utils";
 import "./index.css";
@@ -18,7 +22,12 @@ export default function Works({} = {}) {
     const section = createElement({
         tag: "section",
         classNames: ["s-works"],
+        attributes: {
+            "data-navbar-color": "white",
+        },
     });
+
+    attachEvent(document, "DOMContentLoaded", () => navbarObserver(section));
 
     const title = WritteMachineTitle({
         classNames: ["s-works__title"],

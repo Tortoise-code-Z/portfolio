@@ -1,39 +1,28 @@
-export const writteMachineObserver = () => {
-    const worksTitle = document.querySelector(".s-works .title-h2 span");
-    const worksTextToDelete = worksTitle.textContent;
-    const worksTextToWrite = "ORKS";
-    const careerTitle = document.querySelector(".s-career .title-h2 span");
-    const careerTextToDelete = careerTitle.textContent;
-    const careerTextToWrite = "AREER";
+export function scrollVisibilitty(element, classToHidden) {
+    if (!element instanceof HTMLElement && !classToHidden instanceof String)
+        return;
 
-    const parametersCallback = [
-        {
-            element: worksTitle,
-            textToDelete: worksTextToDelete,
-            textToWrite: worksTextToWrite,
-            delayToWrite: 80,
-            delayToDelete: 80,
-        },
-        {
-            element: careerTitle,
-            textToDelete: careerTextToDelete,
-            textToWrite: careerTextToWrite,
-            delayToWrite: 80,
-            delayToDelete: 80,
-        },
-    ];
+    let lastScrollPosition = window.scrollY;
 
-    createIntersectionObserver(
-        [worksTitle, careerTitle],
-        writteDeleteMachine,
-        parametersCallback,
-        {
-            threshold: 1,
-        },
-        true
-    );
-};
+    window.addEventListener("scroll", () => {
+        const currentScrollPosition = window.scrollY;
 
+        const scrollMargin = 50;
+
+        if (
+            currentScrollPosition > lastScrollPosition &&
+            currentScrollPosition > scrollMargin
+        ) {
+            element.classList.add(classToHidden);
+        } else if (currentScrollPosition < lastScrollPosition) {
+            element.classList.remove(classToHidden);
+        }
+
+        lastScrollPosition = currentScrollPosition;
+    });
+}
+
+// Modificación en tu archivo de utilidad:
 export const createIntersectionObserver = (
     elements,
     callback,
@@ -43,23 +32,72 @@ export const createIntersectionObserver = (
 ) => {
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                const itemParametersCallback = parametersCallback.find(
-                    (item) => item.element === entry.target
-                );
+            const itemParametersCallback = parametersCallback.find(
+                (item) => item?.element === entry?.target
+            );
 
-                if (itemParametersCallback) {
-                    callback(itemParametersCallback);
-                } else {
-                    callback(entry.target);
-                }
+            if (itemParametersCallback) {
+                callback(itemParametersCallback, entry); // Pasamos 'entry' también
+            } else {
+                callback(entry); // El 'entry' es el argumento principal
+            }
 
-                if (observeOnce) observer.unobserve(entry.target);
+            if (observeOnce && entry.isIntersecting) {
+                observer.unobserve(entry.target);
             }
         });
     }, options);
 
     elements.forEach((element) => observer.observe(element));
+};
+
+export const navbarObserver = (element) =>
+    createIntersectionObserver(
+        [element],
+        (entry) => navbarObserverCallback(entry),
+        [],
+        { threshold: 0, rootMargin: "-100px 0px -90% 0px" },
+        false
+    );
+
+export const navbarObserverCallback = (entry) => {
+    const navbar = document.querySelector(".navbar");
+    // Obtenemos el color requerido de la sección que acaba de cambiar de estado
+    const requiredColor = entry.target.getAttribute("data-navbar-color");
+
+    // La clase a añadir o quitar
+    const colorClass = `navbar--color-${requiredColor}`;
+
+    // La clase de color opuesto (asumiendo que solo tienes 'white' y 'black')
+    const oppositeColorClass =
+        requiredColor === "white"
+            ? "navbar--color-black"
+            : "navbar--color-white";
+
+    if (entry.isIntersecting) {
+        // Acción principal: Cuando la sección ENTRA
+        // ------------------------------------------
+
+        // Quitar el color opuesto (si existe)
+        if (navbar.classList.contains(oppositeColorClass)) {
+            navbar.classList.remove(oppositeColorClass);
+        }
+
+        // Añadir el color de la sección actual
+        navbar.classList.add(colorClass);
+
+        //
+    } else {
+        // Acción secundaria: Cuando la sección SALE
+        // -------------------------------------------
+        // Si la sección sale, NO HACEMOS NADA aquí.
+        // Esto es porque la *siguiente* sección (que estará entrando)
+        // o la *anterior* (que estará saliendo por el otro extremo)
+        // activará su propio 'entry.isIntersecting = true' y establecerá el color correcto.
+        // Si intentas cambiar el color en 'else' (salida),
+        // la barra parpadeará, porque dos secciones a la vez
+        // pueden estar 'no intersectando' por un momento.
+    }
 };
 
 export const writteDeleteMachine = async (data) => {

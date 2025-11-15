@@ -4,7 +4,12 @@ import { append } from "../../../../js/utils/domHelpers.js";
 import ProfileData from "./ProfileData/index.js";
 import Strengths from "./Strengths/index.js";
 import "./index.css";
-import { warningUnknownKeys } from "../../../../js/utils/utils.js";
+import {
+    attachEvent,
+    createIntersectionObserver,
+    navbarObserver,
+    warningUnknownKeys,
+} from "../../../../js/utils/utils.js";
 import { svg } from "../../../../const/database/bbdd_consts.js";
 
 export default function Profile({} = {}) {
@@ -15,7 +20,12 @@ export default function Profile({} = {}) {
     const section = createElement({
         tag: "section",
         classNames: ["s-about"],
+        attributes: {
+            "data-navbar-color": "black",
+        },
     });
+
+    attachEvent(document, "DOMContentLoaded", () => navbarObserver(section));
 
     // title
 

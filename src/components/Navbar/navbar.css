@@ -9,8 +9,11 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    z-index: 10;
+    z-index: 99999;
     transition: transform 0.5s ease-in-out;
+}
+.navbar--color-black .navbar__link {
+    color: rgb(var(--bcc-black)) !important;
 }
 
 .navbar__link {

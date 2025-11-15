@@ -58,7 +58,11 @@ export default function WritteMachineTitle({
     // create observer
     createIntersectionObserver(
         [dinamicSpan],
-        writteDeleteMachine,
+        (data, entry) => {
+            if (entry.isIntersecting) {
+                writteDeleteMachine(data);
+            }
+        },
         [
             {
                 element: dinamicSpan,
@@ -68,6 +72,7 @@ export default function WritteMachineTitle({
                 delayToDelete: 80,
             },
         ],
+
         {
             threshold: 1,
         },
