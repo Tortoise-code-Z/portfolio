@@ -1,0 +1,66 @@
+/* 1. Contenedor Exterior: Establece el contexto 3D */
+.flip-card {
+    background-color: transparent;
+    width: 300px;
+    height: 200px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+/* 2. Contenedor Interior: Es el que realmente rota */
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease-in-out; /* Velocidad de la animación */
+    transform-style: preserve-3d; /* Permite que los hijos estén en un espacio 3D */
+}
+
+/* 3. Clase de Volteo: Se añade con JavaScript */
+.flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* 2. ESTILOS DE BORDE (El Espesor) */
+.flip-card-edge {
+    /* Posicionamiento: Cubre el lado izquierdo de la tarjeta */
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    /* Dimensiones: Alto de la tarjeta, y 10px de ancho para el grosor */
+    width: 20px; /* <--- GROSOR VISIBLE */
+    height: 100%;
+
+    background-color: #dadada; /* Color del borde */
+
+    /* 3. COLOCACIÓN 3D INICIAL */
+    /* Mueve la cara lateral a su posición 3D final */
+    transform: rotateY(-90deg) translateZ(10px);
+    /* - rotateY(-90deg): Gira 90 grados para que el lado largo (200px) esté horizontal.
+       - translateZ(5px): Mueve el borde hacia el centro. (5px es la mitad de 10px)
+    */
+
+    /* 4. Visibilidad al rotar */
+    backface-visibility: hidden;
+}
+
+/* 4. Caras: Posicionamiento y Visibilidad */
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* Oculta la parte trasera de la cara al rotar */
+    backface-visibility: hidden;
+}
+
+/* 5. Estilos Específicos de las Caras */
+.flip-card-front {
+    transform: translateZ(10px);
+}
+
+.flip-card-back {
+    /* Rota 180deg para colocarla 'detrás' de la cara frontal en el inicio */
+    transform: rotateY(180deg) translateZ(10px);
+}

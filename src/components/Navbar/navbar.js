@@ -9,7 +9,7 @@ export default function Navbar({} = {}) {
         ".navbar"
     );
 
-    // scrollVisibilitty(navbar, "navbar--hidden", "navbar--visible");
+    scrollVisibilitty(navbar, "navbar--hidden", "navbar--visible");
 
     return navbar;
 }
