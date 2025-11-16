@@ -17,6 +17,7 @@ export default function Link({
     text = "",
     pointerEvents = "all",
 } = {}) {
+    console.log("href", href);
     // keys to recibe
     const allowedKeys = [
         "isButton",

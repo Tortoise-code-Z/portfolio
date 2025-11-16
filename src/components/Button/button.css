@@ -57,7 +57,7 @@
 
 .button-secondary--light {
     background-color: #ddd;
-    color: rgb(var(--text-black));
+    color: rgb(var(--text-black)) !important;
 }
 
 .button-secondary--dark {

@@ -1,4 +1,5 @@
 import {
+    attachEvent,
     validateProp,
     warningUnknownKeys,
 } from "../../../../../../js/utils/utils";
@@ -6,6 +7,8 @@ import "./index.css";
 import { createElement } from "../../../../../../js/utils/createElementsHelper";
 import { append } from "../../../../../../js/utils/domHelpers";
 import { getImage } from "../../../../../../js/utils/images";
+import ColorThief from "colorthief";
+import { svg } from "../../../../../../const/database/bbdd_consts";
 
 export default function WorkFlipCard({ data = {} } = {}) {
     warningUnknownKeys(arguments, ["data"]);
@@ -33,7 +36,13 @@ export default function WorkFlipCard({ data = {} } = {}) {
         },
     });
 
-    append(container, [image]);
+    const span = createElement({
+        tag: "span",
+        classNames: ["s-works__item-click-span"],
+        innerHTML: `${svg.click}`,
+    });
+
+    append(container, [image, span]);
 
     return container;
 }

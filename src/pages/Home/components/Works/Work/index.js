@@ -9,6 +9,7 @@ import { append } from "../../../../../js/utils/domHelpers.js";
 import FlipCard from "../../../../../components/FlipCard/index.js";
 import WorkFrontFlipCard from "./WorkFrontFlipCard/index.js";
 import WorkBackFlipCard from "./WorkBackFlipCard/index.js";
+import { svg } from "../../../../../const/database/bbdd_consts.js";
 
 export default function Work({ data } = {}) {
     warningUnknownKeys(arguments, ["data"]);

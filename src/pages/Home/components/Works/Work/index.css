@@ -8,18 +8,14 @@
 
 .work-flip-card {
     width: auto !important;
-    height: min(70%, 80vw) !important;
+    height: min(80%, 80vw) !important;
     aspect-ratio: 1/1 !important;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 999;
-
-    animation-name: floating-card-an;
-    animation-duration: 10s;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
+    border-radius: 5px;
 }
 
 .s-works__item-bg-img {
@@ -42,6 +38,7 @@
 }
 
 .s-works__item-bg-img-container::before {
+    transition: 5s all ease;
     content: "";
     position: absolute;
     top: 0;
@@ -50,19 +47,5 @@
     height: 100%;
     background-color: rgba(var(--bcc-black), 0.6);
     z-index: 1;
-}
-
-.work-flip-card--animation {
-}
-
-@keyframes floating-card-an {
-    0% {
-        transform: translate(-50%, calc(-50% - 7px));
-    }
-    50% {
-        transform: translate(-50%, calc(-50% + 7px));
-    }
-    100% {
-        transform: translate(-50%, calc(-50% - 7px));
-    }
+    backdrop-filter: blur(8px);
 }
