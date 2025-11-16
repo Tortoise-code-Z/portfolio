@@ -5,6 +5,19 @@
     top: 0;
     z-index: 9999;
 }
+
+.work-flip-card {
+    width: auto !important;
+    height: min(80%, 80vw) !important;
+    aspect-ratio: 1/1 !important;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    border-radius: 5px;
+}
+
 .s-works__item-bg-img {
     width: 100%;
     height: 100%;
@@ -16,31 +29,6 @@
     transition: 5s all ease;
 }
 
-.s-works__item-link {
-    display: flex;
-    align-items: flex-end;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    aspect-ratio: 1/1;
-    z-index: 2;
-    height: min(70%, 80vw);
-    transition: 5s all ease;
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-.s-works__item-link:hover {
-    transform: translate(-50%, -50%) scale(0.95);
-}
-
-.s-works__item-link:hover
-    ~ .s-works__item-bg-img-container
-    > .s-works__item-bg-img {
-    transform: scale(1.1);
-}
-
 .s-works__item-bg-img-container {
     width: 100%;
     transition: 5s all ease;
@@ -50,6 +38,7 @@
 }
 
 .s-works__item-bg-img-container::before {
+    transition: 5s all ease;
     content: "";
     position: absolute;
     top: 0;
@@ -58,65 +47,5 @@
     height: 100%;
     background-color: rgba(var(--bcc-black), 0.6);
     z-index: 1;
-}
-
-.s-works__item-link-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transition: 5s all ease;
-}
-
-.s-works__item-info {
-    width: 100%;
-    height: 50%;
-    padding: 20px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-start;
-    gap: 5px;
-    z-index: 2;
-    background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
-}
-.s-works__item-date {
-}
-.s-works__item-title {
-}
-.s-works__item-type {
-}
-.s-works__item-tools {
-}
-
-@media all and (max-width: 500px) {
-    .s-works__item-date {
-        font-size: 0.8rem;
-    }
-    .s-works__item-title {
-        font-size: 1rem;
-    }
-    .s-works__item-type {
-        font-size: 0.9rem;
-    }
-    .s-works__item-tools {
-        font-size: 0.9rem;
-    }
-}
-
-@media all and (max-height: 500px) {
-    .s-works__item-date {
-        font-size: 0.7rem;
-    }
-    .s-works__item-title {
-        font-size: 0.9rem;
-    }
-    .s-works__item-type {
-        font-size: 0.8rem;
-    }
-    .s-works__item-tools {
-        font-size: 0.8rem;
-    }
+    backdrop-filter: blur(8px);
 }

@@ -317,7 +317,7 @@ const bbdd = {
                     },
                 ],
             },
-            projectRole: typeWeb.private,
+            projectRole: typeWeb.frontend,
             year: "2025",
             visibility: visibility.private,
             techStack: {

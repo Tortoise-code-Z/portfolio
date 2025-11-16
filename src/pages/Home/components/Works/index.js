@@ -5,7 +5,6 @@ import {
     warningUnknownKeys,
 } from "../../../../js/utils/utils";
 import WritteMachineTitle from "../../../../components/WritteMachineTitle/writteMachineTitle.js";
-// import { validateProp } from "../../js/utils/utils";
 import "./index.css";
 import { append } from "../../../../js/utils/domHelpers.js";
 import WorkItemsContainer from "./WorkItemsContainer/index.js";
