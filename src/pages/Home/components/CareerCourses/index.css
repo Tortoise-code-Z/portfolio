@@ -1,0 +1,35 @@
+.s-career {
+    width: 100%;
+    padding: var(--section-vertical-padding) 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    background-color: rgb(var(--bcc-black));
+}
+
+.s-career__title {
+    font-family: Geologica-bold;
+    color: rgb(var(--text-white));
+    font-size: clamp(
+        4rem,
+        calc(
+            4rem +
+                (
+                    (8rem - 4rem) /
+                        (var(--viewport-max-width) - var(--viewport-min-width)) *
+                        (100vw - var(--viewport-min-width))
+                )
+        ),
+        8rem
+    );
+    text-transform: uppercase;
+}
+
+.s-career__courses {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}

@@ -1,12 +1,16 @@
 .link {
-  text-decoration: none;
-  color: #fff;
+    text-decoration: none;
+    color: #fff;
 }
 
 .link--inline {
-  transition: 0.3s all ease !important;
+    transition: 0.3s all ease !important;
 }
 
 .link--inline:hover {
-  opacity: 0.5;
+    opacity: 0.5;
+}
+
+.link--events-none {
+    pointer-events: none;
 }
