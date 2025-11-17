@@ -15,13 +15,8 @@ import Link from "../../components/Link/link.js";
 import { svg } from "../../const/database/bbdd_consts.js";
 import "./defaultFooter.css";
 
-export default function DefaultLayout({ ...props } = {}) {
-    warningUnknownKeys(arguments, [
-        "currentPath",
-        "params",
-        "queries",
-        "navigate",
-    ]);
+export default function DefaultLayout({} = {}) {
+    warningUnknownKeys(arguments, []);
 
     const fragment = createFragment();
 
@@ -64,7 +59,7 @@ export default function DefaultLayout({ ...props } = {}) {
         variant: "secondary",
         theme: "dark",
         icon: svg.email,
-        href: "#",
+        href: "",
         title: "Email",
         text: "victorperez.brmte@passmail.com",
         pointerEvents: "none",

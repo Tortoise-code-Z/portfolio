@@ -23,6 +23,7 @@ export default function Works({} = {}) {
         classNames: ["s-works"],
         attributes: {
             "data-navbar-color": "white",
+            id: "works",
         },
     });
 
