@@ -34,7 +34,7 @@ export default function FloatingTitle({
         }
     });
 
-    // options of each prop
+    // options of each props
     const validHTags = [1, 2, 3, 4, 5, 6];
     const validThemes = ["dark", "light"];
     const validIconPositions = ["left", "right"];
