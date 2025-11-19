@@ -262,7 +262,7 @@ const bbdd = {
                         id: 6,
                         title: "Ver feedback en cursos por obtenidos/comprados",
                         description:
-                            "Ingresa a 'Aperturas fundamentales'(ID: 2, previamente comprado en el Paso 2) para observar:Mensajes de feedback.Temas desactivados por seguridad.",
+                            "Ingresa a 'Aperturas fundamentales'(ID: 2, previamente comprado en el Paso 2) para observar: Mensajes de feedback.Temas desactivados por seguridad.",
                     },
                 ],
                 noteMsg: {
