@@ -4,7 +4,7 @@ import { validateProp } from "../../js/utils/utils";
 import "./infiniteSlider.css";
 
 export default function InfiniteSlider({
-    slideComponent,
+    slideComponent = ({ data }) => HTMLElement,
     dataSlides = [],
     duplicationSlides = 3,
     direction = "left",

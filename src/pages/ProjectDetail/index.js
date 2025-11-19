@@ -4,6 +4,7 @@ import { warningUnknownKeys } from "../../js/utils/utils";
 import AboutProject from "./About";
 import Hero from "./Hero";
 import "./index.css";
+import TechStack from "./TechStack";
 
 export default function ProjectDetail({
     currentPath,
@@ -23,6 +24,7 @@ export default function ProjectDetail({
     append(fragment, [
         Hero({ id: params.id }),
         AboutProject({ id: params.id }),
+        TechStack({ id: params.id }),
     ]);
 
     return fragment;
