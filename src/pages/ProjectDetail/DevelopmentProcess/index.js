@@ -20,7 +20,7 @@ export default function DevelopmentProcess({ id } = {}) {
     const work = bbdd.works.find((work) => work.id === Number(id));
 
     const container = createElement({
-        tag: "div",
+        tag: "section",
         classNames: ["pd-dev-process"],
     });
 
