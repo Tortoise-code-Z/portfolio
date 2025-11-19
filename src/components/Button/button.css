@@ -3,7 +3,7 @@
 .button-primary,
 .button-secondary {
     width: fit-content;
-    padding: 20px 25px;
+    padding: 15px 25px;
     display: flex;
     gap: 15px;
     justify-content: center;
@@ -35,12 +35,12 @@
 
 .button-primary--dark {
     border-color: rgb(var(--text-black));
-    color: rgb(var(--text-black));
+    color: rgb(var(--text-black)) !important;
 }
 
 .button-primary--dark:hover {
     background-color: rgb(var(--text-black));
-    color: rgb(var(--text-white));
+    color: rgb(var(--text-white)) !important;
 }
 
 .button-primary--transparent {
