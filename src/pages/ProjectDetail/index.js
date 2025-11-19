@@ -1,6 +1,7 @@
-import { createDiv, createFragment } from "../../js/utils/createElementsHelper";
+import { createFragment } from "../../js/utils/createElementsHelper";
 import { append } from "../../js/utils/domHelpers";
-import { validateProp, warningUnknownKeys } from "../../js/utils/utils";
+import { warningUnknownKeys } from "../../js/utils/utils";
+import AboutProject from "./About";
 import Hero from "./Hero";
 import "./index.css";
 
@@ -19,7 +20,10 @@ export default function ProjectDetail({
 
     const fragment = createFragment();
 
-    append(fragment, [Hero({ id: params.id })]);
+    append(fragment, [
+        Hero({ id: params.id }),
+        AboutProject({ id: params.id }),
+    ]);
 
     return fragment;
 }

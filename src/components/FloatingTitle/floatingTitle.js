@@ -51,7 +51,6 @@ export default function FloatingTitle({
         classNames: [
             "floating-title",
             "floating-title--animation",
-            iconPosition === "left" ? "u-flex-row-reverse" : null,
             upperCase ? "floating-title__text--upperCase" : null,
         ].filter(Boolean),
     });
@@ -77,7 +76,11 @@ export default function FloatingTitle({
         innerHTML: icon,
     });
 
-    append(container, [title, span]);
+    if (iconPosition === "left") {
+        append(container, [span, title]);
+    } else {
+        append(container, [title, span]);
+    }
 
     return container;
 }

@@ -16,7 +16,6 @@ export default function Hero({ id } = {}) {
     ]);
 
     const work = bbdd.works.find((work) => work.id === Number(id));
-    console.log("work", work, id);
     // options of each prop
     // const validProps = [];
 
