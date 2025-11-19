@@ -30,7 +30,7 @@ export default function AboutProject({ id } = {}) {
         },
     });
 
-    attachEvent(document, "DOMContentLoaded", () => navbarObserver(section));
+    // attachEvent(document, "DOMContentLoaded", () => navbarObserver(section));
 
     const title = FloatingTitle({
         text: "About proyect",

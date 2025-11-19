@@ -3,6 +3,7 @@ import { append } from "../../js/utils/domHelpers";
 import { warningUnknownKeys } from "../../js/utils/utils";
 import AboutProject from "./About";
 import DevelopmentProcess from "./DevelopmentProcess";
+import Gallery from "./Gallery";
 import Hero from "./Hero";
 import "./index.css";
 import TechStack from "./TechStack";
@@ -27,6 +28,7 @@ export default function ProjectDetail({
         AboutProject({ id: params.id }),
         TechStack({ id: params.id }),
         DevelopmentProcess({ id: params.id }),
+        Gallery({ id: params.id }),
     ]);
 
     return fragment;
