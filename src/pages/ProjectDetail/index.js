@@ -2,6 +2,7 @@ import { createFragment } from "../../js/utils/createElementsHelper";
 import { append } from "../../js/utils/domHelpers";
 import { warningUnknownKeys } from "../../js/utils/utils";
 import AboutProject from "./About";
+import DevelopmentProcess from "./DevelopmentProcess";
 import Hero from "./Hero";
 import "./index.css";
 import TechStack from "./TechStack";
@@ -25,6 +26,7 @@ export default function ProjectDetail({
         Hero({ id: params.id }),
         AboutProject({ id: params.id }),
         TechStack({ id: params.id }),
+        DevelopmentProcess({ id: params.id }),
     ]);
 
     return fragment;
