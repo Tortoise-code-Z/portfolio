@@ -1,0 +1,51 @@
+import InfiniteSlider from "../../../../components/InfiniteSlider/infiniteSlider";
+import { createElement } from "../../../../js/utils/createElementsHelper";
+import { append } from "../../../../js/utils/domHelpers";
+import { validateProp, warningUnknownKeys } from "../../../../js/utils/utils";
+import "./index.css";
+
+export default function TechStackLibraries({ libraries } = {}) {
+    warningUnknownKeys(arguments, ["libraries"]);
+
+    // options of each prop
+    // const validProps = [];
+
+    // validations
+    validateProp("libraries", libraries, "array");
+
+    const container = createElement({
+        tag: "div",
+        classNames: ["pd-s-tech-stack__libraries"],
+    });
+
+    const librariesTitle = InfiniteSlider({
+        slideComponent: (data) => {
+            return createElement({
+                tag: "h3",
+                classNames: ["pd-s-tech-stack__libraries-title"],
+                innerText: data.data,
+            });
+        },
+        dataSlides: ["Librerías y utilidades"],
+        duplicationSlides: 5,
+    });
+
+    const librariesTags = createElement({
+        tag: "div",
+        classNames: ["pd-s-tech-stack__libraries-tags"],
+    });
+
+    libraries.forEach((librarie) => {
+        const span = createElement({
+            tag: "span",
+            classNames: ["pd-s-tech-stack__libraries-tag"],
+            innerText: librarie.item,
+        });
+
+        append(librariesTags, [span]);
+    });
+
+    append(container, [librariesTitle, librariesTags]);
+
+    return container;
+}

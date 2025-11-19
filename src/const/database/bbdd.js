@@ -77,17 +77,17 @@ const bbdd = {
             techStack: {
                 tools: {
                     fastTools: [
-                        { id: 1, tool: tools.react },
-                        { id: 2, tool: tools.ts },
-                        { id: 3, tool: tools.git },
+                        { id: 1, tool: tools.react, icon: svg.react },
+                        { id: 2, tool: tools.ts, icon: svg.ts },
+                        { id: 3, tool: tools.git, icon: svg.git },
                     ],
                     allTools: [
-                        { id: 1, tool: tools.react },
-                        { id: 2, tool: tools.ts },
-                        { id: 3, tool: tools.git },
-                        { id: 4, tool: tools.vite },
-                        { id: 5, tool: tools.npm },
-                        { id: 6, tool: tools.ia },
+                        { id: 1, tool: tools.react, icon: svg.react },
+                        { id: 2, tool: tools.ts, icon: svg.ts },
+                        { id: 3, tool: tools.git, icon: svg.git },
+                        { id: 4, tool: tools.vite, icon: svg.vite },
+                        { id: 5, tool: tools.npm, icon: svg.npm },
+                        { id: 6, tool: tools.ia, icon: svg.chatgpt },
                     ],
                 },
                 librariesUtils: [
@@ -102,9 +102,13 @@ const bbdd = {
                     { id: 9, item: librariesUtils.localstorage },
                 ],
                 stylesDesign: [
-                    { id: 1, item: stylesDesign.cssModule },
-                    { id: 2, item: stylesDesign.figma },
-                    { id: 3, item: stylesDesign.responsive },
+                    { id: 1, item: stylesDesign.cssModule, icon: svg.css },
+                    { id: 2, item: stylesDesign.figma, icon: svg.figma },
+                    {
+                        id: 3,
+                        item: stylesDesign.responsive,
+                        icon: svg.responsive,
+                    },
                 ],
             },
             development_process: {
@@ -323,25 +327,29 @@ const bbdd = {
             techStack: {
                 tools: {
                     fastTools: [
-                        { id: 1, tool: tools.html },
-                        { id: 2, tool: tools.css },
-                        { id: 3, tool: tools.js },
+                        { id: 1, tool: tools.html, icon: svg.react },
+                        { id: 2, tool: tools.css, icon: svg.css },
+                        { id: 3, tool: tools.js, icon: svg.react },
                     ],
                     allTools: [
-                        { id: 1, tool: tools.html },
-                        { id: 2, tool: tools.css },
-                        { id: 3, tool: tools.js },
-                        { id: 4, tool: tools.vite },
-                        { id: 5, tool: tools.git },
-                        { id: 6, tool: tools.npm },
-                        { id: 7, tool: tools.figma },
-                        { id: 8, tool: tools.ia },
+                        { id: 1, tool: tools.html, icon: svg.react },
+                        { id: 2, tool: tools.css, icon: svg.css },
+                        { id: 3, tool: tools.js, icon: svg.react },
+                        { id: 4, tool: tools.vite, icon: svg.vite },
+                        { id: 5, tool: tools.git, icon: svg.git },
+                        { id: 6, tool: tools.npm, icon: svg.npm },
+                        { id: 7, tool: tools.figma, icon: svg.figma },
+                        { id: 8, tool: tools.ia, icon: svg.chatgpt },
                     ],
                 },
                 librariesUtils: [],
                 stylesDesign: [
-                    { id: 1, item: stylesDesign.figma },
-                    { id: 2, item: stylesDesign.responsive },
+                    { id: 1, item: stylesDesign.figma, icon: svg.figma },
+                    {
+                        id: 2,
+                        item: stylesDesign.responsive,
+                        icon: svg.responsive,
+                    },
                 ],
             },
             development_process: {
@@ -523,26 +531,30 @@ const bbdd = {
             techStack: {
                 tools: {
                     fastTools: [
-                        { id: 1, tool: tools.html },
-                        { id: 2, tool: tools.css },
-                        { id: 3, tool: tools.js },
-                        { id: 4, tool: tools.php },
-                        { id: 5, tool: tools.mysql },
-                        { id: 6, tool: tools.apache },
+                        { id: 1, tool: tools.html, icon: svg.react },
+                        { id: 2, tool: tools.css, icon: svg.css },
+                        { id: 3, tool: tools.js, icon: svg.react },
+                        { id: 4, tool: tools.php, icon: svg.react },
+                        { id: 5, tool: tools.mysql, icon: svg.react },
+                        { id: 6, tool: tools.apache, icon: svg.apache },
                     ],
                     allTools: [
-                        { id: 1, tool: tools.html },
-                        { id: 2, tool: tools.css },
-                        { id: 3, tool: tools.js },
-                        { id: 4, tool: tools.php },
-                        { id: 5, tool: tools.mysql },
-                        { id: 8, tool: tools.apache },
+                        { id: 1, tool: tools.html, icon: svg.react },
+                        { id: 2, tool: tools.css, icon: svg.css },
+                        { id: 3, tool: tools.js, icon: svg.react },
+                        { id: 4, tool: tools.php, icon: svg.react },
+                        { id: 5, tool: tools.mysql, icon: svg.react },
+                        { id: 8, tool: tools.apache, icon: svg.apache },
                     ],
                 },
                 librariesUtils: [],
                 stylesDesign: [
-                    { id: 1, item: stylesDesign.figma },
-                    { id: 2, item: stylesDesign.responsive },
+                    { id: 1, item: stylesDesign.figma, icon: svg.figma },
+                    {
+                        id: 2,
+                        item: stylesDesign.responsive,
+                        icon: svg.responsive,
+                    },
                 ],
             },
             development_process: {
