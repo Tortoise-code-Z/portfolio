@@ -140,9 +140,8 @@ const bbdd = {
                     },
                 ],
                 warningMsg: {
-                    title: "En la versión desplegada en GitHub Pages, se utiliza createHashRouter porque GitHub solo sirve contenido estático y no permite redirecciones dinámicas a rutas profundas.",
                     description:
-                        "Sin embargo, en desarrollo local, puedes cambiar a createBrowserRouter para probar la navegación real con URLs limpias. Esto te permitirá probar protección de rutas y navegación directa (/dashboard, /course/:id, /classroom) como en un entorno de backend real.",
+                        "En la versión desplegada en GitHub Pages, se utiliza createHashRouter porque GitHub solo sirve contenido estático y no permite redirecciones dinámicas a rutas profundas. Sin embargo, en desarrollo local, puedes cambiar a createBrowserRouter para probar la navegación real con URLs limpias. Esto te permitirá probar protección de rutas y navegación directa (/dashboard, /course/:id, /classroom) como en un entorno de backend real.",
                 },
             },
             images: {
@@ -267,7 +266,6 @@ const bbdd = {
                     },
                 ],
                 noteMsg: {
-                    title: "Nota",
                     description:
                         "Para mantener la interfaz limpia, no se han forzado errores en todos los elementos, solo en algunos, con el objetivo de mostrar la funcionalidad de manera clara.",
                 },
@@ -381,7 +379,6 @@ const bbdd = {
                     },
                 ],
                 noteMsg: {
-                    title: "Nota",
                     description:
                         "Este portfolio está construido íntegramente en frontend. No utiliza frameworks ni dependencias complejas para mantener su rendimiento óptimo y simplicidad de mantenimiento.",
                 },
@@ -586,9 +583,8 @@ const bbdd = {
                     },
                 ],
                 warningMsg: {
-                    title: "El proyecto funciona en entorno local",
                     description:
-                        "Astrohub está diseñado para ejecutarse con XAMPP (Apache + PHP + MySQL). Para probarlo, es necesario importar la base de datos y acceder desde http://localhost/astrohub/.",
+                        "El proyecto funciona en entorno local. Astrohub está diseñado para ejecutarse con XAMPP (Apache + PHP + MySQL). Para probarlo, es necesario importar la base de datos y acceder desde http://localhost/astrohub/.",
                 },
             },
             images: {
@@ -735,7 +731,6 @@ const bbdd = {
                     },
                 ],
                 noteMsg: {
-                    title: "Nota",
                     description:
                         "Este proyecto fue desarrollado con fines educativos y está pensado para su ejecución local. Puede ser modificado libremente para aprendizaje o demostraciones personales.",
                 },
