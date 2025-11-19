@@ -4,11 +4,6 @@ import Home from "./src/pages/Home";
 import ProjectDetail from "./src/pages/ProjectDetail";
 import DefaultLayout from "./src/Layouts/DefaultLayout";
 import { ProductDetailLayout } from "./src/Layouts/ProductDetailLayout";
-import {
-    createIntersectionObserver,
-    navbarObserver,
-    navbarObserverCallback,
-} from "./src/js/utils/utils";
 
 export const router = new Router({
     rootSelector: "#app",

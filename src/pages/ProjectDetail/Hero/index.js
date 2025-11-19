@@ -8,12 +8,7 @@ import "./index.css";
 import template from "./index.html?raw";
 
 export default function Hero({ id } = {}) {
-    warningUnknownKeys(arguments, [
-        "currentPath",
-        "params",
-        "queries",
-        "navigate",
-    ]);
+    warningUnknownKeys(arguments, []);
 
     const work = bbdd.works.find((work) => work.id === Number(id));
     // options of each prop
@@ -31,7 +26,7 @@ export default function Hero({ id } = {}) {
     const typeProyectYear = hero.querySelector(".pd-hero__type-proyect-year");
     const actions = hero.querySelector(".pd-hero__actions");
 
-    title.innerText = work.name;
+    title.innerHTML = `${work.emphasisName.name[0]}<span style= "color: ${work.emphasisName.color}" class="pd-hero__title-accent">${work.emphasisName.name[1]}</span>`;
     descTypeWeb.innerText = `${work.shortDescription} · ${work.projectRole}`;
     typeProyectYear.innerText = `${work.visibility} Project · ${work.year}`;
 
@@ -42,7 +37,7 @@ export default function Hero({ id } = {}) {
             isButton: true,
             icon: svg.demo,
             variant: "primary",
-            theme: "light",
+            theme: "dark",
             classNames: ["pd-hero__actions-demo"],
             href: work.links.demo,
             target: "_blank",
@@ -53,7 +48,7 @@ export default function Hero({ id } = {}) {
         isButton: true,
         icon: svg.code,
         variant: "primary",
-        theme: "light",
+        theme: "dark",
         classNames: ["pd-hero__actions-code"],
         href: work.links.github,
         target: "_blank",

@@ -32,6 +32,10 @@ const bbdd = {
         {
             id: 1,
             name: "Chessmate",
+            emphasisName: {
+                name: ["Chess", "mate"],
+                color: "#D56719",
+            },
             shortDescription: "Página de aprendizaje de ajedrez",
             about: {
                 description: [
@@ -278,6 +282,10 @@ const bbdd = {
         {
             id: 2,
             name: "Portfolio Web",
+            emphasisName: {
+                name: ["Port", "folio"],
+                color: "#1958D5",
+            },
             shortDescription:
                 "Sitio personal de presentación y proyectos de Víctor Pérez",
             about: {
@@ -481,7 +489,11 @@ const bbdd = {
         {
             id: 3,
             name: "Astrohub",
-            shortDescription: "Aplicación web completa sobre el universo.",
+            emphasisName: {
+                name: ["Astro", "hub"],
+                color: "#4819D5",
+            },
+            shortDescription: "Aplicación web completa sobre el universo",
             about: {
                 description: [
                     "Astrohub es una aplicación web dinámica y completa desarrollada como proyecto final del módulo de desarrollo web del curso FullStack, MasterD.",
