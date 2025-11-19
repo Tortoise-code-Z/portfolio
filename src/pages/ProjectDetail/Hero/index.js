@@ -36,17 +36,19 @@ export default function Hero({ id } = {}) {
     descTypeWeb.innerText = `${work.shortDescription} · ${work.projectRole}`;
     typeProyectYear.innerText = `${work.visibility} Project · ${work.year}`;
 
-    const demo = Link({
-        isButton: true,
-        icon: svg.demo,
-        variant: "primary",
-        theme: "light",
-        classNames: ["pd-hero__actions-demo"],
-        href: work.links.demo,
-        target: "_blank",
+    let demo;
 
-        text: "Demo",
-    });
+    if (work.links.demo)
+        demo = Link({
+            isButton: true,
+            icon: svg.demo,
+            variant: "primary",
+            theme: "light",
+            classNames: ["pd-hero__actions-demo"],
+            href: work.links.demo,
+            target: "_blank",
+            text: "Demo",
+        });
 
     const github = Link({
         isButton: true,
@@ -54,7 +56,7 @@ export default function Hero({ id } = {}) {
         variant: "primary",
         theme: "light",
         classNames: ["pd-hero__actions-code"],
-        href: work.links.demo,
+        href: work.links.github,
         target: "_blank",
         text: "Code",
     });
