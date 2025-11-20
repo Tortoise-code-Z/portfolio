@@ -13,6 +13,8 @@ export default function TechStackLibraries({ libraries } = {}) {
     // validations
     validateProp("libraries", libraries, "array");
 
+    if (libraries.length === 0) return null;
+
     const container = createElement({
         tag: "div",
         classNames: ["pd-s-tech-stack__libraries"],
@@ -28,6 +30,7 @@ export default function TechStackLibraries({ libraries } = {}) {
         },
         dataSlides: ["Librerías y utilidades"],
         duplicationSlides: 5,
+        direction: "right",
     });
 
     const librariesTags = createElement({

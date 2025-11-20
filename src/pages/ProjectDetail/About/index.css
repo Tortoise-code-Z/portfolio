@@ -1,7 +1,7 @@
 .pd-s-about {
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: 100px;
     padding: var(--section-vertical-padding) 0;
 }
 .pd-s-about__desc {

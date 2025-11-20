@@ -33,6 +33,7 @@ export default function TechStack({ id } = {}) {
         icon: svg.brush,
         theme: "light",
         iconPosition: "left",
+        upperCase: true,
     });
 
     const techStackContainer = createElement({

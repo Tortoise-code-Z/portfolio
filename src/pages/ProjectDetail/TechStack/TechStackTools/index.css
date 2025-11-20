@@ -1,0 +1,57 @@
+.pd-s-tech-stack__tools {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.tech-stack__tools-title {
+    opacity: 0.2;
+    width: max-content;
+    font-family: Geologica-thin;
+    font-size: 3rem;
+    font-weight: 100;
+}
+
+.tech-stack__tools-icons {
+    width: fit-content;
+    max-width: calc(100% / (var(--padding-page) * 2));
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+}
+
+.tech-stack__tools-icon {
+    transition: all 0.2s ease-in-out;
+    padding: 0 20px;
+}
+
+.tech-stack__tools-icons:hover .tech-stack__tools-icon {
+    transform: scale(0.8);
+    opacity: 0.4;
+}
+
+.tech-stack__tools-icons .tech-stack__tools-icon:hover {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+.tech-stack__tools-icon svg {
+    width: 100px;
+    height: 100px;
+    filter: drop-shadow(5px 5px 2px rgba(0, 0, 0, 0.1));
+}
+
+@media all and (max-width: 500px) {
+    .tech-stack__tools-icon svg {
+        width: 60px;
+        height: 60px;
+    }
+
+    .tech-stack__tools-icon {
+        padding: 10px 20px;
+    }
+}
