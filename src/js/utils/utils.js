@@ -51,14 +51,17 @@ export const createIntersectionObserver = (
     elements.forEach((element) => observer.observe(element));
 };
 
-export const navbarObserver = (element) =>
-    createIntersectionObserver(
-        [element],
-        (entry) => navbarObserverCallback(entry),
-        [],
-        { threshold: 0, rootMargin: "-100px 0px -90% 0px" },
-        false
-    );
+export const navbarObserver = (element) => {
+    setTimeout(() => {
+        createIntersectionObserver(
+            [element],
+            (entry) => navbarObserverCallback(entry),
+            [],
+            { threshold: 0, rootMargin: "-100px 0px -90% 0px" },
+            false
+        );
+    }, 0);
+};
 
 export const navbarObserverCallback = (entry) => {
     const navbar = document.querySelector(".navbar");

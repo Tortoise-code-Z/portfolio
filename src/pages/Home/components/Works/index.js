@@ -27,7 +27,7 @@ export default function Works({} = {}) {
         },
     });
 
-    attachEvent(document, "DOMContentLoaded", () => navbarObserver(section));
+    navbarObserver(section);
 
     const title = WritteMachineTitle({
         classNames: ["s-works__title"],
