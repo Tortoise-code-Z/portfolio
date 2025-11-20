@@ -13,6 +13,7 @@
     cursor: pointer;
     font-family: Geologica-regular;
     font-size: 1.005rem;
+    flex-wrap: wrap;
 }
 
 /* Primary button */

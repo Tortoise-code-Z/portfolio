@@ -48,18 +48,6 @@ export function ProductDetailLayout({} = {}) {
         text: "Ver en Github",
     });
 
-    const email = Link({
-        classNames: ["default-footer__email"],
-        isButton: true,
-        variant: "secondary",
-        theme: "light",
-        icon: svg.email,
-        href: "",
-        title: "Email",
-        text: "victorperez.brmte@passmail.com",
-        pointerEvents: "none",
-    });
-
     const linkedin = Link({
         isButton: true,
         variant: "secondary",
@@ -85,7 +73,19 @@ export function ProductDetailLayout({} = {}) {
         });
     }
 
-    append(actions, [github, email, linkedin, demo]);
+    const email = Link({
+        classNames: ["default-footer__email"],
+        isButton: true,
+        variant: "secondary",
+        theme: "light",
+        icon: svg.email,
+        href: "",
+        title: "Email",
+        text: "victorperez.brmte@passmail.com",
+        pointerEvents: "none",
+    });
+
+    append(actions, [github, linkedin, demo, email]);
 
     append(fragment, [header, main, footer]);
 

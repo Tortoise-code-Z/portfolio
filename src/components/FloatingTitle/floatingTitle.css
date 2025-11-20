@@ -14,6 +14,7 @@
 .floating-title__text {
     font-family: Geologica-light;
     font-size: 1rem;
+    text-align: center;
 }
 
 .floating-title__text--dark {

@@ -76,7 +76,7 @@ export default function DefaultLayout({} = {}) {
         text: "Linkedin",
     });
 
-    append(actions, [github, email, linkedin]);
+    append(actions, [github, linkedin, email]);
 
     append(fragment, [header, main, defaultFooter]);
 
