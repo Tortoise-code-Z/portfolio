@@ -151,8 +151,21 @@ export const attachEvent = (element, event, functionToAttach) => {
 };
 
 export function validateProp(name, value, type, allowedValues = null) {
+    console.log("first", name, value, type, allowedValues);
+
     // Permitir múltiples tipos (por ejemplo, ['string', 'number'])
     const types = Array.isArray(type) ? type : [type];
+
+    // Determinar si 'null' es un tipo permitido
+    const isNullAllowed = types.includes("null");
+
+    // Si 'null' está permitido Y el valor ES null, devolvemos true inmediatamente
+    if (isNullAllowed && value === null) {
+        return true; // ✅ Valor es null y está permitido.
+    }
+
+    // El resto de la lógica debe ejecutarse solo si el valor NO es null
+    // O si 'null' no estaba permitido (para que se lance el TypeError si es null).
 
     const isHTMLElementType = types.includes("HTMLElement");
 
@@ -182,6 +195,10 @@ export function validateProp(name, value, type, allowedValues = null) {
     // --- 3. Validar tipos primitivos ---
     else {
         const valueType = typeof value;
+
+        // Excluimos la comprobación de tipos si el valor es null,
+        // ya que el caso 'null' ya se manejó al inicio
+        // y typeof null devuelve "object", lo que podría fallar si "object" no está en types.
         if (!types.includes(valueType)) {
             throw new TypeError(
                 `"${name}" → Debe ser de tipo ${types.join(

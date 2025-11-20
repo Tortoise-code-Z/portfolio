@@ -14,6 +14,8 @@ export default function FloatingTitle({
     level = 2,
     theme = "dark",
     iconPosition = "right",
+    top = null,
+    left = null,
 } = {}) {
     // keys to recibe
     const allowedKeys = [
@@ -23,6 +25,8 @@ export default function FloatingTitle({
         "theme",
         "iconPosition",
         "upperCase",
+        "top",
+        "left",
     ];
 
     // warning unknown keys
@@ -33,6 +37,8 @@ export default function FloatingTitle({
             );
         }
     });
+
+    console.log("typeof top", typeof top, 0);
 
     // options of each props
     const validHTags = [1, 2, 3, 4, 5, 6];
@@ -46,6 +52,8 @@ export default function FloatingTitle({
     validateProp("level", level, "number", validHTags);
     validateProp("theme", theme, "string", validThemes);
     validateProp("iconPosition", iconPosition, "string", validIconPositions);
+    validateProp("top", top, ["number", "null"]);
+    validateProp("left", left, ["number", "null"]);
 
     const container = createDiv({
         classNames: [
@@ -54,6 +62,13 @@ export default function FloatingTitle({
             upperCase ? "floating-title__text--upperCase" : null,
         ].filter(Boolean),
     });
+
+    if (top || top === 0 || left || left === 0) {
+        container.style.position = "absolute";
+        container.style.top = `${top}px`;
+        container.style.left = `${left}px`;
+        container.style.zIndex = 99999;
+    }
 
     const title = createHtag({
         level: level,

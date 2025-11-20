@@ -27,8 +27,10 @@ export default function Gallery({ id } = {}) {
     const title = FloatingTitle({
         text: "Gallery",
         icon: svg.calendar,
-        theme: "dark",
+        theme: "light",
         iconPosition: "left",
+        upperCase: true,
+        top: 50,
     });
 
     const imagesCarrousel = ImagesSlider({
