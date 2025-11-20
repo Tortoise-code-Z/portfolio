@@ -59,7 +59,7 @@ export default function Hero({ id } = {}) {
         text: "Code",
     });
 
-    setTimeout(() => navbarObserver(hero), 0);
+    navbarObserver(hero);
 
     append(actions, [demo, github]);
 

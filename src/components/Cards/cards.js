@@ -3,9 +3,9 @@ import { append } from "../../js/utils/domHelpers";
 import { validateProp } from "../../js/utils/utils";
 import Card from "./Card/card";
 import "./cards.css";
-export default function Cards({ data = [] } = {}) {
+export default function Cards({ data = [], classNames = [] } = {}) {
     // keys to receive
-    const allowedKeys = ["data"];
+    const allowedKeys = ["data", "classNames"];
 
     // warning unknown keys
     Object.keys(arguments[0] || {}).forEach((key) => {
@@ -19,9 +19,10 @@ export default function Cards({ data = [] } = {}) {
 
     // validations
     validateProp("data", data, "array");
+    validateProp("classNames", classNames, "array");
 
     const container = createDiv({
-        classNames: ["cards"],
+        classNames: ["cards", ...classNames],
     });
 
     const cards = data.map((card) =>
