@@ -14,8 +14,6 @@ export default function TechStack({ id } = {}) {
     warningUnknownKeys(arguments, ["id"]);
     const work = bbdd.works.find((work) => work.id === Number(id));
 
-    console.log("work", work.techStack.tools, Number(id));
-
     // options of each prop
     // const validProps = [];
 

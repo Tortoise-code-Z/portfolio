@@ -14,7 +14,7 @@ export default function Hero({} = {}) {
         ".hero"
     );
 
-    attachEvent(document, "DOMContentLoaded", () => navbarObserver(hero));
+    navbarObserver(hero);
 
     return hero;
 }

@@ -24,6 +24,8 @@ export default function ProjectDetail({
 
     const fragment = createFragment();
 
+    // document.querySelector(".navbar").classList.add("navbar--color-black");
+
     append(fragment, [
         Hero({ id: params.id }),
         AboutProject({ id: params.id }),

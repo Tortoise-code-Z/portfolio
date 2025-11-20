@@ -25,7 +25,7 @@ export default function Profile({} = {}) {
         },
     });
 
-    attachEvent(document, "DOMContentLoaded", () => navbarObserver(section));
+    navbarObserver(section);
 
     // title
 

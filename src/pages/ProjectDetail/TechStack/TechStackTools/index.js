@@ -6,7 +6,6 @@ import "./index.css";
 
 export default function TechStackTools({ tools } = {}) {
     warningUnknownKeys(arguments, ["tools"]);
-    console.log("tools", tools);
 
     // options of each prop
     // const validProps = [];

@@ -28,7 +28,7 @@ export default function Skills({} = {}) {
         },
     });
 
-    attachEvent(document, "DOMContentLoaded", () => navbarObserver(section));
+    navbarObserver(section);
 
     const title = FloatingTitle({
         upperCase: true,

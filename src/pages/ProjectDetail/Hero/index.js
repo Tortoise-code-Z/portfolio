@@ -3,7 +3,11 @@ import bbdd from "../../../const/database/bbdd";
 import { svg } from "../../../const/database/bbdd_consts";
 import cloneTemplate from "../../../js/utils/cloneTemplate";
 import { append } from "../../../js/utils/domHelpers";
-import { warningUnknownKeys } from "../../../js/utils/utils";
+import {
+    attachEvent,
+    navbarObserver,
+    warningUnknownKeys,
+} from "../../../js/utils/utils";
 import "./index.css";
 import template from "./index.html?raw";
 
@@ -54,6 +58,8 @@ export default function Hero({ id } = {}) {
         target: "_blank",
         text: "Code",
     });
+
+    setTimeout(() => navbarObserver(hero), 0);
 
     append(actions, [demo, github]);
 
