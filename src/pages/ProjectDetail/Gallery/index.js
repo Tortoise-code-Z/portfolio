@@ -1,7 +1,11 @@
 import FloatingTitle from "../../../components/FloatingTitle/floatingTitle";
 import { svg } from "../../../const/database/bbdd_consts";
 import { createElement } from "../../../js/utils/createElementsHelper";
-import { validateProp, warningUnknownKeys } from "../../../js/utils/utils";
+import {
+    navbarObserver,
+    validateProp,
+    warningUnknownKeys,
+} from "../../../js/utils/utils";
 import "./index.css";
 import ImagesSlider from "../../../components/ImagesSlider/imagesSlider";
 import bbdd from "../../../const/database/bbdd";
@@ -23,6 +27,8 @@ export default function Gallery({ id } = {}) {
             "data-navbar-color": "white",
         },
     });
+
+    navbarObserver(section);
 
     const title = FloatingTitle({
         text: "Gallery",

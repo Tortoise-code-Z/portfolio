@@ -4,7 +4,11 @@ import bbdd from "../../../const/database/bbdd";
 import { svg } from "../../../const/database/bbdd_consts";
 import { createElement } from "../../../js/utils/createElementsHelper";
 import { append } from "../../../js/utils/domHelpers";
-import { validateProp, warningUnknownKeys } from "../../../js/utils/utils";
+import {
+    navbarObserver,
+    validateProp,
+    warningUnknownKeys,
+} from "../../../js/utils/utils";
 import "./index.css";
 import TechStackLibraries from "./TechStackLibraries";
 import TechStackTools from "./TechStackTools";
@@ -27,6 +31,8 @@ export default function TechStack({ id } = {}) {
             "data-navbar-color": "black",
         },
     });
+
+    navbarObserver(section);
 
     const title = FloatingTitle({
         text: "Stack Tecnológico",
