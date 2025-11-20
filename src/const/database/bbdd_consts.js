@@ -12,6 +12,7 @@ export const visibility = {
 
 export const tools = {
     react: "react",
+    figma: "figma",
     ts: "typescript",
     vite: "vite",
     npm: "npm",
