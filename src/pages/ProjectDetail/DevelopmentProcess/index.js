@@ -1,5 +1,9 @@
 import { createElement } from "../../../js/utils/createElementsHelper";
-import { validateProp, warningUnknownKeys } from "../../../js/utils/utils";
+import {
+    navbarObserver,
+    validateProp,
+    warningUnknownKeys,
+} from "../../../js/utils/utils";
 import "./index.css";
 import bbdd from "../../../const/database/bbdd";
 import { append } from "../../../js/utils/domHelpers";
@@ -22,7 +26,12 @@ export default function DevelopmentProcess({ id } = {}) {
     const container = createElement({
         tag: "section",
         classNames: ["s-pd-dev-process"],
+        attributes: {
+            "data-navbar-color": "white",
+        },
     });
+
+    navbarObserver(container);
 
     const title = FloatingTitle({
         text: "Proceso de desarrollo",

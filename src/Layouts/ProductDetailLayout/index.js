@@ -2,7 +2,7 @@ import {
     createElement,
     createFragment,
 } from "../../js/utils/createElementsHelper";
-import { warningUnknownKeys } from "../../js/utils/utils";
+import { navbarObserver, warningUnknownKeys } from "../../js/utils/utils";
 import Navbar from "../../components/Navbar/navbar.js";
 import { append } from "../../js/utils/domHelpers.js";
 import cloneTemplate from "../../js/utils/cloneTemplate.js";
@@ -34,7 +34,10 @@ export function ProductDetailLayout({} = {}) {
         "proyect-detail-footer-template"
     ).querySelector(".footer-proyect-detail");
 
+    navbarObserver(footer);
+
     const actions = footer.querySelector(".footer-proyect-detail__actions");
+
     const id = window.location.href.split("/").pop();
 
     const github = Link({

@@ -6,6 +6,7 @@ import { createElement } from "../../../js/utils/createElementsHelper";
 import { append } from "../../../js/utils/domHelpers";
 import {
     attachEvent,
+    navbarObserver,
     validateProp,
     warningUnknownKeys,
 } from "../../../js/utils/utils";
@@ -29,9 +30,11 @@ export default function AditionalConfigs({ id } = {}) {
         tag: "section",
         classNames: ["pd-s-config"],
         attributes: {
-            "data-navbar-color": "white",
+            "data-navbar-color": "black",
         },
     });
+
+    navbarObserver(section);
 
     const title = FloatingTitle({
         text: "Configuraciones adicionales",
