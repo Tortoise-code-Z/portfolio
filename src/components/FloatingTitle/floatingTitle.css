@@ -54,3 +54,9 @@
         transform: translateY(-5px);
     }
 }
+
+@media all and (max-width: 500px) {
+    .floating-title {
+        justify-content: center;
+    }
+}
