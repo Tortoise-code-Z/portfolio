@@ -13,6 +13,8 @@ export default function TechStackDesign({ designs } = {}) {
     // validations
     validateProp("designs", designs, "array");
 
+    if (designs.length === 0) return null;
+
     const container = createElement({
         tag: "div",
         classNames: ["pd-s-tech-stack__design"],
@@ -45,12 +47,12 @@ export default function TechStackDesign({ designs } = {}) {
             tag: "h4",
             classNames: ["tech-stack__design-title"],
             innerText: design.item,
-            innerHTML: design.icon,
         });
 
         const span = createElement({
             tag: "span",
             classNames: ["tech-stack__design-icon"],
+            innerHTML: design.icon,
         });
 
         append(target, [title, span]);
