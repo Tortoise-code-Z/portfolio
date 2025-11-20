@@ -3,7 +3,7 @@
     height: fit-content;
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
     padding: 0 var(--padding-page);
 }
 
@@ -12,15 +12,15 @@
 }
 
 .floating-title__text {
-    font-family: Geologica-thin;
+    font-family: Geologica-light;
     font-size: 1rem;
 }
 
 .floating-title__text--dark {
-    color: var(--text-black);
+    color: rgb(var(--bcc-black));
 }
 .floating-title__text--light {
-    color: var(--text-light);
+    color: rgb(var(--text-light));
 }
 
 .floating-title__icon {
@@ -28,11 +28,11 @@
 }
 
 .floating-title__icon--dark {
-    color: var(--text-black);
+    color: rgb(var(--bcc-black));
 }
 
 .floating-title__icon--light {
-    color: var(--text-light);
+    color: rgb(var(--text-light));
 }
 
 .floating-title--animation {

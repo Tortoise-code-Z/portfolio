@@ -55,3 +55,13 @@
         padding: 10px 20px;
     }
 }
+
+@media all and (max-height: 500px) {
+    .tech-stack__tools-icon svg {
+        width: 80px;
+        height: 80px;
+    }
+    .tech-stack__tools-icon {
+        padding: 10px 20px;
+    }
+}

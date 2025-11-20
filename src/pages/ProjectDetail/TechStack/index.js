@@ -30,7 +30,7 @@ export default function TechStack({ id } = {}) {
 
     const title = FloatingTitle({
         text: "Stack Tecnológico",
-        icon: svg.brush,
+        icon: svg.stack,
         theme: "light",
         iconPosition: "left",
         upperCase: true,
