@@ -21,7 +21,7 @@ export default function DevelopmentProcess({ id } = {}) {
 
     const container = createElement({
         tag: "section",
-        classNames: ["pd-dev-process"],
+        classNames: ["s-pd-dev-process"],
     });
 
     const title = FloatingTitle({
@@ -29,17 +29,18 @@ export default function DevelopmentProcess({ id } = {}) {
         icon: svg.brush,
         theme: "dark",
         iconPosition: "left",
+        upperCase: true,
     });
 
     const description = createElement({
         tag: "div",
-        classNames: ["pd-dev-process__desc"],
+        classNames: ["s-pd-dev-process__desc"],
     });
 
     work.development_process.description.forEach((desc) => {
         const item = createElement({
             tag: "p",
-            classNames: ["pd-dev-process__desc-item"],
+            classNames: ["dev-process__desc-paragraph"],
             innerText: desc,
         });
 
@@ -47,6 +48,7 @@ export default function DevelopmentProcess({ id } = {}) {
     });
 
     const cards = Cards({
+        classNames: ["dev-process__cards"],
         data: work.development_process.cards,
     });
 

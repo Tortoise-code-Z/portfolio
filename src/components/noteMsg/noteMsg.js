@@ -38,7 +38,7 @@ export default function NoteMsg({ type = "note", desc = "" } = {}) {
 
     // title container
     const titleContainer = createDiv({
-        classNames: ["note-msg__title_container"].filter(Boolean),
+        classNames: ["note-msg__title-container"].filter(Boolean),
     });
 
     // icon
