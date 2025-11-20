@@ -411,14 +411,14 @@ console.log(
             techStack: {
                 tools: {
                     fastTools: [
-                        { id: 1, tool: tools.html, icon: svg.react },
+                        { id: 1, tool: tools.html, icon: svg.html },
                         { id: 2, tool: tools.css, icon: svg.css },
                         { id: 3, tool: tools.js, icon: svg.react },
                     ],
                     allTools: [
-                        { id: 1, tool: tools.html, icon: svg.react },
+                        { id: 1, tool: tools.html, icon: svg.html },
                         { id: 2, tool: tools.css, icon: svg.css },
-                        { id: 3, tool: tools.js, icon: svg.react },
+                        { id: 3, tool: tools.js, icon: svg.js },
                         { id: 4, tool: tools.vite, icon: svg.vite },
                         { id: 5, tool: tools.git, icon: svg.git },
                         { id: 6, tool: tools.npm, icon: svg.npm },
@@ -426,7 +426,7 @@ console.log(
                         { id: 8, tool: tools.ia, icon: svg.chatgpt },
                     ],
                 },
-                librariesUtils: [],
+                librariesUtils: [{ id: 1, item: librariesUtils.prism }],
                 stylesDesign: [
                     { id: 1, item: stylesDesign.figma, icon: svg.figma },
                     {
@@ -618,19 +618,19 @@ console.log(
             techStack: {
                 tools: {
                     fastTools: [
-                        { id: 1, tool: tools.html, icon: svg.react },
+                        { id: 1, tool: tools.html, icon: svg.html },
                         { id: 2, tool: tools.css, icon: svg.css },
-                        { id: 3, tool: tools.js, icon: svg.react },
-                        { id: 4, tool: tools.php, icon: svg.react },
-                        { id: 5, tool: tools.mysql, icon: svg.react },
+                        { id: 3, tool: tools.js, icon: svg.js },
+                        { id: 4, tool: tools.php, icon: svg.php },
+                        { id: 5, tool: tools.mysql, icon: svg.mysql },
                         { id: 6, tool: tools.apache, icon: svg.apache },
                     ],
                     allTools: [
-                        { id: 1, tool: tools.html, icon: svg.react },
+                        { id: 1, tool: tools.html, icon: svg.html },
                         { id: 2, tool: tools.css, icon: svg.css },
-                        { id: 3, tool: tools.js, icon: svg.react },
-                        { id: 4, tool: tools.php, icon: svg.react },
-                        { id: 5, tool: tools.mysql, icon: svg.react },
+                        { id: 3, tool: tools.js, icon: svg.js },
+                        { id: 4, tool: tools.php, icon: svg.php },
+                        { id: 5, tool: tools.mysql, icon: svg.mysql },
                         { id: 8, tool: tools.apache, icon: svg.apache },
                     ],
                 },

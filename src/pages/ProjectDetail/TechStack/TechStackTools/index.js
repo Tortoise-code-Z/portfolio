@@ -40,6 +40,9 @@ export default function TechStackTools({ tools } = {}) {
             tag: "span",
             classNames: ["tech-stack__tools-icon"],
             innerHTML: tool.icon,
+            attributes: {
+                title: tool.tool,
+            },
         });
 
         append(toolsIcons, [span]);
