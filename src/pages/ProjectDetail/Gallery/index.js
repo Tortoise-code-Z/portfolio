@@ -26,7 +26,7 @@ export default function Gallery({ id } = {}) {
 
     const title = FloatingTitle({
         text: "Gallery",
-        icon: svg.calendar,
+        icon: svg.gallery,
         theme: "light",
         iconPosition: "left",
         upperCase: true,

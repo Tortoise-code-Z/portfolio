@@ -248,7 +248,85 @@ const bbdd = {
                     {
                         id: 3,
                         title: "Código para ejecutar en la consola del navegador",
-                        description: "",
+                        type: "code",
+                        description: `// Simular base de datos de cursos en localStorage
+const bbdd = JSON.parse(localStorage.getItem("DATA_BASE"));
+
+const newCourses = bbdd.courses.map((c) => {
+    if (c.courseID === 1) {
+        return {
+            ...c,
+            courseID: null,
+        };
+    }
+
+    if (c.courseID === 3) {
+        return { ...c, price: null };
+    }
+
+    if (c.courseID === 2) {
+        return {
+            ...c,
+            content: {
+                ...c.content,
+                themes: c.content.themes.map((t) => {
+                    if (t.id === 1) return { ...t, id: null };
+                    if (t.id === 2) {
+                        return {
+                            ...t,
+                            content: t.content.map((c) =>
+                                c.id === 1 ? { ...c, id: null } : c
+                            ),
+                        };
+                    }
+                    return t;
+                }),
+            },
+            authors: c.authors.map((a, i) => (i === 0 ? null : a)),
+        };
+    }
+    return c;
+});
+
+const newDefaultCourses = bbdd.defaultCourses.map((c) => {
+    if (c.courseID === 1) {
+        return { ...c, courseID: null };
+    }
+
+    if (c.courseID === 2) {
+        return {
+            ...c,
+            content: {
+                ...c.content,
+                themes: c.content.themes.map((t) =>
+                    t.id === 1 ? { ...t, description: null } : t
+                ),
+            },
+        };
+    }
+
+    return c;
+});
+
+const newComments = bbdd.comments.map((c) =>
+    c.id === 27 ? { ...c, id: null } : c
+);
+
+const newBBDD = {
+    ...bbdd,
+    courses: newCourses,
+    defaultCourses: newDefaultCourses,
+    comments: newComments,
+};
+
+// Guardar en localStorage
+localStorage.setItem("DATA_BASE", JSON.stringify(newBBDD));
+
+// Confirmar que los datos se guardaron correctamente
+console.log(
+    "Cursos actualizados en localStorage:",
+    JSON.parse(localStorage.getItem("DATA_BASE"))
+);`,
                     },
                     {
                         id: 4,

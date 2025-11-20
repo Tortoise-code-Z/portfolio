@@ -8,7 +8,7 @@
     padding: 0 var(--padding-page);
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 30px;
 }
 
 .dev-process__desc-paragraph {

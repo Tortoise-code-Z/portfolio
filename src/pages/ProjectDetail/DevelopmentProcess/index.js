@@ -26,8 +26,8 @@ export default function DevelopmentProcess({ id } = {}) {
 
     const title = FloatingTitle({
         text: "Proceso de desarrollo",
-        icon: svg.brush,
-        theme: "dark",
+        icon: svg.process,
+        theme: "light",
         iconPosition: "left",
         upperCase: true,
     });

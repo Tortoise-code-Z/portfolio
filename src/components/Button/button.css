@@ -29,17 +29,17 @@
 }
 
 .button-primary--light:hover {
-    background-color: rgb(var(--text-white));
+    background-color: rgb(var(--bcc-white));
     color: rgb(var(--text-black));
 }
 
 .button-primary--dark {
-    border-color: rgb(var(--text-black));
-    color: rgb(var(--text-black)) !important;
+    border-color: rgb(var(--bcc-black));
+    color: rgb(var(--bcc-black)) !important;
 }
 
 .button-primary--dark:hover {
-    background-color: rgb(var(--text-black));
+    background-color: rgb(var(--bcc-black));
     color: rgb(var(--text-white)) !important;
 }
 

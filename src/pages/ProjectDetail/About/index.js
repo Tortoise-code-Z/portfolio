@@ -36,7 +36,7 @@ export default function AboutProject({ id } = {}) {
     const title = FloatingTitle({
         text: "About proyect",
         icon: svg.info,
-        theme: "dark",
+        theme: "light",
         iconPosition: "left",
         upperCase: true,
     });
