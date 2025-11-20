@@ -1,6 +1,7 @@
 import "./index.css";
 import {
     attachEvent,
+    navbarObserver,
     validateProp,
     warningUnknownKeys,
 } from "../../../js/utils/utils";
@@ -30,13 +31,14 @@ export default function AboutProject({ id } = {}) {
         },
     });
 
-    // attachEvent(document, "DOMContentLoaded", () => navbarObserver(section));
+    navbarObserver(section);
 
     const title = FloatingTitle({
         text: "About proyect",
         icon: svg.info,
         theme: "dark",
         iconPosition: "left",
+        upperCase: true,
     });
 
     const description = createElement({
@@ -55,6 +57,7 @@ export default function AboutProject({ id } = {}) {
     });
 
     const cards = Cards({
+        classNames: ["pd-s-about__cards"],
         data: work.about.cards,
     });
 
