@@ -3,7 +3,7 @@ import {
     createPar,
     createSpan,
 } from "../../js/utils/createElementsHelper";
-import { validateProp } from "../../js/utils/utils";
+import { fadeInObserver, validateProp } from "../../js/utils/utils";
 import "./noteMsg.css";
 import { svg } from "../../const/database/bbdd_consts";
 import { append } from "../../js/utils/domHelpers";
@@ -41,6 +41,8 @@ export default function NoteMsg({ type = "note", desc = "" } = {}) {
         classNames: ["note-msg__title-container"].filter(Boolean),
     });
 
+    fadeInObserver(titleContainer, "animated-element--fade-in-right");
+
     // icon
     const icon = createSpan({
         classNames: ["note-msg__icon"].filter(Boolean),
@@ -58,6 +60,8 @@ export default function NoteMsg({ type = "note", desc = "" } = {}) {
         classNames: ["note-msg__desc"].filter(Boolean),
         innerText: desc,
     });
+
+    fadeInObserver(description, "animated-element--fade-in-left");
 
     append(titleContainer, [icon, titleNode]);
     append(note, [titleContainer, description]);

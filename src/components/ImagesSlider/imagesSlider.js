@@ -13,7 +13,7 @@ import "./imagesSlider.html?raw";
 import cloneTemplate from "../../js/utils/cloneTemplate";
 
 import template from "./imagesSlider.html?raw";
-import { attachEvent } from "../../js/utils/utils";
+import { attachEvent, fadeInObserver } from "../../js/utils/utils";
 import Button from "../Button/button";
 import { svg } from "../../const/database/bbdd_consts";
 
@@ -30,6 +30,11 @@ export default function ImagesSlider({ images = [] } = {}) {
     const sliderTrack = root.querySelector(".images-slider__track");
     const bulletsContainer = root.querySelector(".images-slider__bullets");
     const buttonsContainer = root.querySelector(".images-slider__buttons");
+
+    fadeInObserver(sliderTrack, `animated-element--fade-in-left`);
+    fadeInObserver(imageLabel, `animated-element--fade-in-right`);
+    fadeInObserver(bulletsContainer, `animated-element--fade-in-left`);
+    fadeInObserver(buttonsContainer, `animated-element--fade-in-right`);
 
     const nextButton = Button({
         variant: "arrow",

@@ -1,7 +1,11 @@
 import InfiniteSlider from "../../../../components/InfiniteSlider/infiniteSlider";
 import { createElement } from "../../../../js/utils/createElementsHelper";
 import { append } from "../../../../js/utils/domHelpers";
-import { validateProp, warningUnknownKeys } from "../../../../js/utils/utils";
+import {
+    fadeInObserver,
+    validateProp,
+    warningUnknownKeys,
+} from "../../../../js/utils/utils";
 import "./index.css";
 
 export default function TechStackLibraries({ libraries } = {}) {
@@ -33,17 +37,24 @@ export default function TechStackLibraries({ libraries } = {}) {
         direction: "right",
     });
 
+    fadeInObserver(librariesTitle, `animated-element--fade-in-right`);
+
     const librariesTags = createElement({
         tag: "div",
         classNames: ["pd-s-tech-stack__libraries-tags"],
     });
 
-    libraries.forEach((librarie) => {
+    libraries.forEach((librarie, index) => {
         const span = createElement({
             tag: "span",
             classNames: ["pd-s-tech-stack__libraries-tag"],
             innerText: librarie.item,
         });
+
+        fadeInObserver(
+            span,
+            `animated-element--fade-in-${index % 2 === 0 ? "top" : "bottom"}`
+        );
 
         append(librariesTags, [span]);
     });

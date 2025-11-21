@@ -1,5 +1,6 @@
 import { createElement } from "../../../js/utils/createElementsHelper";
 import {
+    fadeInObserver,
     navbarObserver,
     validateProp,
     warningUnknownKeys,
@@ -46,12 +47,17 @@ export default function DevelopmentProcess({ id } = {}) {
         classNames: ["s-pd-dev-process__desc"],
     });
 
-    work.development_process.description.forEach((desc) => {
+    work.development_process.description.forEach((desc, index) => {
         const item = createElement({
             tag: "p",
             classNames: ["dev-process__desc-paragraph"],
             innerText: desc,
         });
+
+        fadeInObserver(
+            item,
+            `animated-element--fade-in-${index % 2 === 0 ? "left" : "right"}`
+        );
 
         append(description, [item]);
     });

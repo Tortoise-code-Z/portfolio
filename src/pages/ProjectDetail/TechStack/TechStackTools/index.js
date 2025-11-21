@@ -1,7 +1,11 @@
 import InfiniteSlider from "../../../../components/InfiniteSlider/infiniteSlider";
 import { createElement } from "../../../../js/utils/createElementsHelper";
 import { append } from "../../../../js/utils/domHelpers";
-import { validateProp, warningUnknownKeys } from "../../../../js/utils/utils";
+import {
+    fadeInObserver,
+    validateProp,
+    warningUnknownKeys,
+} from "../../../../js/utils/utils";
 import "./index.css";
 
 export default function TechStackTools({ tools } = {}) {
@@ -30,12 +34,14 @@ export default function TechStackTools({ tools } = {}) {
         duplicationSlides: 5,
     });
 
+    fadeInObserver(toolsTitle, `animated-element--fade-in-left`);
+
     const toolsIcons = createElement({
         tag: "div",
         classNames: ["tech-stack__tools-icons"],
     });
 
-    tools.forEach((tool) => {
+    tools.forEach((tool, index) => {
         const span = createElement({
             tag: "span",
             classNames: ["tech-stack__tools-icon"],
@@ -44,6 +50,11 @@ export default function TechStackTools({ tools } = {}) {
                 title: tool.tool,
             },
         });
+
+        fadeInObserver(
+            span,
+            `animated-element--fade-in-${index % 2 === 0 ? "top" : "bottom"}`
+        );
 
         append(toolsIcons, [span]);
     });

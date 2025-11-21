@@ -1,6 +1,6 @@
 import { createDiv } from "../../js/utils/createElementsHelper";
 import { append } from "../../js/utils/domHelpers";
-import { validateProp } from "../../js/utils/utils";
+import { fadeInObserver, validateProp } from "../../js/utils/utils";
 import Card from "./Card/card";
 import "./cards.css";
 export default function Cards({ data = [], classNames = [] } = {}) {
@@ -25,12 +25,19 @@ export default function Cards({ data = [], classNames = [] } = {}) {
         classNames: ["cards", ...classNames],
     });
 
-    const cards = data.map((card) =>
-        Card({
+    const cards = data.map((card, index) => {
+        const cardItem = Card({
             text: card.title,
             icon: card.svg,
-        })
-    );
+        });
+
+        fadeInObserver(
+            cardItem,
+            `animated-element--fade-in-${index % 2 === 0 ? "top" : "bottom"}`
+        );
+
+        return cardItem;
+    });
 
     cards.forEach((card) => append(container, [card]));
 

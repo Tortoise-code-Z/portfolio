@@ -4,7 +4,7 @@ import {
     createSpan,
 } from "../../js/utils/createElementsHelper";
 import { append } from "../../js/utils/domHelpers";
-import { validateProp } from "../../js/utils/utils";
+import { fadeInObserver, validateProp } from "../../js/utils/utils";
 import "./floatingTitle.css";
 
 export default function FloatingTitle({
@@ -38,8 +38,6 @@ export default function FloatingTitle({
         }
     });
 
-    console.log("typeof top", typeof top, 0);
-
     // options of each props
     const validHTags = [1, 2, 3, 4, 5, 6];
     const validThemes = ["dark", "light"];
@@ -58,10 +56,15 @@ export default function FloatingTitle({
     const container = createDiv({
         classNames: [
             "floating-title",
-            "floating-title--animation",
             upperCase ? "floating-title__text--upperCase" : null,
         ].filter(Boolean),
     });
+
+    fadeInObserver(
+        container,
+        "animated-element--fade-in-right",
+        "floating-title--animation"
+    );
 
     if (top || top === 0 || left || left === 0) {
         container.style.position = "absolute";

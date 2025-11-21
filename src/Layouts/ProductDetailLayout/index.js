@@ -2,7 +2,11 @@ import {
     createElement,
     createFragment,
 } from "../../js/utils/createElementsHelper";
-import { navbarObserver, warningUnknownKeys } from "../../js/utils/utils";
+import {
+    fadeInObserver,
+    navbarObserver,
+    warningUnknownKeys,
+} from "../../js/utils/utils";
 import Navbar from "../../components/Navbar/navbar.js";
 import { append } from "../../js/utils/domHelpers.js";
 import cloneTemplate from "../../js/utils/cloneTemplate.js";
@@ -34,9 +38,17 @@ export function ProductDetailLayout({} = {}) {
         "proyect-detail-footer-template"
     ).querySelector(".footer-proyect-detail");
 
+    const thanks = footer.querySelector(".footer-proyect-detail__thanks");
+    const readme = footer.querySelector(".footer-proyect-detail__readme");
+
+    fadeInObserver(thanks, "animated-element--fade-in-right");
+    fadeInObserver(readme, "animated-element--fade-in-left");
+
     navbarObserver(footer);
 
     const actions = footer.querySelector(".footer-proyect-detail__actions");
+
+    fadeInObserver(actions, "animated-element--fade-in-top");
 
     const id = window.location.href.split("/").pop();
 
