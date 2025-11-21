@@ -10,5 +10,10 @@
   },
   "devDependencies": {
     "vite": "^6.0.1"
+  },
+  "dependencies": {
+    "colorthief": "^2.6.0",
+    "prismjs": "^1.30.0",
+    "shell-io": "github:Tortoise-code-Z/Shell-io"
   }
 }

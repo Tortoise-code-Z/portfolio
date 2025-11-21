@@ -32,6 +32,10 @@ const bbdd = {
         {
             id: 1,
             name: "Chessmate",
+            emphasisName: {
+                name: ["Chess", "mate"],
+                color: "#D56719",
+            },
             shortDescription: "Página de aprendizaje de ajedrez",
             about: {
                 description: [
@@ -77,17 +81,17 @@ const bbdd = {
             techStack: {
                 tools: {
                     fastTools: [
-                        { id: 1, tool: tools.react },
-                        { id: 2, tool: tools.ts },
-                        { id: 3, tool: tools.git },
+                        { id: 1, tool: tools.react, icon: svg.react },
+                        { id: 2, tool: tools.ts, icon: svg.ts },
+                        { id: 3, tool: tools.git, icon: svg.git },
                     ],
                     allTools: [
-                        { id: 1, tool: tools.react },
-                        { id: 2, tool: tools.ts },
-                        { id: 3, tool: tools.git },
-                        { id: 4, tool: tools.vite },
-                        { id: 5, tool: tools.npm },
-                        { id: 6, tool: tools.ia },
+                        { id: 1, tool: tools.react, icon: svg.react },
+                        { id: 2, tool: tools.ts, icon: svg.ts },
+                        { id: 3, tool: tools.git, icon: svg.git },
+                        { id: 4, tool: tools.vite, icon: svg.vite },
+                        { id: 5, tool: tools.npm, icon: svg.npm },
+                        { id: 6, tool: tools.ia, icon: svg.chatgpt },
                     ],
                 },
                 librariesUtils: [
@@ -102,9 +106,13 @@ const bbdd = {
                     { id: 9, item: librariesUtils.localstorage },
                 ],
                 stylesDesign: [
-                    { id: 1, item: stylesDesign.cssModule },
-                    { id: 2, item: stylesDesign.figma },
-                    { id: 3, item: stylesDesign.responsive },
+                    { id: 1, item: stylesDesign.cssModule, icon: svg.css },
+                    { id: 2, item: stylesDesign.figma, icon: svg.figma },
+                    {
+                        id: 3,
+                        item: stylesDesign.responsive,
+                        icon: svg.responsive,
+                    },
                 ],
             },
             development_process: {
@@ -136,9 +144,8 @@ const bbdd = {
                     },
                 ],
                 warningMsg: {
-                    title: "En la versión desplegada en GitHub Pages, se utiliza createHashRouter porque GitHub solo sirve contenido estático y no permite redirecciones dinámicas a rutas profundas.",
                     description:
-                        "Sin embargo, en desarrollo local, puedes cambiar a createBrowserRouter para probar la navegación real con URLs limpias. Esto te permitirá probar protección de rutas y navegación directa (/dashboard, /course/:id, /classroom) como en un entorno de backend real.",
+                        "En la versión desplegada en GitHub Pages, se utiliza createHashRouter porque GitHub solo sirve contenido estático y no permite redirecciones dinámicas a rutas profundas. Sin embargo, en desarrollo local, puedes cambiar a createBrowserRouter para probar la navegación real con URLs limpias. Esto te permitirá probar protección de rutas y navegación directa (/dashboard, /course/:id, /classroom) como en un entorno de backend real.",
                 },
             },
             images: {
@@ -148,65 +155,76 @@ const bbdd = {
                         src: "chessmate/screenshot-index.png",
                         width: "1920",
                         heigth: "922",
+                        alt: "Home",
                     },
                     {
                         id: 2,
                         src: "chessmate/screenshot-classroom.png",
                         width: "1920",
                         heigth: "911",
+                        alt: "Classroom",
                     },
                     {
                         id: 3,
                         src: "chessmate/screenshot-contact.png",
                         width: "1920",
                         heigth: "911",
+                        alt: "Contact",
                     },
                     {
                         id: 4,
                         src: "chessmate/screenshot-course-detail.png",
                         width: "1920",
                         heigth: "914",
+                        alt: "Course Detail",
                     },
                     {
                         id: 5,
                         src: "chessmate/screenshot-course-obtained-classroom.png",
                         width: "1920",
                         heigth: "909",
+                        alt: "Course Obtained Classroom",
                     },
                     {
                         id: 6,
                         src: "chessmate/screenshot-courses.png",
                         width: "1920",
                         heigth: "916",
+                        alt: "Courses",
                     },
                     {
                         id: 7,
                         src: "chessmate/screenshot-dashboard.png",
                         width: "1920",
                         heigth: "906",
+                        alt: "Dashboard",
                     },
                     {
                         id: 8,
                         src: "chessmate/screenshot-login.png",
                         width: "1920",
                         heigth: "911",
+                        alt: "Login",
                     },
                     {
                         id: 9,
                         src: "chessmate/screenshot-register.png",
                         width: "1920",
                         heigth: "909",
+                        alt: "Register",
                     },
                 ],
                 backgroundImg: {
                     src: "Chessmate.webp",
                     width: "1920",
                     heigth: "922",
+                    alt: "Chessmate",
                 },
                 workImg: {
                     src: "Chessmate-Caricatura.webp",
                     width: "1280",
                     heigth: "1280",
+                    alt: "Chessmate",
                 },
             },
             config: {
@@ -230,7 +248,85 @@ const bbdd = {
                     {
                         id: 3,
                         title: "Código para ejecutar en la consola del navegador",
-                        description: "",
+                        type: "code",
+                        description: `// Simular base de datos de cursos en localStorage
+const bbdd = JSON.parse(localStorage.getItem("DATA_BASE"));
+
+const newCourses = bbdd.courses.map((c) => {
+    if (c.courseID === 1) {
+        return {
+            ...c,
+            courseID: null,
+        };
+    }
+
+    if (c.courseID === 3) {
+        return { ...c, price: null };
+    }
+
+    if (c.courseID === 2) {
+        return {
+            ...c,
+            content: {
+                ...c.content,
+                themes: c.content.themes.map((t) => {
+                    if (t.id === 1) return { ...t, id: null };
+                    if (t.id === 2) {
+                        return {
+                            ...t,
+                            content: t.content.map((c) =>
+                                c.id === 1 ? { ...c, id: null } : c
+                            ),
+                        };
+                    }
+                    return t;
+                }),
+            },
+            authors: c.authors.map((a, i) => (i === 0 ? null : a)),
+        };
+    }
+    return c;
+});
+
+const newDefaultCourses = bbdd.defaultCourses.map((c) => {
+    if (c.courseID === 1) {
+        return { ...c, courseID: null };
+    }
+
+    if (c.courseID === 2) {
+        return {
+            ...c,
+            content: {
+                ...c.content,
+                themes: c.content.themes.map((t) =>
+                    t.id === 1 ? { ...t, description: null } : t
+                ),
+            },
+        };
+    }
+
+    return c;
+});
+
+const newComments = bbdd.comments.map((c) =>
+    c.id === 27 ? { ...c, id: null } : c
+);
+
+const newBBDD = {
+    ...bbdd,
+    courses: newCourses,
+    defaultCourses: newDefaultCourses,
+    comments: newComments,
+};
+
+// Guardar en localStorage
+localStorage.setItem("DATA_BASE", JSON.stringify(newBBDD));
+
+// Confirmar que los datos se guardaron correctamente
+console.log(
+    "Cursos actualizados en localStorage:",
+    JSON.parse(localStorage.getItem("DATA_BASE"))
+);`,
                     },
                     {
                         id: 4,
@@ -248,11 +344,10 @@ const bbdd = {
                         id: 6,
                         title: "Ver feedback en cursos por obtenidos/comprados",
                         description:
-                            "Ingresa a 'Aperturas fundamentales'(ID: 2, previamente comprado en el Paso 2) para observar:Mensajes de feedback.Temas desactivados por seguridad.",
+                            "Ingresa a 'Aperturas fundamentales'(ID: 2, previamente comprado en el Paso 2) para observar: Mensajes de feedback.Temas desactivados por seguridad.",
                     },
                 ],
                 noteMsg: {
-                    title: "Nota",
                     description:
                         "Para mantener la interfaz limpia, no se han forzado errores en todos los elementos, solo en algunos, con el objetivo de mostrar la funcionalidad de manera clara.",
                 },
@@ -265,6 +360,10 @@ const bbdd = {
         {
             id: 2,
             name: "Portfolio Web",
+            emphasisName: {
+                name: ["Port", "folio"],
+                color: "#1958D5",
+            },
             shortDescription:
                 "Sitio personal de presentación y proyectos de Víctor Pérez",
             about: {
@@ -306,31 +405,35 @@ const bbdd = {
                     },
                 ],
             },
-            projectRole: typeWeb.private,
+            projectRole: typeWeb.frontend,
             year: "2025",
             visibility: visibility.private,
             techStack: {
                 tools: {
                     fastTools: [
-                        { id: 1, tool: tools.html },
-                        { id: 2, tool: tools.css },
-                        { id: 3, tool: tools.js },
+                        { id: 1, tool: tools.html, icon: svg.html },
+                        { id: 2, tool: tools.css, icon: svg.css },
+                        { id: 3, tool: tools.js, icon: svg.react },
                     ],
                     allTools: [
-                        { id: 1, tool: tools.html },
-                        { id: 2, tool: tools.css },
-                        { id: 3, tool: tools.js },
-                        { id: 4, tool: tools.vite },
-                        { id: 5, tool: tools.git },
-                        { id: 6, tool: tools.npm },
-                        { id: 7, tool: tools.figma },
-                        { id: 8, tool: tools.ia },
+                        { id: 1, tool: tools.html, icon: svg.html },
+                        { id: 2, tool: tools.css, icon: svg.css },
+                        { id: 3, tool: tools.js, icon: svg.js },
+                        { id: 4, tool: tools.vite, icon: svg.vite },
+                        { id: 5, tool: tools.git, icon: svg.git },
+                        { id: 6, tool: tools.npm, icon: svg.npm },
+                        { id: 7, tool: tools.figma, icon: svg.figma },
+                        { id: 8, tool: tools.ia, icon: svg.chatgpt },
                     ],
                 },
-                librariesUtils: [],
+                librariesUtils: [{ id: 1, item: librariesUtils.prism }],
                 stylesDesign: [
-                    { id: 1, item: stylesDesign.figma },
-                    { id: 2, item: stylesDesign.responsive },
+                    { id: 1, item: stylesDesign.figma, icon: svg.figma },
+                    {
+                        id: 2,
+                        item: stylesDesign.responsive,
+                        icon: svg.responsive,
+                    },
                 ],
             },
             development_process: {
@@ -362,7 +465,6 @@ const bbdd = {
                     },
                 ],
                 noteMsg: {
-                    title: "Nota",
                     description:
                         "Este portfolio está construido íntegramente en frontend. No utiliza frameworks ni dependencias complejas para mantener su rendimiento óptimo y simplicidad de mantenimiento.",
                 },
@@ -374,47 +476,55 @@ const bbdd = {
                         src: "screenshot-hero.png",
                         width: "1920",
                         heigth: "911",
+                        alt: "Hero",
                     },
                     {
                         id: 2,
                         src: "screenshot-about.png",
                         width: "1920",
                         heigth: "913",
+                        alt: "About",
                     },
                     {
                         id: 3,
                         src: "screenshot-works-1.png",
                         width: "1920",
                         heigth: "907",
+                        alt: "Works-1",
                     },
                     {
                         id: 4,
                         src: "screenshot-works-2.png",
                         width: "1920",
                         heigth: "919",
+                        alt: "Works-2",
                     },
                     {
                         id: 5,
                         src: "screenshot-skills.png",
                         width: "1920",
                         heigth: "909",
+                        alt: "Skills",
                     },
                     {
                         id: 6,
                         src: "screenshot-career.png",
                         width: "1920",
                         heigth: "911",
+                        alt: "Career",
                     },
                 ],
                 backgroundImg: {
                     src: "Portfolio-Proyect.webp",
                     width: "1920",
                     heigth: "911",
+                    alt: "Portfolio",
                 },
                 workImg: {
                     src: "Portfolio-Caricatura1.webp",
                     width: "1280",
                     heigth: "1280",
+                    alt: "Portfolio",
                 },
             },
             config: {
@@ -457,7 +567,11 @@ const bbdd = {
         {
             id: 3,
             name: "Astrohub",
-            shortDescription: "Aplicación web completa sobre el universo.",
+            emphasisName: {
+                name: ["Astro", "hub"],
+                color: "#4819D5",
+            },
+            shortDescription: "Aplicación web completa sobre el universo",
             about: {
                 description: [
                     "Astrohub es una aplicación web dinámica y completa desarrollada como proyecto final del módulo de desarrollo web del curso FullStack, MasterD.",
@@ -504,26 +618,30 @@ const bbdd = {
             techStack: {
                 tools: {
                     fastTools: [
-                        { id: 1, tool: tools.html },
-                        { id: 2, tool: tools.css },
-                        { id: 3, tool: tools.js },
-                        { id: 4, tool: tools.php },
-                        { id: 5, tool: tools.mysql },
-                        { id: 6, tool: tools.apache },
+                        { id: 1, tool: tools.html, icon: svg.html },
+                        { id: 2, tool: tools.css, icon: svg.css },
+                        { id: 3, tool: tools.js, icon: svg.js },
+                        { id: 4, tool: tools.php, icon: svg.php },
+                        { id: 5, tool: tools.mysql, icon: svg.mysql },
+                        { id: 6, tool: tools.apache, icon: svg.apache },
                     ],
                     allTools: [
-                        { id: 1, tool: tools.html },
-                        { id: 2, tool: tools.css },
-                        { id: 3, tool: tools.js },
-                        { id: 4, tool: tools.php },
-                        { id: 5, tool: tools.mysql },
-                        { id: 8, tool: tools.apache },
+                        { id: 1, tool: tools.html, icon: svg.html },
+                        { id: 2, tool: tools.css, icon: svg.css },
+                        { id: 3, tool: tools.js, icon: svg.js },
+                        { id: 4, tool: tools.php, icon: svg.php },
+                        { id: 5, tool: tools.mysql, icon: svg.mysql },
+                        { id: 8, tool: tools.apache, icon: svg.apache },
                     ],
                 },
                 librariesUtils: [],
                 stylesDesign: [
-                    { id: 1, item: stylesDesign.figma },
-                    { id: 2, item: stylesDesign.responsive },
+                    { id: 1, item: stylesDesign.figma, icon: svg.figma },
+                    {
+                        id: 2,
+                        item: stylesDesign.responsive,
+                        icon: svg.responsive,
+                    },
                 ],
             },
             development_process: {
@@ -555,95 +673,108 @@ const bbdd = {
                     },
                 ],
                 warningMsg: {
-                    title: "El proyecto funciona en entorno local",
                     description:
-                        "Astrohub está diseñado para ejecutarse con XAMPP (Apache + PHP + MySQL). Para probarlo, es necesario importar la base de datos y acceder desde http://localhost/astrohub/.",
+                        "El proyecto funciona en entorno local. Astrohub está diseñado para ejecutarse con XAMPP (Apache + PHP + MySQL). Para probarlo, es necesario importar la base de datos y acceder desde http://localhost/astrohub/.",
                 },
             },
             images: {
                 screenshots: [
                     {
                         id: 1,
-                        src: "screenshot-inicio.png",
+                        src: "astrohub/screenshot-inicio.png",
                         width: "1920",
                         heigth: "916",
+                        alt: "Home",
                     },
                     {
                         id: 2,
-                        src: "screenshot-noticias.png",
+                        src: "astrohub/screenshot-noticias.png",
                         width: "1920",
                         heigth: "913",
+                        alt: "News",
                     },
                     {
                         id: 3,
-                        src: "screenshot-citas.png",
+                        src: "astrohub/screenshot-citas.png",
                         width: "1920",
                         heigth: "911",
+                        alt: "Cites",
                     },
                     {
                         id: 4,
-                        src: "screenshot--login.png",
+                        src: "astrohub/screenshot--login.png",
                         width: "1920",
                         heigth: "914",
+                        alt: "Login",
                     },
                     {
                         id: 5,
-                        src: "screenshot-registro.png",
+                        src: "astrohub/screenshot-registro.png",
                         width: "1920",
                         heigth: "911",
+                        alt: "Register",
                     },
                     {
                         id: 6,
-                        src: "screenshot-perfil.png",
+                        src: "astrohub/screenshot-perfil.png",
                         width: "1920",
                         heigth: "913",
+                        alt: "Profile",
                     },
                     {
                         id: 7,
-                        src: "screenshot-admin-usuarios.png",
+                        src: "astrohub/screenshot-admin-usuarios.png",
                         width: "1920",
                         heigth: "916",
+                        alt: "Users Admin",
                     },
                     {
                         id: 8,
-                        src: "screenshot-admin-noticias.png",
+                        src: "astrohub/screenshot-admin-noticias.png",
                         width: "1920",
                         heigth: "914",
+                        alt: "News Admin",
                     },
                     {
                         id: 9,
-                        src: "screenshot-admin-citas.png",
+                        src: "astrohub/screenshot-admin-citas.png",
                         width: "1920",
                         heigth: "911",
+                        alt: "Cites Admin",
                     },
                     {
                         id: 10,
-                        src: "screenshot-admin-editar-usuarios.png",
+                        src: "astrohub/screenshot-admin-editar-usuarios.png",
                         width: "1920",
                         heigth: "911",
+                        alt: "Edit Users Admin",
                     },
                     {
                         id: 11,
-                        src: "screenshot-admin-editar-noticias.png",
+                        src: "astrohub/screenshot-admin-editar-noticias.png",
                         width: "1920",
                         heigth: "913",
+                        alt: "Edit News Admin",
                     },
                     {
                         id: 12,
-                        src: "screenshot-admin-editar-cita.png",
+                        src: "astrohub/screenshot-admin-editar-cita.png",
                         width: "1920",
                         heigth: "913",
+                        alt: "Edit Cite Admin",
                     },
                 ],
                 backgroundImg: {
                     src: "Astrohub-Proyect.webp",
                     width: "1920",
                     heigth: "911",
+                    alt: "Astrohub",
                 },
                 workImg: {
                     src: "Astrohub-Proyect-Caricature.webp",
                     width: "1280",
                     heigth: "1280",
+                    alt: "Astrohub",
                 },
             },
             config: {
@@ -690,14 +821,13 @@ const bbdd = {
                     },
                 ],
                 noteMsg: {
-                    title: "Nota",
                     description:
                         "Este proyecto fue desarrollado con fines educativos y está pensado para su ejecución local. Puede ser modificado libremente para aprendizaje o demostraciones personales.",
                 },
             },
             links: {
                 github: "https://github.com/Tortoise-code-Z/Astrohub",
-                demo:null,
+                demo: null,
             },
         },
     ],
@@ -727,7 +857,7 @@ const bbdd = {
 
     career: [
         {
-            academy: ["MasterD", "Academy"],
+            academy: "MasterD#Academy",
             curse: "Fullstack programing web developer",
             tools: [
                 "html",
@@ -750,7 +880,7 @@ const bbdd = {
             },
         },
         {
-            academy: ["Hola", "mundo", "academy"],
+            academy: "Hola#Mundo#Academy",
             curse: "React / Typescript course",
             tools: ["react", "typescript"],
             note: {

@@ -1,0 +1,76 @@
+import InfiniteSlider from "../../../../components/InfiniteSlider/infiniteSlider";
+import { createElement } from "../../../../js/utils/createElementsHelper";
+import { append } from "../../../../js/utils/domHelpers";
+import {
+    fadeInObserver,
+    validateProp,
+    warningUnknownKeys,
+} from "../../../../js/utils/utils";
+import "./index.css";
+
+export default function TechStackDesign({ designs } = {}) {
+    warningUnknownKeys(arguments, ["designs"]);
+
+    // options of each prop
+    // const validProps = [];
+
+    // validations
+    validateProp("designs", designs, "array");
+
+    if (designs.length === 0) return null;
+
+    const container = createElement({
+        tag: "div",
+        classNames: ["pd-s-tech-stack__design"],
+    });
+
+    const designTitle = InfiniteSlider({
+        slideComponent: (data) => {
+            return createElement({
+                tag: "h3",
+                classNames: ["pd-s-tech-stack__design-title"],
+                innerText: data.data,
+            });
+        },
+        dataSlides: ["Estilos y diseño"],
+        duplicationSlides: 5,
+    });
+
+    fadeInObserver(designTitle, `animated-element--fade-in-left`);
+
+    const designTargets = createElement({
+        tag: "div",
+        classNames: ["pd-s-tech-stack__design-targets"],
+    });
+
+    designs.forEach((design, index) => {
+        const target = createElement({
+            tag: "div",
+            classNames: ["tech-stack__design-target"],
+        });
+
+        const title = createElement({
+            tag: "h4",
+            classNames: ["tech-stack__design-title"],
+            innerText: design.item,
+        });
+
+        const span = createElement({
+            tag: "span",
+            classNames: ["tech-stack__design-icon"],
+            innerHTML: design.icon,
+        });
+
+        fadeInObserver(
+            target,
+            `animated-element--fade-in-${index % 2 === 0 ? "top" : "bottom"}`
+        );
+
+        append(target, [title, span]);
+        append(designTargets, [target]);
+    });
+
+    append(container, [designTitle, designTargets]);
+
+    return container;
+}
