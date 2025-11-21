@@ -1,6 +1,8 @@
 import cloneTemplate from "../../../../js/utils/cloneTemplate";
 import {
     attachEvent,
+    createIntersectionObserver,
+    fadeInObserver,
     navbarObserver,
     warningUnknownKeys,
 } from "../../../../js/utils/utils";
@@ -14,7 +16,12 @@ export default function Hero({} = {}) {
         ".hero"
     );
 
+    const title = hero.querySelector(".hero__title");
+    const dev = hero.querySelector(".hero__dev");
+
     navbarObserver(hero);
+    fadeInObserver(title, "animated-element--fade-in-right");
+    fadeInObserver(dev, "animated-element--fade-in-left");
 
     return hero;
 }

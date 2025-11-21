@@ -1,6 +1,7 @@
 import { createElement } from "../../../../../js/utils/createElementsHelper";
 import { append } from "../../../../../js/utils/domHelpers";
 import {
+    fadeInObserver,
     validateProp,
     warningUnknownKeys,
 } from "../../../../../js/utils/utils";
@@ -23,6 +24,11 @@ export default function Skill({ skill, flexReverse = false } = {}) {
             flexReverse ? "s-skills__skill--reverse" : null,
         ].filter(Boolean),
     });
+
+    fadeInObserver(
+        container,
+        `animated-element--fade-in-${flexReverse ? "left" : "right"}`
+    );
 
     const title = createElement({
         tag: "h3",

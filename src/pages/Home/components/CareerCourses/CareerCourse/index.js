@@ -1,4 +1,5 @@
 import {
+    fadeInObserver,
     validateProp,
     warningUnknownKeys,
 } from "../../../../../js/utils/utils";
@@ -36,10 +37,19 @@ export default function CareerCourse({ data, directionSlide = "left" } = {}) {
         direction: directionSlide,
     });
 
+    fadeInObserver(acadaemy, `animated-element--fade-in-${directionSlide}`);
+
     const dataCourse = createElement({
         tag: "div",
         classNames: ["s-career__course-data"],
     });
+
+    fadeInObserver(
+        dataCourse,
+        `animated-element--fade-in-${
+            directionSlide === "left" ? "right" : "left"
+        }`
+    );
 
     const courseName = createElement({
         tag: "h3",

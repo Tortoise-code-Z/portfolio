@@ -51,6 +51,27 @@ export const createIntersectionObserver = (
     elements.forEach((element) => observer.observe(element));
 };
 
+export const fadeInObserver = (element, classToAdd, currentAnimatedClass) => {
+    element.classList.add("animated-element");
+    createIntersectionObserver(
+        [element],
+        (entry) => {
+            if (entry.isIntersecting) {
+                element.classList.remove("animated-element");
+                entry.target.classList.add(classToAdd);
+                attachEvent(entry.target, "animationend", () => {
+                    entry.target.classList.remove(classToAdd);
+                    if (currentAnimatedClass)
+                        entry.target.classList.add(currentAnimatedClass);
+                });
+            }
+        },
+        [],
+        {},
+        true
+    );
+};
+
 export const navbarObserver = (element) => {
     setTimeout(() => {
         createIntersectionObserver(
@@ -151,8 +172,6 @@ export const attachEvent = (element, event, functionToAttach) => {
 };
 
 export function validateProp(name, value, type, allowedValues = null) {
-    console.log("first", name, value, type, allowedValues);
-
     // Permitir múltiples tipos (por ejemplo, ['string', 'number'])
     const types = Array.isArray(type) ? type : [type];
 

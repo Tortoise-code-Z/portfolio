@@ -1,5 +1,6 @@
 import { getImage } from "../../../../../js/utils/images.js";
 import {
+    fadeInObserver,
     validateProp,
     warningUnknownKeys,
 } from "../../../../../js/utils/utils";

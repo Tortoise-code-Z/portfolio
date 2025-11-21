@@ -1,7 +1,11 @@
 import InfiniteSlider from "../../../../components/InfiniteSlider/infiniteSlider";
 import { createElement } from "../../../../js/utils/createElementsHelper";
 import { append } from "../../../../js/utils/domHelpers";
-import { validateProp, warningUnknownKeys } from "../../../../js/utils/utils";
+import {
+    fadeInObserver,
+    validateProp,
+    warningUnknownKeys,
+} from "../../../../js/utils/utils";
 import "./index.css";
 
 export default function TechStackDesign({ designs } = {}) {
@@ -32,12 +36,14 @@ export default function TechStackDesign({ designs } = {}) {
         duplicationSlides: 5,
     });
 
+    fadeInObserver(designTitle, `animated-element--fade-in-left`);
+
     const designTargets = createElement({
         tag: "div",
         classNames: ["pd-s-tech-stack__design-targets"],
     });
 
-    designs.forEach((design) => {
+    designs.forEach((design, index) => {
         const target = createElement({
             tag: "div",
             classNames: ["tech-stack__design-target"],
@@ -54,6 +60,11 @@ export default function TechStackDesign({ designs } = {}) {
             classNames: ["tech-stack__design-icon"],
             innerHTML: design.icon,
         });
+
+        fadeInObserver(
+            target,
+            `animated-element--fade-in-${index % 2 === 0 ? "top" : "bottom"}`
+        );
 
         append(target, [title, span]);
         append(designTargets, [target]);

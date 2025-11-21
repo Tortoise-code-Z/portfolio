@@ -6,6 +6,7 @@ import { createElement } from "../../../js/utils/createElementsHelper";
 import { append } from "../../../js/utils/domHelpers";
 import {
     attachEvent,
+    fadeInObserver,
     navbarObserver,
     validateProp,
     warningUnknownKeys,
@@ -49,12 +50,17 @@ export default function AditionalConfigs({ id } = {}) {
         classNames: ["pd-s-config__desc"],
     });
 
-    bbdd.works[id - 1].config.description.forEach((desc) => {
+    bbdd.works[id - 1].config.description.forEach((desc, index) => {
         const item = createElement({
             tag: "p",
             classNames: ["pd-s-config__desc-paragraph"],
             innerText: desc,
         });
+
+        fadeInObserver(
+            item,
+            `animated-element--fade-in-${index % 2 === 0 ? "left" : "right"}`
+        );
 
         append(description, [item]);
     });
@@ -89,6 +95,9 @@ export default function AditionalConfigs({ id } = {}) {
             tag: "h3",
             classNames: ["config__step-title"],
         });
+
+        fadeInObserver(title, `animated-element--fade-in-bottom`);
+        fadeInObserver(item, `animated-element--fade-in-bottom`);
 
         if (step.type === "code") {
             const pre = createElement({

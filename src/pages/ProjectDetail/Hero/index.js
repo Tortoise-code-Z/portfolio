@@ -5,6 +5,7 @@ import cloneTemplate from "../../../js/utils/cloneTemplate";
 import { append } from "../../../js/utils/domHelpers";
 import {
     attachEvent,
+    fadeInObserver,
     navbarObserver,
     warningUnknownKeys,
 } from "../../../js/utils/utils";
@@ -29,6 +30,11 @@ export default function Hero({ id } = {}) {
     const descTypeWeb = hero.querySelector(".pd-hero__desc-type-web");
     const typeProyectYear = hero.querySelector(".pd-hero__type-proyect-year");
     const actions = hero.querySelector(".pd-hero__actions");
+
+    fadeInObserver(title, `animated-element--fade-in-right`);
+    fadeInObserver(descTypeWeb, `animated-element--fade-in-left`);
+    fadeInObserver(typeProyectYear, `animated-element--fade-in-right`);
+    fadeInObserver(actions, `animated-element--fade-in-top`);
 
     title.innerHTML = `${work.emphasisName.name[0]}<span style= "color: ${work.emphasisName.color}" class="pd-hero__title-accent">${work.emphasisName.name[1]}</span>`;
     descTypeWeb.innerText = `${work.shortDescription} · ${work.projectRole}`;

@@ -1,6 +1,7 @@
 import "./index.css";
 import {
     attachEvent,
+    fadeInObserver,
     navbarObserver,
     validateProp,
     warningUnknownKeys,
@@ -46,12 +47,17 @@ export default function AboutProject({ id } = {}) {
         classNames: ["pd-s-about__desc"],
     });
 
-    work.about.description.forEach((paragraph) => {
+    work.about.description.forEach((paragraph, index) => {
         const paragraphElement = createElement({
             tag: "p",
             classNames: ["pd-s-about__desc-paragraph"],
             innerText: paragraph,
         });
+
+        fadeInObserver(
+            paragraphElement,
+            `animated-element--fade-in-${index % 2 === 0 ? "left" : "right"}`
+        );
 
         append(description, [paragraphElement]);
     });

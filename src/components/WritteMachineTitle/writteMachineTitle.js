@@ -2,6 +2,7 @@ import { createHtag, createSpan } from "../../js/utils/createElementsHelper";
 import { append } from "../../js/utils/domHelpers";
 import {
     createIntersectionObserver,
+    fadeInObserver,
     validateProp,
     writteDeleteMachine,
 } from "../../js/utils/utils";
@@ -40,6 +41,8 @@ export default function WritteMachineTitle({
         level: 2,
         classNames: ["writte-machine-title", ...classNames],
     });
+
+    fadeInObserver(title, "animated-element--fade-in-right");
 
     // fix-span
     const fixSpan = createSpan({
