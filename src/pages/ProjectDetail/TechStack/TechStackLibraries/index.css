@@ -22,7 +22,18 @@
     gap: 20px;
 }
 
+.pd-s-tech-stack__libraries-tags:hover .pd-s-tech-stack__libraries-tag {
+    opacity: 0.5;
+    transform: scale(0.8);
+}
+
+.pd-s-tech-stack__libraries-tag:hover {
+    opacity: 1 !important;
+    transform: scale(1.1) !important;
+}
+
 .pd-s-tech-stack__libraries-tag {
+    transition: all ease 0.3s;
     flex: 1;
     min-width: max-content;
     max-width: 200px;

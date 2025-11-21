@@ -25,7 +25,18 @@
     padding: 0 var(--padding-page);
 }
 
+.pd-s-tech-stack__design-targets:hover .tech-stack__design-target {
+    opacity: 0.5;
+    transform: scale(0.9);
+}
+
+.tech-stack__design-target:hover {
+    opacity: 1 !important;
+    transform: scale(1.1) !important;
+}
+
 .tech-stack__design-target {
+    transition: 0.3s all ease;
     width: fit-content;
     display: flex;
     flex-direction: column;
