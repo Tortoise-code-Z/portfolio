@@ -7,7 +7,6 @@ import {
     navbarObserver,
     warningUnknownKeys,
 } from "../../js/utils/utils";
-import Navbar from "../../components/Navbar/navbar.js";
 import { append } from "../../js/utils/domHelpers.js";
 import cloneTemplate from "../../js/utils/cloneTemplate.js";
 import Link from "../../components/Link/link.js";
@@ -15,6 +14,7 @@ import { svg } from "../../const/database/bbdd_consts.js";
 import "./index.css";
 import template from "./index.html?raw";
 import bbdd from "../../const/database/bbdd.js";
+import { NavbarProductDetail } from "../../components/Navbar/navbar.js";
 
 export function ProductDetailLayout({} = {}) {
     warningUnknownKeys(arguments, []);
@@ -26,7 +26,7 @@ export function ProductDetailLayout({} = {}) {
         classNames: ["header"],
     });
 
-    append(header, [Navbar()]);
+    append(header, [NavbarProductDetail()]);
 
     const main = createElement({
         tag: "main",
