@@ -29,6 +29,7 @@ export default function TechStack({ id } = {}) {
         classNames: ["pd-s-tech-stack"],
         attributes: {
             "data-navbar-color": "black",
+            id: "tech-stack",
         },
     });
 
