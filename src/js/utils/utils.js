@@ -1,67 +1,28 @@
-export const attachEvent = (element, event, functionToAttach) => {
-    element.addEventListener(event, functionToAttach);
-};
+export function scrollVisibilitty(element, classToHidden) {
+    if (!element instanceof HTMLElement && !classToHidden instanceof String)
+        return;
 
-export const addClass = (element, classToAdd) => {
-    element.classList.add(classToAdd);
-};
+    let lastScrollPosition = window.scrollY;
 
-export const removeClass = (element, classToRemove) => {
-    element.classList.remove(classToRemove);
-};
+    window.addEventListener("scroll", () => {
+        const currentScrollPosition = window.scrollY;
 
-export const replaceClass = (element, newClass, classToReplace) => {
-    element.classList.replace(newClass, classToReplace);
-};
+        const scrollMargin = 50;
 
-export const containsClass = (element, classToReview) => {
-    element.classList.contains(classToReview);
-};
+        if (
+            currentScrollPosition > lastScrollPosition &&
+            currentScrollPosition > scrollMargin
+        ) {
+            element.classList.add(classToHidden);
+        } else if (currentScrollPosition < lastScrollPosition) {
+            element.classList.remove(classToHidden);
+        }
 
-export const setStyle = (element, styleToApply, value) => {
-    element.style[styleToApply] = value;
-};
+        lastScrollPosition = currentScrollPosition;
+    });
+}
 
-export const getWindowScrollTop = () => {
-    return Math.floor(window.scrollY);
-};
-
-export const getOffsetTop = (element) => {
-    return element.offsetTop;
-};
-
-export const getClientHeight = (element) => {
-    return element.clientHeight;
-};
-
-export const getOffsetBottom = (element) => {
-    return element.offsetTop + element.clientHeight;
-};
-
-export const isOnRange = (valueToCheck, min, max) => {
-    return valueToCheck >= min && valueToCheck <= max;
-};
-
-export const isEqualMajor = (valueToCheck, valueToCompare) => {
-    return valueToCheck >= valueToCompare;
-};
-
-export const isMajor = (valueToCheck, valueToCompare) => {
-    return valueToCheck > valueToCompare;
-};
-
-export const isEqualMinor = (valueToCheck, valueToCompare) => {
-    return valueToCheck <= valueToCompare;
-};
-
-export const isMinor = (valueToCheck, valueToCompare) => {
-    return valueToCheck < valueToCompare;
-};
-
-export const setHTML = (element, htmlData) => {
-    element.innerHTML = htmlData;
-};
-
+// Modificación en tu archivo de utilidad:
 export const createIntersectionObserver = (
     elements,
     callback,
@@ -71,23 +32,96 @@ export const createIntersectionObserver = (
 ) => {
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                const itemParametersCallback = parametersCallback.find(
-                    (item) => item.element === entry.target
-                );
+            const itemParametersCallback = parametersCallback.find(
+                (item) => item?.element === entry?.target
+            );
 
-                if (itemParametersCallback) {
-                    callback(itemParametersCallback);
-                } else {
-                    callback(entry.target);
-                }
+            if (itemParametersCallback) {
+                callback(itemParametersCallback, entry); // Pasamos 'entry' también
+            } else {
+                callback(entry); // El 'entry' es el argumento principal
+            }
 
-                if (observeOnce) observer.unobserve(entry.target);
+            if (observeOnce && entry.isIntersecting) {
+                observer.unobserve(entry.target);
             }
         });
     }, options);
 
     elements.forEach((element) => observer.observe(element));
+};
+
+export const fadeInObserver = (element, classToAdd, currentAnimatedClass) => {
+    element.classList.add("animated-element");
+    createIntersectionObserver(
+        [element],
+        (entry) => {
+            if (entry.isIntersecting) {
+                element.classList.remove("animated-element");
+                entry.target.classList.add(classToAdd);
+                attachEvent(entry.target, "animationend", () => {
+                    entry.target.classList.remove(classToAdd);
+                    if (currentAnimatedClass)
+                        entry.target.classList.add(currentAnimatedClass);
+                });
+            }
+        },
+        [],
+        {},
+        true
+    );
+};
+
+export const navbarObserver = (element) => {
+    setTimeout(() => {
+        createIntersectionObserver(
+            [element],
+            (entry) => navbarObserverCallback(entry),
+            [],
+            { threshold: 0, rootMargin: "-100px 0px -90% 0px" },
+            false
+        );
+    }, 0);
+};
+
+export const navbarObserverCallback = (entry) => {
+    const navbar = document.querySelector(".navbar");
+    // Obtenemos el color requerido de la sección que acaba de cambiar de estado
+    const requiredColor = entry.target.getAttribute("data-navbar-color");
+
+    // La clase a añadir o quitar
+    const colorClass = `navbar--color-${requiredColor}`;
+
+    // La clase de color opuesto (asumiendo que solo tienes 'white' y 'black')
+    const oppositeColorClass =
+        requiredColor === "white"
+            ? "navbar--color-black"
+            : "navbar--color-white";
+
+    if (entry.isIntersecting) {
+        // Acción principal: Cuando la sección ENTRA
+        // ------------------------------------------
+
+        // Quitar el color opuesto (si existe)
+        if (navbar.classList.contains(oppositeColorClass)) {
+            navbar.classList.remove(oppositeColorClass);
+        }
+
+        // Añadir el color de la sección actual
+        navbar.classList.add(colorClass);
+
+        //
+    } else {
+        // Acción secundaria: Cuando la sección SALE
+        // -------------------------------------------
+        // Si la sección sale, NO HACEMOS NADA aquí.
+        // Esto es porque la *siguiente* sección (que estará entrando)
+        // o la *anterior* (que estará saliendo por el otro extremo)
+        // activará su propio 'entry.isIntersecting = true' y establecerá el color correcto.
+        // Si intentas cambiar el color en 'else' (salida),
+        // la barra parpadeará, porque dos secciones a la vez
+        // pueden estar 'no intersectando' por un momento.
+    }
 };
 
 export const writteDeleteMachine = async (data) => {
@@ -113,192 +147,107 @@ export const writteMachine = async (data) => {
     }
 };
 
-export const appendElement = (child, parent) => {
-    parent.appendChild(child);
+export const isOnRange = (valueToCheck, min, max) => {
+    return valueToCheck >= min && valueToCheck <= max;
 };
 
-export const setAttribute = (element, attribute, value) => {
-    element.setAttribute(attribute, value);
+export const isEqualMajor = (valueToCheck, valueToCompare) => {
+    return valueToCheck >= valueToCompare;
 };
 
-export const setText = (element, value) => {
-    element.innerText = value;
+export const isMajor = (valueToCheck, valueToCompare) => {
+    return valueToCheck > valueToCompare;
 };
 
-export const setClassName = (element, classNames = []) => {
-    element.className = classNames.join(" ");
+export const isEqualMinor = (valueToCheck, valueToCompare) => {
+    return valueToCheck <= valueToCompare;
 };
 
-export const createeElement = ({
-    tag = "",
-    classNames = [],
-    attributes = {},
-    events = {},
-    innerText = "",
-    innerHTML = "",
-    parent = null,
-} = {}) => {
-    const element = document.createElement(tag);
+export const isMinor = (valueToCheck, valueToCompare) => {
+    return valueToCheck < valueToCompare;
+};
 
-    if (classNames.length) setClassName(element, classNames);
+export const attachEvent = (element, event, functionToAttach) => {
+    element.addEventListener(event, functionToAttach);
+};
 
-    for (const [key, value] of Object.entries(attributes)) {
-        setAttribute(element, key, value);
+export function validateProp(name, value, type, allowedValues = null) {
+    // Permitir múltiples tipos (por ejemplo, ['string', 'number'])
+    const types = Array.isArray(type) ? type : [type];
+
+    // Determinar si 'null' es un tipo permitido
+    const isNullAllowed = types.includes("null");
+
+    // Si 'null' está permitido Y el valor ES null, devolvemos true inmediatamente
+    if (isNullAllowed && value === null) {
+        return true; // ✅ Valor es null y está permitido.
     }
 
-    for (const [event, handler] of Object.entries(events)) {
-        attachEvent(element, event, handler);
+    // El resto de la lógica debe ejecutarse solo si el valor NO es null
+    // O si 'null' no estaba permitido (para que se lance el TypeError si es null).
+
+    const isHTMLElementType = types.includes("HTMLElement");
+
+    // --- 1. Validar HTMLElement ---
+    if (isHTMLElementType) {
+        const isHTMLElement =
+            typeof HTMLElement !== "undefined" && value instanceof HTMLElement;
+
+        if (!isHTMLElement) {
+            throw new TypeError(
+                `"${name}" → Debe ser de tipo HTMLElement. Recibido: ${
+                    value?.constructor?.name || typeof value
+                }`
+            );
+        }
     }
 
-    if (innerText) setText(element, innerText);
-    if (innerHTML) setHTML(element, innerHTML);
+    // --- 2. Validar arrays ---
+    else if (types.includes("array")) {
+        if (!Array.isArray(value)) {
+            throw new TypeError(
+                `"${name}" → Debe ser un array. Recibido: ${typeof value}`
+            );
+        }
+    }
 
-    if (parent) appendElement(element, parent);
+    // --- 3. Validar tipos primitivos ---
+    else {
+        const valueType = typeof value;
 
-    return element;
-};
+        // Excluimos la comprobación de tipos si el valor es null,
+        // ya que el caso 'null' ya se manejó al inicio
+        // y typeof null devuelve "object", lo que podría fallar si "object" no está en types.
+        if (!types.includes(valueType)) {
+            throw new TypeError(
+                `"${name}" → Debe ser de tipo ${types.join(
+                    " o "
+                )}. Recibido: ${valueType}`
+            );
+        }
+    }
 
-export const createLink = ({
-    tag = "a",
-    classNames = [],
-    attributes = {},
-    events = {},
-    innerText = "",
-    innerHTML = "",
-    parent = null,
-} = {}) => {
-    return createeElement({
-        tag,
-        classNames,
-        attributes,
-        events,
-        innerText,
-        innerHTML,
-        parent,
+    // --- 4. Validar valores permitidos ---
+    if (allowedValues && !allowedValues.includes(value)) {
+        throw new RangeError(
+            `"${name}" → Solo se permiten los valores: ${allowedValues.join(
+                ", "
+            )}. Recibido: ${value}`
+        );
+    }
+
+    return true; // ✅ Si pasa todas las validaciones
+}
+
+export const warningUnknownKeys = (args, allowedKeys) => {
+    // warning unknown keys
+    Object.keys(args[0] || {}).forEach((key) => {
+        if (!allowedKeys.includes(key)) {
+            console.warn(
+                "Propiedad desconocida: ",
+                key,
+                "en Home. Será ignorada."
+            );
+        }
     });
-};
-
-export const createFigure = ({
-    tag = "figure",
-    classNames = [],
-    attributes = {},
-    events = {},
-    innerText = "",
-    innerHTML = "",
-    parent = null,
-} = {}) => {
-    return createeElement({
-        tag,
-        classNames,
-        attributes,
-        events,
-        innerText,
-        innerHTML,
-        parent,
-    });
-};
-
-export const createDiv = ({
-    tag = "div",
-    classNames = [],
-    attributes = {},
-    events = {},
-    innerText = "",
-    innerHTML = "",
-    parent = null,
-} = {}) => {
-    return createeElement({
-        tag,
-        classNames,
-        attributes,
-        events,
-        innerText,
-        innerHTML,
-        parent,
-    });
-};
-
-export const createPar = ({
-    tag = "p",
-    classNames = [],
-    attributes = {},
-    events = {},
-    innerText = "",
-    innerHTML = "",
-    parent = null,
-} = {}) => {
-    return createeElement({
-        tag,
-        classNames,
-        attributes,
-        events,
-        innerText,
-        innerHTML,
-        parent,
-    });
-};
-
-export const createHtag = ({
-    level = 1,
-    tag = "h",
-    classNames = [],
-    attributes = {},
-    events = {},
-    innerText = "",
-    innerHTML = "",
-    parent = null,
-} = {}) => {
-    return createeElement({
-        tag: `${tag}${level}`,
-        classNames,
-        attributes,
-        events,
-        innerText,
-        innerHTML,
-        parent,
-    });
-};
-
-export const createImg = ({
-    tag = "img",
-    classNames = [],
-    attributes = {},
-    events = {},
-    innerText = "",
-    innerHTML = "",
-    parent = null,
-} = {}) => {
-    return createeElement({
-        tag,
-        classNames,
-        attributes,
-        events,
-        innerText,
-        innerHTML,
-        parent,
-    });
-};
-
-export const createSpan = ({
-    tag = "span",
-    classNames = [],
-    attributes = {},
-    events = {},
-    innerText = "",
-    innerHTML = "",
-    parent = null,
-} = {}) => {
-    return createeElement({
-        tag,
-        classNames,
-        attributes,
-        events,
-        innerText,
-        innerHTML,
-        parent,
-    });
-};
-
-export const createFragment = () => {
-    return document.createDocumentFragment();
 };

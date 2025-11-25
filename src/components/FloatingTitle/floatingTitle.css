@@ -1,0 +1,63 @@
+.floating-title {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 var(--padding-page);
+}
+
+.floating-title__text--upperCase {
+    text-transform: uppercase;
+}
+
+.floating-title__text {
+    font-family: Geologica-light;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.floating-title__text--dark {
+    color: rgb(var(--bcc-black));
+}
+.floating-title__text--light {
+    color: rgb(var(--text-light));
+}
+
+.floating-title__icon {
+    font-size: 1.1rem;
+}
+
+.floating-title__icon--dark {
+    color: rgb(var(--bcc-black));
+}
+
+.floating-title__icon--light {
+    color: rgb(var(--text-light));
+}
+
+.floating-title--animation {
+    position: relative;
+    animation-name: floating-title-an;
+    animation-duration: 10s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+@keyframes floating-title-an {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@media all and (max-width: 500px) {
+    .floating-title {
+        justify-content: center;
+    }
+}

@@ -1,6 +1,7 @@
-:root {
-    --text-white: 247, 247, 247; /* #f7f7f7 */
-    --text-black: 51, 51, 51; /* #333333 */
-    --bcc-white: 248, 248, 248; /* #f8f8f8 */
-    --bcc-black: 14, 14, 14; /* #0e0e0e */
-}
+@import url(./global/base.css);
+@import url(./global/fonts.css);
+@import url(./global/keyframes.css);
+@import url(./global/reset.css);
+@import url(./global/utils.css);
+@import url(./global/variables.css);
+@import url(./global/animation.css);
