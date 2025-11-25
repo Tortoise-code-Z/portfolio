@@ -1,7 +1,0 @@
-.pd-s-gallery {
-    display: flex;
-    flex-direction: column;
-    gap: 100px;
-    background-color: rgb(var(--bcc-white));
-    position: relative;
-}

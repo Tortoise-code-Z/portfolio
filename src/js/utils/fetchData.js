@@ -6,6 +6,8 @@ export const fectData = async (url) => {
         }
 
         let data = await response.json();
+
+        console.log(data);
     } catch (error) {
         console.error("Error al obtener los datos: ", error);
     }
