@@ -27,12 +27,12 @@ export default function ProjectDetail({
     // document.querySelector(".navbar").classList.add("navbar--color-black");
 
     append(fragment, [
-        Hero({ id: params.id }),
-        AboutProject({ id: params.id }),
-        TechStack({ id: params.id }),
-        DevelopmentProcess({ id: params.id }),
-        Gallery({ id: params.id }),
-        AditionalConfigs({ id: params.id }),
+        Hero(),
+        AboutProject(),
+        TechStack(),
+        DevelopmentProcess(),
+        Gallery(),
+        AditionalConfigs(),
     ]);
 
     return fragment;

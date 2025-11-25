@@ -17,15 +17,16 @@ import "prismjs/components/prism-javascript";
 import "prismjs/components/prism-css";
 import "prismjs/themes/prism-twilight.css";
 import "prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard";
+import { router } from "../../../../main";
 
-export default function AditionalConfigs({ id } = {}) {
-    warningUnknownKeys(arguments, ["id"]);
+export default function AditionalConfigs({} = {}) {
+    warningUnknownKeys(arguments, []);
 
     // options of each prop
     // const validProps = [];
 
     // validations
-    validateProp("id", Number(id), "number");
+    const id = router.getParams().id;
 
     const section = createElement({
         tag: "section",

@@ -12,16 +12,16 @@ import FloatingTitle from "../../../components/FloatingTitle/floatingTitle";
 import bbdd from "../../../const/database/bbdd";
 import { append } from "../../../js/utils/domHelpers";
 import Cards from "../../../components/Cards/cards.js";
+import { router } from "../../../../main.js";
 
-export default function AboutProject({ id } = {}) {
-    warningUnknownKeys(arguments, ["id"]);
+export default function AboutProject({} = {}) {
+    warningUnknownKeys(arguments, []);
 
     // options of each prop
     // const validProps = [];
 
     // validations
-    validateProp("id", Number(id), "number");
-
+    const id = router.getParams().id;
     const work = bbdd.works.find((work) => work.id === Number(id));
 
     const section = createElement({

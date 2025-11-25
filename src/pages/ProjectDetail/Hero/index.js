@@ -1,3 +1,4 @@
+import { router } from "../../../../main";
 import Link from "../../../components/Link/link";
 import bbdd from "../../../const/database/bbdd";
 import { svg } from "../../../const/database/bbdd_consts";
@@ -12,9 +13,9 @@ import {
 import "./index.css";
 import template from "./index.html?raw";
 
-export default function Hero({ id } = {}) {
+export default function Hero({} = {}) {
     warningUnknownKeys(arguments, []);
-
+    const id = router.getParams().id;
     const work = bbdd.works.find((work) => work.id === Number(id));
     // options of each prop
     // const validProps = [];

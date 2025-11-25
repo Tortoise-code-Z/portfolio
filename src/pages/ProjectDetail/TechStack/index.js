@@ -13,9 +13,12 @@ import "./index.css";
 import TechStackLibraries from "./TechStackLibraries";
 import TechStackTools from "./TechStackTools";
 import TechStackDesign from "./TechStackDesign";
+import { router } from "../../../../main";
 
-export default function TechStack({ id } = {}) {
-    warningUnknownKeys(arguments, ["id"]);
+export default function TechStack({} = {}) {
+    warningUnknownKeys(arguments, []);
+
+    const id = router.getParams().id;
     const work = bbdd.works.find((work) => work.id === Number(id));
 
     // options of each prop

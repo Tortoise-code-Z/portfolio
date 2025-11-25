@@ -15,6 +15,7 @@ import "./index.css";
 import template from "./index.html?raw";
 import bbdd from "../../const/database/bbdd.js";
 import { NavbarProductDetail } from "../../components/Navbar/navbar.js";
+import { router } from "../../../main.js";
 
 export function ProductDetailLayout({} = {}) {
     warningUnknownKeys(arguments, []);
@@ -50,7 +51,7 @@ export function ProductDetailLayout({} = {}) {
 
     fadeInObserver(actions, "animated-element--fade-in-top");
 
-    const id = window.location.href.split("/").pop();
+    const id = router.getParams().id;
 
     const github = Link({
         isButton: true,
