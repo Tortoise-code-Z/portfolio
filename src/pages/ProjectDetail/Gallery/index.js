@@ -10,16 +10,17 @@ import "./index.css";
 import ImagesSlider from "../../../components/ImagesSlider/imagesSlider";
 import bbdd from "../../../const/database/bbdd";
 import { append } from "../../../js/utils/domHelpers";
+import { router } from "../../../../main";
 
-export default function Gallery({ id } = {}) {
-    warningUnknownKeys(arguments, ["id"]);
+export default function Gallery({} = {}) {
+    warningUnknownKeys(arguments, []);
 
     // options of each prop
     // const validProps = [];
 
     // validations
-    validateProp("id", Number(id), "number");
 
+    const id = router.getParams().id;
     const section = createElement({
         tag: "section",
         classNames: ["pd-s-gallery"],

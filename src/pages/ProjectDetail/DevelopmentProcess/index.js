@@ -12,16 +12,17 @@ import FloatingTitle from "../../../components/FloatingTitle/floatingTitle";
 import { svg } from "../../../const/database/bbdd_consts";
 import Cards from "../../../components/Cards/cards";
 import NoteMsg from "../../../components/NoteMsg/noteMsg";
+import { router } from "../../../../main";
 
-export default function DevelopmentProcess({ id } = {}) {
-    warningUnknownKeys(arguments, ["id"]);
+export default function DevelopmentProcess({} = {}) {
+    warningUnknownKeys(arguments, []);
 
     // options of each prop
     //   const validProps = [];
 
     // validations
-    validateProp("id", Number(id), "number");
 
+    const id = router.getParams().id;
     const work = bbdd.works.find((work) => work.id === Number(id));
 
     const container = createElement({

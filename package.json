@@ -1,19 +1,19 @@
 {
-  "name": "portfolio-def",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "devDependencies": {
-    "vite": "^6.0.1"
-  },
-  "dependencies": {
-    "colorthief": "^2.6.0",
-    "prismjs": "^1.30.0",
-    "shell-io": "github:Tortoise-code-Z/Shell-io"
-  }
+    "name": "portfolio-def",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview"
+    },
+    "devDependencies": {
+        "vite": "^6.0.1"
+    },
+    "dependencies": {
+        "colorthief": "^2.6.0",
+        "prismjs": "^1.30.0",
+        "shell-io": "file:shell-io-0.2.0.tgz"
+    }
 }
