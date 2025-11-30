@@ -1,62 +1,45 @@
-# .github/workflows/deploy.yml
-name: Deploy Vite site to GitHub Pages
+name: Despliegue Portfolio a Pages
 
 on:
     push:
-        branches:
-            - main
-    workflow_dispatch:
-
-permissions:
-    contents: read
-    pages: write
-    id-token: write
-
-concurrency:
-    group: "pages"
-    cancel-in-progress: true
+        branches: ["main"]
 
 jobs:
-    deploy:
+    build-and-deploy:
         runs-on: ubuntu-latest
-        environment:
-            name: github-pages
-            url: ${{ steps.deployment.outputs.page_url }}
+        permissions:
+            contents: read
+            pages: write
+            id-token: write
+            packages: read
 
         steps:
-            # 1. Clonar repo
-            - name: Checkout repository
-              uses: actions/checkout@v5
+            - name: Checkout code
+              uses: actions/checkout@v4
 
-            # 2. Configurar Node.js
-            - name: Setup Node.js
-              uses: actions/setup-node@v5
+            - name: Setup Node and Authenticate
+              uses: actions/setup-node@v4
               with:
-                  node-version: lts/*
-                  cache: "npm"
-
-            # 3. Limpiar dist y dependencias
-            - name: Clean dist
-              run: rm -rf dist
+                  node-version: "20"
+                  registry-url: "https://npm.pkg.github.com"
+                  scope: "@tortoise-code-z"
 
             - name: Install dependencies
-              run: npm ci
+              run: npm install
+              env:
+                  NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-            # 4. Build Vite
-            - name: Build
+            - name: Build with Vite
               run: npm run build
 
-            # 5. Configurar GitHub Pages
             - name: Setup Pages
               uses: actions/configure-pages@v5
 
-            # 6. Subir dist como artifact
-            - name: Upload Pages Artifact
-              uses: actions/upload-pages-artifact@v4
+            - name: Upload production artifact
+              uses: actions/upload-pages-artifact@v3
               with:
-                  path: ./dist
+                  path: "./dist"
 
-            # 7. Deploy
             - name: Deploy to GitHub Pages
               id: deployment
               uses: actions/deploy-pages@v4
