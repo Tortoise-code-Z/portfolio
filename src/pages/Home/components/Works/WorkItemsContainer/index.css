@@ -1,8 +1,0 @@
-.s-works__items-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    min-height: 100vh;
-    gap: 400px;
-}
