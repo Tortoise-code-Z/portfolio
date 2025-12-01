@@ -11,6 +11,7 @@
     "devDependencies": {
         "vite": "^6.0.1"
     },
+    
     "dependencies": {
         "colorthief": "^2.6.0",
         "prismjs": "^1.30.0",
