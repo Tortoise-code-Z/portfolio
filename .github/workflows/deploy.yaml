@@ -18,16 +18,17 @@ jobs:
             - name: Checkout code
               uses: actions/checkout@v4
 
-            - name: Setup Node y Configurar Registro Privado
+            - name: Setup Node
               uses: actions/setup-node@v4
               with:
                   node-version: "20"
 
-                  registry-url: "https://npm.pkg.github.com"
-                  scope: "@tortoise-code-z"
-                  token: ${{ secrets.GITHUB_TOKEN }}
+            - name: Configurar .npmrc para Registro Privado
+              run: |
+                  echo "@tortoise-code-z:registry=https://npm.pkg.github.com" >> ~/.npmrc
+                  echo "//npm.pkg.github.com/:_authToken=${{secrets.GITHUB_TOKEN}}" >> ~/.npmrc
 
-            - name: Install dependencies (Incluye el paquete privado)
+            - name: Install dependencies
               run: npm install
 
             - name: Build with Vite
