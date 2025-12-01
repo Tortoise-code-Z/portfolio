@@ -1,0 +1,46 @@
+name: Despliegue Portfolio a GitHub Pages
+
+on:
+    push:
+        branches: ["main"]
+
+jobs:
+    build-and-deploy:
+        runs-on: ubuntu-latest
+
+        permissions:
+            contents: read
+            pages: write
+            id-token: write
+            packages: read
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Setup Node y Configurar Registro Privado
+              uses: actions/setup-node@v4
+              with:
+                  node-version: "20"
+
+                  registry-url: "https://npm.pkg.github.com"
+                  scope: "@tortoise-code-z"
+                  token: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Install dependencies (Incluye el paquete privado)
+              run: npm install
+
+            - name: Build with Vite
+              run: npm run build
+
+            - name: Setup Pages
+              uses: actions/configure-pages@v5
+
+            - name: Upload production artifact
+              uses: actions/upload-pages-artifact@v3
+              with:
+                  path: "./dist"
+
+            - name: Deploy to GitHub Pages
+              id: deployment
+              uses: actions/deploy-pages@v4
