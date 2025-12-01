@@ -26,7 +26,7 @@ jobs:
             - name: Configurar .npmrc para Registro Privado
               run: |
                   echo "@tortoise-code-z:registry=https://npm.pkg.github.com" >> ~/.npmrc
-                  echo "//npm.pkg.github.com/:_authToken=${{secrets.GITHUB_TOKEN}}" >> ~/.npmrc
+                  echo "//npm.pkg.github.com/:_authToken=${{secrets.PACKAGE_READER_TOKEN}}" >> ~/.npmrc
 
             - name: Install dependencies
               run: npm install
