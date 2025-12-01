@@ -15,7 +15,7 @@ import "prismjs/components/prism-css";
 import "prismjs/themes/prism-twilight.css";
 import "prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard";
 import { router } from "../../../../main";
-import NoteMsg from "../../../components/NoteMsg/noteMsg.js";
+import NoteMsg from "../../../components/noteMsg/noteMsg.js";
 
 export default function AditionalConfigs({} = {}) {
     warningUnknownKeys(arguments, []);
