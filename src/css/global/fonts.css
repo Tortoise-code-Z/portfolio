@@ -5,7 +5,7 @@
 
 @font-face {
     font-family: "Geologica-bold";
-    src: url(src/assets/fonts/Geologica/static/Geologica-Bold.ttf);
+    src: url(/src/assets/fonts/Geologica/static/Geologica-Bold.ttf);
 }
 
 @font-face {
