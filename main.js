@@ -11,12 +11,12 @@ export const router = new Router({
 
 const routes = [
     {
-        pathname: `/`,
+        pathname: `${import.meta.env.BASE_URL}/`,
         component: Home,
     },
 
     {
-        pathname: `/project-detail/:id`,
+        pathname: `${import.meta.env.BASE_URL}/project-detail/:id`,
         component: ProjectDetail,
         options: {
             layout: ProductDetailLayout,
