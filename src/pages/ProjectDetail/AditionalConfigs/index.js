@@ -1,14 +1,11 @@
 import FloatingTitle from "../../../components/FloatingTitle/floatingTitle";
-import NoteMsg from "../../../components/NoteMsg/noteMsg";
 import bbdd from "../../../const/database/bbdd";
 import { svg } from "../../../const/database/bbdd_consts";
 import { createElement } from "../../../js/utils/createElementsHelper";
 import { append } from "../../../js/utils/domHelpers";
 import {
-    attachEvent,
     fadeInObserver,
     navbarObserver,
-    validateProp,
     warningUnknownKeys,
 } from "../../../js/utils/utils";
 import "./index.css";
@@ -18,6 +15,7 @@ import "prismjs/components/prism-css";
 import "prismjs/themes/prism-twilight.css";
 import "prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard";
 import { router } from "../../../../main";
+import NoteMsg from "../../../components/NoteMsg/noteMsg.js";
 
 export default function AditionalConfigs({} = {}) {
     warningUnknownKeys(arguments, []);
