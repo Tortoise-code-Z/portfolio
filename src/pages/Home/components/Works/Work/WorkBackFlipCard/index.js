@@ -64,7 +64,7 @@ export default function WorkBackFlipCard({ data = {} } = {}) {
         theme: "light",
         variant: "secondary",
         text: "More Info",
-        href: `/project-detail/${data.id}`,
+        href: `${import.meta.env.BASE_URL}/project-detail/${data.id}`,
         icon: svg.info,
     });
 
