@@ -1,22 +1,22 @@
-import { Router } from "@tortoise-code-z/shell-io/src/shell-io.js";
+import { HashRouter } from "@tortoise-code-z/shell-io/src/shell-io.js";
 import Home from "./src/pages/Home";
 import ProjectDetail from "./src/pages/ProjectDetail";
 import DefaultLayout from "./src/Layouts/DefaultLayout";
 import { ProductDetailLayout } from "./src/Layouts/ProductDetailLayout";
 
-export const router = new Router({
+export const router = new HashRouter({
     rootSelector: "#app",
     defaultLayout: DefaultLayout,
 });
 
 const routes = [
     {
-        pathname: `${import.meta.env.BASE_URL}/`,
+        pathname: `/`,
         component: Home,
     },
 
     {
-        pathname: `${import.meta.env.BASE_URL}/project-detail/:id`,
+        pathname: `/project-detail/:id`,
         component: ProjectDetail,
         options: {
             layout: ProductDetailLayout,
