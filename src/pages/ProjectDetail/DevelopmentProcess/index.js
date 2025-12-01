@@ -11,7 +11,7 @@ import { append } from "../../../js/utils/domHelpers";
 import FloatingTitle from "../../../components/FloatingTitle/floatingTitle";
 import { svg } from "../../../const/database/bbdd_consts";
 import Cards from "../../../components/Cards/cards";
-import NoteMsg from "../../../components/NoteMsg/noteMsg";
+import NoteMsg from "../../../components/noteMsg/noteMsg";
 import { router } from "../../../../main";
 
 export default function DevelopmentProcess({} = {}) {
