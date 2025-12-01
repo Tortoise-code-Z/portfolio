@@ -1,4 +1,4 @@
-import { Router } from "@tortoise-code-z/shell-io";
+import { Router } from "@tortoise-code-z/shell-io/src/shell-io.js";
 import Home from "./src/pages/Home";
 import ProjectDetail from "./src/pages/ProjectDetail";
 import DefaultLayout from "./src/Layouts/DefaultLayout";
