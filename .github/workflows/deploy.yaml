@@ -28,22 +28,17 @@ jobs:
 
             - name: Configurar NPM para GitHub Packages
               run: |
-                  # Usamos GITHUB_TOKEN para la lectura de paquetes en el mismo repo
                   echo "@tortoise-code-z:registry=https://npm.pkg.github.com" >> ~/.npmrc
-                  echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
+                  echo "//npm.pkg.github.com/:_authToken=${{ secrets.PACKAGE_READER_TOKEN }}" >> ~/.npmrc
 
             - name: Install dependencies
               run: npm install
 
-            - name: Limpiar Caché de Vite y Dependencias
+            - name: Limpiar Caché de Vite y Compilación Anterior
               run: |
-                  # Elimina la carpeta de caché local de Vite (si existe)
+                  # Elimina la caché de Vite y la carpeta de compilación anterior para evitar artefactos rotos.
                   rm -rf .vite
-                  # Elimina la carpeta de compilación anterior
                   rm -rf dist
-
-            - name: Build with Vite
-              run: npm run build
 
             - name: Build with Vite
               run: npm run build
