@@ -34,6 +34,16 @@ jobs:
             - name: Install dependencies
               run: npm install
 
+            - name: Limpiar Caché de Vite y Dependencias
+              run: |
+                  # Elimina la carpeta de caché local de Vite (si existe)
+                  rm -rf .vite
+                  # Elimina la carpeta de compilación anterior
+                  rm -rf dist
+
+            - name: Build with Vite
+              run: npm run build
+
             - name: Build with Vite
               run: npm run build
 
