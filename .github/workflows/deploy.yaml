@@ -11,11 +11,11 @@ jobs:
         environment:
             name: github-pages
 
+        # Ya no necesitamos 'packages: read'
         permissions:
             contents: read
             pages: write
             id-token: write
-            packages: read
 
         steps:
             - name: Checkout code
@@ -26,17 +26,12 @@ jobs:
               with:
                   node-version: "20"
 
-            - name: Configurar NPM para GitHub Packages
-              run: |
-                  echo "@tortoise-code-z:registry=https://npm.pkg.github.com" >> ~/.npmrc
-                  echo "//npm.pkg.github.com/:_authToken=${{ secrets.PACKAGE_READER_TOKEN }}" >> ~/.npmrc
-
-            - name: Install dependencies
+            - name: Instalar Dependencias Restantes (Si hay otras)
               run: npm install
 
             - name: Limpiar Caché de Vite y Compilación Anterior
               run: |
-                  # Elimina la caché de Vite y la carpeta de compilación anterior para evitar artefactos rotos.
+                  # Necesario para que Vite genere el build limpio
                   rm -rf .vite
                   rm -rf dist
 
