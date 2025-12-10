@@ -1,14 +1,12 @@
+// vite.config.js del Portfolio
 import { defineConfig } from "vite";
 
 export default defineConfig({
     base: "/portfolio/",
-    optimizeDeps: {
-        include: ["@tortoise-code-z/shell-io"],
-    },
 
     build: {
-        commonjsOptions: {
-            include: [/node_modules/],
+        rollupOptions: {
+            external: ["/vender/shellio/shell-io.es.js"],
         },
     },
 });
