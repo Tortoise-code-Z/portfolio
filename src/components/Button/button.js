@@ -2,6 +2,24 @@ import { createButton } from "../../js/utils/createElementsHelper";
 import { validateProp } from "../../js/utils/utils";
 import "./button.css";
 
+/**
+ * @typedef {Object} ButtonProps
+ * @property {"primary"|"secondary"|"arrow"} [variant="primary"] - Estilo visual del botón.
+ * @property {"dark"|"light"} [theme="dark"] - Tema de color del componente.
+ * @property {boolean} [disabled=false] - Estado de habilitación del botón.
+ * @property {string} [title="Click"] - Texto para el atributo de accesibilidad title.
+ * @property {string} [text=""] - Contenido textual del botón.
+ * @property {boolean} [flexReverse=false] - Invierte el orden de los elementos internos (icon/text).
+ * @property {Function} [onClick] - Función callback para el evento click.
+ * @property {string} [icon=""] - Fragmento HTML o clase para el icono.
+ * @property {string[]} [classNames=[]] - Array de clases CSS adicionales.
+ */
+
+/**
+ * Genera un componente de botón con validaciones de propiedades.
+ * * @param {ButtonProps} [props={}] - Propiedades de configuración del botón.
+ * @returns {HTMLElement} El elemento del DOM creado.
+ */
 export default function Button({
   variant = "primary",
   theme = "dark",

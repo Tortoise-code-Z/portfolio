@@ -12,6 +12,15 @@ import bbdd from "../../../const/database/bbdd.js";
 import template from "./index.html?raw";
 import "./index.css";
 
+/**
+ * Componente que genera el pie de página específico para el detalle de un proyecto.
+ * Extrae información del proyecto mediante parámetros de URL, gestiona animaciones de entrada
+ * y renderiza enlaces dinámicos a repositorios, demos y redes sociales.
+ * * @function ProductDetailFooter
+ * @param {Object} [props={}] - Objeto de propiedades (actualmente no utiliza propiedades externas).
+ * @returns {HTMLElement} El elemento del DOM que representa el pie de página del detalle de producto.
+ */
+
 export function ProductDetailFooter({} = {}) {
   warningUnknownKeys(arguments, []);
 

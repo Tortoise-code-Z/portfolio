@@ -3,6 +3,30 @@ import { validateProp } from "../../js/utils/utils";
 import "../Button/button.css";
 import "./link.css";
 
+/**
+ * @typedef {Object} LinkProps
+ * @property {string[]} [classNames=[]] - Lista de clases CSS adicionales para el enlace.
+ * @property {boolean} [isButton=false] - Indica si el enlace debe estilizarse visualmente como un botón.
+ * @property {"primary"|"secondary"} [variant="primary"] - Variante de estilo (aplicable si isButton es true).
+ * @property {"dark"|"light"} [theme="dark"] - Esquema de colores para el componente.
+ * @property {boolean} [flexReverse=false] - Invierte el orden de los elementos internos (icono y texto).
+ * @property {string} [icon=""] - Fragmento HTML que representa el icono.
+ * @property {boolean} [disabled=false] - Estado deshabilitado (aplicable si isButton es true).
+ * @property {"_self"|"_blank"} [target="_self"] - Atributo target para definir dónde abrir el enlace.
+ * @property {string} [href=""] - URL de destino del enlace.
+ * @property {string} [title=""] - Texto descriptivo para el atributo 'title' de accesibilidad.
+ * @property {string} [text=""] - Texto visible del enlace.
+ * @property {"all"|"none"} [pointerEvents="all"] - Define si el elemento responde a eventos del ratón.
+ * @property {Object.<string, string|number>} [params={}] - Parámetros de consulta (query params) para añadir a la URL.
+ */
+
+/**
+ * Componente que genera un elemento de hipervínculo (anchor) con soporte para estilos de botón y parámetros de URL.
+ * * @function Link
+ * @param {LinkProps} [props={}] - Propiedades de configuración del enlace.
+ * @returns {HTMLAnchorElement} El elemento del DOM del enlace configurado.
+ */
+
 export default function Link({
   classNames = [],
   isButton = false,

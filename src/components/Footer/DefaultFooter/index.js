@@ -6,6 +6,15 @@ import Link from "../../../components/Link/link.js";
 import { svg } from "../../../const/database/bbdd_consts.js";
 import "./defaultFooter.css";
 
+/**
+ * Componente que genera el pie de página (footer) predeterminado del sitio.
+ * Incluye agradecimientos, información personal, observadores de animación
+ * y enlaces a redes sociales/contacto.
+ * * @function DefaultFooter
+ * @param {Object} [props={}] - Objeto de propiedades (actualmente vacío pero mantenido por consistencia).
+ * @returns {HTMLElement} El elemento del DOM que representa el footer.
+ */
+
 export default function DefaultFooter({} = {}) {
   const defaultFooter = cloneTemplate(
     template,
