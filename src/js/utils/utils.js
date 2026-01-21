@@ -1,253 +1,264 @@
 export function scrollVisibilitty(element, classToHidden) {
-    if (!element instanceof HTMLElement && !classToHidden instanceof String)
-        return;
+  if ((!element) instanceof HTMLElement && (!classToHidden) instanceof String)
+    return;
 
-    let lastScrollPosition = window.scrollY;
+  let lastScrollPosition = window.scrollY;
 
-    window.addEventListener("scroll", () => {
-        const currentScrollPosition = window.scrollY;
+  window.addEventListener("scroll", () => {
+    const currentScrollPosition = window.scrollY;
 
-        const scrollMargin = 50;
+    const scrollMargin = 50;
 
-        if (
-            currentScrollPosition > lastScrollPosition &&
-            currentScrollPosition > scrollMargin
-        ) {
-            element.classList.add(classToHidden);
-        } else if (currentScrollPosition < lastScrollPosition) {
-            element.classList.remove(classToHidden);
-        }
+    if (
+      currentScrollPosition > lastScrollPosition &&
+      currentScrollPosition > scrollMargin
+    ) {
+      element.classList.add(classToHidden);
+    } else if (currentScrollPosition < lastScrollPosition) {
+      element.classList.remove(classToHidden);
+    }
 
-        lastScrollPosition = currentScrollPosition;
-    });
+    lastScrollPosition = currentScrollPosition;
+  });
 }
+
+/**
+ * Obtiene uno o todos los parámetros de la URL actual.
+ * @param {string|null} param - El nombre del parámetro a obtener. Si es null, devuelve un objeto con todos.
+ * @returns {string|object|null} - El valor del parámetro, un objeto con todos, o null si no existe.
+ */
+export const getQueryParams = (param = null) => {
+  const params = new URLSearchParams(window.location.search);
+
+  // Si pides un parámetro específico (ej: 'id')
+  if (param) {
+    return params.get(param);
+  }
+
+  // Si no pasas parámetro, devolvemos un objeto con todos (útil para desestructurar)
+  return Object.fromEntries(params.entries());
+};
 
 // Modificación en tu archivo de utilidad:
 export const createIntersectionObserver = (
-    elements,
-    callback,
-    parametersCallback = [],
-    options = {},
-    observeOnce = false
+  elements,
+  callback,
+  parametersCallback = [],
+  options = {},
+  observeOnce = false,
 ) => {
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry) => {
-            const itemParametersCallback = parametersCallback.find(
-                (item) => item?.element === entry?.target
-            );
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      const itemParametersCallback = parametersCallback.find(
+        (item) => item?.element === entry?.target,
+      );
 
-            if (itemParametersCallback) {
-                callback(itemParametersCallback, entry); // Pasamos 'entry' también
-            } else {
-                callback(entry); // El 'entry' es el argumento principal
-            }
+      if (itemParametersCallback) {
+        callback(itemParametersCallback, entry); // Pasamos 'entry' también
+      } else {
+        callback(entry); // El 'entry' es el argumento principal
+      }
 
-            if (observeOnce && entry.isIntersecting) {
-                observer.unobserve(entry.target);
-            }
-        });
-    }, options);
+      if (observeOnce && entry.isIntersecting) {
+        observer.unobserve(entry.target);
+      }
+    });
+  }, options);
 
-    elements.forEach((element) => observer.observe(element));
+  elements.forEach((element) => observer.observe(element));
 };
 
 export const fadeInObserver = (element, classToAdd, currentAnimatedClass) => {
-    element.classList.add("animated-element");
-    createIntersectionObserver(
-        [element],
-        (entry) => {
-            if (entry.isIntersecting) {
-                element.classList.remove("animated-element");
-                entry.target.classList.add(classToAdd);
-                attachEvent(entry.target, "animationend", () => {
-                    entry.target.classList.remove(classToAdd);
-                    if (currentAnimatedClass)
-                        entry.target.classList.add(currentAnimatedClass);
-                });
-            }
-        },
-        [],
-        {},
-        true
-    );
+  element.classList.add("animated-element");
+  createIntersectionObserver(
+    [element],
+    (entry) => {
+      if (entry.isIntersecting) {
+        element.classList.remove("animated-element");
+        entry.target.classList.add(classToAdd);
+        attachEvent(entry.target, "animationend", () => {
+          entry.target.classList.remove(classToAdd);
+          if (currentAnimatedClass)
+            entry.target.classList.add(currentAnimatedClass);
+        });
+      }
+    },
+    [],
+    {},
+    true,
+  );
 };
 
 export const navbarObserver = (element) => {
-    setTimeout(() => {
-        createIntersectionObserver(
-            [element],
-            (entry) => navbarObserverCallback(entry),
-            [],
-            { threshold: 0, rootMargin: "-100px 0px -90% 0px" },
-            false
-        );
-    }, 0);
+  setTimeout(() => {
+    createIntersectionObserver(
+      [element],
+      (entry) => navbarObserverCallback(entry),
+      [],
+      { threshold: 0, rootMargin: "-100px 0px -90% 0px" },
+      false,
+    );
+  }, 0);
 };
 
 export const navbarObserverCallback = (entry) => {
-    const navbar = document.querySelector(".navbar");
-    // Obtenemos el color requerido de la sección que acaba de cambiar de estado
-    const requiredColor = entry.target.getAttribute("data-navbar-color");
+  const navbar = document.querySelector(".navbar");
+  // Obtenemos el color requerido de la sección que acaba de cambiar de estado
+  const requiredColor = entry.target.getAttribute("data-navbar-color");
 
-    // La clase a añadir o quitar
-    const colorClass = `navbar--color-${requiredColor}`;
+  // La clase a añadir o quitar
+  const colorClass = `navbar--color-${requiredColor}`;
 
-    // La clase de color opuesto (asumiendo que solo tienes 'white' y 'black')
-    const oppositeColorClass =
-        requiredColor === "white"
-            ? "navbar--color-black"
-            : "navbar--color-white";
+  // La clase de color opuesto (asumiendo que solo tienes 'white' y 'black')
+  const oppositeColorClass =
+    requiredColor === "white" ? "navbar--color-black" : "navbar--color-white";
 
-    if (entry.isIntersecting) {
-        // Acción principal: Cuando la sección ENTRA
-        // ------------------------------------------
+  if (entry.isIntersecting) {
+    // Acción principal: Cuando la sección ENTRA
+    // ------------------------------------------
 
-        // Quitar el color opuesto (si existe)
-        if (navbar.classList.contains(oppositeColorClass)) {
-            navbar.classList.remove(oppositeColorClass);
-        }
-
-        // Añadir el color de la sección actual
-        navbar.classList.add(colorClass);
-
-        //
-    } else {
-        // Acción secundaria: Cuando la sección SALE
-        // -------------------------------------------
-        // Si la sección sale, NO HACEMOS NADA aquí.
-        // Esto es porque la *siguiente* sección (que estará entrando)
-        // o la *anterior* (que estará saliendo por el otro extremo)
-        // activará su propio 'entry.isIntersecting = true' y establecerá el color correcto.
-        // Si intentas cambiar el color en 'else' (salida),
-        // la barra parpadeará, porque dos secciones a la vez
-        // pueden estar 'no intersectando' por un momento.
+    // Quitar el color opuesto (si existe)
+    if (navbar.classList.contains(oppositeColorClass)) {
+      navbar.classList.remove(oppositeColorClass);
     }
+
+    // Añadir el color de la sección actual
+    navbar.classList.add(colorClass);
+
+    //
+  } else {
+    // Acción secundaria: Cuando la sección SALE
+    // -------------------------------------------
+    // Si la sección sale, NO HACEMOS NADA aquí.
+    // Esto es porque la *siguiente* sección (que estará entrando)
+    // o la *anterior* (que estará saliendo por el otro extremo)
+    // activará su propio 'entry.isIntersecting = true' y establecerá el color correcto.
+    // Si intentas cambiar el color en 'else' (salida),
+    // la barra parpadeará, porque dos secciones a la vez
+    // pueden estar 'no intersectando' por un momento.
+  }
 };
 
 export const writteDeleteMachine = async (data) => {
-    await deleteMachine(data);
-    await writteMachine(data);
+  await deleteMachine(data);
+  await writteMachine(data);
 };
 
 export const deleteMachine = async (data) => {
-    const { element, textToDelete, delayToDelete } = data;
+  const { element, textToDelete, delayToDelete } = data;
 
-    for (let i = textToDelete.length; i >= 0; i--) {
-        element.textContent = textToDelete.substring(0, i);
-        await new Promise((resolve) => setTimeout(resolve, delayToDelete));
-    }
+  for (let i = textToDelete.length; i >= 0; i--) {
+    element.textContent = textToDelete.substring(0, i);
+    await new Promise((resolve) => setTimeout(resolve, delayToDelete));
+  }
 };
 
 export const writteMachine = async (data) => {
-    const { element, textToWrite, delayToWrite } = data;
+  const { element, textToWrite, delayToWrite } = data;
 
-    for (let i = 0; i < textToWrite.length; i++) {
-        element.textContent += textToWrite[i];
-        await new Promise((resolve) => setTimeout(resolve, delayToWrite));
-    }
+  for (let i = 0; i < textToWrite.length; i++) {
+    element.textContent += textToWrite[i];
+    await new Promise((resolve) => setTimeout(resolve, delayToWrite));
+  }
 };
 
 export const isOnRange = (valueToCheck, min, max) => {
-    return valueToCheck >= min && valueToCheck <= max;
+  return valueToCheck >= min && valueToCheck <= max;
 };
 
 export const isEqualMajor = (valueToCheck, valueToCompare) => {
-    return valueToCheck >= valueToCompare;
+  return valueToCheck >= valueToCompare;
 };
 
 export const isMajor = (valueToCheck, valueToCompare) => {
-    return valueToCheck > valueToCompare;
+  return valueToCheck > valueToCompare;
 };
 
 export const isEqualMinor = (valueToCheck, valueToCompare) => {
-    return valueToCheck <= valueToCompare;
+  return valueToCheck <= valueToCompare;
 };
 
 export const isMinor = (valueToCheck, valueToCompare) => {
-    return valueToCheck < valueToCompare;
+  return valueToCheck < valueToCompare;
 };
 
 export const attachEvent = (element, event, functionToAttach) => {
-    element.addEventListener(event, functionToAttach);
+  element.addEventListener(event, functionToAttach);
 };
 
 export function validateProp(name, value, type, allowedValues = null) {
-    // Permitir múltiples tipos (por ejemplo, ['string', 'number'])
-    const types = Array.isArray(type) ? type : [type];
+  // Permitir múltiples tipos (por ejemplo, ['string', 'number'])
+  const types = Array.isArray(type) ? type : [type];
 
-    // Determinar si 'null' es un tipo permitido
-    const isNullAllowed = types.includes("null");
+  // Determinar si 'null' es un tipo permitido
+  const isNullAllowed = types.includes("null");
 
-    // Si 'null' está permitido Y el valor ES null, devolvemos true inmediatamente
-    if (isNullAllowed && value === null) {
-        return true; // ✅ Valor es null y está permitido.
+  // Si 'null' está permitido Y el valor ES null, devolvemos true inmediatamente
+  if (isNullAllowed && value === null) {
+    return true; // ✅ Valor es null y está permitido.
+  }
+
+  // El resto de la lógica debe ejecutarse solo si el valor NO es null
+  // O si 'null' no estaba permitido (para que se lance el TypeError si es null).
+
+  const isHTMLElementType = types.includes("HTMLElement");
+
+  // --- 1. Validar HTMLElement ---
+  if (isHTMLElementType) {
+    const isHTMLElement =
+      typeof HTMLElement !== "undefined" && value instanceof HTMLElement;
+
+    if (!isHTMLElement) {
+      throw new TypeError(
+        `"${name}" → Debe ser de tipo HTMLElement. Recibido: ${
+          value?.constructor?.name || typeof value
+        }`,
+      );
     }
+  }
 
-    // El resto de la lógica debe ejecutarse solo si el valor NO es null
-    // O si 'null' no estaba permitido (para que se lance el TypeError si es null).
-
-    const isHTMLElementType = types.includes("HTMLElement");
-
-    // --- 1. Validar HTMLElement ---
-    if (isHTMLElementType) {
-        const isHTMLElement =
-            typeof HTMLElement !== "undefined" && value instanceof HTMLElement;
-
-        if (!isHTMLElement) {
-            throw new TypeError(
-                `"${name}" → Debe ser de tipo HTMLElement. Recibido: ${
-                    value?.constructor?.name || typeof value
-                }`
-            );
-        }
+  // --- 2. Validar arrays ---
+  else if (types.includes("array")) {
+    if (!Array.isArray(value)) {
+      throw new TypeError(
+        `"${name}" → Debe ser un array. Recibido: ${typeof value}`,
+      );
     }
+  }
 
-    // --- 2. Validar arrays ---
-    else if (types.includes("array")) {
-        if (!Array.isArray(value)) {
-            throw new TypeError(
-                `"${name}" → Debe ser un array. Recibido: ${typeof value}`
-            );
-        }
+  // --- 3. Validar tipos primitivos ---
+  else {
+    const valueType = typeof value;
+
+    // Excluimos la comprobación de tipos si el valor es null,
+    // ya que el caso 'null' ya se manejó al inicio
+    // y typeof null devuelve "object", lo que podría fallar si "object" no está en types.
+    if (!types.includes(valueType)) {
+      throw new TypeError(
+        `"${name}" → Debe ser de tipo ${types.join(
+          " o ",
+        )}. Recibido: ${valueType}`,
+      );
     }
+  }
 
-    // --- 3. Validar tipos primitivos ---
-    else {
-        const valueType = typeof value;
+  // --- 4. Validar valores permitidos ---
+  if (allowedValues && !allowedValues.includes(value)) {
+    throw new RangeError(
+      `"${name}" → Solo se permiten los valores: ${allowedValues.join(
+        ", ",
+      )}. Recibido: ${value}`,
+    );
+  }
 
-        // Excluimos la comprobación de tipos si el valor es null,
-        // ya que el caso 'null' ya se manejó al inicio
-        // y typeof null devuelve "object", lo que podría fallar si "object" no está en types.
-        if (!types.includes(valueType)) {
-            throw new TypeError(
-                `"${name}" → Debe ser de tipo ${types.join(
-                    " o "
-                )}. Recibido: ${valueType}`
-            );
-        }
-    }
-
-    // --- 4. Validar valores permitidos ---
-    if (allowedValues && !allowedValues.includes(value)) {
-        throw new RangeError(
-            `"${name}" → Solo se permiten los valores: ${allowedValues.join(
-                ", "
-            )}. Recibido: ${value}`
-        );
-    }
-
-    return true; // ✅ Si pasa todas las validaciones
+  return true; // ✅ Si pasa todas las validaciones
 }
 
 export const warningUnknownKeys = (args, allowedKeys) => {
-    // warning unknown keys
-    Object.keys(args[0] || {}).forEach((key) => {
-        if (!allowedKeys.includes(key)) {
-            console.warn(
-                "Propiedad desconocida: ",
-                key,
-                "en Home. Será ignorada."
-            );
-        }
-    });
+  // warning unknown keys
+  Object.keys(args[0] || {}).forEach((key) => {
+    if (!allowedKeys.includes(key)) {
+      console.warn("Propiedad desconocida: ", key, "en Home. Será ignorada.");
+    }
+  });
 };

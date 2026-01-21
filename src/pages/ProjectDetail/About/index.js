@@ -1,10 +1,11 @@
 import "./index.css";
 import {
-    attachEvent,
-    fadeInObserver,
-    navbarObserver,
-    validateProp,
-    warningUnknownKeys,
+  attachEvent,
+  fadeInObserver,
+  getQueryParams,
+  navbarObserver,
+  validateProp,
+  warningUnknownKeys,
 } from "../../../js/utils/utils";
 import { createElement } from "../../../js/utils/createElementsHelper";
 import { svg } from "../../../const/database/bbdd_consts";
@@ -12,62 +13,56 @@ import FloatingTitle from "../../../components/FloatingTitle/floatingTitle";
 import bbdd from "../../../const/database/bbdd";
 import { append } from "../../../js/utils/domHelpers";
 import Cards from "../../../components/Cards/cards.js";
-import { router } from "../../../../main.js";
 
 export default function AboutProject({} = {}) {
-    warningUnknownKeys(arguments, []);
+  // validations
+  const id = getQueryParams("id");
+  const work = bbdd.works.find((work) => work.id === Number(id));
 
-    // options of each prop
-    // const validProps = [];
+  const section = createElement({
+    tag: "section",
+    classNames: ["pd-s-about"],
+    attributes: {
+      "data-navbar-color": "white",
+    },
+  });
 
-    // validations
-    const id = router.getParams().id;
-    const work = bbdd.works.find((work) => work.id === Number(id));
+  navbarObserver(section);
 
-    const section = createElement({
-        tag: "section",
-        classNames: ["pd-s-about"],
-        attributes: {
-            "data-navbar-color": "white",
-        },
+  const title = FloatingTitle({
+    text: "About proyect",
+    icon: svg.info,
+    theme: "light",
+    iconPosition: "left",
+    upperCase: true,
+  });
+
+  const description = createElement({
+    tag: "div",
+    classNames: ["pd-s-about__desc"],
+  });
+
+  work.about.description.forEach((paragraph, index) => {
+    const paragraphElement = createElement({
+      tag: "p",
+      classNames: ["pd-s-about__desc-paragraph"],
+      innerText: paragraph,
     });
 
-    navbarObserver(section);
+    fadeInObserver(
+      paragraphElement,
+      `animated-element--fade-in-${index % 2 === 0 ? "left" : "right"}`,
+    );
 
-    const title = FloatingTitle({
-        text: "About proyect",
-        icon: svg.info,
-        theme: "light",
-        iconPosition: "left",
-        upperCase: true,
-    });
+    append(description, [paragraphElement]);
+  });
 
-    const description = createElement({
-        tag: "div",
-        classNames: ["pd-s-about__desc"],
-    });
+  const cards = Cards({
+    classNames: ["pd-s-about__cards"],
+    data: work.about.cards,
+  });
 
-    work.about.description.forEach((paragraph, index) => {
-        const paragraphElement = createElement({
-            tag: "p",
-            classNames: ["pd-s-about__desc-paragraph"],
-            innerText: paragraph,
-        });
+  append(section, [title, description, cards]);
 
-        fadeInObserver(
-            paragraphElement,
-            `animated-element--fade-in-${index % 2 === 0 ? "left" : "right"}`
-        );
-
-        append(description, [paragraphElement]);
-    });
-
-    const cards = Cards({
-        classNames: ["pd-s-about__cards"],
-        data: work.about.cards,
-    });
-
-    append(section, [title, description, cards]);
-
-    return section;
+  return section;
 }
