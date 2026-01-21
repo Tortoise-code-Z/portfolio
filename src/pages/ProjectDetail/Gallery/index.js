@@ -2,49 +2,49 @@ import FloatingTitle from "../../../components/FloatingTitle/floatingTitle";
 import { svg } from "../../../const/database/bbdd_consts";
 import { createElement } from "../../../js/utils/createElementsHelper";
 import {
-    navbarObserver,
-    validateProp,
-    warningUnknownKeys,
+  getQueryParams,
+  navbarObserver,
+  validateProp,
+  warningUnknownKeys,
 } from "../../../js/utils/utils";
 import "./index.css";
 import ImagesSlider from "../../../components/ImagesSlider/imagesSlider";
 import bbdd from "../../../const/database/bbdd";
 import { append } from "../../../js/utils/domHelpers";
-import { router } from "../../../../main";
 
 export default function Gallery({} = {}) {
-    warningUnknownKeys(arguments, []);
+  warningUnknownKeys(arguments, []);
 
-    // options of each prop
-    // const validProps = [];
+  // options of each prop
+  // const validProps = [];
 
-    // validations
+  // validations
 
-    const id = router.getParams().id;
-    const section = createElement({
-        tag: "section",
-        classNames: ["pd-s-gallery"],
-        attributes: {
-            "data-navbar-color": "white",
-        },
-    });
+  const id = getQueryParams("id");
+  const section = createElement({
+    tag: "section",
+    classNames: ["pd-s-gallery"],
+    attributes: {
+      "data-navbar-color": "white",
+    },
+  });
 
-    navbarObserver(section);
+  navbarObserver(section);
 
-    const title = FloatingTitle({
-        text: "Gallery",
-        icon: svg.gallery,
-        theme: "light",
-        iconPosition: "left",
-        upperCase: true,
-        top: 50,
-    });
+  const title = FloatingTitle({
+    text: "Gallery",
+    icon: svg.gallery,
+    theme: "light",
+    iconPosition: "left",
+    upperCase: true,
+    top: 50,
+  });
 
-    const imagesCarrousel = ImagesSlider({
-        images: bbdd.works[id - 1].images.screenshots,
-    });
+  const imagesCarrousel = ImagesSlider({
+    images: bbdd.works[id - 1].images.screenshots,
+  });
 
-    append(section, [title, imagesCarrousel]);
+  append(section, [title, imagesCarrousel]);
 
-    return section;
+  return section;
 }
