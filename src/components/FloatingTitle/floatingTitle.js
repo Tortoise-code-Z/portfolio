@@ -1,10 +1,10 @@
-import {
-  createDiv,
-  createHtag,
-  createSpan,
-} from "../../js/utils/createElementsHelper";
+import { createElement, createHtag } from "../../js/utils/createElementsHelper";
 import { append } from "../../js/utils/domHelpers";
-import { fadeInObserver, validateProp } from "../../js/utils/utils";
+import {
+  fadeInObserver,
+  validateProp,
+  warningUnknownKeys,
+} from "../../js/utils/utils";
 import "./floatingTitle.css";
 
 /**
@@ -37,25 +37,6 @@ export default function FloatingTitle({
   top = null,
   left = null,
 } = {}) {
-  // keys to recibe
-  const allowedKeys = [
-    "text",
-    "icon",
-    "level",
-    "theme",
-    "iconPosition",
-    "upperCase",
-    "top",
-    "left",
-  ];
-
-  // warning unknown keys
-  Object.keys(arguments[0] || {}).forEach((key) => {
-    if (!allowedKeys.includes(key)) {
-      console.warn(`Propiedad desconocida: "${key}" en Button. Será ignorada.`);
-    }
-  });
-
   // options of each props
   const validHTags = [1, 2, 3, 4, 5, 6];
   const validThemes = ["dark", "light"];
@@ -71,7 +52,8 @@ export default function FloatingTitle({
   validateProp("top", top, ["number", "null"]);
   validateProp("left", left, ["number", "null"]);
 
-  const container = createDiv({
+  const container = createElement({
+    tag: "div",
     classNames: [
       "floating-title",
       upperCase ? "floating-title__text--upperCase" : null,
@@ -102,7 +84,8 @@ export default function FloatingTitle({
     innerText: text,
   });
 
-  const span = createSpan({
+  const span = createElement({
+    tag: "span",
     classNames: [
       "floating-title__icon",
       theme === "dark"

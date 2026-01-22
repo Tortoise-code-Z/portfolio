@@ -21,8 +21,6 @@ import "./index.css";
  */
 
 export default function ProfileData() {
-  warningUnknownKeys(arguments, []);
-
   const profile = cloneTemplate(template, "about-profile-template");
 
   const image = profile.querySelector(".s-about__profile-image");

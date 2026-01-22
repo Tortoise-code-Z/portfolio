@@ -7,7 +7,6 @@ import {
   getQueryParams,
   navbarObserver,
   validateProp,
-  warningUnknownKeys,
 } from "../../../js/utils/utils";
 import "./index.css";
 import TechStackLibraries from "./TechStackLibraries";
@@ -39,8 +38,6 @@ import TechStackDesign from "./TechStackDesign";
  */
 
 export default function TechStack({} = {}) {
-  warningUnknownKeys(arguments, []);
-
   const id = getQueryParams("id");
   const work = bbdd.works.find((work) => work.id === Number(id));
 

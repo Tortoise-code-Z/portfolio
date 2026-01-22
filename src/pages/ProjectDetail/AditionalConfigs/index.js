@@ -48,8 +48,6 @@ import NoteMsg from "../../../components/noteMsg/noteMsg.js";
  */
 
 export default function AditionalConfigs({} = {}) {
-  warningUnknownKeys(arguments, []);
-
   // validations
   const id = getQueryParams("id");
 

@@ -34,8 +34,6 @@ import { svg } from "../../../../../../const/database/bbdd_consts";
  */
 
 export default function WorkFlipCard({ data = {} } = {}) {
-  warningUnknownKeys(arguments, ["data"]);
-
   // validations
   validateProp("data", data, "object");
 

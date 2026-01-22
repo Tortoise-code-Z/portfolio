@@ -3,7 +3,7 @@ import template from "./navbarProductDetail.html?raw";
 import templateDefault from "./navbar.html?raw";
 import "./navbar.css";
 import "../Link/link.css";
-import { scrollVisibilitty } from "../../js/utils/utils";
+import { scrollVisibilitty, warningUnknownKeys } from "../../js/utils/utils";
 
 /**
  * Component that generates the site's main navigation bar.

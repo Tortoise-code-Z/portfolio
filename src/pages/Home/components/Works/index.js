@@ -16,8 +16,6 @@ import WorkItemsContainer from "./WorkItemsContainer/index.js";
  */
 
 export default function Works({} = {}) {
-  warningUnknownKeys(arguments, []);
-
   const section = createElement({
     tag: "section",
     classNames: ["s-works"],

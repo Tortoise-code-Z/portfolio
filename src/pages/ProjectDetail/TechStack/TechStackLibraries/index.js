@@ -1,11 +1,7 @@
 import InfiniteSlider from "../../../../components/InfiniteSlider/infiniteSlider";
 import { createElement } from "../../../../js/utils/createElementsHelper";
 import { append } from "../../../../js/utils/domHelpers";
-import {
-  fadeInObserver,
-  validateProp,
-  warningUnknownKeys,
-} from "../../../../js/utils/utils";
+import { fadeInObserver, validateProp } from "../../../../js/utils/utils";
 import "./index.css";
 
 /**
@@ -25,8 +21,6 @@ import "./index.css";
  */
 
 export default function TechStackLibraries({ libraries } = {}) {
-  warningUnknownKeys(arguments, ["libraries"]);
-
   // validations
   validateProp("libraries", libraries, "array");
 

@@ -1,6 +1,10 @@
-import { createDiv } from "../../js/utils/createElementsHelper";
+import { createElement } from "../../js/utils/createElementsHelper";
 import { append } from "../../js/utils/domHelpers";
-import { fadeInObserver, validateProp } from "../../js/utils/utils";
+import {
+  fadeInObserver,
+  validateProp,
+  warningUnknownKeys,
+} from "../../js/utils/utils";
 import Card from "./Card/card";
 import "./cards.css";
 
@@ -24,21 +28,12 @@ import "./cards.css";
  */
 
 export default function Cards({ data = [], classNames = [] } = {}) {
-  // keys to receive
-  const allowedKeys = ["data", "classNames"];
-
-  // warning unknown keys
-  Object.keys(arguments[0] || {}).forEach((key) => {
-    if (!allowedKeys.includes(key)) {
-      console.warn(`Propiedad desconocida: key en Cards. Será ignorada.`);
-    }
-  });
-
   // validations
   validateProp("data", data, "array");
   validateProp("classNames", classNames, "array");
 
-  const container = createDiv({
+  const container = createElement({
+    tag: "div",
     classNames: ["cards", ...classNames],
   });
 

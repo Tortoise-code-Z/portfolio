@@ -1,4 +1,4 @@
-import { createHtag, createSpan } from "../../js/utils/createElementsHelper";
+import { createElement, createHtag } from "../../js/utils/createElementsHelper";
 import { append } from "../../js/utils/domHelpers";
 import {
   createIntersectionObserver,
@@ -31,21 +31,6 @@ export default function WritteMachineTitle({
   dinamicInitText = "",
   dinamicFinalText = "",
 } = {}) {
-  // keys to recibe
-  const allowedKeys = [
-    "fixText",
-    "dinamicFinalText",
-    "dinamicInitText",
-    "classNames",
-  ];
-
-  // warning unknown keys
-  Object.keys(arguments[0] || {}).forEach((key) => {
-    if (!allowedKeys.includes(key)) {
-      console.warn(`Propiedad desconocida: "${key}" en Button. Será ignorada.`);
-    }
-  });
-
   // validations
   validateProp("fixText", fixText, "string");
   validateProp("dinamicInitText", dinamicInitText, "string");
@@ -60,13 +45,15 @@ export default function WritteMachineTitle({
   fadeInObserver(title, "animated-element--fade-in-right");
 
   // fix-span
-  const fixSpan = createSpan({
+  const fixSpan = createElement({
+    tag: "span",
     classNames: ["writte-machine-title__fix-text"],
     innerText: fixText,
   });
 
   // dinamic-span
-  const dinamicSpan = createSpan({
+  const dinamicSpan = createElement({
+    tag: "span",
     classNames: ["writte-machine-title__dinamic-text"],
     innerText: dinamicInitText,
   });

@@ -3,8 +3,6 @@ import {
   fadeInObserver,
   getQueryParams,
   navbarObserver,
-  validateProp,
-  warningUnknownKeys,
 } from "../../../js/utils/utils";
 import "./index.css";
 import bbdd from "../../../const/database/bbdd";
@@ -44,8 +42,6 @@ import NoteMsg from "../../../components/noteMsg/noteMsg";
  */
 
 export default function DevelopmentProcess({} = {}) {
-  warningUnknownKeys(arguments, []);
-
   const id = getQueryParams("id");
   const work = bbdd.works.find((work) => work.id === Number(id));
 

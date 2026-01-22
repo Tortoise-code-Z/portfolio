@@ -16,8 +16,6 @@ import "./index.css";
  */
 
 export default function CareerSlide({ data } = {}) {
-  warningUnknownKeys(arguments, ["data"]);
-
   // validations
   validateProp("data", data, "string");
 

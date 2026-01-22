@@ -1,6 +1,6 @@
-import { createDiv } from "../../js/utils/createElementsHelper";
+import { createElement } from "../../js/utils/createElementsHelper";
 import { append } from "../../js/utils/domHelpers";
-import { validateProp } from "../../js/utils/utils";
+import { validateProp, warningUnknownKeys } from "../../js/utils/utils";
 import "./infiniteSlider.css";
 
 /**
@@ -32,21 +32,6 @@ export default function InfiniteSlider({
   duplicationSlides = 3,
   direction = "left",
 } = {}) {
-  // keys to receive
-  const allowedKeys = [
-    "slideComponent",
-    "dataSlides",
-    "duplicationSlides",
-    "direction",
-  ];
-
-  // warning unknown keys
-  Object.keys(arguments[0] || {}).forEach((key) => {
-    if (!allowedKeys.includes(key)) {
-      console.warn(`Propiedad desconocida: ${key} en slider. Será ignorada.`);
-    }
-  });
-
   // options of each prop
   const validDuplicationSlides = [3, 4, 5];
   const validDirections = ["right", "left"];
@@ -62,13 +47,13 @@ export default function InfiniteSlider({
     validDuplicationSlides,
   );
 
-  // slider
-  const slider = createDiv({
+  const slider = createElement({
+    tag: "div",
     classNames: ["slider"].filter(Boolean),
   });
 
-  // sliderTrack
-  const sliderTrack = createDiv({
+  const sliderTrack = createElement({
+    tag: "div",
     classNames: [
       "slider__track",
       `slider__track--animation-${duplicationSlides}-${direction}`,
@@ -78,7 +63,8 @@ export default function InfiniteSlider({
   //   slides
   for (let index = 0; index < duplicationSlides; index++) {
     dataSlides.forEach((data) => {
-      const slide = createDiv({
+      const slide = createElement({
+        tag: "div",
         classNames: ["slider__slide"].filter(Boolean),
       });
 

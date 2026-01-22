@@ -1,5 +1,5 @@
 import bbdd from "../../../../../const/database/bbdd";
-import { createDiv } from "../../../../../js/utils/createElementsHelper";
+import { createElement } from "../../../../../js/utils/createElementsHelper";
 import { append } from "../../../../../js/utils/domHelpers";
 import { warningUnknownKeys } from "../../../../../js/utils/utils";
 import Work from "../Work";
@@ -16,9 +16,8 @@ import "./index.css";
  */
 
 export default function WorkItemsContainer({} = {}) {
-  warningUnknownKeys(arguments, []);
-
-  const container = createDiv({
+  const container = createElement({
+    tag: "div",
     classNames: ["s-works__items-container"],
   });
 

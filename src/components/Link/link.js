@@ -1,5 +1,5 @@
-import { createLink } from "../../js/utils/createElementsHelper";
-import { validateProp } from "../../js/utils/utils";
+import { createElement } from "../../js/utils/createElementsHelper";
+import { validateProp, warningUnknownKeys } from "../../js/utils/utils";
 import "../Button/button.css";
 import "./link.css";
 
@@ -43,29 +43,6 @@ export default function Link({
   pointerEvents = "all",
   params = {},
 } = {}) {
-  // keys to recibe
-  const allowedKeys = [
-    "isButton",
-    "variant",
-    "theme",
-    "flexReverse",
-    "icon",
-    "disabled",
-    "target",
-    "href",
-    "title",
-    "text",
-    "classNames",
-    "pointerEvents",
-  ];
-
-  // warning unknown keys
-  Object.keys(arguments[0] || {}).forEach((key) => {
-    if (!allowedKeys.includes(key)) {
-      console.warn(`Propiedad desconocida: "${key}" en Link. Será ignorada.`);
-    }
-  });
-
   const validVariants = ["primary", "secondary"];
   const validThemes = ["dark", "light"];
   const validTargets = ["_blank", "_self"];
@@ -96,7 +73,8 @@ export default function Link({
   }
 
   // Link
-  return createLink({
+  return createElement({
+    tag: "a",
     classNames: [
       "link",
       isButton ? "link--as-button" : "link--inline",

@@ -20,8 +20,6 @@ import "./index.css";
  */
 
 export default function Strengths() {
-  warningUnknownKeys(arguments, []);
-
   const strengthsContainer = createElement({
     tag: "div",
     classNames: ["s-about__strengths"],

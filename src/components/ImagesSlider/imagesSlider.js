@@ -1,4 +1,4 @@
-import { createFigure, createImg } from "../../js/utils/createElementsHelper";
+import { createElement } from "../../js/utils/createElementsHelper";
 import { getImage } from "../../js/utils/images";
 import {
   addClass,
@@ -11,9 +11,13 @@ import {
 import "./imagesSlider.css";
 import "./imagesSlider.html?raw";
 import cloneTemplate from "../../js/utils/cloneTemplate";
-
 import template from "./imagesSlider.html?raw";
-import { attachEvent, fadeInObserver } from "../../js/utils/utils";
+import {
+  attachEvent,
+  fadeInObserver,
+  validateProp,
+  warningUnknownKeys,
+} from "../../js/utils/utils";
 import Button from "../Button/button";
 import { svg } from "../../const/database/bbdd_consts";
 
@@ -40,6 +44,8 @@ import { svg } from "../../const/database/bbdd_consts";
  */
 
 export default function ImagesSlider({ images = [] } = {}) {
+  validateProp("images", images, "array");
+
   let imageIndex = 0;
   let canClick = true;
 
@@ -75,11 +81,13 @@ export default function ImagesSlider({ images = [] } = {}) {
     onClick: () => turnSlide("previous"),
   });
 
-  const imageContainer = createFigure({
+  const imageContainer = createElement({
+    tag: "figure",
     classNames: ["images-slider__slide", "images-slider__slide--active"],
   });
 
-  const imageToShow = createImg({
+  const imageToShow = createElement({
+    tag: "img",
     classNames: ["images-slider__image"],
     attributes: {
       src: getImage(images[imageIndex].src, ["screenshots"]),
@@ -88,7 +96,8 @@ export default function ImagesSlider({ images = [] } = {}) {
     },
   });
 
-  const sliderBg = createImg({
+  const sliderBg = createElement({
+    tag: "img",
     classNames: ["images-slider__bg"],
     attributes: {
       src: getImage(images[imageIndex].src, ["screenshots"]),
@@ -98,7 +107,8 @@ export default function ImagesSlider({ images = [] } = {}) {
   });
 
   const bullets = images.map((image, index) => {
-    const bullet = createImg({
+    const bullet = createElement({
+      tag: "img",
       classNames: [
         "images-slider__bullet",
         index === 0 ? "images-slider__bullet--active" : null,
@@ -112,7 +122,7 @@ export default function ImagesSlider({ images = [] } = {}) {
       },
     });
 
-    bullet.addEventListener("click", () => {
+    attachEvent(bullet, "click", () => {
       if (index === imageIndex) return;
       const action = imageIndex < index ? "next" : "previous";
       turnSlide(action, index);
@@ -121,33 +131,13 @@ export default function ImagesSlider({ images = [] } = {}) {
     return bullet;
   });
 
-  // keys to receive
-  const allowedKeys = ["images"];
-
-  // warning unknown keys
-  Object.keys(arguments[0] || {}).forEach((key) => {
-    if (!allowedKeys.includes(key)) {
-      console.warn(
-        "Propiedad desconocida: ",
-        key,
-        "en ImagesSlider. Será ignorada.",
-      );
-    }
-  });
-
-  //   label text
-
   setText(imageLabel, images[imageIndex].alt);
-
-  //   appends
 
   append(imageContainer, [imageToShow]);
   append(sliderTrack, [imageContainer]);
   append(root, [sliderBg]);
   append(buttonsContainer, [previousButton, nextButton]);
   bullets.forEach((bullet) => append(bulletsContainer, [bullet]));
-
-  //   slide function auxiliar functions
 
   const setImageIndex = (action, index) => {
     if (index || index === 0) {
@@ -165,14 +155,16 @@ export default function ImagesSlider({ images = [] } = {}) {
   };
 
   const createImageToShow = (direction, images, index) => {
-    const container = createFigure({
+    const container = createElement({
+      tag: "figure",
       classNames: [
         "images-slider__slide",
         `images-slider__slide--in-to-${direction}`,
       ],
     });
 
-    const image = createImg({
+    const image = createElement({
+      tag: "img",
       classNames: ["images-slider__image"],
       attributes: {
         src: getImage(images[index].src, ["screenshots"]),
@@ -186,14 +178,10 @@ export default function ImagesSlider({ images = [] } = {}) {
     return container;
   };
 
-  // slide function
-
   const turnSlide = (action, index) => {
     if (canClick) {
       canClick = false;
       setImageIndex(action, index);
-
-      //   variables
 
       const direction = action === "previous" ? "right" : "left";
 
@@ -208,32 +196,20 @@ export default function ImagesSlider({ images = [] } = {}) {
       const imageInDom = root.querySelector(".images-slider__slide--active");
       const imageToShow = createImageToShow(direction, images, imageIndex);
 
-      //   appends
-
       append(sliderTrack, [imageToShow]);
-
-      //   bullets actions
 
       removeClass(bulletActive, "images-slider__bullet--active");
       addClass(bullets[imageIndex], "images-slider__bullet--active");
 
-      //   movement of image in dom
-
       addClass(imageInDom, `images-slider__slide--out-to-${direction}`);
 
-      //   Imagelabel
-
       setText(imageLabel, images[imageIndex].alt);
-
-      //   slider bg image
 
       setAttribute(
         sliderBg,
         "src",
         getImage(images[imageIndex].src, ["screenshots"]),
       );
-
-      //  animation events
 
       attachEvent(
         imageToShow,
@@ -257,6 +233,5 @@ export default function ImagesSlider({ images = [] } = {}) {
     }
   };
 
-  // slider
   return root;
 }

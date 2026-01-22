@@ -39,8 +39,6 @@ import "./index.css";
  */
 
 export default function CareerCourse({ data, directionSlide = "left" } = {}) {
-  warningUnknownKeys(arguments, ["data", "directionSlide"]);
-
   // options of each prop
   const validDirectionSlideProps = ["left", "right"];
 

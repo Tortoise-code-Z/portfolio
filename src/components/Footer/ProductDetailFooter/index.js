@@ -23,8 +23,6 @@ import "./index.css";
  */
 
 export function ProductDetailFooter({} = {}) {
-  warningUnknownKeys(arguments, []);
-
   const footer = cloneTemplate(
     template,
     "proyect-detail-footer-template",

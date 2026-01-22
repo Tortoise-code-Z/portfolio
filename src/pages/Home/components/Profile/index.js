@@ -20,8 +20,6 @@ import { svg } from "../../../../const/database/bbdd_consts.js";
  */
 
 export default function Profile({} = {}) {
-  warningUnknownKeys(arguments, []);
-
   const section = createElement({
     tag: "section",
     classNames: ["s-about"],

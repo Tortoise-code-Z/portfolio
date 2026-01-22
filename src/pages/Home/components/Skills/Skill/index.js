@@ -30,8 +30,6 @@ import "./index.css";
  */
 
 export default function Skill({ skill, flexReverse = false } = {}) {
-  warningUnknownKeys(arguments, ["skill", "flexReverse"]);
-
   // validations
   validateProp("skill", skill, "object");
   validateProp("flexReverse", flexReverse, "boolean");

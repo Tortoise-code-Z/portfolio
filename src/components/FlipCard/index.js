@@ -1,4 +1,8 @@
-import { validateProp, warningUnknownKeys } from "../../js/utils/utils";
+import {
+  attachEvent,
+  validateProp,
+  warningUnknownKeys,
+} from "../../js/utils/utils";
 import "./index.css";
 import template from "./index.html?raw";
 import cloneTemplate from "../../js/utils/cloneTemplate";
@@ -24,9 +28,6 @@ export default function FlipCard({
   frontCard,
   backCard,
 } = {}) {
-  warningUnknownKeys(arguments, ["frontCard", "backCard", "typeFlipCardClass"]);
-
-  // validations
   validateProp("typeFlipCardClass", typeFlipCardClass, "string");
   validateProp("frontCard", frontCard, "HTMLElement");
   validateProp("backCard", backCard, "HTMLElement");
@@ -43,9 +44,7 @@ export default function FlipCard({
   append(flipCardFront, [frontCard]);
   append(flipCardBack, [backCard]);
 
-  flipCard.addEventListener("click", () => {
-    flipCard.classList.toggle("flipped");
-  });
+  attachEvent(flipCard, "click", () => flipCard.classList.toggle("flipped"));
 
   return flipCard;
 }

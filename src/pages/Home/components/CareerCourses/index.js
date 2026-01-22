@@ -16,8 +16,6 @@ import "./index.css";
  */
 
 export default function Career() {
-  warningUnknownKeys(arguments, []);
-
   const section = createElement({
     tag: "section",
     classNames: ["s-career"],

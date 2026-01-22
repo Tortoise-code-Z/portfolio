@@ -1,12 +1,7 @@
 import FloatingTitle from "../../../components/FloatingTitle/floatingTitle";
 import { svg } from "../../../const/database/bbdd_consts";
 import { createElement } from "../../../js/utils/createElementsHelper";
-import {
-  getQueryParams,
-  navbarObserver,
-  validateProp,
-  warningUnknownKeys,
-} from "../../../js/utils/utils";
+import { getQueryParams, navbarObserver } from "../../../js/utils/utils";
 import "./index.css";
 import ImagesSlider from "../../../components/ImagesSlider/imagesSlider";
 import bbdd from "../../../const/database/bbdd";
@@ -34,8 +29,6 @@ import { append } from "../../../js/utils/domHelpers";
  */
 
 export default function Gallery({} = {}) {
-  warningUnknownKeys(arguments, []);
-
   // validations
 
   const id = getQueryParams("id");

@@ -37,8 +37,6 @@ import WorkBackFlipCard from "./WorkBackFlipCard/index.js";
  */
 
 export default function Work({ data } = {}) {
-  warningUnknownKeys(arguments, ["data"]);
-
   // validations
   validateProp("data", data, "object");
 

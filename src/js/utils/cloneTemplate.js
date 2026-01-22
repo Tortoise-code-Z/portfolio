@@ -1,3 +1,4 @@
+import { validateProp } from "./utils";
 /**
  * Parses a template string and clones the content of a specific template element.
  * * @function cloneTemplate
@@ -12,6 +13,10 @@ export default function cloneTemplate(
   templateID,
   typeDoc = "text/html",
 ) {
+  validateProp("template", template, "string");
+  validateProp("templateID", templateID, "string");
+  validateProp("typeDoc", typeDoc, "string");
+
   const doc = new DOMParser().parseFromString(template, typeDoc);
   const templateElement = doc.querySelector(`.${templateID}`);
   return templateElement.content.cloneNode(true);

@@ -19,8 +19,6 @@ import "./index.css";
  */
 
 export default function StrengthSlide({ data } = {}) {
-  warningUnknownKeys(arguments, ["data"]);
-
   // validations
   validateProp("data", data, "object");
 

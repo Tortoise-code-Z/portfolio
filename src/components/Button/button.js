@@ -1,5 +1,5 @@
-import { createButton } from "../../js/utils/createElementsHelper";
-import { validateProp } from "../../js/utils/utils";
+import { createElement } from "../../js/utils/createElementsHelper";
+import { validateProp, warningUnknownKeys } from "../../js/utils/utils";
 import "./button.css";
 /**
  * @typedef {Object} ButtonProps
@@ -33,26 +33,6 @@ export default function Button({
   icon = "",
   classNames = [],
 } = {}) {
-  // keys to recibe
-  const allowedKeys = [
-    "variant",
-    "theme",
-    "disabled",
-    "title",
-    "onClick",
-    "text",
-    "icon",
-    "flexReverse",
-    "classNames",
-  ];
-
-  // warning unknown keys
-  Object.keys(arguments[0] || {}).forEach((key) => {
-    if (!allowedKeys.includes(key)) {
-      console.warn(`Propiedad desconocida: "${key}" en Button. Será ignorada.`);
-    }
-  });
-
   // options of each prop
   const validVariants = ["primary", "secondary", "arrow"];
   const validThemes = ["dark", "light"];
@@ -68,7 +48,8 @@ export default function Button({
   validateProp("onClick", onClick, "function");
 
   // button
-  return createButton({
+  return createElement({
+    tag: "button",
     classNames: [
       `button-${variant}`,
       `button-${variant}--${theme}`,

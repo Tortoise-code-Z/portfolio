@@ -1,4 +1,8 @@
-import { fadeInObserver, navbarObserver } from "../../../js/utils/utils.js";
+import {
+  fadeInObserver,
+  navbarObserver,
+  warningUnknownKeys,
+} from "../../../js/utils/utils.js";
 import { append } from "../../../js/utils/domHelpers.js";
 import cloneTemplate from "../../../js/utils/cloneTemplate.js";
 import template from "./defaultFooter.html?raw";

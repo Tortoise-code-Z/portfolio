@@ -1,12 +1,12 @@
 import {
-  createDiv,
-  createPar,
-  createSpan,
-} from "../../js/utils/createElementsHelper";
-import { fadeInObserver, validateProp } from "../../js/utils/utils";
+  fadeInObserver,
+  validateProp,
+  warningUnknownKeys,
+} from "../../js/utils/utils";
 import "./noteMsg.css";
 import { svg } from "../../const/database/bbdd_consts";
 import { append } from "../../js/utils/domHelpers";
+import { createElement } from "../../js/utils/createElementsHelper";
 
 /**
  * @typedef {Object} NoteMsgProps
@@ -23,16 +23,6 @@ import { append } from "../../js/utils/domHelpers";
  */
 
 export default function NoteMsg({ type = "note", desc = "" } = {}) {
-  // keys to receive
-  const allowedKeys = ["desc", "type"];
-
-  // warning unknown keys
-  Object.keys(arguments[0] || {}).forEach((key) => {
-    if (!allowedKeys.includes(key)) {
-      console.warn(`Propiedad desconocida: ${key} en NoteMsg. Será ignorada.`);
-    }
-  });
-
   // options of each prop
   const validType = ["warning", "note"];
 
@@ -40,35 +30,35 @@ export default function NoteMsg({ type = "note", desc = "" } = {}) {
   validateProp("desc", desc, "string");
   validateProp("type", type, "string", validType);
 
-  // note
-  const note = createDiv({
+  const note = createElement({
+    tag: "div",
     classNames: [
       "note-msg",
       type === "warning" ? "note-msg--warning" : "note-msg--info",
     ].filter(Boolean),
   });
 
-  // title container
-  const titleContainer = createDiv({
+  const titleContainer = createElement({
+    tag: "div",
     classNames: ["note-msg__title-container"].filter(Boolean),
   });
 
   fadeInObserver(titleContainer, "animated-element--fade-in-right");
 
-  // icon
-  const icon = createSpan({
+  const icon = createElement({
+    tag: "span",
     classNames: ["note-msg__icon"].filter(Boolean),
     innerHTML: type === "note" ? svg.info : svg.warning,
   });
 
-  // title
-  const titleNode = createPar({
+  const titleNode = createElement({
+    tag: "p",
     classNames: ["note-msg__title"].filter(Boolean),
     innerText: type === "note" ? "Nota" : "Importante",
   });
 
-  // description
-  const description = createPar({
+  const description = createElement({
+    tag: "p",
     classNames: ["note-msg__desc"].filter(Boolean),
     innerText: desc,
   });

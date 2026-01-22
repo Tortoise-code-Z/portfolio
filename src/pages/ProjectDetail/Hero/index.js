@@ -7,7 +7,6 @@ import {
   fadeInObserver,
   getQueryParams,
   navbarObserver,
-  warningUnknownKeys,
 } from "../../../js/utils/utils";
 import "./index.css";
 import template from "./index.html?raw";
@@ -45,7 +44,6 @@ import template from "./index.html?raw";
  */
 
 export default function Hero({} = {}) {
-  warningUnknownKeys(arguments, []);
   const id = getQueryParams("id");
   const work = bbdd.works.find((work) => work.id === Number(id));
 

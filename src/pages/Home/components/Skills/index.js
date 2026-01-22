@@ -18,8 +18,6 @@ import Skill from "./Skill";
  */
 
 export default function Skills({} = {}) {
-  warningUnknownKeys(arguments, []);
-
   const section = createElement({
     tag: "section",
     classNames: ["s-skills"],

@@ -37,8 +37,6 @@ import projectDetailUrl from "../../../../../ProjectDetail/index.html?url";
  */
 
 export default function WorkBackFlipCard({ data = {} } = {}) {
-  warningUnknownKeys(arguments, ["data"]);
-
   // validations
   validateProp("data", data, "object");
 
