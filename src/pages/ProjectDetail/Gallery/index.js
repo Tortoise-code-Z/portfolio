@@ -12,11 +12,29 @@ import ImagesSlider from "../../../components/ImagesSlider/imagesSlider";
 import bbdd from "../../../const/database/bbdd";
 import { append } from "../../../js/utils/domHelpers";
 
+/**
+ * @typedef {Object} Screenshot
+ * @property {string} src - The URL or path to the screenshot image.
+ * @property {string} alt - Alternative text for the image.
+ */
+
+/**
+ * @typedef {Object} ProjectImages
+ * @property {Screenshot[]} screenshots - Array of screenshot objects for the project gallery.
+ */
+
+/**
+ * Renders the "Gallery" section for the project detail view.
+ * * This component fetches project screenshots based on the 'id' from the URL
+ * query parameters and displays them using an interactive image slider component.
+ * It also initializes a floating title and observes the navbar color transition.
+ * * @function Gallery
+ * @param {Object} [props={}] - Component properties.
+ * @returns {HTMLElement} The section element containing the project screenshot gallery.
+ */
+
 export default function Gallery({} = {}) {
   warningUnknownKeys(arguments, []);
-
-  // options of each prop
-  // const validProps = [];
 
   // validations
 

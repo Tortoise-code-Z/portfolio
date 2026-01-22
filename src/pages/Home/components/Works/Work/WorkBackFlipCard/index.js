@@ -3,7 +3,6 @@ import {
   warningUnknownKeys,
 } from "../../../../../../js/utils/utils";
 import "./index.css";
-import { createElement } from "../../../../../../js/utils/createElementsHelper";
 import { getImage } from "../../../../../../js/utils/images";
 import { append } from "../../../../../../js/utils/domHelpers";
 import template from "./index.html?raw";
@@ -11,6 +10,31 @@ import cloneTemplate from "../../../../../../js/utils/cloneTemplate";
 import { svg } from "../../../../../../const/database/bbdd_consts";
 import Link from "../../../../../../components/Link/link";
 import projectDetailUrl from "../../../../../ProjectDetail/index.html?url";
+
+/**
+ * @typedef {Object} WorkBackFlipCardProps
+ * @property {Object} data - The comprehensive project data object.
+ * @property {string} data.id - Unique identifier used for the project detail URL.
+ * @property {string} data.name - The title of the project.
+ * @property {string} data.visibility - The visibility status (e.g., "Public", "Private").
+ * @property {string} data.projectRole - The role held during the project (e.g., "Frontend Developer").
+ * @property {string} data.year - The year the project was completed.
+ * @property {Object} data.images - Image metadata for the background.
+ * @property {Object} data.techStack - Technologies used in the project.
+ * @property {Object[]} data.techStack.tools.fastTools - List of main tools to display.
+ * @property {Object} data.links - URLs for external resources (github, demo).
+ */
+
+/**
+ * Component that renders the back side of a project flip card.
+ * It displays detailed metadata including an image, role, tech stack, and action buttons.
+ * Action buttons include links to the source code, a live demo (if available),
+ * and a "More Info" button that redirects to the Project Detail page with the project ID.
+ *
+ * @function WorkBackFlipCard
+ * @param {WorkBackFlipCardProps} [props={}] - Configuration properties for the back card.
+ * @returns {HTMLElement} The populated back-card element from the template.
+ */
 
 export default function WorkBackFlipCard({ data = {} } = {}) {
   warningUnknownKeys(arguments, ["data"]);

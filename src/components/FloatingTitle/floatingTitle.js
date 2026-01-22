@@ -9,21 +9,24 @@ import "./floatingTitle.css";
 
 /**
  * @typedef {Object} FloatingTitleProps
- * @property {boolean} [upperCase=false] - Indica si el texto debe mostrarse en mayúsculas.
- * @property {string} [text=""] - El contenido textual del título.
- * @property {string} [icon=""] - Fragmento HTML para el icono acompañante.
- * @property {1|2|3|4|5|6} [level=2] - Nivel de la etiqueta de encabezado (h1-h6).
- * @property {"dark"|"light"} [theme="dark"] - Esquema de color del componente.
- * @property {"left"|"right"} [iconPosition="right"] - Posición del icono respecto al texto.
- * @property {number|null} [top=null] - Posición vertical en píxeles (activa posicionamiento absoluto).
- * @property {number|null} [left=null] - Posición horizontal en píxeles (activa posicionamiento absoluto).
+ * @property {boolean} [upperCase=false] - Indicates whether the text should be displayed in uppercase.
+ * @property {string} [text=""] - The textual content of the title.
+ * @property {string} [icon=""] - HTML fragment for the accompanying icon.
+ * @property {1|2|3|4|5|6} [level=2] - The heading tag level (h1-h6).
+ * @property {"dark"|"light"} [theme="dark"] - The color scheme of the component.
+ * @property {"left"|"right"} [iconPosition="right"] - The position of the icon relative to the text.
+ * @property {number|null} [top=null] - Vertical position in pixels (enables absolute positioning).
+ * @property {number|null} [left=null] - Horizontal position in pixels (enables absolute positioning).
  */
 
 /**
- * Componente que genera un título con icono, soporte para temas y posicionamiento flotante.
- * * @param {FloatingTitleProps} [props={}] - Propiedades de configuración del título.
- * @returns {HTMLDivElement} Elemento contenedor del título flotante.
+ * Component that generates a title with an icon, theme support, and floating positioning.
+ *
+ * @function FloatingTitle
+ * @param {FloatingTitleProps} [props={}] - Configuration properties for the title.
+ * @returns {HTMLDivElement} Container element of the floating title.
  */
+
 export default function FloatingTitle({
   upperCase = false,
   text = "",

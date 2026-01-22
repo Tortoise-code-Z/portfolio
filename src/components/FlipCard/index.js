@@ -6,16 +6,19 @@ import { append } from "../../js/utils/domHelpers";
 
 /**
  * @typedef {Object} FlipCardProps
- * @property {string} typeFlipCardClass - Clase CSS para identificar la card.
- * @property {HTMLElement} frontCard - Elemento del DOM que se mostrará en la cara frontal.
- * @property {HTMLElement} backCard - Elemento del DOM que se mostrará en la cara posterior.
+ * @property {string} typeFlipCardClass - CSS class to identify the card and its flip style.
+ * @property {HTMLElement} frontCard - The DOM element to be displayed on the front face.
+ * @property {HTMLElement} backCard - The DOM element to be displayed on the back face.
  */
 
 /**
- * Componente que crea una tarjeta con efecto de giro (flip) al hacer clic.
- * * @param {FlipCardProps} [props={}] - Propiedades de configuración de la tarjeta.
- * @returns {HTMLElement} El elemento del DOM que contiene la estructura de la tarjeta giratoria.
+ * Component that creates a card with a flip effect when clicked.
+ *
+ * @function FlipCard
+ * @param {FlipCardProps} [props={}] - Configuration properties for the card.
+ * @returns {HTMLElement} The DOM element containing the rotating card structure.
  */
+
 export default function FlipCard({
   typeFlipCardClass,
   frontCard,

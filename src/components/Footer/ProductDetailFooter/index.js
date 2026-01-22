@@ -13,12 +13,13 @@ import template from "./index.html?raw";
 import "./index.css";
 
 /**
- * Componente que genera el pie de página específico para el detalle de un proyecto.
- * Extrae información del proyecto mediante parámetros de URL, gestiona animaciones de entrada
- * y renderiza enlaces dinámicos a repositorios, demos y redes sociales.
- * * @function ProductDetailFooter
- * @param {Object} [props={}] - Objeto de propiedades (actualmente no utiliza propiedades externas).
- * @returns {HTMLElement} El elemento del DOM que representa el pie de página del detalle de producto.
+ * Component that generates the specific footer for project details.
+ * Extracts project information via URL parameters, manages entry animations,
+ * and renders dynamic links to repositories, demos, and social media.
+ *
+ * @function ProductDetailFooter
+ * @param {Object} [props={}] - Properties object (currently does not use external properties).
+ * @returns {HTMLElement} The DOM element representing the product detail footer.
  */
 
 export function ProductDetailFooter({} = {}) {

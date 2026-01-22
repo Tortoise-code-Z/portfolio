@@ -8,6 +8,17 @@ import Skills from "./components/Skills";
 import Works from "./components/Works";
 import "./index.css";
 
+/**
+ * Entry point for the Home page.
+ * This script orchestrates the assembly of the main landing page by selecting
+ * specific DOM containers (header, main, footer) and appending their
+ * corresponding functional components.
+ * * It initializes the following structure:
+ * - **Header**: Navbar and Hero section.
+ * - **Main**: Profile, Works (Projects), Skills, and Career (Courses/Experience).
+ * - **Footer**: Default footer component.
+ */
+
 append(document.querySelector(".home__header"), [Navbar(), Hero()]);
 
 append(document.querySelector(".home__main"), [

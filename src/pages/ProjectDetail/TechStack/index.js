@@ -14,14 +14,35 @@ import TechStackLibraries from "./TechStackLibraries";
 import TechStackTools from "./TechStackTools";
 import TechStackDesign from "./TechStackDesign";
 
+/**
+ * @typedef {Object} TechStackData
+ * @property {Object} tools - Main development tools.
+ * @property {Object[]} tools.allTools - Detailed list of all specialized tools used.
+ * @property {Object[]} librariesUtils - Utility libraries and frameworks.
+ * @property {Object[]} stylesDesign - Design systems and styling technologies.
+ */
+
+/**
+ * @typedef {Object} WorkTechData
+ * @property {TechStackData} techStack - The complete technological breakdown of the project.
+ */
+
+/**
+ * Renders the "Tech Stack" section for the project detail view.
+ * * This component organizes the technological landscape of a project into three
+ * main categories: Core Tools, Libraries/Utilities, and Design/Styles.
+ * It uses the project ID from URL parameters to fetch the specific data
+ * and initializes sub-components for each technology segment.
+ * * @function TechStack
+ * @param {Object} [props={}] - Component properties.
+ * @returns {HTMLElement} The section element containing the categorized tech stack.
+ */
+
 export default function TechStack({} = {}) {
   warningUnknownKeys(arguments, []);
 
   const id = getQueryParams("id");
   const work = bbdd.works.find((work) => work.id === Number(id));
-
-  // options of each prop
-  // const validProps = [];
 
   // validations
   validateProp("id", Number(id), "number");

@@ -3,53 +3,53 @@ import bbdd from "../../../../const/database/bbdd";
 import { svg } from "../../../../const/database/bbdd_consts";
 import { createElement } from "../../../../js/utils/createElementsHelper";
 import { append } from "../../../../js/utils/domHelpers";
-import {
-    attachEvent,
-    navbarObserver,
-    warningUnknownKeys,
-} from "../../../../js/utils/utils";
+import { navbarObserver, warningUnknownKeys } from "../../../../js/utils/utils";
 import "./index.css";
 import Skill from "./Skill";
 
+/**
+ * Component that generates the Skills section of the website.
+ * Iterates through the skills database to render individual skill
+ * rows with alternating layout directions.
+ *
+ * @function Skills
+ * @param {Object} [props={}] - Properties object (currently unused).
+ * @returns {HTMLElement} The section element containing the skills grid and animations.
+ */
+
 export default function Skills({} = {}) {
-    warningUnknownKeys(arguments, []);
+  warningUnknownKeys(arguments, []);
 
-    // options of each prop
-    // const validProps = [];
+  const section = createElement({
+    tag: "section",
+    classNames: ["s-skills"],
+    attributes: {
+      "data-navbar-color": "black",
+    },
+  });
 
-    // validations
-    // validateProp('prop', prop, 'string', validProps);
+  navbarObserver(section);
 
-    const section = createElement({
-        tag: "section",
-        classNames: ["s-skills"],
-        attributes: {
-            "data-navbar-color": "black",
-        },
-    });
+  const title = FloatingTitle({
+    upperCase: true,
+    text: "Skills",
+    icon: svg.arrowRightDown,
+    theme: "dark",
+    iconPosition: "right",
+  });
 
-    navbarObserver(section);
+  const skillItemsContainer = createElement({
+    tag: "div",
+    classNames: ["s-skills__items-container"],
+  });
 
-    const title = FloatingTitle({
-        upperCase: true,
-        text: "Skills",
-        icon: svg.arrowRightDown,
-        theme: "dark",
-        iconPosition: "right",
-    });
+  bbdd.skills.forEach((skill, index) =>
+    append(skillItemsContainer, [
+      Skill({ skill, flexReverse: index % 2 !== 0 }),
+    ]),
+  );
 
-    const skillItemsContainer = createElement({
-        tag: "div",
-        classNames: ["s-skills__items-container"],
-    });
+  append(section, [title, skillItemsContainer]);
 
-    bbdd.skills.forEach((skill, index) =>
-        append(skillItemsContainer, [
-            Skill({ skill, flexReverse: index % 2 !== 0 }),
-        ])
-    );
-
-    append(section, [title, skillItemsContainer]);
-
-    return section;
+  return section;
 }

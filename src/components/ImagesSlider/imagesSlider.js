@@ -19,23 +19,24 @@ import { svg } from "../../const/database/bbdd_consts";
 
 /**
  * @typedef {Object} SliderImage
- * @property {string} src - Ruta o nombre del archivo de la imagen.
- * @property {string} alt - Texto descriptivo para la imagen y la etiqueta.
- * @property {number} [width] - Ancho de la imagen.
- * @property {number} [height] - Alto de la imagen.
+ * @property {string} src - Path or filename of the image.
+ * @property {string} alt - Descriptive text for the image and its label.
+ * @property {number} [width] - The width of the image.
+ * @property {number} [height] - The height of the image.
  */
 
 /**
  * @typedef {Object} ImagesSliderProps
- * @property {SliderImage[]} [images=[]] - Listado de imágenes a mostrar en el carrusel.
+ * @property {SliderImage[]} [images=[]] - List of images to be displayed in the carousel.
  */
 
 /**
- * Componente que genera un carrusel de imágenes con navegación por flechas,
- * indicadores (bullets), animaciones de transición y fondo dinámico.
- * * @function ImagesSlider
- * @param {ImagesSliderProps} [props={}] - Propiedades de configuración del slider.
- * @returns {HTMLElement} El elemento raíz del carrusel de imágenes.
+ * Component that generates an image carousel with arrow navigation,
+ * indicators (bullets), transition animations, and a dynamic background.
+ *
+ * @function ImagesSlider
+ * @param {ImagesSliderProps} [props={}] - Configuration properties for the slider.
+ * @returns {HTMLElement} The root element of the image carousel.
  */
 
 export default function ImagesSlider({ images = [] } = {}) {

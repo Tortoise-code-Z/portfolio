@@ -14,13 +14,37 @@ import { svg } from "../../../const/database/bbdd_consts";
 import Cards from "../../../components/Cards/cards";
 import NoteMsg from "../../../components/noteMsg/noteMsg";
 
+/**
+ * @typedef {Object} DevProcessCard
+ * @property {string} title - The title of the development process highlight card.
+ * @property {string} value - The content or description within the card.
+ */
+
+/**
+ * @typedef {Object} DevProcessMessage
+ * @property {string} description - The text content of the message.
+ */
+
+/**
+ * @typedef {Object} DevelopmentProcessData
+ * @property {string[]} description - Array of paragraphs detailing the development workflow.
+ * @property {DevProcessCard[]} cards - Array of cards highlighting key process metrics.
+ * @property {DevProcessMessage} [warningMsg] - Optional warning message regarding the process.
+ * @property {DevProcessMessage} [noteMsg] - Optional relevant note regarding the process.
+ */
+
+/**
+ * Renders the "Development Process" section for the project detail view.
+ * * This component identifies the current project via URL parameters, generates
+ * animated descriptive paragraphs, populates highlight cards, and conditionally
+ * appends status messages (warnings or notes) based on the database content.
+ * * @function DevelopmentProcess
+ * @param {Object} [props={}] - Component properties.
+ * @returns {HTMLElement} The section element containing the development process documentation.
+ */
+
 export default function DevelopmentProcess({} = {}) {
   warningUnknownKeys(arguments, []);
-
-  // options of each prop
-  //   const validProps = [];
-
-  // validations
 
   const id = getQueryParams("id");
   const work = bbdd.works.find((work) => work.id === Number(id));

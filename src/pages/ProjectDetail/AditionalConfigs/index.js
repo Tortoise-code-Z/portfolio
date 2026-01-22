@@ -17,11 +17,38 @@ import "prismjs/themes/prism-twilight.css";
 import "prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard";
 import NoteMsg from "../../../components/noteMsg/noteMsg.js";
 
+/**
+ * @typedef {Object} ConfigStep
+ * @property {string} title - The title of the configuration step.
+ * @property {("code"|"text")} type - The content type of the step.
+ * @property {string} description - The code snippet or text description for the step.
+ */
+
+/**
+ * @typedef {Object} MessageDetail
+ * @property {string} description - The content of the warning or note message.
+ */
+
+/**
+ * @typedef {Object} ProjectConfig
+ * @property {string[]} description - Array of introductory paragraphs for the configuration section.
+ * @property {ConfigStep[]} steps - Array of sequential setup steps.
+ * @property {MessageDetail} [warningMsg] - Optional warning information.
+ * @property {MessageDetail} [noteMsg] - Optional additional notes.
+ */
+
+/**
+ * Renders the "Additional Configurations" section for a project.
+ * * This component fetches project-specific technical setup data, renders steps
+ * as either plain text or syntax-highlighted code blocks using Prism.js,
+ * and handles conditional display of warning and note messages.
+ * * @function AditionalConfigs
+ * @param {Object} [props={}] - Component properties.
+ * @returns {HTMLElement} The section element containing the technical documentation and steps.
+ */
+
 export default function AditionalConfigs({} = {}) {
   warningUnknownKeys(arguments, []);
-
-  // options of each prop
-  // const validProps = [];
 
   // validations
   const id = getQueryParams("id");

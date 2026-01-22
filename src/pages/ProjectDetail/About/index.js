@@ -1,11 +1,8 @@
 import "./index.css";
 import {
-  attachEvent,
   fadeInObserver,
   getQueryParams,
   navbarObserver,
-  validateProp,
-  warningUnknownKeys,
 } from "../../../js/utils/utils";
 import { createElement } from "../../../js/utils/createElementsHelper";
 import { svg } from "../../../const/database/bbdd_consts";
@@ -13,6 +10,34 @@ import FloatingTitle from "../../../components/FloatingTitle/floatingTitle";
 import bbdd from "../../../const/database/bbdd";
 import { append } from "../../../js/utils/domHelpers";
 import Cards from "../../../components/Cards/cards.js";
+
+/**
+ * @typedef {Object} WorkAboutCard
+ * @property {string} title - The title of the information card.
+ * @property {string} value - The value or content displayed in the card.
+ */
+
+/**
+ * @typedef {Object} WorkAboutData
+ * @property {string[]} description - Array of paragraphs describing the project.
+ * @property {WorkAboutCard[]} cards - Array of highlight cards related to the project.
+ */
+
+/**
+ * @typedef {Object} WorkEntry
+ * @property {number} id - Unique identifier for the work/project.
+ * @property {WorkAboutData} about - Detailed information about the project.
+ */
+
+/**
+ * Renders the "About Project" section for the Project Detail page.
+ * * Retrieves project details from the database using the 'id' URL parameter,
+ * creates a section with scroll animations for text paragraphs, and
+ * integrates information cards.
+ * * @function AboutProject
+ * @param {Object} [props={}] - Component properties.
+ * @returns {HTMLElement} The constructed section element containing project details.
+ */
 
 export default function AboutProject({} = {}) {
   // validations

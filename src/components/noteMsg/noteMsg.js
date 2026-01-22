@@ -10,15 +10,16 @@ import { append } from "../../js/utils/domHelpers";
 
 /**
  * @typedef {Object} NoteMsgProps
- * @property {"warning"|"note"} [type="note"] - El nivel de severidad o tipo de mensaje a mostrar.
- * @property {string} [desc=""] - El texto descriptivo o cuerpo del mensaje.
+ * @property {"warning"|"note"} [type="note"] - The severity level or type of message to display.
+ * @property {string} [desc=""] - The descriptive text or body of the message.
  */
 
 /**
- * Componente que genera un cuadro de mensaje informativo o de advertencia con iconos y animaciones.
- * * @function NoteMsg
- * @param {NoteMsgProps} [props={}] - Propiedades de configuración del mensaje.
- * @returns {HTMLDivElement} El elemento del DOM que contiene la nota estructurada.
+ * Component that generates an information or warning message box with icons and animations.
+ *
+ * @function NoteMsg
+ * @param {NoteMsgProps} [props={}] - Configuration properties for the message.
+ * @returns {HTMLDivElement} The DOM element containing the structured note.
  */
 
 export default function NoteMsg({ type = "note", desc = "" } = {}) {

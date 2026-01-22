@@ -6,23 +6,24 @@ import "./infiniteSlider.css";
 /**
  * @callback SlideComponentCallback
  * @param {Object} params
- * @param {Object} params.data - Los datos específicos para renderizar el slide.
- * @returns {HTMLElement} El elemento del DOM que representa el contenido del slide.
+ * @param {Object} params.data - Specific data used to render the slide.
+ * @returns {HTMLElement} The DOM element representing the slide content.
  */
 
 /**
  * @typedef {Object} InfiniteSliderProps
- * @property {SlideComponentCallback} slideComponent - Función encargada de renderizar cada componente interno del slide.
- * @property {Array<Object>} [dataSlides=[]] - Lista de objetos con la información que se pasará a cada slide.
- * @property {3|4|5} [duplicationSlides=3] - Número de veces que se duplicará el set de datos para crear el efecto infinito.
- * @property {"left"|"right"} [direction="left"] - Dirección de la animación del slider.
+ * @property {SlideComponentCallback} slideComponent - Function responsible for rendering each internal slide component.
+ * @property {Array<Object>} [dataSlides=[]] - List of objects containing the information to be passed to each slide.
+ * @property {3|4|5} [duplicationSlides=3] - Number of times the dataset will be duplicated to create the infinite effect.
+ * @property {"left"|"right"} [direction="left"] - The direction of the slider animation.
  */
 
 /**
- * Componente que genera un carrusel de movimiento continuo (infinito) mediante la clonación de elementos.
- * * @function InfiniteSlider
- * @param {InfiniteSliderProps} [props={}] - Propiedades de configuración del slider.
- * @returns {HTMLDivElement} El elemento contenedor del slider infinito.
+ * Component that generates a continuous (infinite) motion carousel by cloning elements.
+ *
+ * @function InfiniteSlider
+ * @param {InfiniteSliderProps} [props={}] - Configuration properties for the slider.
+ * @returns {HTMLDivElement} The container element of the infinite slider.
  */
 
 export default function InfiniteSlider({

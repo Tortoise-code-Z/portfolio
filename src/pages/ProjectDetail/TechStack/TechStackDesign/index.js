@@ -2,75 +2,89 @@ import InfiniteSlider from "../../../../components/InfiniteSlider/infiniteSlider
 import { createElement } from "../../../../js/utils/createElementsHelper";
 import { append } from "../../../../js/utils/domHelpers";
 import {
-    fadeInObserver,
-    validateProp,
-    warningUnknownKeys,
+  fadeInObserver,
+  validateProp,
+  warningUnknownKeys,
 } from "../../../../js/utils/utils";
 import "./index.css";
 
+/**
+ * @typedef {Object} DesignItem
+ * @property {string} item - The name of the styling or design tool (e.g., "SASS", "Figma").
+ * @property {string} icon - SVG string representing the tool's icon.
+ */
+
+/**
+ * Component that renders the "Styles and Design" subsection within the Tech Stack.
+ * * It features an infinite scrolling title and a grid of design tool targets.
+ * Each target includes the tool's name and its corresponding icon, with staggered
+ * entrance animations (alternating top and bottom fade-ins).
+ * * @function TechStackDesign
+ * @param {Object} props - Component properties.
+ * @param {DesignItem[]} props.designs - Array of design tools used in the project.
+ * @returns {HTMLDivElement|null} The container element or null if no designs are provided.
+ */
+
 export default function TechStackDesign({ designs } = {}) {
-    warningUnknownKeys(arguments, ["designs"]);
+  warningUnknownKeys(arguments, ["designs"]);
 
-    // options of each prop
-    // const validProps = [];
+  // validations
+  validateProp("designs", designs, "array");
 
-    // validations
-    validateProp("designs", designs, "array");
+  if (designs.length === 0) return null;
 
-    if (designs.length === 0) return null;
+  const container = createElement({
+    tag: "div",
+    classNames: ["pd-s-tech-stack__design"],
+  });
 
-    const container = createElement({
-        tag: "div",
-        classNames: ["pd-s-tech-stack__design"],
+  const designTitle = InfiniteSlider({
+    slideComponent: (data) => {
+      return createElement({
+        tag: "h3",
+        classNames: ["pd-s-tech-stack__design-title"],
+        innerText: data.data,
+      });
+    },
+    dataSlides: ["Estilos y diseño"],
+    duplicationSlides: 5,
+  });
+
+  fadeInObserver(designTitle, `animated-element--fade-in-left`);
+
+  const designTargets = createElement({
+    tag: "div",
+    classNames: ["pd-s-tech-stack__design-targets"],
+  });
+
+  designs.forEach((design, index) => {
+    const target = createElement({
+      tag: "div",
+      classNames: ["tech-stack__design-target"],
     });
 
-    const designTitle = InfiniteSlider({
-        slideComponent: (data) => {
-            return createElement({
-                tag: "h3",
-                classNames: ["pd-s-tech-stack__design-title"],
-                innerText: data.data,
-            });
-        },
-        dataSlides: ["Estilos y diseño"],
-        duplicationSlides: 5,
+    const title = createElement({
+      tag: "h4",
+      classNames: ["tech-stack__design-title"],
+      innerText: design.item,
     });
 
-    fadeInObserver(designTitle, `animated-element--fade-in-left`);
-
-    const designTargets = createElement({
-        tag: "div",
-        classNames: ["pd-s-tech-stack__design-targets"],
+    const span = createElement({
+      tag: "span",
+      classNames: ["tech-stack__design-icon"],
+      innerHTML: design.icon,
     });
 
-    designs.forEach((design, index) => {
-        const target = createElement({
-            tag: "div",
-            classNames: ["tech-stack__design-target"],
-        });
+    fadeInObserver(
+      target,
+      `animated-element--fade-in-${index % 2 === 0 ? "top" : "bottom"}`,
+    );
 
-        const title = createElement({
-            tag: "h4",
-            classNames: ["tech-stack__design-title"],
-            innerText: design.item,
-        });
+    append(target, [title, span]);
+    append(designTargets, [target]);
+  });
 
-        const span = createElement({
-            tag: "span",
-            classNames: ["tech-stack__design-icon"],
-            innerHTML: design.icon,
-        });
+  append(container, [designTitle, designTargets]);
 
-        fadeInObserver(
-            target,
-            `animated-element--fade-in-${index % 2 === 0 ? "top" : "bottom"}`
-        );
-
-        append(target, [title, span]);
-        append(designTargets, [target]);
-    });
-
-    append(container, [designTitle, designTargets]);
-
-    return container;
+  return container;
 }

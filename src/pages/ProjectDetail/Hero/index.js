@@ -4,7 +4,6 @@ import { svg } from "../../../const/database/bbdd_consts";
 import cloneTemplate from "../../../js/utils/cloneTemplate";
 import { append } from "../../../js/utils/domHelpers";
 import {
-  attachEvent,
   fadeInObserver,
   getQueryParams,
   navbarObserver,
@@ -12,6 +11,38 @@ import {
 } from "../../../js/utils/utils";
 import "./index.css";
 import template from "./index.html?raw";
+
+/**
+ * @typedef {Object} WorkEmphasisName
+ * @property {string[]} name - Array containing the parts of the name (index 0 for main, 1 for accent).
+ * @property {string} color - Hex or CSS color string for the name accent.
+ */
+
+/**
+ * @typedef {Object} WorkLinks
+ * @property {string} github - URL to the source code repository.
+ * @property {string} [demo] - URL to the live demonstration of the project.
+ */
+
+/**
+ * @typedef {Object} HeroWorkData
+ * @property {WorkEmphasisName} emphasisName - Project name with specific coloring data.
+ * @property {string} shortDescription - Brief summary of the project.
+ * @property {string} projectRole - Role held during development.
+ * @property {string} visibility - Project status (e.g., "Public", "Private").
+ * @property {string} year - Completion year.
+ * @property {WorkLinks} links - External project resources.
+ */
+
+/**
+ * Renders the Hero section for the Project Detail page.
+ * * It clones a template, populates project metadata (title, role, year),
+ * applies specific entrance animations (fade-in directions), and generates
+ * action buttons for demo and code links.
+ * * @function Hero
+ * @param {Object} [props={}] - Component properties.
+ * @returns {HTMLElement} The populated Hero section element.
+ */
 
 export default function Hero({} = {}) {
   warningUnknownKeys(arguments, []);

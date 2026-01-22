@@ -10,18 +10,19 @@ import "./writteMachineTitle.css";
 
 /**
  * @typedef {Object} WritteMachineTitleProps
- * @property {string[]} [classNames=[]] - Lista de clases CSS adicionales para el título.
- * @property {string} [fixText=""] - Texto estático que precede a la animación de escritura.
- * @property {string} [dinamicInitText=""] - Texto inicial que será borrado por la máquina de escribir.
- * @property {string} [dinamicFinalText=""] - Texto final que será escrito tras borrar el texto inicial.
+ * @property {string[]} [classNames=[]] - List of additional CSS classes for the title.
+ * @property {string} [fixText=""] - Static text that precedes the typing animation.
+ * @property {string} [dinamicInitText=""] - Initial text that will be deleted by the typewriter effect.
+ * @property {string} [dinamicFinalText=""] - Final text that will be written after deleting the initial text.
  */
 
 /**
- * Componente que genera un título con efecto de "máquina de escribir" que se activa al entrar en el viewport.
- * Realiza una transición de borrado del texto inicial y escritura del texto final.
- * * @function WritteMachineTitle
- * @param {WritteMachineTitleProps} [props={}] - Propiedades de configuración del título animado.
- * @returns {HTMLHeadingElement} El elemento de encabezado (H2) con la animación configurada.
+ * Component that generates a title with a "typewriter" effect triggered when entering the viewport.
+ * Performs a transition by deleting the initial text and typing the final text.
+ *
+ * @function WritteMachineTitle
+ * @param {WritteMachineTitleProps} [props={}] - Configuration properties for the animated title.
+ * @returns {HTMLHeadingElement} The H2 heading element with the configured animation.
  */
 
 export default function WritteMachineTitle({

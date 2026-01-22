@@ -6,11 +6,12 @@ import "../Link/link.css";
 import { scrollVisibilitty } from "../../js/utils/utils";
 
 /**
- * Componente que genera la barra de navegación principal del sitio.
- * Implementa lógica de visibilidad basada en el scroll del usuario.
- * * @function Navbar
- * @param {Object} [props={}] - Objeto de propiedades (actualmente no utilizado).
- * @returns {HTMLElement} El elemento del DOM que representa la navegación principal.
+ * Component that generates the site's main navigation bar.
+ * Implements visibility logic based on the user's scroll behavior.
+ *
+ * @function Navbar
+ * @param {Object} [props={}] - Properties object (currently unused).
+ * @returns {HTMLElement} The DOM element representing the main navigation.
  */
 
 export default function Navbar({} = {}) {
@@ -25,11 +26,12 @@ export default function Navbar({} = {}) {
 }
 
 /**
- * Componente que genera una variante de la barra de navegación específica para el detalle de projecto.
- * Utiliza una plantilla diferenciada pero mantiene la lógica de visibilidad por scroll.
- * * @function NavbarProductDetail
- * @param {Object} [props={}] - Objeto de propiedades (actualmente no utilizado).
- * @returns {HTMLElement} El elemento del DOM que representa la navegación de detalle de producto.
+ * Component that generates a navigation bar variant specifically for project details.
+ * It uses a distinct template while maintaining scroll-based visibility logic.
+ *
+ * @function NavbarProductDetail
+ * @param {Object} [props={}] - Properties object (currently unused).
+ * @returns {HTMLElement} The DOM element representing the product detail navigation.
  */
 
 export function NavbarProductDetail({} = {}) {

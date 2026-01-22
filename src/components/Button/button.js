@@ -1,25 +1,27 @@
 import { createButton } from "../../js/utils/createElementsHelper";
 import { validateProp } from "../../js/utils/utils";
 import "./button.css";
-
 /**
  * @typedef {Object} ButtonProps
- * @property {"primary"|"secondary"|"arrow"} [variant="primary"] - Estilo visual del botón.
- * @property {"dark"|"light"} [theme="dark"] - Tema de color del componente.
- * @property {boolean} [disabled=false] - Estado de habilitación del botón.
- * @property {string} [title="Click"] - Texto para el atributo de accesibilidad title.
- * @property {string} [text=""] - Contenido textual del botón.
- * @property {boolean} [flexReverse=false] - Invierte el orden de los elementos internos (icon/text).
- * @property {Function} [onClick] - Función callback para el evento click.
- * @property {string} [icon=""] - Fragmento HTML o clase para el icono.
- * @property {string[]} [classNames=[]] - Array de clases CSS adicionales.
+ * @property {"primary"|"secondary"|"arrow"} [variant="primary"] - The visual style of the button.
+ * @property {"dark"|"light"} [theme="dark"] - The color theme of the component.
+ * @property {boolean} [disabled=false] - Whether the button is disabled.
+ * @property {string} [title="Click"] - Description for the accessibility 'title' attribute.
+ * @property {string} [text=""] - The text content to be displayed inside the button.
+ * @property {boolean} [flexReverse=false] - If true, reverses the order of the icon and text.
+ * @property {Function} [onClick] - Callback function executed on click events.
+ * @property {string} [icon=""] - HTML string or class representing the icon.
+ * @property {string[]} [classNames=[]] - List of additional CSS classes.
  */
 
 /**
- * Genera un componente de botón con validaciones de propiedades.
- * * @param {ButtonProps} [props={}] - Propiedades de configuración del botón.
- * @returns {HTMLElement} El elemento del DOM creado.
+ * Generates a button component with property validations.
+ *
+ * @function Button
+ * @param {ButtonProps} [props={}] - Configuration properties for the button.
+ * @returns {HTMLElement} The created DOM element.
  */
+
 export default function Button({
   variant = "primary",
   theme = "dark",

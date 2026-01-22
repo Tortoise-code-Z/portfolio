@@ -5,26 +5,27 @@ import "./link.css";
 
 /**
  * @typedef {Object} LinkProps
- * @property {string[]} [classNames=[]] - Lista de clases CSS adicionales para el enlace.
- * @property {boolean} [isButton=false] - Indica si el enlace debe estilizarse visualmente como un botón.
- * @property {"primary"|"secondary"} [variant="primary"] - Variante de estilo (aplicable si isButton es true).
- * @property {"dark"|"light"} [theme="dark"] - Esquema de colores para el componente.
- * @property {boolean} [flexReverse=false] - Invierte el orden de los elementos internos (icono y texto).
- * @property {string} [icon=""] - Fragmento HTML que representa el icono.
- * @property {boolean} [disabled=false] - Estado deshabilitado (aplicable si isButton es true).
- * @property {"_self"|"_blank"} [target="_self"] - Atributo target para definir dónde abrir el enlace.
- * @property {string} [href=""] - URL de destino del enlace.
- * @property {string} [title=""] - Texto descriptivo para el atributo 'title' de accesibilidad.
- * @property {string} [text=""] - Texto visible del enlace.
- * @property {"all"|"none"} [pointerEvents="all"] - Define si el elemento responde a eventos del ratón.
- * @property {Object.<string, string|number>} [params={}] - Parámetros de consulta (query params) para añadir a la URL.
+ * @property {string[]} [classNames=[]] - List of additional CSS classes for the link.
+ * @property {boolean} [isButton=false] - Indicates whether the link should be visually styled as a button.
+ * @property {"primary"|"secondary"} [variant="primary"] - Style variant (applicable if isButton is true).
+ * @property {"dark"|"light"} [theme="dark"] - Color scheme for the component.
+ * @property {boolean} [flexReverse=false] - Reverses the order of internal elements (icon and text).
+ * @property {string} [icon=""] - HTML fragment representing the icon.
+ * @property {boolean} [disabled=false] - Disabled state (applicable if isButton is true).
+ * @property {"_self"|"_blank"} [target="_self"] - Target attribute to define where to open the link.
+ * @property {string} [href=""] - Destination URL of the link.
+ * @property {string} [title=""] - Descriptive text for the accessibility 'title' attribute.
+ * @property {string} [text=""] - Visible text of the link.
+ * @property {"all"|"none"} [pointerEvents="all"] - Defines whether the element responds to mouse events.
+ * @property {Object.<string, string|number>} [params={}] - Query parameters to be appended to the URL.
  */
 
 /**
- * Componente que genera un elemento de hipervínculo (anchor) con soporte para estilos de botón y parámetros de URL.
- * * @function Link
- * @param {LinkProps} [props={}] - Propiedades de configuración del enlace.
- * @returns {HTMLAnchorElement} El elemento del DOM del enlace configurado.
+ * Component that generates a hyperlink (anchor) element with support for button styles and URL parameters.
+ *
+ * @function Link
+ * @param {LinkProps} [props={}] - Configuration properties for the link.
+ * @returns {HTMLAnchorElement} The configured DOM element for the link.
  */
 
 export default function Link({

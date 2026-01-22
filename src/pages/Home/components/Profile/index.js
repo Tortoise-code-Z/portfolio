@@ -5,39 +5,42 @@ import ProfileData from "./ProfileData/index.js";
 import Strengths from "./Strengths/index.js";
 import "./index.css";
 import {
-    attachEvent,
-    createIntersectionObserver,
-    navbarObserver,
-    warningUnknownKeys,
+  navbarObserver,
+  warningUnknownKeys,
 } from "../../../../js/utils/utils.js";
 import { svg } from "../../../../const/database/bbdd_consts.js";
 
+/**
+ * Component that generates the Profile (About Me) section.
+ * Appends the profile data and professional strengths sub-components.
+ *
+ * @function Profile
+ * @param {Object} [props={}] - Properties object (currently unused).
+ * @returns {HTMLElement} The section element containing the profile information and strengths.
+ */
+
 export default function Profile({} = {}) {
-    warningUnknownKeys(arguments, []);
+  warningUnknownKeys(arguments, []);
 
-    // section container
+  const section = createElement({
+    tag: "section",
+    classNames: ["s-about"],
+    attributes: {
+      "data-navbar-color": "black",
+    },
+  });
 
-    const section = createElement({
-        tag: "section",
-        classNames: ["s-about"],
-        attributes: {
-            "data-navbar-color": "black",
-        },
-    });
+  navbarObserver(section);
 
-    navbarObserver(section);
+  const title = FloatingTitle({
+    upperCase: true,
+    text: "Profile",
+    icon: svg.arrowRightDown,
+    theme: "dark",
+    iconPosition: "right",
+  });
 
-    // title
+  append(section, [title, ProfileData(), Strengths()]);
 
-    const title = FloatingTitle({
-        upperCase: true,
-        text: "Profile",
-        icon: svg.arrowRightDown,
-        theme: "dark",
-        iconPosition: "right",
-    });
-
-    append(section, [title, ProfileData(), Strengths()]);
-
-    return section;
+  return section;
 }

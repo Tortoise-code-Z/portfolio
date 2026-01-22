@@ -9,15 +9,18 @@ import "./card.css";
 
 /**
  * @typedef {Object} CardProps
- * @property {string} text - El contenido textual que se mostrará en la tarjeta.
- * @property {string} icon - El contenido HTML o clase que representa el icono de la tarjeta.
+ * @property {string} text - The textual content to be displayed on the card.
+ * @property {string} icon - The HTML content or class representing the card's icon.
  */
 
 /**
- * Componente que crea una tarjeta individual con texto e icono.
- * * @param {CardProps} [props={}] - Propiedades de configuración de la tarjeta.
- * @returns {HTMLDivElement} El elemento contenedor de la tarjeta.
+ * Component that creates an individual card with text and an icon.
+ *
+ * @function Card
+ * @param {CardProps} [props={}] - Configuration properties for the card.
+ * @returns {HTMLDivElement} The container element of the card.
  */
+
 export default function Card({ text, icon } = {}) {
   // keys to receive
   const allowedKeys = ["text", "icon"];
