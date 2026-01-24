@@ -1,4 +1,3 @@
-import { validateProp } from "./utils";
 /**
  * Parses a template string and clones the content of a specific template element.
  * * @function cloneTemplate
@@ -8,14 +7,18 @@ import { validateProp } from "./utils";
  * @returns {DocumentFragment} A deep clone of the content within the template element.
  */
 
+import { validateProps } from "./argumentsValidation";
+
 export default function cloneTemplate(
   template,
   templateID,
   typeDoc = "text/html",
 ) {
-  validateProp("template", template, "string");
-  validateProp("templateID", templateID, "string");
-  validateProp("typeDoc", typeDoc, "string");
+  validateProps({
+    template: { value: template, type: "string" },
+    templateID: { value: templateID, type: "string" },
+    typeDoc: { value: typeDoc, type: "string" },
+  });
 
   const doc = new DOMParser().parseFromString(template, typeDoc);
   const templateElement = doc.querySelector(`.${templateID}`);

@@ -3,7 +3,8 @@ import template from "./navbarProductDetail.html?raw";
 import templateDefault from "./navbar.html?raw";
 import "./navbar.css";
 import "../Link/link.css";
-import { scrollVisibilitty, warningUnknownKeys } from "../../js/utils/utils";
+import { scrollVisibilitty } from "../../js/utils/utils";
+import { getElement } from "../../js/utils/domHelpers";
 
 /**
  * Component that generates the site's main navigation bar.
@@ -15,10 +16,10 @@ import { scrollVisibilitty, warningUnknownKeys } from "../../js/utils/utils";
  */
 
 export default function Navbar({} = {}) {
-  const navbar = cloneTemplate(
-    templateDefault,
-    "navbar-template",
-  ).querySelector(".navbar");
+  const navbar = getElement(
+    ".navbar",
+    cloneTemplate(templateDefault, "navbar-template"),
+  );
 
   scrollVisibilitty(navbar, "navbar--hidden", "navbar--visible");
 
@@ -35,8 +36,9 @@ export default function Navbar({} = {}) {
  */
 
 export function NavbarProductDetail({} = {}) {
-  const navbar = cloneTemplate(template, "navbar-template-pd").querySelector(
+  const navbar = getElement(
     ".navbar",
+    cloneTemplate(template, "navbar-template-pd"),
   );
 
   scrollVisibilitty(navbar, "navbar--hidden", "navbar--visible");

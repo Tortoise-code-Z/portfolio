@@ -1,3 +1,5 @@
+import { validateProps } from "./argumentsValidation";
+
 /**
  * Adds a specific class to a DOM element.
  * * @function addClass
@@ -5,7 +7,26 @@
  * @param {string} classToAdd - The name of the class to add.
  */
 export const addClass = (element, classToAdd) => {
+  validateProps({
+    element: { value: element, type: "HTMLElement" },
+    classToAdd: { value: classToAdd, type: "string" },
+  });
+
   element.classList.add(classToAdd);
+};
+
+/**
+ * Toggles a specific class on a DOM element.
+ * * @function toggleClass
+ * @param {HTMLElement} element - The target element.
+ * @param {string} classToToggle - The name of the class to toggle.
+ */
+export const toggleClass = (element, classToToggle) => {
+  validateProps({
+    element: { value: element, type: "HTMLElement" },
+    classToToggle: { value: classToToggle, type: "string" },
+  });
+  element.classList.toggle(classToToggle);
 };
 
 /**
@@ -15,6 +36,10 @@ export const addClass = (element, classToAdd) => {
  * @param {string} classToRemove - The name of the class to remove.
  */
 export const removeClass = (element, classToRemove) => {
+  validateProps({
+    element: { value: element, type: "HTMLElement" },
+    classToRemove: { value: classToRemove, type: "string" },
+  });
   element.classList.remove(classToRemove);
 };
 
@@ -26,6 +51,11 @@ export const removeClass = (element, classToRemove) => {
  * @param {string} classToReplace - The class to be removed.
  */
 export const replaceClass = (element, newClass, classToReplace) => {
+  validateProps({
+    element: { value: element, type: "HTMLElement" },
+    newClass: { value: newClass, type: "string" },
+    classToReplace: { value: classToReplace, type: "string" },
+  });
   element.classList.replace(newClass, classToReplace);
 };
 
@@ -37,6 +67,10 @@ export const replaceClass = (element, newClass, classToReplace) => {
  * @returns {boolean} True if the class exists, false otherwise.
  */
 export const containsClass = (element, classToReview) => {
+  validateProps({
+    element: { value: element, type: "HTMLElement" },
+    classToReview: { value: classToReview, type: "string" },
+  });
   return element.classList.contains(classToReview);
 };
 
@@ -48,66 +82,33 @@ export const containsClass = (element, classToReview) => {
  * @param {string|number} value - The value to assign to the property.
  */
 export const setStyle = (element, styleToApply, value) => {
+  validateProps({
+    element: { value: element, type: "HTMLElement" },
+    styleToApply: { value: styleToApply, type: "string" },
+    value: { value: value, type: ["string", "number"] },
+  });
   element.style[styleToApply] = value;
 };
 
 /**
- * Gets the current vertical scroll position of the window.
- * * @function getWindowScrollTop
- * @returns {number} The floor value of window.scrollY.
+ * Applies multiple CSS styles to an element simultaneously.
+ * * This function iterates through an object of styles and assigns each property
+ * and value to the target element's style object.
+ *
+ * @function setStyles
+ * @param {HTMLElement} element - The target element to style.
+ * @param {Object.<string, string|number>} styles - An object where keys are CSS properties and values are their settings.
+ * * @example
+ * setStyles(myElement, {
+ * backgroundColor: 'red',
+ * marginTop: '20px',
+ * opacity: 0.5
+ * });
  */
-export const getWindowScrollTop = () => {
-  return Math.floor(window.scrollY);
-};
-
-/**
- * Gets the distance from the top of the element to its positioned ancestor.
- * * @function getOffsetTop
- * @param {HTMLElement} element - The target element.
- * @returns {number} The offsetTop value.
- */
-export const getOffsetTop = (element) => {
-  return element.offsetTop;
-};
-
-/**
- * Gets the internal height of an element (including padding, but excluding borders/scrollbars).
- * * @function getClientHeight
- * @param {HTMLElement} element - The target element.
- * @returns {number} The clientHeight value.
- */
-export const getClientHeight = (element) => {
-  return element.clientHeight;
-};
-
-/**
- * Calculates the position of the bottom edge of an element.
- * * @function getOffsetBottom
- * @param {HTMLElement} element - The target element.
- * @returns {number} The sum of offsetTop and clientHeight.
- */
-export const getOffsetBottom = (element) => {
-  return element.offsetTop + element.clientHeight;
-};
-
-/**
- * Inserts HTML content inside an element.
- * * @function setHTML
- * @param {HTMLElement} element - The target element.
- * @param {string} htmlData - The HTML string to insert.
- */
-export const setHTML = (element, htmlData) => {
-  element.innerHTML = htmlData;
-};
-
-/**
- * Inserts a child node at the end of a parent node.
- * * @function appendElement
- * @param {Node} child - The node to append.
- * @param {HTMLElement} parent - The parent element.
- */
-export const appendElement = (child, parent) => {
-  parent.appendChild(child);
+export const setStyles = (element, styles) => {
+  Object.entries(styles).forEach(([property, value]) => {
+    setStyle(element, property, value);
+  });
 };
 
 /**
@@ -118,7 +119,33 @@ export const appendElement = (child, parent) => {
  * @param {string|number} value - The value to set.
  */
 export const setAttribute = (element, attribute, value) => {
+  validateProps({
+    element: { value: element, type: "HTMLElement" },
+    attribute: { value: attribute, type: "string" },
+    value: { value: value, type: ["string", "number"] },
+  });
   element.setAttribute(attribute, value);
+};
+
+/**
+ * Sets multiple attributes on a DOM element.
+ * * This utility iterates over an object of attributes and applies them to the element.
+ * If a value is null or undefined, it removes the attribute.
+ *
+ * @function setAttributes
+ * @param {HTMLElement} element - The target element to modify.
+ * @param {Object.<string, string|number|boolean>} attributes - An object where keys are attribute names and values are their values.
+ * * @example
+ * setAttributes(myElement, {
+ * id: 'main-container',
+ * 'data-navbar-color': 'white',
+ * role: 'button'
+ * });
+ */
+export const setAttributes = (element, attributes) => {
+  Object.entries(attributes).forEach(([key, value]) => {
+    setAttribute(element, key, value);
+  });
 };
 
 /**
@@ -128,27 +155,72 @@ export const setAttribute = (element, attribute, value) => {
  * @param {string} value - The text to display.
  */
 export const setText = (element, value) => {
+  validateProps({
+    element: { value: element, type: "HTMLElement" },
+    value: { value: value, type: "string" },
+  });
   element.innerText = value;
-};
-
-/**
- * Sets multiple classes for an element from an array.
- * * @function setClassName
- * @param {HTMLElement} element - The target element.
- * @param {string[]} [classNames=[]] - Array of class names to apply.
- */
-export const setClassName = (element, classNames = []) => {
-  element.className = classNames.join(" ");
 };
 
 /**
  * Appends one or more nodes to the end of a parent element.
  * * @function append
  * @param {HTMLElement} parent - The parent element.
- * @param {...Node} children - Child nodes to be appended.
+ * @param {...Node[]} children - Child nodes to be appended.
  */
 export function append(parent, children) {
+  validateProps({
+    parent: { value: parent, type: "HTMLElement" },
+    children: { value: children, type: "array" },
+  });
+
   children.forEach((child) => {
-    if (child instanceof Node) parent.appendChild(child);
+    validateProps({
+      child: { value: child, type: "Node" },
+    });
+    parent.appendChild(child);
   });
 }
+
+/**
+ * Finds the first element within the document or a specific container that matches the given CSS selector.
+ * * @function getElement
+ * @param {string} selector - A valid CSS selector string (e.g., '.class', '#id', 'tag').
+ * @param {HTMLElement|Document} [parent=document] - The DOM element or document to search within.
+ * @returns {HTMLElement|null} The first matching element or null if no match is found.
+ * @throws {TypeError} If the selector is not a valid string.
+ * * @example
+ * const submitBtn = getElement('#submit-form');
+ * const item = getElement('.list-item', container);
+ */
+export const getElement = (selector, parent = document) => {
+  validateProps({
+    selector: { value: selector, type: "string" },
+    parent: { value: parent, type: ["HTMLElement", "Document"] },
+  });
+
+  return parent.querySelector(selector);
+};
+
+/**
+ * Selects all elements within the document or a specific container that match the given CSS selector.
+ * * This utility returns a static NodeList representing a list of the document's elements
+ * that match the specified group of selectors.
+ *
+ * @function getElements
+ * @param {string} selector - A valid CSS selector string (e.g., '.class', 'tag', '[attribute]').
+ * @param {HTMLElement|Document} [parent=document] - The DOM element or document to search within.
+ * @returns {NodeList} A non-live NodeList of all matching HTMLElements.
+ * @throws {TypeError} If the selector is not a valid string.
+ * * @example
+ * const allCards = getElements('.card');
+ * const listItems = getElements('li', menuContainer);
+ */
+export const getElements = (selector, parent = document) => {
+  validateProps({
+    selector: { value: selector, type: "string" },
+    parent: { value: parent, type: ["HTMLElement", "Document"] },
+  });
+
+  return Array.from(parent.querySelectorAll(selector));
+};

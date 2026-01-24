@@ -1,7 +1,7 @@
 import {
   fadeInObserver,
   validateProp,
-  warningUnknownKeys,
+  validateProps,
 } from "../../js/utils/utils";
 import "./noteMsg.css";
 import { svg } from "../../const/database/bbdd_consts";
@@ -23,12 +23,10 @@ import { createElement } from "../../js/utils/createElementsHelper";
  */
 
 export default function NoteMsg({ type = "note", desc = "" } = {}) {
-  // options of each prop
-  const validType = ["warning", "note"];
-
-  // validations
-  validateProp("desc", desc, "string");
-  validateProp("type", type, "string", validType);
+  validateProps({
+    desc: { value: desc, type: "string" },
+    type: { value: type, type: "string", allowedValues: ["warning", "note"] },
+  });
 
   const note = createElement({
     tag: "div",

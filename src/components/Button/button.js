@@ -1,5 +1,9 @@
 import { createElement } from "../../js/utils/createElementsHelper";
-import { validateProp, warningUnknownKeys } from "../../js/utils/utils";
+import {
+  validateProp,
+  validateProps,
+  warningUnknownKeys,
+} from "../../js/utils/utils";
 import "./button.css";
 /**
  * @typedef {Object} ButtonProps
@@ -33,19 +37,20 @@ export default function Button({
   icon = "",
   classNames = [],
 } = {}) {
-  // options of each prop
-  const validVariants = ["primary", "secondary", "arrow"];
-  const validThemes = ["dark", "light"];
-
-  // validations
-  validateProp("variant", variant, "string", validVariants);
-  validateProp("theme", theme, "string", validThemes);
-  validateProp("text", text, "string");
-  validateProp("title", title, "string");
-  validateProp("icon", icon, "string");
-  validateProp("disabled", disabled, "boolean");
-  validateProp("flexReverse", flexReverse, "boolean");
-  validateProp("onClick", onClick, "function");
+  validateProps({
+    variant: {
+      value: variant,
+      type: "string",
+      allowedValues: ["primary", "secondary", "arrow"],
+    },
+    theme: { value: theme, type: "string", allowedValues: ["dark", "light"] },
+    text: { value: text, type: "string" },
+    title: { value: title, type: "string" },
+    icon: { value: icon, type: "string" },
+    disabled: { value: disabled, type: "boolean" },
+    flexReverse: { value: flexReverse, type: "boolean" },
+    onClick: { value: onClick, type: "function" },
+  });
 
   // button
   return createElement({

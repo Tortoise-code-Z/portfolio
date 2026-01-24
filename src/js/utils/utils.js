@@ -1,3 +1,5 @@
+import { validateProps } from "./argumentsValidation";
+
 /**
  * Toggles the visibility of an element based on the scroll direction.
  *
@@ -6,8 +8,10 @@
  * @param {string} classToHidden - The CSS class applied to hide the element.
  */
 export function scrollVisibilitty(element, classToHidden) {
-  if ((!element) instanceof HTMLElement && (!classToHidden) instanceof String)
-    return;
+  validateProps({
+    element: { value: element, type: "HTMLElement" },
+    classToHidden: { value: classToHidden, type: "string" },
+  });
 
   let lastScrollPosition = window.scrollY;
 
@@ -37,6 +41,10 @@ export function scrollVisibilitty(element, classToHidden) {
  * @returns {string|Object|null} The parameter value, an object with all parameters, or null if not found.
  */
 export const getQueryParams = (param = null) => {
+  validateProps({
+    param: { value: param, type: ["string", "null"] },
+  });
+
   const params = new URLSearchParams(window.location.search);
 
   if (param) {
@@ -63,6 +71,13 @@ export const createIntersectionObserver = (
   options = {},
   observeOnce = false,
 ) => {
+  validateProps({
+    elements: { value: elements, type: "array" },
+    callback: { value: callback, type: "function" },
+    parametersCallback: { value: parametersCallback, type: "array" },
+    options: { value: options, type: "object" },
+    observeOnce: { value: observeOnce, type: "boolean" },
+  });
   const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
       const itemParametersCallback = parametersCallback.find(
@@ -93,7 +108,14 @@ export const createIntersectionObserver = (
  * @param {string} [currentAnimatedClass] - An optional class to add after the initial animation ends.
  */
 export const fadeInObserver = (element, classToAdd, currentAnimatedClass) => {
+  validateProps({
+    element: { value: element, type: "HTMLElement" },
+    classToAdd: { value: classToAdd, type: "string" },
+    currentAnimatedClass: { value: currentAnimatedClass, type: "string" },
+  });
+
   element.classList.add("animated-element");
+
   createIntersectionObserver(
     [element],
     (entry) => {
@@ -120,6 +142,10 @@ export const fadeInObserver = (element, classToAdd, currentAnimatedClass) => {
  * @param {HTMLElement} element - The section element to observe to trigger navbar changes.
  */
 export const navbarObserver = (element) => {
+  validateProps({
+    element: { value: element, type: "HTMLElement" },
+  });
+
   setTimeout(() => {
     createIntersectionObserver(
       [element],
@@ -138,6 +164,10 @@ export const navbarObserver = (element) => {
  * @param {IntersectionObserverEntry} entry - The intersection entry object.
  */
 export const navbarObserverCallback = (entry) => {
+  validateProps({
+    entry: { value: entry, type: "object" },
+  });
+
   const navbar = document.querySelector(".navbar");
   const requiredColor = entry.target.getAttribute("data-navbar-color");
 
@@ -178,7 +208,17 @@ export const writteDeleteMachine = async (data) => {
  * @returns {Promise<void>}
  */
 export const deleteMachine = async (data) => {
+  validateProps({
+    data: { value: data, type: "object" },
+  });
+
   const { element, textToDelete, delayToDelete } = data;
+
+  validateProps({
+    element: { value: element, type: "HTMLElement" },
+    textToDelete: { value: textToDelete, type: "string" },
+    delayToDelete: { value: delayToDelete, type: "number" },
+  });
 
   for (let i = textToDelete.length; i >= 0; i--) {
     element.textContent = textToDelete.substring(0, i);
@@ -197,25 +237,20 @@ export const deleteMachine = async (data) => {
  * @returns {Promise<void>}
  */
 export const writteMachine = async (data) => {
+  validateProps({
+    data: { value: data, type: "object" },
+  });
   const { element, textToWrite, delayToWrite } = data;
+  validateProps({
+    element: { value: element, type: "HTMLElement" },
+    textToWrite: { value: textToWrite, type: "string" },
+    delayToWrite: { value: delayToWrite, type: "number" },
+  });
 
   for (let i = 0; i < textToWrite.length; i++) {
     element.textContent += textToWrite[i];
     await new Promise((resolve) => setTimeout(resolve, delayToWrite));
   }
-};
-
-/**
- * Checks if a numeric value falls within a specific inclusive range.
- *
- * @function isOnRange
- * @param {number} valueToCheck - The value to validate.
- * @param {number} min - The lower bound.
- * @param {number} max - The upper bound.
- * @returns {boolean} True if the value is within range.
- */
-export const isOnRange = (valueToCheck, min, max) => {
-  return valueToCheck >= min && valueToCheck <= max;
 };
 
 /**
@@ -228,83 +263,10 @@ export const isOnRange = (valueToCheck, min, max) => {
  */
 
 export const attachEvent = (element, event, functionToAttach) => {
-  element.addEventListener(event, functionToAttach);
-};
-
-/**
- * Validates a property's type and value against allowed constraints.
- *
- * @function validateProp
- * @param {string} name - The name of the property (for error reporting).
- * @param {*} value - The actual value to validate.
- * @param {string|string[]} type - The expected type(s) (e.g., 'string', 'HTMLElement', 'array').
- * @param {*[]} [allowedValues=null] - An optional list of specific allowed values.
- * @throws {TypeError} If the type is incorrect.
- * @throws {RangeError} If the value is not in the allowedValues list.
- * @returns {boolean} Returns true if validation passes.
- */
-export function validateProp(name, value, type, allowedValues = null) {
-  const types = Array.isArray(type) ? type : [type];
-
-  const isNullAllowed = types.includes("null");
-
-  if (isNullAllowed && value === null) {
-    return true; // ✅ Valor es null y está permitido.
-  }
-
-  const isHTMLElementType = types.includes("HTMLElement");
-
-  if (isHTMLElementType) {
-    const isHTMLElement =
-      typeof HTMLElement !== "undefined" && value instanceof HTMLElement;
-
-    if (!isHTMLElement) {
-      throw new TypeError(
-        `"${name}" → Debe ser de tipo HTMLElement. Recibido: ${
-          value?.constructor?.name || typeof value
-        }`,
-      );
-    }
-  } else if (types.includes("array")) {
-    if (!Array.isArray(value)) {
-      throw new TypeError(
-        `"${name}" → Debe ser un array. Recibido: ${typeof value}`,
-      );
-    }
-  } else {
-    const valueType = typeof value;
-
-    if (!types.includes(valueType)) {
-      throw new TypeError(
-        `"${name}" → Debe ser de tipo ${types.join(
-          " o ",
-        )}. Recibido: ${valueType}`,
-      );
-    }
-  }
-
-  if (allowedValues && !allowedValues.includes(value)) {
-    throw new RangeError(
-      `"${name}" → Solo se permiten los valores: ${allowedValues.join(
-        ", ",
-      )}. Recibido: ${value}`,
-    );
-  }
-
-  return true;
-}
-
-/**
- * Logs a warning in the console if unknown keys are passed in the arguments object.
- *
- * @function warningUnknownKeys
- * @param {Object[]} args - The arguments array to check (usually [props]).
- * @param {string[]} allowedKeys - The list of valid property names.
- */
-export const warningUnknownKeys = (args, allowedKeys) => {
-  Object.keys(args[0] || {}).forEach((key) => {
-    if (!allowedKeys.includes(key)) {
-      console.warn("Propiedad desconocida: ", key, "en Home. Será ignorada.");
-    }
+  validateProps({
+    element: { value: element, type: "number" },
+    number: { value: number, type: "string" },
+    functionToAttach: { value: functionToAttach, type: "function" },
   });
+  element.addEventListener(event, functionToAttach);
 };

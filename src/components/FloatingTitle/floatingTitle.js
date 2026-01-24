@@ -1,8 +1,9 @@
 import { createElement, createHtag } from "../../js/utils/createElementsHelper";
-import { append } from "../../js/utils/domHelpers";
+import { append, setStyle, setStyles } from "../../js/utils/domHelpers";
 import {
   fadeInObserver,
   validateProp,
+  validateProps,
   warningUnknownKeys,
 } from "../../js/utils/utils";
 import "./floatingTitle.css";
@@ -37,20 +38,20 @@ export default function FloatingTitle({
   top = null,
   left = null,
 } = {}) {
-  // options of each props
-  const validHTags = [1, 2, 3, 4, 5, 6];
-  const validThemes = ["dark", "light"];
-  const validIconPositions = ["left", "right"];
-
-  // validations
-  validateProp("text", text, "string");
-  validateProp("icon", icon, "string");
-  validateProp("upperCase", upperCase, "boolean");
-  validateProp("level", level, "number", validHTags);
-  validateProp("theme", theme, "string", validThemes);
-  validateProp("iconPosition", iconPosition, "string", validIconPositions);
-  validateProp("top", top, ["number", "null"]);
-  validateProp("left", left, ["number", "null"]);
+  validateProps({
+    text: { value: text, type: "string" },
+    icon: { value: icon, type: "string" },
+    upperCase: { value: upperCase, type: "boolean" },
+    level: { value: level, type: "number", allowedValues: [1, 2, 3, 4, 5, 6] },
+    theme: { value: theme, type: "string", allowedValues: ["dark", "light"] },
+    iconPosition: {
+      value: iconPosition,
+      type: "string",
+      allowedValues: ["left", "right"],
+    },
+    top: { value: top, type: ["number", "null"] },
+    left: { value: left, type: ["number", "null"] },
+  });
 
   const container = createElement({
     tag: "div",
@@ -67,10 +68,12 @@ export default function FloatingTitle({
   );
 
   if (top || top === 0 || left || left === 0) {
-    container.style.position = "absolute";
-    container.style.top = `${top}px`;
-    container.style.left = `${left}px`;
-    container.style.zIndex = 99999;
+    setStyles(container, {
+      position: "absolute",
+      top: `${top}px`,
+      left: `${left}px`,
+      zIndex: 99999,
+    });
   }
 
   const title = createHtag({

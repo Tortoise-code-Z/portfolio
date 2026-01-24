@@ -1,5 +1,5 @@
+import { validateProps } from "../../js/utils/argumentsValidation";
 import { createElement } from "../../js/utils/createElementsHelper";
-import { validateProp, warningUnknownKeys } from "../../js/utils/utils";
 import "../Button/button.css";
 import "./link.css";
 
@@ -43,24 +43,33 @@ export default function Link({
   pointerEvents = "all",
   params = {},
 } = {}) {
-  const validVariants = ["primary", "secondary"];
-  const validThemes = ["dark", "light"];
-  const validTargets = ["_blank", "_self"];
-  const validPointerEvents = ["all", "none"];
-
-  // validations
-  validateProp("variant", variant, "string", validVariants);
-  validateProp("theme", theme, "string", validThemes);
-  validateProp("target", target, "string", validTargets);
-  validateProp("text", text, "string");
-  validateProp("href", href, "string");
-  validateProp("title", title, "string");
-  validateProp("icon", icon, "string");
-  validateProp("disabled", disabled, "boolean");
-  validateProp("isButton", isButton, "boolean");
-  validateProp("flexReverse", flexReverse, "boolean");
-  validateProp("classNames", classNames, "array");
-  validateProp("pointerEvents", pointerEvents, "string", validPointerEvents);
+  validateProps({
+    variant: {
+      value: variant,
+      type: "string",
+      allowedValues: ["primary", "secondary"],
+    },
+    theme: { value: theme, type: "string", allowedValues: ["dark", "light"] },
+    target: {
+      value: target,
+      type: "string",
+      allowedValues: ["_blank", "_self"],
+    },
+    text: { value: theme, type: "string" },
+    href: { value: href, type: "string" },
+    title: { value: title, type: "string" },
+    icon: { value: icon, type: "string" },
+    disabled: { value: disabled, type: "boolean" },
+    isButton: { value: isButton, type: "boolean" },
+    flexReverse: { value: flexReverse, type: "boolean" },
+    classNames: { value: classNames, type: "array" },
+    params: { value: params, type: "object" },
+    pointerEvents: {
+      value: pointerEvents,
+      type: "string",
+      allowedValues: ["all", "none"],
+    },
+  });
 
   // Si hay parámetros, los añadimos a la URL
   let finalHref = href;

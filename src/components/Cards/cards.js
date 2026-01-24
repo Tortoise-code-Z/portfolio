@@ -3,6 +3,7 @@ import { append } from "../../js/utils/domHelpers";
 import {
   fadeInObserver,
   validateProp,
+  validateProps,
   warningUnknownKeys,
 } from "../../js/utils/utils";
 import Card from "./Card/card";
@@ -28,9 +29,10 @@ import "./cards.css";
  */
 
 export default function Cards({ data = [], classNames = [] } = {}) {
-  // validations
-  validateProp("data", data, "array");
-  validateProp("classNames", classNames, "array");
+  validateProps({
+    data: { value: data, type: "array" },
+    classNames: { value: classNames, type: "array" },
+  });
 
   const container = createElement({
     tag: "div",

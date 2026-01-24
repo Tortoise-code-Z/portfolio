@@ -1,12 +1,13 @@
-import {
-  attachEvent,
-  validateProp,
-  warningUnknownKeys,
-} from "../../js/utils/utils";
+import { attachEvent, validateProp, validateProps } from "../../js/utils/utils";
 import "./index.css";
 import template from "./index.html?raw";
 import cloneTemplate from "../../js/utils/cloneTemplate";
-import { append } from "../../js/utils/domHelpers";
+import {
+  addClass,
+  append,
+  getElement,
+  toggleClass,
+} from "../../js/utils/domHelpers";
 
 /**
  * @typedef {Object} FlipCardProps
@@ -28,23 +29,26 @@ export default function FlipCard({
   frontCard,
   backCard,
 } = {}) {
-  validateProp("typeFlipCardClass", typeFlipCardClass, "string");
-  validateProp("frontCard", frontCard, "HTMLElement");
-  validateProp("backCard", backCard, "HTMLElement");
+  validateProps({
+    typeFlipCardClass: { value: typeFlipCardClass, type: "string" },
+    frontCard: { value: frontCard, type: "HTMLElement" },
+    backCard: { value: backCard, type: "HTMLElement" },
+  });
 
-  const flipCard = cloneTemplate(template, "flip-card-template").querySelector(
+  const flipCard = getElement(
     ".flip-card",
+    cloneTemplate(template, "flip-card-template"),
   );
 
-  flipCard.classList.add(typeFlipCardClass);
+  addClass(flipCard, typeFlipCardClass);
 
-  const flipCardFront = flipCard.querySelector(".flip-card-front");
-  const flipCardBack = flipCard.querySelector(".flip-card-back");
+  const flipCardFront = getElement(".flip-card-front", flipCard);
+  const flipCardBack = getElement(".flip-card-back", flipCard);
 
   append(flipCardFront, [frontCard]);
   append(flipCardBack, [backCard]);
 
-  attachEvent(flipCard, "click", () => flipCard.classList.toggle("flipped"));
+  attachEvent(flipCard, "click", () => toggleClass(flipCard, "flipped"));
 
   return flipCard;
 }

@@ -1,4 +1,5 @@
-import { appendElement, setAttribute, setClassName } from "./domHelpers";
+import { validateProps } from "./argumentsValidation";
+import { append, setAttribute } from "./domHelpers";
 import { attachEvent } from "./utils";
 
 /**
@@ -28,9 +29,19 @@ export const createElement = ({
   innerHTML = "",
   parent = null,
 } = {}) => {
+  validateProps({
+    tag: { value: tag, type: "string" },
+    classNames: { value: classNames, type: "array" },
+    attributes: { value: attributes, type: "object" },
+    events: { value: events, type: "object" },
+    innerText: { value: innerText, type: "string" },
+    innerHTML: { value: innerHTML, type: "string" },
+    parent: { value: parent, type: ["HTMLElement", "null"] },
+  });
+
   const element = document.createElement(tag);
 
-  if (classNames.length) setClassName(element, classNames);
+  if (classNames.length) element.className = classNames.join(" ");
 
   for (const [key, value] of Object.entries(attributes)) {
     setAttribute(element, key, value);
@@ -43,7 +54,7 @@ export const createElement = ({
     attachEvent(element, event, handler);
   }
 
-  if (parent) appendElement(element, parent);
+  if (parent) append(parent, [element]);
 
   return element;
 };
@@ -66,6 +77,9 @@ export const createHtag = ({
   innerHTML = "",
   parent = null,
 } = {}) => {
+  validateProps({
+    level: { value: level, type: "number", allowedValues: [1, 2, 3, 4, 5, 6] },
+  });
   return createElement({
     tag: `${tag}${level}`,
     classNames,

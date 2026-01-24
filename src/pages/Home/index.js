@@ -1,11 +1,11 @@
-import Navbar from "../../components/Navbar/navbar";
-import DefaultFooter from "../../components/Footer/DefaultFooter";
 import { append } from "../../js/utils/domHelpers";
-import Career from "./components/CareerCourses";
-import Hero from "./components/Hero";
-import Profile from "./components/Profile";
-import Skills from "./components/Skills";
-import Works from "./components/Works";
+import Navbar from "../../components/Navbar/navbar.js";
+import DefaultFooter from "../../components/Footer/DefaultFooter";
+import Hero from "./Hero";
+import Profile from "./Profile";
+import Works from "./Works";
+import Skills from "./Skills";
+import Career from "./CareerCourses";
 import "./index.css";
 
 /**

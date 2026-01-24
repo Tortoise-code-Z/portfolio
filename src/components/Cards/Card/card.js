@@ -1,6 +1,10 @@
 import { createElement } from "../../../js/utils/createElementsHelper";
 import { append } from "../../../js/utils/domHelpers";
-import { validateProp, warningUnknownKeys } from "../../../js/utils/utils";
+import {
+  validateProp,
+  validateProps,
+  warningUnknownKeys,
+} from "../../../js/utils/utils";
 import "./card.css";
 
 /**
@@ -18,9 +22,10 @@ import "./card.css";
  */
 
 export default function Card({ text, icon } = {}) {
-  // validations
-  validateProp("text", text, "string");
-  validateProp("icon", icon, "string");
+  validateProps({
+    text: { value: text, type: "string" },
+    icon: { value: icon, type: "string" },
+  });
 
   const container = createElement({
     tag: "div",

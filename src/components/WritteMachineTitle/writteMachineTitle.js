@@ -4,6 +4,7 @@ import {
   createIntersectionObserver,
   fadeInObserver,
   validateProp,
+  validateProps,
   writteDeleteMachine,
 } from "../../js/utils/utils";
 import "./writteMachineTitle.css";
@@ -31,11 +32,12 @@ export default function WritteMachineTitle({
   dinamicInitText = "",
   dinamicFinalText = "",
 } = {}) {
-  // validations
-  validateProp("fixText", fixText, "string");
-  validateProp("dinamicInitText", dinamicInitText, "string");
-  validateProp("dinamicFinalText", dinamicFinalText, "string");
-  validateProp("classNames", classNames, "array");
+  validateProps({
+    fixText: { value: fixText, type: "string" },
+    dinamicInitText: { value: dinamicInitText, type: "string" },
+    dinamicFinalText: { value: dinamicFinalText, type: "string" },
+    classNames: { value: classNames, type: "array" },
+  });
 
   const title = createHtag({
     level: 2,
@@ -60,7 +62,6 @@ export default function WritteMachineTitle({
 
   append(title, [fixSpan, dinamicSpan]);
 
-  // create observer
   createIntersectionObserver(
     [dinamicSpan],
     (data, entry) => {

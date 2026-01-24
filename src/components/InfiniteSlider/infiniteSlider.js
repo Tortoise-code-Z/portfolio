@@ -1,6 +1,6 @@
 import { createElement } from "../../js/utils/createElementsHelper";
 import { append } from "../../js/utils/domHelpers";
-import { validateProp, warningUnknownKeys } from "../../js/utils/utils";
+import { validateProps } from "../../js/utils/utils";
 import "./infiniteSlider.css";
 
 /**
@@ -32,20 +32,20 @@ export default function InfiniteSlider({
   duplicationSlides = 3,
   direction = "left",
 } = {}) {
-  // options of each prop
-  const validDuplicationSlides = [3, 4, 5];
-  const validDirections = ["right", "left"];
-
-  // validations
-  validateProp("slideComponent", slideComponent, "function");
-  validateProp("dataSlides", dataSlides, "array");
-  validateProp("direction", direction, "string", validDirections);
-  validateProp(
-    "duplicationSlides",
-    duplicationSlides,
-    "number",
-    validDuplicationSlides,
-  );
+  validateProps({
+    slideComponent: { value: slideComponent, type: "function" },
+    dataSlides: { value: dataSlides, type: "array" },
+    direction: {
+      value: direction,
+      type: "string",
+      allowedValues: ["right", "left"],
+    },
+    duplicationSlides: {
+      value: duplicationSlides,
+      type: "number",
+      allowedValues: [3, 4, 5],
+    },
+  });
 
   const slider = createElement({
     tag: "div",
@@ -60,7 +60,6 @@ export default function InfiniteSlider({
     ].filter(Boolean),
   });
 
-  //   slides
   for (let index = 0; index < duplicationSlides; index++) {
     dataSlides.forEach((data) => {
       const slide = createElement({

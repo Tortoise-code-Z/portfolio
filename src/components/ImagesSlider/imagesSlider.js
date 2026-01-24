@@ -4,8 +4,11 @@ import {
   addClass,
   append,
   containsClass,
+  getElement,
+  getElements,
   removeClass,
   setAttribute,
+  setAttributes,
   setText,
 } from "../../js/utils/domHelpers";
 import "./imagesSlider.css";
@@ -16,7 +19,7 @@ import {
   attachEvent,
   fadeInObserver,
   validateProp,
-  warningUnknownKeys,
+  validateProps,
 } from "../../js/utils/utils";
 import Button from "../Button/button";
 import { svg } from "../../const/database/bbdd_consts";
@@ -44,20 +47,22 @@ import { svg } from "../../const/database/bbdd_consts";
  */
 
 export default function ImagesSlider({ images = [] } = {}) {
-  validateProp("images", images, "array");
+  validateProps({
+    images: { value: images, type: "array" },
+  });
 
   let imageIndex = 0;
   let canClick = true;
 
-  const root = cloneTemplate(
-    template,
-    "images-slider-template",
-  ).firstElementChild;
+  const root = getElement(
+    ".images-slider",
+    cloneTemplate(template, "images-slider-template"),
+  );
 
-  const imageLabel = root.querySelector(".images-slider__label");
-  const sliderTrack = root.querySelector(".images-slider__track");
-  const bulletsContainer = root.querySelector(".images-slider__bullets");
-  const buttonsContainer = root.querySelector(".images-slider__buttons");
+  const imageLabel = getElement(".images-slider__label", root);
+  const sliderTrack = getElement(".images-slider__track", root);
+  const bulletsContainer = getElement(".images-slider__bullets", root);
+  const buttonsContainer = getElement(".images-slider__buttons", root);
 
   fadeInObserver(sliderTrack, `animated-element--fade-in-left`);
   fadeInObserver(imageLabel, `animated-element--fade-in-right`);
@@ -185,15 +190,13 @@ export default function ImagesSlider({ images = [] } = {}) {
 
       const direction = action === "previous" ? "right" : "left";
 
-      const bullets = Array.from(
-        root.querySelectorAll(".images-slider__bullet"),
-      );
+      const bullets = getElements(".images-slider__bullet", root);
 
       const bulletActive = bullets.find((bullet) =>
         containsClass(bullet, "images-slider__bullet--active") ? bullet : null,
       );
 
-      const imageInDom = root.querySelector(".images-slider__slide--active");
+      const imageInDom = getElement(".images-slider__slide--active", root);
       const imageToShow = createImageToShow(direction, images, imageIndex);
 
       append(sliderTrack, [imageToShow]);
@@ -205,11 +208,9 @@ export default function ImagesSlider({ images = [] } = {}) {
 
       setText(imageLabel, images[imageIndex].alt);
 
-      setAttribute(
-        sliderBg,
-        "src",
-        getImage(images[imageIndex].src, ["screenshots"]),
-      );
+      setAttributes(sliderBg, {
+        src: getImage(images[imageIndex].src, ["screenshots"]),
+      });
 
       attachEvent(
         imageToShow,
