@@ -1,10 +1,6 @@
+import { validateProps } from "../../../js/utils/argumentsValidation";
 import { createElement } from "../../../js/utils/createElementsHelper";
 import { append } from "../../../js/utils/domHelpers";
-import {
-  validateProp,
-  validateProps,
-  warningUnknownKeys,
-} from "../../../js/utils/utils";
 import "./card.css";
 
 /**

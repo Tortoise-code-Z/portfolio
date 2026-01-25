@@ -16,7 +16,7 @@
 .featured-tag span {
   max-width: max-content;
   padding: 15px 25px;
-  background-color: red;
+  background-color: rgb(230, 67, 35);
   border-radius: 5px;
   display: flex;
   justify-content: center;

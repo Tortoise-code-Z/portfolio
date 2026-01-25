@@ -3,15 +3,12 @@ import bbdd from "../../../const/database/bbdd";
 import { svg } from "../../../const/database/bbdd_consts";
 import { createElement } from "../../../js/utils/createElementsHelper";
 import { append } from "../../../js/utils/domHelpers";
-import {
-  getQueryParams,
-  navbarObserver,
-  validateProp,
-} from "../../../js/utils/utils";
+import { getQueryParams, navbarObserver } from "../../../js/utils/utils";
 import "./index.css";
 import TechStackLibraries from "./TechStackLibraries";
 import TechStackTools from "./TechStackTools";
 import TechStackDesign from "./TechStackDesign";
+import { validateProp } from "../../../js/utils/argumentsValidation";
 
 /**
  * @typedef {Object} TechStackData

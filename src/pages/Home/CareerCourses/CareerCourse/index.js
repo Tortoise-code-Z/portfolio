@@ -1,4 +1,4 @@
-import { fadeInObserver, validateProp } from "../../../../js/utils/utils";
+import { fadeInObserver } from "../../../../js/utils/utils";
 import InfiniteSlider from "../../../../components/InfiniteSlider/infiniteSlider";
 import CareerSlide from "./CareerSlide";
 import { append } from "../../../../js/utils/domHelpers";
@@ -7,21 +7,14 @@ import "./index.css";
 import { validateProps } from "../../../../js/utils/argumentsValidation";
 
 /**
- * @typedef {Object} CareerCourseData
- * @property {Object} academy - Information about the academy for the infinite slider.
+ * @typedef {Object} CareerCourseProps
+ * @property {string} academy - Information about the academy for the infinite slider.
  * @property {string} curse - The name of the course or degree.
  * @property {string[]} tools - List of technologies or tools used.
- * @property {string} noteHourYear - Concatenated text or label for metadata.
- * @property {Object} note - Additional information about the course.
- * @property {boolean} note.state - Indicates if the note should be displayed.
- * @property {string} note.value - The text content of the note.
+ * @property {boolean} noteState - Indicates if the note should be displayed.
+ * @property {string} noteValue - The text content of the note.
  * @property {string} hours - Duration or total hours of the course.
  * @property {string} year - Completion or attendance year.
- */
-
-/**
- * @typedef {Object} CareerCourseProps
- * @property {CareerCourseData} data - The dataset containing academy and course details.
  * @property {"left"|"right"} [directionSlide="left"] - The entrance animation and slider direction.
  */
 
@@ -35,25 +28,29 @@ import { validateProps } from "../../../../js/utils/argumentsValidation";
  * @returns {HTMLDivElement} The container element for the specific course entry.
  */
 
-export default function CareerCourse({ data, directionSlide = "left" } = {}) {
+export default function CareerCourse(props = {}) {
+  const {
+    academy,
+    curse,
+    hours,
+    tools,
+    year,
+    noteState,
+    noteValue,
+    directionSlide = "left",
+  } = props;
+
   validateProps({
-    data: { value: data, type: "object" },
     directionSlide: {
       value: directionSlide,
       type: "string",
       allowedValues: ["left", "right"],
     },
-  });
-
-  const { academy, curse, hours, note, noteHourYear, tools, year } = data;
-  validateProps({
-    academy: { value: academy, type: "object" },
+    academy: { value: academy, type: "string" },
     curse: { value: curse, type: "string" },
     hours: { value: hours, type: "string" },
-    note: { value: note, type: "object" },
-    "note.state": { value: note.state, type: "boolean" },
-    "note.value": { value: note.value, type: "string" },
-    noteHourYear: { value: noteHourYear, type: "string" },
+    noteState: { value: noteState, type: "boolean" },
+    noteValue: { value: noteValue, type: "string" },
     tools: { value: tools, type: "array" },
     year: { value: year, type: "string" },
   });
@@ -67,7 +64,7 @@ export default function CareerCourse({ data, directionSlide = "left" } = {}) {
 
   const academySlider = InfiniteSlider({
     slideComponent: CareerSlide,
-    dataSlides: [academy],
+    dataSlides: [{ title: academy }],
     duplicationSlides: 5,
     direction: directionSlide,
   });
@@ -99,16 +96,15 @@ export default function CareerCourse({ data, directionSlide = "left" } = {}) {
   const moreInfo = createElement({
     tag: "div",
     classNames: ["s-career__course-more-info"],
-    innerText: noteHourYear,
   });
 
   let noteNode;
 
-  if (note.state) {
+  if (noteState) {
     noteNode = createElement({
       tag: "p",
       classNames: ["s-career__course-note"],
-      innerText: note.value,
+      innerText: noteValue,
     });
   }
 

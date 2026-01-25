@@ -7,7 +7,6 @@ import {
   getElement,
   getElements,
   removeClass,
-  setAttribute,
   setAttributes,
   setText,
 } from "../../js/utils/domHelpers";
@@ -15,14 +14,10 @@ import "./imagesSlider.css";
 import "./imagesSlider.html?raw";
 import cloneTemplate from "../../js/utils/cloneTemplate";
 import template from "./imagesSlider.html?raw";
-import {
-  attachEvent,
-  fadeInObserver,
-  validateProp,
-  validateProps,
-} from "../../js/utils/utils";
+import { attachEvent, fadeInObserver } from "../../js/utils/utils";
 import Button from "../Button/button";
 import { svg } from "../../const/database/bbdd_consts";
+import { validateProps } from "../../js/utils/argumentsValidation";
 
 /**
  * @typedef {Object} SliderImage
@@ -122,8 +117,6 @@ export default function ImagesSlider({ images = [] } = {}) {
         src: getImage(image.src, ["screenshots"]),
         title: image.alt,
         alt: image.alt,
-        width: image.width,
-        height: image.height,
       },
     });
 
@@ -142,6 +135,7 @@ export default function ImagesSlider({ images = [] } = {}) {
   append(sliderTrack, [imageContainer]);
   append(root, [sliderBg]);
   append(buttonsContainer, [previousButton, nextButton]);
+
   bullets.forEach((bullet) => append(bulletsContainer, [bullet]));
 
   const setImageIndex = (action, index) => {

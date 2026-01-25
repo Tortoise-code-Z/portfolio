@@ -1,23 +1,39 @@
+import { validateProps } from "../../../../../js/utils/argumentsValidation";
 import { createElement } from "../../../../../js/utils/createElementsHelper";
 import { append } from "../../../../../js/utils/domHelpers";
-import { validateProp } from "../../../../../js/utils/utils";
 import "./index.css";
+
+/**
+ * @typedef {Object} DataProps
+ * @property {Object} name - Information about the academy for the infinite slider.
+ * @property {Object} iconRef - Information about the academy for the infinite slider.
+ */
+
+/**
+ * @typedef {Object} StrengthSlideProps
+ * @property {DataProps} data - Information about the academy for the infinite slider.
+ */
 
 /**
  * Component that renders an individual strength slide for the infinite slider.
  * Each slide displays a professional competency with its corresponding name and icon.
  *
  * @function StrengthSlide
- * @param {Object} [props={}] - Configuration properties.
- * @param {Object} props.data - The data object for the strength.
- * @param {string} props.data.name - The title or name of the strength.
- * @param {string} props.data.iconRef - The SVG string or reference for the strength's icon.
+ * @param {StrengthSlideProps} [props={}] - Configuration properties.
  * @returns {HTMLDivElement} The container element for the specific strength slide.
  */
 
-export default function StrengthSlide({ data } = {}) {
-  // validations
-  validateProp("data", data, "object");
+export default function StrengthSlide(props = {}) {
+  const {
+    data,
+    data: { iconRef, name },
+  } = props;
+
+  validateProps({
+    data: { value: data, type: "object" },
+    iconRef: { value: iconRef, type: "string" },
+    name: { value: name, type: "string" },
+  });
 
   const container = createElement({
     tag: "div",
@@ -27,13 +43,13 @@ export default function StrengthSlide({ data } = {}) {
   const title = createElement({
     tag: "h5",
     classNames: ["s-about__strengths-item-title"],
-    innerText: data.name,
+    innerText: name,
   });
 
   const icon = createElement({
     tag: "span",
     classNames: ["s-about__strengths-item-icon"],
-    innerHTML: data.iconRef,
+    innerHTML: iconRef,
   });
 
   append(container, [icon, title]);

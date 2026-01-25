@@ -1,4 +1,4 @@
-import { attachEvent, validateProp, validateProps } from "../../js/utils/utils";
+import { attachEvent } from "../../js/utils/utils";
 import "./index.css";
 import template from "./index.html?raw";
 import cloneTemplate from "../../js/utils/cloneTemplate";
@@ -8,6 +8,7 @@ import {
   getElement,
   toggleClass,
 } from "../../js/utils/domHelpers";
+import { validateProps } from "../../js/utils/argumentsValidation";
 
 /**
  * @typedef {Object} FlipCardProps

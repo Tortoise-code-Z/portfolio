@@ -1,10 +1,14 @@
 import cloneTemplate from "../../../../js/utils/cloneTemplate";
 import { createElement } from "../../../../js/utils/createElementsHelper";
-import { append } from "../../../../js/utils/domHelpers";
+import {
+  append,
+  getElement,
+  setAttributes,
+} from "../../../../js/utils/domHelpers";
 import template from "./profile.html?raw";
 import bbdd from "../../../../const/database/bbdd";
 import AboutImg from "../../../../assets/images/about.gif";
-import { fadeInObserver } from "../../../../js/utils/utils";
+import { fadeInObserver, parseMarkdownBold } from "../../../../js/utils/utils";
 import "./index.css";
 
 /**
@@ -18,20 +22,16 @@ import "./index.css";
  */
 
 export default function ProfileData() {
-  const profile = cloneTemplate(template, "about-profile-template");
+  const profile = getElement(
+    ".s-about__profile",
+    cloneTemplate(template, "about-profile-template"),
+  );
 
-  const image = profile.querySelector(".s-about__profile-image");
+  const image = getElement(".s-about__profile-image", profile);
 
-  image.src = AboutImg;
+  setAttributes(image, { src: AboutImg });
 
-  const profileTextContainer = profile.querySelector(".s-about__profile-text");
-
-  const parseMarkdownBold = (text) => {
-    return text.replace(
-      /\*\*(.*?)\*\*/g,
-      "<span class= 'u-text-regular'>$1</span>",
-    );
-  };
+  const profileTextContainer = getElement(".s-about__profile-text", profile);
 
   const profileText = bbdd.aboutDesc.map((text) => {
     return createElement({
@@ -46,8 +46,8 @@ export default function ProfileData() {
     fadeInObserver(item, "animated-element--fade-in-top");
   });
 
-  const aboutText = profile.querySelector(".s-about__profile-about");
-  const devName = profile.querySelector(".s-about__profile-name");
+  const aboutText = getElement(".s-about__profile-about", profile);
+  const devName = getElement(".s-about__profile-name", profile);
 
   fadeInObserver(aboutText, "animated-element--fade-in-right");
   fadeInObserver(devName, "animated-element--fade-in-left");

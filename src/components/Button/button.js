@@ -1,9 +1,5 @@
+import { validateProps } from "../../js/utils/argumentsValidation";
 import { createElement } from "../../js/utils/createElementsHelper";
-import {
-  validateProp,
-  validateProps,
-  warningUnknownKeys,
-} from "../../js/utils/utils";
 import "./button.css";
 /**
  * @typedef {Object} ButtonProps

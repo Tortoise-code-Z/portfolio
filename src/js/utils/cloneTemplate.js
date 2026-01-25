@@ -1,3 +1,5 @@
+import { validateProps } from "./argumentsValidation";
+
 /**
  * Parses a template string and clones the content of a specific template element.
  * * @function cloneTemplate
@@ -6,8 +8,6 @@
  * @param {DOMParserSupportedType} [typeDoc="text/html"] - The MIME type used for parsing the string.
  * @returns {DocumentFragment} A deep clone of the content within the template element.
  */
-
-import { validateProps } from "./argumentsValidation";
 
 export default function cloneTemplate(
   template,

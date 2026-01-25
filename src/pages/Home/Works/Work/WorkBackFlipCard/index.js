@@ -1,25 +1,33 @@
-import { validateProp } from "../../../../../js/utils/utils";
 import "./index.css";
 import { getImage } from "../../../../../js/utils/images";
-import { append } from "../../../../../js/utils/domHelpers";
+import {
+  append,
+  getElement,
+  setAttributes,
+  setText,
+} from "../../../../../js/utils/domHelpers";
 import template from "./index.html?raw";
 import cloneTemplate from "../../../../../js/utils/cloneTemplate";
 import { svg } from "../../../../../const/database/bbdd_consts";
 import Link from "../../../../../components/Link/link";
 import projectDetailUrl from "../../../../ProjectDetail/index.html?url";
+import { validateProps } from "../../../../../js/utils/argumentsValidation";
 
 /**
  * @typedef {Object} WorkBackFlipCardProps
- * @property {Object} data - The comprehensive project data object.
- * @property {string} data.id - Unique identifier used for the project detail URL.
- * @property {string} data.name - The title of the project.
- * @property {string} data.visibility - The visibility status (e.g., "Public", "Private").
- * @property {string} data.projectRole - The role held during the project (e.g., "Frontend Developer").
- * @property {string} data.year - The year the project was completed.
- * @property {Object} data.images - Image metadata for the background.
- * @property {Object} data.techStack - Technologies used in the project.
- * @property {Object[]} data.techStack.tools.fastTools - List of main tools to display.
- * @property {Object} data.links - URLs for external resources (github, demo).
+ * @property {number} id - Unique identifier used for the project detail URL.
+ * @property {string} name - The title of the project.
+ * @property {string} visibility - The visibility status (e.g., "Public", "Private").
+ * @property {string} projectRole - The role held during the project (e.g., "Frontend Developer").
+ * @property {string} year - The year the project was completed.
+ * @property {string} bgSrcImage - Src image data.
+ * @property {string} bgAltImage - Alt image data.
+ * @property {number} bgWidthImage - Width image data.
+ * @property {number} bgHeightImage - Height image data.
+ * @property {object[]} fastTools - List of fast tools to display.
+ * @property {string} fastTools.tool - Tool icon to display.
+ * @property {string|null} demoLink - URL for demo live project.
+ * @property {string} githubLink - URL for github repo project.
  */
 
 /**
@@ -33,70 +41,109 @@ import projectDetailUrl from "../../../../ProjectDetail/index.html?url";
  * @returns {HTMLElement} The populated back-card element from the template.
  */
 
-export default function WorkBackFlipCard({ data = {} } = {}) {
-  // validations
-  validateProp("data", data, "object");
+export default function WorkBackFlipCard(props = {}) {
+  const {
+    bgAltImage,
+    bgHeightImage,
+    bgSrcImage,
+    bgWidthImage,
+    githubLink,
+    fastTools,
+    demoLink,
+    id,
+    name,
+    projectRole,
+    visibility,
+    year,
+  } = props;
 
-  const container = cloneTemplate(
-    template,
-    "back-flip-card-template",
-  ).querySelector(".s-works__back-card");
+  validateProps({
+    id: { value: id, type: "number" },
+    name: { value: name, type: "string" },
+    visibility: { value: visibility, type: "string" },
+    projectRole: { value: projectRole, type: "string" },
+    year: { value: year, type: "string" },
+    demoLink: { value: demoLink, type: ["string", "null"] },
+    githubLink: { value: githubLink, type: "string" },
+    fastTools: { value: fastTools, type: "array" },
+    bgSrcImage: { value: bgSrcImage, type: "string" },
+    bgAltImage: { value: bgAltImage, type: "string" },
+    bgWidthImage: { value: bgWidthImage, type: "number" },
+    bgHeightImage: { value: bgHeightImage, type: "number" },
+  });
 
-  const image = container.querySelector(".s-works__back-card-image");
-  const title = container.querySelector(".s-works__back-card-title");
-  const type = container.querySelector(".s-works__back-card-type");
-  const tools = container.querySelector(".s-works__back-card-tools");
-  const year = container.querySelector(".s-works__back-card-year");
+  fastTools.forEach((t) =>
+    validateProps({ tool: { value: t.tool, type: "string" } }),
+  );
 
-  image.src = getImage(data.images.backgroundImg.src);
-  image.alt = data.images.backgroundImg.alt;
-  image.title = data.images.backgroundImg.alt;
-  image.width = data.images.backgroundImg.width;
-  image.height = data.images.backgroundImg.height;
+  const container = getElement(
+    ".s-works__back-card",
+    cloneTemplate(template, "back-flip-card-template"),
+  );
 
-  title.innerText = data.name;
-  type.innerText = `${data.visibility} project · ${data.projectRole}`;
-  tools.innerText = data.techStack.tools.fastTools
-    .map((tool) => tool.tool)
-    .join(" · ")
-    .toUpperCase();
-  year.innerText = data.year;
+  const image = getElement(".s-works__back-card-image", container);
+  const title = getElement(".s-works__back-card-title", container);
+  const type = getElement(".s-works__back-card-type", container);
+  const tools = getElement(".s-works__back-card-tools", container);
+  const yearNode = getElement(".s-works__back-card-year", container);
 
-  const actions = container.querySelector(".s-works__back-card-actions");
+  setAttributes(image, {
+    src: getImage(bgSrcImage),
+    alt: bgAltImage,
+    title: bgAltImage,
+    width: bgWidthImage,
+    height: bgHeightImage,
+  });
+
+  setText(title, name);
+  setText(type, `${visibility} project · ${projectRole}`);
+  setText(yearNode, year);
+  setText(
+    tools,
+    fastTools
+      .map((tool) => tool.tool)
+      .join(" · ")
+      .toUpperCase(),
+  );
+
+  const actions = getElement(".s-works__back-card-actions", container);
 
   const code = Link({
+    title: "Ir a github",
     classNames: ["s-works__back-card-action"],
     isButton: true,
     theme: "light",
     variant: "secondary",
     text: "Code",
-    href: data.links.github,
+    href: githubLink,
     target: "_blank",
     icon: svg.code,
   });
 
   const moreInfo = Link({
+    title: "Ir a detalle",
     classNames: ["s-works__back-card-action"],
     isButton: true,
     theme: "light",
     variant: "secondary",
-    text: "More Info",
+    text: "More details",
     href: projectDetailUrl,
     params: {
-      id: `${data.id}`,
+      id: `${id}`,
     },
     icon: svg.info,
   });
 
   let demo;
-  if (data.links.demo) {
+  if (demoLink) {
     demo = Link({
+      title: "Ir a demo",
       classNames: ["s-works__back-card-action"],
       isButton: true,
       theme: "light",
       variant: "secondary",
       text: "Demo",
-      href: data.links.demo,
+      href: demoLink,
       target: "_blank",
       icon: svg.demo,
     });

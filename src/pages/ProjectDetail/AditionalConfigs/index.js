@@ -7,7 +7,6 @@ import {
   fadeInObserver,
   getQueryParams,
   navbarObserver,
-  warningUnknownKeys,
 } from "../../../js/utils/utils";
 import "./index.css";
 import Prism from "prismjs";

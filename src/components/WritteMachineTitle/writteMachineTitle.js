@@ -1,10 +1,9 @@
+import { validateProps } from "../../js/utils/argumentsValidation";
 import { createElement, createHtag } from "../../js/utils/createElementsHelper";
 import { append } from "../../js/utils/domHelpers";
 import {
   createIntersectionObserver,
   fadeInObserver,
-  validateProp,
-  validateProps,
   writteDeleteMachine,
 } from "../../js/utils/utils";
 import "./writteMachineTitle.css";

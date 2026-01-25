@@ -1,17 +1,13 @@
+import { validateProps } from "../../../../js/utils/argumentsValidation";
 import { createElement } from "../../../../js/utils/createElementsHelper";
 import { append } from "../../../../js/utils/domHelpers";
-import { fadeInObserver, validateProp } from "../../../../js/utils/utils";
+import { fadeInObserver } from "../../../../js/utils/utils";
 import "./index.css";
 
 /**
- * @typedef {Object} SkillData
+ * @typedef {Object} SkillProps
  * @property {string} title - The category name of the skills (e.g., "Frontend", "Design").
  * @property {string[]} tools - An array of specific tools or technologies within this category.
- */
-
-/**
- * @typedef {Object} SkillProps
- * @property {SkillData} skill - The data object containing the skill title and tools.
  * @property {boolean} [flexReverse=false] - If true, reverses the layout direction and changes the entrance animation side.
  */
 
@@ -25,10 +21,16 @@ import "./index.css";
  * @returns {HTMLDivElement} The container element for the skill row.
  */
 
-export default function Skill({ skill, flexReverse = false } = {}) {
-  // validations
-  validateProp("skill", skill, "object");
-  validateProp("flexReverse", flexReverse, "boolean");
+export default function Skill(props = {}) {
+  const { title, tools, flexReverse } = props;
+
+  validateProps({
+    title: { value: title, type: "string" },
+    tools: { value: tools, type: "array" },
+    flexReverse: { value: flexReverse, type: "boolean" },
+  });
+
+  tools.forEach((t) => validateProps({ tool: { value: t, type: "string" } }));
 
   const container = createElement({
     tag: "div",
@@ -43,10 +45,10 @@ export default function Skill({ skill, flexReverse = false } = {}) {
     `animated-element--fade-in-${flexReverse ? "left" : "right"}`,
   );
 
-  const title = createElement({
+  const titleNode = createElement({
     tag: "h3",
     classNames: ["s-skills__skill-title"],
-    innerText: skill.title,
+    innerText: title,
   });
 
   const description = createElement({
@@ -54,7 +56,7 @@ export default function Skill({ skill, flexReverse = false } = {}) {
     classNames: ["s-skills__skill-desc"],
   });
 
-  skill.tools.forEach((tool, index) => {
+  tools.forEach((tool, index) => {
     const toolSpan = createElement({
       tag: "span",
       classNames: [
@@ -67,7 +69,7 @@ export default function Skill({ skill, flexReverse = false } = {}) {
     append(description, [toolSpan]);
   });
 
-  append(container, [title, description]);
+  append(container, [titleNode, description]);
 
   return container;
 }

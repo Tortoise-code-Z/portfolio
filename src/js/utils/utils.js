@@ -105,13 +105,20 @@ export const createIntersectionObserver = (
  * @function fadeInObserver
  * @param {HTMLElement} element - The element to animate.
  * @param {string} classToAdd - The CSS class that triggers the animation.
- * @param {string} [currentAnimatedClass] - An optional class to add after the initial animation ends.
+ * @param {string|null} [currentAnimatedClass=null] - An optional class to add after the initial animation ends.
  */
-export const fadeInObserver = (element, classToAdd, currentAnimatedClass) => {
+export const fadeInObserver = (
+  element,
+  classToAdd,
+  currentAnimatedClass = null,
+) => {
   validateProps({
     element: { value: element, type: "HTMLElement" },
     classToAdd: { value: classToAdd, type: "string" },
-    currentAnimatedClass: { value: currentAnimatedClass, type: "string" },
+    currentAnimatedClass: {
+      value: currentAnimatedClass,
+      type: ["string", "null"],
+    },
   });
 
   element.classList.add("animated-element");
@@ -264,9 +271,16 @@ export const writteMachine = async (data) => {
 
 export const attachEvent = (element, event, functionToAttach) => {
   validateProps({
-    element: { value: element, type: "number" },
-    number: { value: number, type: "string" },
+    element: { value: element, type: "HTMLElement" },
+    event: { value: event, type: "string" },
     functionToAttach: { value: functionToAttach, type: "function" },
   });
   element.addEventListener(event, functionToAttach);
+};
+
+export const parseMarkdownBold = (text) => {
+  return text.replace(
+    /\*\*(.*?)\*\*/g,
+    "<span class= 'u-text-regular'>$1</span>",
+  );
 };

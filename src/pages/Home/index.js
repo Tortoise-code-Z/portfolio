@@ -1,4 +1,4 @@
-import { append } from "../../js/utils/domHelpers";
+import { append, getElement } from "../../js/utils/domHelpers";
 import Navbar from "../../components/Navbar/navbar.js";
 import DefaultFooter from "../../components/Footer/DefaultFooter";
 import Hero from "./Hero";
@@ -19,13 +19,6 @@ import "./index.css";
  * - **Footer**: Default footer component.
  */
 
-append(document.querySelector(".home__header"), [Navbar(), Hero()]);
-
-append(document.querySelector(".home__main"), [
-  Profile(),
-  Works(),
-  Skills(),
-  Career(),
-]);
-
-append(document.querySelector(".home__footer"), [DefaultFooter()]);
+append(getElement(".home__header"), [Navbar(), Hero()]);
+append(getElement(".home__main"), [Profile(), Works(), Skills(), Career()]);
+append(getElement(".home__footer"), [DefaultFooter()]);

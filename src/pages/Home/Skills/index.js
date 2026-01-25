@@ -43,7 +43,11 @@ export default function Skills({} = {}) {
 
   bbdd.skills.forEach((skill, index) =>
     append(skillItemsContainer, [
-      Skill({ skill, flexReverse: index % 2 !== 0 }),
+      Skill({
+        title: skill.title,
+        tools: skill.tools,
+        flexReverse: index % 2 !== 0,
+      }),
     ]),
   );
 

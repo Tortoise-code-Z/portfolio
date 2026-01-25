@@ -359,214 +359,6 @@ console.log(
       },
     },
     {
-      id: 2,
-      featured: false,
-      name: "Portfolio Web",
-      emphasisName: {
-        name: ["Port", "folio"],
-        color: "#1958D5",
-      },
-      shortDescription:
-        "Sitio personal de presentación y proyectos de Víctor Pérez",
-      about: {
-        description: [
-          "Este Portfolio Web es una página personal desarrollada desde cero para mostrar proyectos, habilidades y experiencia como desarrollador frontend.",
-          "El sitio fue diseñado en Figma y desarrollado con HTML, CSS y JavaScript puro, priorizando la optimización, la claridad del código y la fluidez en la experiencia de usuario.",
-          "Incluye animaciones suaves y un diseño completamente responsive para adaptarse a cualquier dispositivo.",
-        ],
-        cards: [
-          {
-            id: 1,
-            title: "Diseño responsive",
-            svg: svg.responsive,
-          },
-          {
-            id: 2,
-            title: "Frontend puro sin frameworks",
-            svg: svg.code,
-          },
-          {
-            id: 3,
-            title: "Animaciones suaves y transiciones",
-            svg: svg.motion,
-          },
-          {
-            id: 4,
-            title: "Optimización de rendimiento",
-            svg: svg.tachometer,
-          },
-          {
-            id: 5,
-            title: "Estructura modular y escalable",
-            svg: svg.structure,
-          },
-          {
-            id: 6,
-            title: "Diseño atractivo e intuitivo",
-            svg: svg.design,
-          },
-        ],
-      },
-      projectRole: typeWeb.frontend,
-      year: "2025",
-      visibility: visibility.private,
-      techStack: {
-        tools: {
-          fastTools: [
-            { id: 1, tool: tools.html, icon: svg.html },
-            { id: 2, tool: tools.css, icon: svg.css },
-            { id: 3, tool: tools.js, icon: svg.react },
-          ],
-          allTools: [
-            { id: 1, tool: tools.html, icon: svg.html },
-            { id: 2, tool: tools.css, icon: svg.css },
-            { id: 3, tool: tools.js, icon: svg.js },
-            { id: 4, tool: tools.vite, icon: svg.vite },
-            { id: 5, tool: tools.git, icon: svg.git },
-            { id: 6, tool: tools.npm, icon: svg.npm },
-            { id: 7, tool: tools.figma, icon: svg.figma },
-            { id: 8, tool: tools.ia, icon: svg.chatgpt },
-          ],
-        },
-        librariesUtils: [{ id: 1, item: librariesUtils.prism }],
-        stylesDesign: [
-          { id: 1, item: stylesDesign.figma, icon: svg.figma },
-          {
-            id: 2,
-            item: stylesDesign.responsive,
-            icon: svg.responsive,
-          },
-        ],
-      },
-      development_process: {
-        description: [
-          "El desarrollo del portfolio comenzó con un enfoque centrado en la simplicidad y la velocidad, construyendo toda la arquitectura con HTML, CSS y JavaScript puro para mantener un control total sobre el código.",
-          "Se empleó Vite como entorno de desarrollo moderno para acelerar la carga y permitir un flujo de trabajo fluido. Cada sección (Hero, About, Works, Skills, Career, Contact) fue estructurada con código modular y reutilizable.",
-          "El diseño se planificó en Figma antes de la implementación, buscando una experiencia limpia y profesional, con animaciones suaves y buena jerarquía visual.",
-        ],
-        cards: [
-          {
-            id: 1,
-            title: "Diseño planificado desde Figma",
-            svg: svg.design,
-          },
-          {
-            id: 2,
-            title: "Estructura semántica en HTML5",
-            svg: svg.structure,
-          },
-          {
-            id: 3,
-            title: "CSS modular para escalabilidad",
-            svg: svg.brush,
-          },
-          {
-            id: 4,
-            title: "Optimización de rendimiento con Vite",
-            svg: svg.tachometer,
-          },
-        ],
-        noteMsg: {
-          description:
-            "Este portfolio está construido íntegramente en frontend. No utiliza frameworks ni dependencias complejas para mantener su rendimiento óptimo y simplicidad de mantenimiento.",
-        },
-      },
-      images: {
-        screenshots: [
-          {
-            id: 1,
-            src: "screenshot-hero.png",
-            width: "1920",
-            height: "911",
-            alt: "Hero",
-          },
-          {
-            id: 2,
-            src: "screenshot-about.png",
-            width: "1920",
-            height: "913",
-            alt: "About",
-          },
-          {
-            id: 3,
-            src: "screenshot-works-1.png",
-            width: "1920",
-            height: "907",
-            alt: "Works-1",
-          },
-          {
-            id: 4,
-            src: "screenshot-works-2.png",
-            width: "1920",
-            height: "919",
-            alt: "Works-2",
-          },
-          {
-            id: 5,
-            src: "screenshot-skills.png",
-            width: "1920",
-            height: "909",
-            alt: "Skills",
-          },
-          {
-            id: 6,
-            src: "screenshot-career.png",
-            width: "1920",
-            height: "911",
-            alt: "Career",
-          },
-        ],
-        backgroundImg: {
-          src: "Portfolio-Proyect.webp",
-          width: "1920",
-          height: "911",
-          alt: "Portfolio",
-        },
-        workImg: {
-          src: "Portfolio-Caricatura1.webp",
-          width: "1280",
-          height: "1280",
-          alt: "Portfolio",
-        },
-      },
-      config: {
-        description: [
-          "El proyecto puede ejecutarse fácilmente en entorno local para explorarlo/modificarlo o en la demo web directamente.",
-          "En caso de querer ejecutarlo en local, asegúrate de tener Node.js y npm instalados antes de comenzar.",
-        ],
-        steps: [
-          {
-            id: 1,
-            title: "Clonar el repositorio",
-            description:
-              "Ejecuta `git clone https://github.com/Tortoise-code-Z/portfolio` en tu terminal.",
-          },
-          {
-            id: 2,
-            title: "Instalar dependencias",
-            description:
-              "Navega al directorio del proyecto (`cd portfolio`) y ejecuta `npm install`.",
-          },
-          {
-            id: 3,
-            title: "Ejecutar en modo desarrollo",
-            description:
-              "Corre `npm run dev` y abre el enlace local en tu navegador para ver el portfolio.",
-          },
-          {
-            id: 4,
-            title: "Personalización",
-            description:
-              "Puedes editar los archivos en `/src/js/` y `/src/css/` para cambiar estilos, texto o estructura.",
-          },
-        ],
-      },
-      links: {
-        github: "https://github.com/Tortoise-code-Z/portfolio",
-        demo: "https://tortoise-code-z.github.io/portfolio/",
-      },
-    },
-    {
       id: 3,
       featured: false,
       name: "Astrohub",
@@ -829,6 +621,214 @@ console.log(
       links: {
         github: "https://github.com/Tortoise-code-Z/Astrohub",
         demo: null,
+      },
+    },
+    {
+      id: 2,
+      featured: false,
+      name: "Portfolio Web",
+      emphasisName: {
+        name: ["Port", "folio"],
+        color: "#1958D5",
+      },
+      shortDescription:
+        "Sitio personal de presentación y proyectos de Víctor Pérez",
+      about: {
+        description: [
+          "Este Portfolio Web es una página personal desarrollada desde cero para mostrar proyectos, habilidades y experiencia como desarrollador frontend.",
+          "El sitio fue diseñado en Figma y desarrollado con HTML, CSS y JavaScript puro, priorizando la optimización, la claridad del código y la fluidez en la experiencia de usuario.",
+          "Incluye animaciones suaves y un diseño completamente responsive para adaptarse a cualquier dispositivo.",
+        ],
+        cards: [
+          {
+            id: 1,
+            title: "Diseño responsive",
+            svg: svg.responsive,
+          },
+          {
+            id: 2,
+            title: "Frontend puro sin frameworks",
+            svg: svg.code,
+          },
+          {
+            id: 3,
+            title: "Animaciones suaves y transiciones",
+            svg: svg.motion,
+          },
+          {
+            id: 4,
+            title: "Optimización de rendimiento",
+            svg: svg.tachometer,
+          },
+          {
+            id: 5,
+            title: "Estructura modular y escalable",
+            svg: svg.structure,
+          },
+          {
+            id: 6,
+            title: "Diseño atractivo e intuitivo",
+            svg: svg.design,
+          },
+        ],
+      },
+      projectRole: typeWeb.frontend,
+      year: "2025",
+      visibility: visibility.private,
+      techStack: {
+        tools: {
+          fastTools: [
+            { id: 1, tool: tools.html, icon: svg.html },
+            { id: 2, tool: tools.css, icon: svg.css },
+            { id: 3, tool: tools.js, icon: svg.react },
+          ],
+          allTools: [
+            { id: 1, tool: tools.html, icon: svg.html },
+            { id: 2, tool: tools.css, icon: svg.css },
+            { id: 3, tool: tools.js, icon: svg.js },
+            { id: 4, tool: tools.vite, icon: svg.vite },
+            { id: 5, tool: tools.git, icon: svg.git },
+            { id: 6, tool: tools.npm, icon: svg.npm },
+            { id: 7, tool: tools.figma, icon: svg.figma },
+            { id: 8, tool: tools.ia, icon: svg.chatgpt },
+          ],
+        },
+        librariesUtils: [{ id: 1, item: librariesUtils.prism }],
+        stylesDesign: [
+          { id: 1, item: stylesDesign.figma, icon: svg.figma },
+          {
+            id: 2,
+            item: stylesDesign.responsive,
+            icon: svg.responsive,
+          },
+        ],
+      },
+      development_process: {
+        description: [
+          "El desarrollo del portfolio comenzó con un enfoque centrado en la simplicidad y la velocidad, construyendo toda la arquitectura con HTML, CSS y JavaScript puro para mantener un control total sobre el código.",
+          "Se empleó Vite como entorno de desarrollo moderno para acelerar la carga y permitir un flujo de trabajo fluido. Cada sección (Hero, About, Works, Skills, Career, Contact) fue estructurada con código modular y reutilizable.",
+          "El diseño se planificó en Figma antes de la implementación, buscando una experiencia limpia y profesional, con animaciones suaves y buena jerarquía visual.",
+        ],
+        cards: [
+          {
+            id: 1,
+            title: "Diseño planificado desde Figma",
+            svg: svg.design,
+          },
+          {
+            id: 2,
+            title: "Estructura semántica en HTML5",
+            svg: svg.structure,
+          },
+          {
+            id: 3,
+            title: "CSS modular para escalabilidad",
+            svg: svg.brush,
+          },
+          {
+            id: 4,
+            title: "Optimización de rendimiento con Vite",
+            svg: svg.tachometer,
+          },
+        ],
+        noteMsg: {
+          description:
+            "Este portfolio está construido íntegramente en frontend. No utiliza frameworks ni dependencias complejas para mantener su rendimiento óptimo y simplicidad de mantenimiento.",
+        },
+      },
+      images: {
+        screenshots: [
+          {
+            id: 1,
+            src: "screenshot-hero.png",
+            width: "1920",
+            height: "911",
+            alt: "Hero",
+          },
+          {
+            id: 2,
+            src: "screenshot-about.png",
+            width: "1920",
+            height: "913",
+            alt: "About",
+          },
+          {
+            id: 3,
+            src: "screenshot-works-1.png",
+            width: "1920",
+            height: "907",
+            alt: "Works-1",
+          },
+          {
+            id: 4,
+            src: "screenshot-works-2.png",
+            width: "1920",
+            height: "919",
+            alt: "Works-2",
+          },
+          {
+            id: 5,
+            src: "screenshot-skills.png",
+            width: "1920",
+            height: "909",
+            alt: "Skills",
+          },
+          {
+            id: 6,
+            src: "screenshot-career.png",
+            width: "1920",
+            height: "911",
+            alt: "Career",
+          },
+        ],
+        backgroundImg: {
+          src: "Portfolio-Proyect.webp",
+          width: "1920",
+          height: "911",
+          alt: "Portfolio",
+        },
+        workImg: {
+          src: "Portfolio-Caricatura1.webp",
+          width: "1280",
+          height: "1280",
+          alt: "Portfolio",
+        },
+      },
+      config: {
+        description: [
+          "El proyecto puede ejecutarse fácilmente en entorno local para explorarlo/modificarlo o en la demo web directamente.",
+          "En caso de querer ejecutarlo en local, asegúrate de tener Node.js y npm instalados antes de comenzar.",
+        ],
+        steps: [
+          {
+            id: 1,
+            title: "Clonar el repositorio",
+            description:
+              "Ejecuta `git clone https://github.com/Tortoise-code-Z/portfolio` en tu terminal.",
+          },
+          {
+            id: 2,
+            title: "Instalar dependencias",
+            description:
+              "Navega al directorio del proyecto (`cd portfolio`) y ejecuta `npm install`.",
+          },
+          {
+            id: 3,
+            title: "Ejecutar en modo desarrollo",
+            description:
+              "Corre `npm run dev` y abre el enlace local en tu navegador para ver el portfolio.",
+          },
+          {
+            id: 4,
+            title: "Personalización",
+            description:
+              "Puedes editar los archivos en `/src/js/` y `/src/css/` para cambiar estilos, texto o estructura.",
+          },
+        ],
+      },
+      links: {
+        github: "https://github.com/Tortoise-code-Z/portfolio",
+        demo: "https://tortoise-code-z.github.io/portfolio/",
       },
     },
   ],

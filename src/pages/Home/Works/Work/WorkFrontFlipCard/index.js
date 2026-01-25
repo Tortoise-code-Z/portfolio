@@ -1,23 +1,16 @@
-import { validateProp } from "../../../../../js/utils/utils";
 import "./index.css";
 import { createElement } from "../../../../../js/utils/createElementsHelper";
 import { append } from "../../../../../js/utils/domHelpers";
 import { getImage } from "../../../../../js/utils/images";
 import { svg } from "../../../../../const/database/bbdd_consts";
-
-/**
- * @typedef {Object} WorkFrontImageData
- * @property {string} src - The filename for the foreground/logo image of the project.
- * @property {string} alt - Alternative text description for the image.
- * @property {number} width - Natural width of the image.
- * @property {number} height - Natural height of the image.
- */
+import { validateProps } from "../../../../../js/utils/argumentsValidation";
 
 /**
  * @typedef {Object} WorkFrontFlipCardProps
- * @property {Object} data - The project data object.
- * @property {Object} data.images - Image collection for the project.
- * @property {WorkFrontImageData} data.images.workImg - Metadata for the front-facing project image.
+ * @property {string} imgSrc - The filename for the foreground/logo image of the project.
+ * @property {string} imgAlt - Alternative text description for the image.
+ * @property {number} imgWidth - Natural width of the image.
+ * @property {number} imgHeight - Natural height of the image.
  */
 
 /**
@@ -30,9 +23,15 @@ import { svg } from "../../../../../const/database/bbdd_consts";
  * @returns {HTMLDivElement} The container element for the front side of the card.
  */
 
-export default function WorkFlipCard({ data = {} } = {}) {
-  // validations
-  validateProp("data", data, "object");
+export default function WorkFlipCard(props = {}) {
+  const { imgAlt, imgHeight, imgSrc, imgWidth } = props;
+
+  validateProps({
+    imgSrc: { value: imgSrc, type: "string" },
+    imgAlt: { value: imgAlt, type: "string" },
+    imgWidth: { value: imgWidth, type: "number" },
+    imgHeight: { value: imgHeight, type: "number" },
+  });
 
   const container = createElement({
     tag: "div",
@@ -43,11 +42,11 @@ export default function WorkFlipCard({ data = {} } = {}) {
     tag: "img",
     classNames: ["s-works__front-card-image"],
     attributes: {
-      src: getImage(data.images.workImg.src),
-      alt: data.images.workImg.alt,
-      title: data.images.workImg.alt,
-      width: data.images.workImg.width,
-      height: data.images.workImg.height,
+      src: getImage(imgSrc),
+      alt: imgAlt,
+      title: imgAlt,
+      width: imgWidth,
+      height: imgHeight,
     },
   });
 

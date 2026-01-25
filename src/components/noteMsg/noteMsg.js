@@ -1,12 +1,9 @@
-import {
-  fadeInObserver,
-  validateProp,
-  validateProps,
-} from "../../js/utils/utils";
+import { fadeInObserver } from "../../js/utils/utils";
 import "./noteMsg.css";
 import { svg } from "../../const/database/bbdd_consts";
 import { append } from "../../js/utils/domHelpers";
 import { createElement } from "../../js/utils/createElementsHelper";
+import { validateProps } from "../../js/utils/argumentsValidation";
 
 /**
  * @typedef {Object} NoteMsgProps

@@ -1,11 +1,7 @@
+import { validateProps } from "../../js/utils/argumentsValidation";
 import { createElement } from "../../js/utils/createElementsHelper";
 import { append } from "../../js/utils/domHelpers";
-import {
-  fadeInObserver,
-  validateProp,
-  validateProps,
-  warningUnknownKeys,
-} from "../../js/utils/utils";
+import { fadeInObserver } from "../../js/utils/utils";
 import Card from "./Card/card";
 import "./cards.css";
 

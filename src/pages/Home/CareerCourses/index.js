@@ -41,7 +41,13 @@ export default function Career() {
   bbdd.career.forEach((item, index) => {
     append(courses, [
       CareerCourse({
-        data: item,
+        academy: item.academy,
+        curse: item.curse,
+        hours: item.hours,
+        noteState: item.note.state,
+        noteValue: item.note.value,
+        tools: item.tools,
+        year: item.year,
         directionSlide: index % 2 === 0 ? "left" : "right",
       }),
     ]);
