@@ -8,17 +8,6 @@ import bbdd from "../../../const/database/bbdd";
 import { append } from "../../../js/utils/domHelpers";
 
 /**
- * @typedef {Object} Screenshot
- * @property {string} src - The URL or path to the screenshot image.
- * @property {string} alt - Alternative text for the image.
- */
-
-/**
- * @typedef {Object} ProjectImages
- * @property {Screenshot[]} screenshots - Array of screenshot objects for the project gallery.
- */
-
-/**
  * Renders the "Gallery" section for the project detail view.
  * * This component fetches project screenshots based on the 'id' from the URL
  * query parameters and displays them using an interactive image slider component.
@@ -32,6 +21,8 @@ export default function Gallery({} = {}) {
   // validations
 
   const id = getQueryParams("id");
+  const currentWork = bbdd.works.find((w) => w.id === Number(id));
+
   const section = createElement({
     tag: "section",
     classNames: ["pd-s-gallery"],
@@ -52,7 +43,7 @@ export default function Gallery({} = {}) {
   });
 
   const imagesCarrousel = ImagesSlider({
-    images: bbdd.works[id - 1].images.screenshots,
+    images: currentWork.images.screenshots,
   });
 
   append(section, [title, imagesCarrousel]);

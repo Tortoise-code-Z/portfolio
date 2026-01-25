@@ -12,24 +12,6 @@ import { append } from "../../../js/utils/domHelpers";
 import Cards from "../../../components/Cards/cards.js";
 
 /**
- * @typedef {Object} WorkAboutCard
- * @property {string} title - The title of the information card.
- * @property {string} value - The value or content displayed in the card.
- */
-
-/**
- * @typedef {Object} WorkAboutData
- * @property {string[]} description - Array of paragraphs describing the project.
- * @property {WorkAboutCard[]} cards - Array of highlight cards related to the project.
- */
-
-/**
- * @typedef {Object} WorkEntry
- * @property {number} id - Unique identifier for the work/project.
- * @property {WorkAboutData} about - Detailed information about the project.
- */
-
-/**
  * Renders the "About Project" section for the Project Detail page.
  * * Retrieves project details from the database using the 'id' URL parameter,
  * creates a section with scroll animations for text paragraphs, and
@@ -40,7 +22,6 @@ import Cards from "../../../components/Cards/cards.js";
  */
 
 export default function AboutProject({} = {}) {
-  // validations
   const id = getQueryParams("id");
   const work = bbdd.works.find((work) => work.id === Number(id));
 

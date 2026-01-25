@@ -1,5 +1,8 @@
 import InfiniteSlider from "../../../../components/InfiniteSlider/infiniteSlider";
-import { validateProp } from "../../../../js/utils/argumentsValidation";
+import {
+  validateProp,
+  validateProps,
+} from "../../../../js/utils/argumentsValidation";
 import { createElement } from "../../../../js/utils/createElementsHelper";
 import { append } from "../../../../js/utils/domHelpers";
 import { fadeInObserver } from "../../../../js/utils/utils";
@@ -22,11 +25,21 @@ import "./index.css";
  * @returns {HTMLDivElement|null} The container element or null if no designs are provided.
  */
 
-export default function TechStackDesign({ designs } = {}) {
-  // validations
-  validateProp("designs", designs, "array");
+export default function TechStackDesign(props = {}) {
+  const { designs } = props;
 
-  if (designs.length === 0) return null;
+  validateProps({
+    designs: { value: designs, type: "array" },
+  });
+
+  if (designs.length === 0) return undefined;
+
+  designs.forEach(({ icon, item }) =>
+    validateProps({
+      icon: { value: icon, type: "string" },
+      item: { value: item, type: "string" },
+    }),
+  );
 
   const container = createElement({
     tag: "div",
@@ -52,7 +65,7 @@ export default function TechStackDesign({ designs } = {}) {
     classNames: ["pd-s-tech-stack__design-targets"],
   });
 
-  designs.forEach((design, index) => {
+  designs.forEach(({ icon, item }, index) => {
     const target = createElement({
       tag: "div",
       classNames: ["tech-stack__design-target"],
@@ -61,13 +74,13 @@ export default function TechStackDesign({ designs } = {}) {
     const title = createElement({
       tag: "h4",
       classNames: ["tech-stack__design-title"],
-      innerText: design.item,
+      innerText: item,
     });
 
     const span = createElement({
       tag: "span",
       classNames: ["tech-stack__design-icon"],
-      innerHTML: design.icon,
+      innerHTML: icon,
     });
 
     fadeInObserver(

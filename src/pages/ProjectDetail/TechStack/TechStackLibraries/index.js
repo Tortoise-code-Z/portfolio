@@ -18,14 +18,13 @@ import "./index.css";
  * * @function TechStackLibraries
  * @param {Object} props - Component properties.
  * @param {LibraryItem[]} props.libraries - Array of library objects used in the project.
- * @returns {HTMLDivElement|null} The container element or null if the libraries array is empty.
+ * @returns {HTMLDivElement|undefined} The container element or null if the libraries array is empty.
  */
 
 export default function TechStackLibraries({ libraries } = {}) {
-  // validations
   validateProp("libraries", libraries, "array");
 
-  if (libraries.length === 0) return null;
+  if (libraries.length === 0) return undefined;
 
   const container = createElement({
     tag: "div",

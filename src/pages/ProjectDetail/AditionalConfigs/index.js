@@ -17,26 +17,6 @@ import "prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard";
 import NoteMsg from "../../../components/noteMsg/noteMsg.js";
 
 /**
- * @typedef {Object} ConfigStep
- * @property {string} title - The title of the configuration step.
- * @property {("code"|"text")} type - The content type of the step.
- * @property {string} description - The code snippet or text description for the step.
- */
-
-/**
- * @typedef {Object} MessageDetail
- * @property {string} description - The content of the warning or note message.
- */
-
-/**
- * @typedef {Object} ProjectConfig
- * @property {string[]} description - Array of introductory paragraphs for the configuration section.
- * @property {ConfigStep[]} steps - Array of sequential setup steps.
- * @property {MessageDetail} [warningMsg] - Optional warning information.
- * @property {MessageDetail} [noteMsg] - Optional additional notes.
- */
-
-/**
  * Renders the "Additional Configurations" section for a project.
  * * This component fetches project-specific technical setup data, renders steps
  * as either plain text or syntax-highlighted code blocks using Prism.js,
@@ -47,8 +27,8 @@ import NoteMsg from "../../../components/noteMsg/noteMsg.js";
  */
 
 export default function AditionalConfigs({} = {}) {
-  // validations
   const id = getQueryParams("id");
+  const currentWork = bbdd.works.find((w) => w.id === Number(id));
 
   const section = createElement({
     tag: "section",
@@ -73,7 +53,9 @@ export default function AditionalConfigs({} = {}) {
     classNames: ["pd-s-config__desc"],
   });
 
-  bbdd.works[id - 1].config.description.forEach((desc, index) => {
+  const workDescription = currentWork.config.description;
+
+  workDescription.forEach((desc, index) => {
     const item = createElement({
       tag: "p",
       classNames: ["pd-s-config__desc-paragraph"],
@@ -89,6 +71,7 @@ export default function AditionalConfigs({} = {}) {
   });
 
   append(section, [title, description]);
+
   const steps = createElement({
     tag: "div",
     classNames: ["pd-s-config__steps"],
@@ -96,7 +79,9 @@ export default function AditionalConfigs({} = {}) {
 
   append(section, [steps]);
 
-  bbdd.works[id - 1].config.steps.forEach((step, index) => {
+  const workSteps = currentWork.config.steps;
+
+  workSteps.forEach((step, index) => {
     const item = createElement({
       tag: "div",
       classNames: ["pd-s-config__step"],
@@ -150,24 +135,27 @@ export default function AditionalConfigs({} = {}) {
     append(steps, [title, item]);
   });
 
-  if (bbdd.works[id - 1].config.warningMsg) {
+  const workWarningMsg = currentWork.config?.warningMsg;
+
+  if (workWarningMsg) {
     const warningMsg = NoteMsg({
       type: "warning",
-      desc: bbdd.works[id - 1].config.warningMsg.description,
+      desc: workWarningMsg.description,
     });
 
     append(container, [warningMsg]);
   }
 
-  if (bbdd.works[id - 1].config.noteMsg) {
+  const workNoteMsg = currentWork.config?.noteMsg;
+
+  if (workNoteMsg) {
     const noteMsg = NoteMsg({
-      desc: bbdd.works[id - 1].config.noteMsg.description,
+      desc: workNoteMsg.description,
     });
 
     append(section, [noteMsg]);
   }
 
-  // Retrasa la ejecución 50ms para dar tiempo a que se monte
   setTimeout(() => {
     Prism.highlightAll();
   }, 50);

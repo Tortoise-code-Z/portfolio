@@ -17,7 +17,9 @@ import "./card.css";
  * @returns {HTMLDivElement} The container element of the card.
  */
 
-export default function Card({ text, icon } = {}) {
+export default function Card(props = {}) {
+  const { text, icon } = props;
+
   validateProps({
     text: { value: text, type: "string" },
     icon: { value: icon, type: "string" },

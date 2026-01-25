@@ -13,25 +13,6 @@ import Cards from "../../../components/Cards/cards";
 import NoteMsg from "../../../components/noteMsg/noteMsg";
 
 /**
- * @typedef {Object} DevProcessCard
- * @property {string} title - The title of the development process highlight card.
- * @property {string} value - The content or description within the card.
- */
-
-/**
- * @typedef {Object} DevProcessMessage
- * @property {string} description - The text content of the message.
- */
-
-/**
- * @typedef {Object} DevelopmentProcessData
- * @property {string[]} description - Array of paragraphs detailing the development workflow.
- * @property {DevProcessCard[]} cards - Array of cards highlighting key process metrics.
- * @property {DevProcessMessage} [warningMsg] - Optional warning message regarding the process.
- * @property {DevProcessMessage} [noteMsg] - Optional relevant note regarding the process.
- */
-
-/**
  * Renders the "Development Process" section for the project detail view.
  * * This component identifies the current project via URL parameters, generates
  * animated descriptive paragraphs, populates highlight cards, and conditionally

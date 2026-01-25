@@ -11,19 +11,6 @@ import TechStackDesign from "./TechStackDesign";
 import { validateProp } from "../../../js/utils/argumentsValidation";
 
 /**
- * @typedef {Object} TechStackData
- * @property {Object} tools - Main development tools.
- * @property {Object[]} tools.allTools - Detailed list of all specialized tools used.
- * @property {Object[]} librariesUtils - Utility libraries and frameworks.
- * @property {Object[]} stylesDesign - Design systems and styling technologies.
- */
-
-/**
- * @typedef {Object} WorkTechData
- * @property {TechStackData} techStack - The complete technological breakdown of the project.
- */
-
-/**
  * Renders the "Tech Stack" section for the project detail view.
  * * This component organizes the technological landscape of a project into three
  * main categories: Core Tools, Libraries/Utilities, and Design/Styles.
@@ -36,10 +23,7 @@ import { validateProp } from "../../../js/utils/argumentsValidation";
 
 export default function TechStack({} = {}) {
   const id = getQueryParams("id");
-  const work = bbdd.works.find((work) => work.id === Number(id));
-
-  // validations
-  validateProp("id", Number(id), "number");
+  const currentWork = bbdd.works.find((work) => work.id === Number(id));
 
   const section = createElement({
     tag: "section",
@@ -66,9 +50,9 @@ export default function TechStack({} = {}) {
   });
 
   append(techStackContainer, [
-    TechStackTools({ tools: work.techStack.tools.allTools }),
-    TechStackLibraries({ libraries: work.techStack.librariesUtils }),
-    TechStackDesign({ designs: work.techStack.stylesDesign }),
+    TechStackTools({ tools: currentWork.techStack.tools.allTools }),
+    TechStackLibraries({ libraries: currentWork.techStack.librariesUtils }),
+    TechStackDesign({ designs: currentWork.techStack.stylesDesign }),
   ]);
 
   append(section, [title, techStackContainer]);

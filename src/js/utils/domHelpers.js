@@ -166,7 +166,7 @@ export const setText = (element, value) => {
  * Appends one or more nodes to the end of a parent element.
  * * @function append
  * @param {HTMLElement} parent - The parent element.
- * @param {...Node[]} children - Child nodes to be appended.
+ * @param {...Node|undefined[]} children - Child nodes to be appended.
  */
 export function append(parent, children) {
   validateProps({
@@ -176,11 +176,37 @@ export function append(parent, children) {
 
   children.forEach((child) => {
     validateProps({
-      child: { value: child, type: "Node" },
+      child: { value: child, type: ["Node", "undefined"] },
     });
+
+    if (!child) return;
+
     parent.appendChild(child);
   });
 }
+
+/**
+ * Sets the inner HTML of an element after validating the input.
+ * * This utility serves as a controlled wrapper for `innerHTML`. It is useful for
+ * injecting strings of HTML into a container, typically for templates or
+ * dynamic content generated from trusted sources.
+ *
+ * @function setHTML
+ * @param {HTMLElement} element - The target element where the HTML will be injected.
+ * @param {string} htmlString - The string of HTML to be rendered.
+ * @throws {TypeError} If the element is not an HTMLElement or the htmlString is not a string.
+ * * @example
+ * const container = getElement('#container');
+ * setHTML(container, '<h1>Hola Mundo</h1><p>Esto es contenido dinámico.</p>');
+ */
+export const setHTML = (element, htmlString) => {
+  validateProps({
+    element: { value: element, type: "HTMLElement" },
+    htmlString: { value: htmlString, type: "string" },
+  });
+
+  element.innerHTML = htmlString;
+};
 
 /**
  * Finds the first element within the document or a specific container that matches the given CSS selector.
