@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: pages/ProjectDetail/AditionalConfigs/index.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: pages/ProjectDetail/AditionalConfigs/index.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import FloatingTitle from "../../../components/FloatingTitle";
+import bbdd from "../../../const/database/bbdd";
+import { svg } from "../../../const/database/bbdd_consts";
+import { createElement } from "../../../js/utils/createElementsHelper";
+import { append } from "../../../js/utils/domHelpers";
+import {
+  fadeInObserver,
+  getQueryParams,
+  navbarObserver,
+} from "../../../js/utils/utils";
+import "./index.css";
+import Prism from "prismjs";
+import "prismjs/components/prism-javascript";
+import "prismjs/components/prism-css";
+import "prismjs/themes/prism-twilight.css";
+import "prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard";
+import NoteMsg from "../../../components/noteMsg";
+
+/**
+ * Renders the "Additional Configurations" section for a project.
+ * * This component fetches project-specific technical setup data, renders steps
+ * as either plain text or syntax-highlighted code blocks using Prism.js,
+ * and handles conditional display of warning and note messages.
+ * * @function AditionalConfigs
+ * @param {Object} [props={}] - Component properties.
+ * @returns {HTMLElement} The section element containing the technical documentation and steps.
+ */
+
+export default function AditionalConfigs({} = {}) {
+  const id = getQueryParams("id");
+  const currentWork = bbdd.works.find((w) => w.id === Number(id));
+
+  const section = createElement({
+    tag: "section",
+    classNames: ["pd-s-config"],
+    attributes: {
+      "data-navbar-color": "black",
+    },
+  });
+
+  navbarObserver(section);
+
+  const title = FloatingTitle({
+    text: "Configuraciones adicionales",
+    icon: svg.config,
+    iconPosition: "left",
+    theme: "dark",
+    upperCase: true,
+  });
+
+  const description = createElement({
+    tag: "div",
+    classNames: ["pd-s-config__desc"],
+  });
+
+  const workDescription = currentWork.config.description;
+
+  workDescription.forEach((desc, index) => {
+    const item = createElement({
+      tag: "p",
+      classNames: ["pd-s-config__desc-paragraph"],
+      innerText: desc,
+    });
+
+    fadeInObserver(
+      item,
+      `animated-element--fade-in-${index % 2 === 0 ? "left" : "right"}`,
+    );
+
+    append(description, [item]);
+  });
+
+  append(section, [title, description]);
+
+  const steps = createElement({
+    tag: "div",
+    classNames: ["pd-s-config__steps"],
+  });
+
+  append(section, [steps]);
+
+  const workSteps = currentWork.config.steps;
+
+  workSteps.forEach((step, index) => {
+    const item = createElement({
+      tag: "div",
+      classNames: ["pd-s-config__step"],
+    });
+
+    const icon = createElement({
+      tag: "span",
+      classNames: ["config__step-title-icon"],
+      innerHTML: svg.wrench,
+    });
+
+    const titleText = createElement({
+      tag: "span",
+      classNames: ["config__step-title-text"],
+      innerText: `Paso ${index + 1}: ${step.title}`,
+    });
+
+    const title = createElement({
+      tag: "h3",
+      classNames: ["config__step-title"],
+    });
+
+    fadeInObserver(title, `animated-element--fade-in-bottom`);
+    fadeInObserver(item, `animated-element--fade-in-bottom`);
+
+    if (step.type === "code") {
+      const pre = createElement({
+        tag: "pre",
+        classNames: ["config__step-pre", "language-javascript"],
+      });
+
+      const code = createElement({
+        tag: "code",
+        classNames: ["config__step-code", "language-javascript"],
+        innerText: step.description,
+      });
+
+      append(pre, [code]);
+      append(item, [pre]);
+    } else {
+      const description = createElement({
+        tag: "p",
+        classNames: ["config__step-desc", "language-javascript"],
+        innerText: step.description,
+      });
+
+      append(item, [description]);
+    }
+
+    append(title, [icon, titleText]);
+    append(steps, [title, item]);
+  });
+
+  const workWarningMsg = currentWork.config?.warningMsg;
+
+  if (workWarningMsg) {
+    const warningMsg = NoteMsg({
+      type: "warning",
+      desc: workWarningMsg.description,
+    });
+
+    append(container, [warningMsg]);
+  }
+
+  const workNoteMsg = currentWork.config?.noteMsg;
+
+  if (workNoteMsg) {
+    const noteMsg = NoteMsg({
+      desc: workNoteMsg.description,
+    });
+
+    append(section, [noteMsg]);
+  }
+
+  setTimeout(() => {
+    Prism.highlightAll();
+  }, 50);
+
+  return section;
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Button">Button</a></li><li><a href="global.html#Card">Card</a></li><li><a href="global.html#Career">Career</a></li><li><a href="global.html#CareerCourse">CareerCourse</a></li><li><a href="global.html#CareerSlide">CareerSlide</a></li><li><a href="global.html#DefaultFooter">DefaultFooter</a></li><li><a href="global.html#FlipCard">FlipCard</a></li><li><a href="global.html#FloatingTitle">FloatingTitle</a></li><li><a href="global.html#Hero">Hero</a></li><li><a href="global.html#ImagesSlider">ImagesSlider</a></li><li><a href="global.html#InfiniteSlider">InfiniteSlider</a></li><li><a href="global.html#Link">Link</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#NavbarProductDetail">NavbarProductDetail</a></li><li><a href="global.html#NoteMsg">NoteMsg</a></li><li><a href="global.html#ProductDetailFooter">ProductDetailFooter</a></li><li><a href="global.html#Profile">Profile</a></li><li><a href="global.html#ProfileData">ProfileData</a></li><li><a href="global.html#Skill">Skill</a></li><li><a href="global.html#Skills">Skills</a></li><li><a href="global.html#StrengthSlide">StrengthSlide</a></li><li><a href="global.html#Strengths">Strengths</a></li><li><a href="global.html#Work">Work</a></li><li><a href="global.html#WorkBackFlipCard">WorkBackFlipCard</a></li><li><a href="global.html#WorkFlipCard">WorkFlipCard</a></li><li><a href="global.html#WorkItemsContainer">WorkItemsContainer</a></li><li><a href="global.html#Works">Works</a></li><li><a href="global.html#WritteMachineTitle">WritteMachineTitle</a></li><li><a href="global.html#addClass">addClass</a></li><li><a href="global.html#append">append</a></li><li><a href="global.html#attachEvent">attachEvent</a></li><li><a href="global.html#containsClass">containsClass</a></li><li><a href="global.html#createElement">createElement</a></li><li><a href="global.html#createFragment">createFragment</a></li><li><a href="global.html#createHtag">createHtag</a></li><li><a href="global.html#createIntersectionObserver">createIntersectionObserver</a></li><li><a href="global.html#deleteMachine">deleteMachine</a></li><li><a href="global.html#fadeInObserver">fadeInObserver</a></li><li><a href="global.html#getElement">getElement</a></li><li><a href="global.html#getElements">getElements</a></li><li><a href="global.html#getImage">getImage</a></li><li><a href="global.html#getImageSize">getImageSize</a></li><li><a href="global.html#getQueryParams">getQueryParams</a></li><li><a href="global.html#images">images</a></li><li><a href="global.html#navbarObserver">navbarObserver</a></li><li><a href="global.html#navbarObserverCallback">navbarObserverCallback</a></li><li><a href="global.html#removeClass">removeClass</a></li><li><a href="global.html#replaceClass">replaceClass</a></li><li><a href="global.html#scrollVisibilitty">scrollVisibilitty</a></li><li><a href="global.html#setAttribute">setAttribute</a></li><li><a href="global.html#setAttributes">setAttributes</a></li><li><a href="global.html#setHTML">setHTML</a></li><li><a href="global.html#setStyle">setStyle</a></li><li><a href="global.html#setStyles">setStyles</a></li><li><a href="global.html#setText">setText</a></li><li><a href="global.html#toggleClass">toggleClass</a></li><li><a href="global.html#validateProp">validateProp</a></li><li><a href="global.html#validateProps">validateProps</a></li><li><a href="global.html#writteDeleteMachine">writteDeleteMachine</a></li><li><a href="global.html#writteMachine">writteMachine</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Mon Jan 26 2026 10:38:11 GMT+0000 (hora estándar de Europa occidental)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
