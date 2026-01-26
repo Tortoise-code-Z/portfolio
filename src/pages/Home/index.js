@@ -1,11 +1,11 @@
 import { append, getElement } from "../../js/utils/domHelpers.js";
-import Navbar from "../../components/Navbar";
-import DefaultFooter from "../../components/Footer/DefaultFooter";
-import Hero from "./Hero";
-import Profile from "./Profile";
-import Works from "./Works";
-import Skills from "./Skills";
-import Career from "./CareerCourses";
+import Navbar from "../../components/Navbar/index.js";
+import DefaultFooter from "../../components/Footer/DefaultFooter/index.js";
+import Hero from "./Hero/index.js";
+import Profile from "./Profile/index.js";
+import Works from "./Works/index.js";
+import Skills from "./Skills/index.js";
+import Career from "./CareerCourses/index.js";
 import "./index.css";
 
 /**
