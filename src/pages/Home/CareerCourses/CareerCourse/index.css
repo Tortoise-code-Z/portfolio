@@ -1,0 +1,54 @@
+.s-career__course {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.s-career__course-data {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 0 var(--padding-page);
+}
+
+.s-career__course-more-info {
+    display: flex;
+    gap: 20px;
+}
+
+.s-career__course-name {
+    font-family: Geologica-bold;
+    color: rgb(var(--text-white));
+    font-size: clamp(
+        1rem,
+        calc(
+            1rem +
+                (
+                    (1.5rem - 1rem) /
+                        (var(--viewport-max-width) - var(--viewport-min-width)) *
+                        (100vw - var(--viewport-min-width))
+                )
+        ),
+        1.5rem
+    );
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.s-career__course-tools {
+    text-transform: lowercase;
+    font-size: 1rem;
+    font-family: Geologica-thin;
+    opacity: 0.7;
+    text-align: center;
+}
+
+.s-career__course-year,
+.s-career__course-hours,
+.s-career__course-note {
+    font-size: 1.1rem;
+    font-family: Geologica-medium;
+}

@@ -1,0 +1,206 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> js/utils/argumentsValidation.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Global</h3><ul><li><a href="global.html#Button">Button</a></li><li><a href="global.html#Card">Card</a></li><li><a href="global.html#Career">Career</a></li><li><a href="global.html#CareerCourse">CareerCourse</a></li><li><a href="global.html#CareerSlide">CareerSlide</a></li><li><a href="global.html#DefaultFooter">DefaultFooter</a></li><li><a href="global.html#FlipCard">FlipCard</a></li><li><a href="global.html#FloatingTitle">FloatingTitle</a></li><li><a href="global.html#Hero">Hero</a></li><li><a href="global.html#ImagesSlider">ImagesSlider</a></li><li><a href="global.html#InfiniteSlider">InfiniteSlider</a></li><li><a href="global.html#Link">Link</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#NavbarProductDetail">NavbarProductDetail</a></li><li><a href="global.html#NoteMsg">NoteMsg</a></li><li><a href="global.html#ProductDetailFooter">ProductDetailFooter</a></li><li><a href="global.html#Profile">Profile</a></li><li><a href="global.html#ProfileData">ProfileData</a></li><li><a href="global.html#Skill">Skill</a></li><li><a href="global.html#Skills">Skills</a></li><li><a href="global.html#StrengthSlide">StrengthSlide</a></li><li><a href="global.html#Strengths">Strengths</a></li><li><a href="global.html#Work">Work</a></li><li><a href="global.html#WorkBackFlipCard">WorkBackFlipCard</a></li><li><a href="global.html#WorkFlipCard">WorkFlipCard</a></li><li><a href="global.html#WorkItemsContainer">WorkItemsContainer</a></li><li><a href="global.html#Works">Works</a></li><li><a href="global.html#WritteMachineTitle">WritteMachineTitle</a></li><li><a href="global.html#addClass">addClass</a></li><li><a href="global.html#append">append</a></li><li><a href="global.html#attachEvent">attachEvent</a></li><li><a href="global.html#containsClass">containsClass</a></li><li><a href="global.html#createElement">createElement</a></li><li><a href="global.html#createFragment">createFragment</a></li><li><a href="global.html#createHtag">createHtag</a></li><li><a href="global.html#createIntersectionObserver">createIntersectionObserver</a></li><li><a href="global.html#deleteMachine">deleteMachine</a></li><li><a href="global.html#fadeInObserver">fadeInObserver</a></li><li><a href="global.html#getElement">getElement</a></li><li><a href="global.html#getElements">getElements</a></li><li><a href="global.html#getImage">getImage</a></li><li><a href="global.html#getImageSize">getImageSize</a></li><li><a href="global.html#getQueryParams">getQueryParams</a></li><li><a href="global.html#images">images</a></li><li><a href="global.html#navbarObserver">navbarObserver</a></li><li><a href="global.html#navbarObserverCallback">navbarObserverCallback</a></li><li><a href="global.html#removeClass">removeClass</a></li><li><a href="global.html#replaceClass">replaceClass</a></li><li><a href="global.html#scrollVisibilitty">scrollVisibilitty</a></li><li><a href="global.html#setAttribute">setAttribute</a></li><li><a href="global.html#setAttributes">setAttributes</a></li><li><a href="global.html#setHTML">setHTML</a></li><li><a href="global.html#setStyle">setStyle</a></li><li><a href="global.html#setStyles">setStyles</a></li><li><a href="global.html#setText">setText</a></li><li><a href="global.html#toggleClass">toggleClass</a></li><li><a href="global.html#validateProp">validateProp</a></li><li><a href="global.html#validateProps">validateProps</a></li><li><a href="global.html#writteDeleteMachine">writteDeleteMachine</a></li><li><a href="global.html#writteMachine">writteMachine</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>js/utils/argumentsValidation.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Validates a property's type and value against allowed constraints.
+ *
+ * @function validateProp
+ * @param {string} name - The name of the property (for error reporting).
+ * @param {*} value - The actual value to validate.
+ * @param {string|string[]} type - The expected type(s) (e.g., 'string', 'HTMLElement', 'array').
+ * @param {*[]} [allowedValues=null] - An optional list of specific allowed values.
+ * @throws {TypeError} If the type is incorrect.
+ * @throws {RangeError} If the value is not in the allowedValues list.
+ * @returns {boolean} Returns true if validation passes.
+ */
+export function validateProp(name, value, type, allowedValues = null) {
+  const types = Array.isArray(type) ? type : [type];
+
+  // 1. Manejo de nulos y indefinidos (Short-circuit)
+  if (value === null &amp;&amp; types.includes("null")) return true;
+  if (value === undefined &amp;&amp; types.includes("undefined")) return true;
+
+  // 2. Validación de tipos técnica
+  const isValid = types.some((t) => {
+    // Caso especial: Arrays
+    if (t === "array") return Array.isArray(value);
+
+    // Caso especial: DOM Nodes (Seguro para Node.js y Navegador)
+    if (t === "HTMLElement" || t === "Node") {
+      return typeof value === "object" &amp;&amp; value !== null &amp;&amp; "nodeType" in value;
+    }
+
+    // Caso especial: Funciones y Clases
+    if (t === "function") return typeof value === "function";
+
+    // Verificación por Constructor (Date, RegExp, AsyncFunction, etc.)
+    const constructorName = value?.constructor?.name?.toLowerCase();
+    if (constructorName === t.toLowerCase()) return true;
+
+    // Verificación por typeof estándar (string, number, boolean, etc.)
+    return typeof value === t;
+  });
+
+  if (!isValid) {
+    const actualType =
+      value === null ? "null" : value?.constructor?.name || typeof value;
+    throw new TypeError(
+      `"${name}" → Debe ser de tipo ${types.join(" o ")}. Recibido: ${actualType}`,
+    );
+  }
+
+  // 3. Validación de valores permitidos
+  if (allowedValues &amp;&amp; !allowedValues.includes(value)) {
+    throw new RangeError(
+      `"${name}" → Solo se permiten los valores: ${allowedValues.join(", ")}. Recibido: ${value}`,
+    );
+  }
+
+  return true;
+}
+
+/**
+ * @typedef {Object} ValidationSchema
+ * @property {*} value - The actual value to validate.
+ * @property {string|string[]} type - The expected type(s) (e.g., 'string', 'HTMLElement', 'array', 'null').
+ * @property {*[]} [allowedValues] - An optional list of specific allowed values.
+ */
+
+/**
+ * Validates multiple properties at once against a defined schema.
+ * * This utility iterates over an object where each key represents a property name
+ * and its value is a validation configuration. It leverages `validateProp` internally
+ * to enforce type and range constraints.
+ *
+ * @function validateProps
+ * @param {Object.&lt;string, ValidationSchema>} schema - An object mapping property names to their validation rules.
+ * @returns {boolean} Returns true if all properties pass validation.
+ * @throws {TypeError} If any property has an incorrect type.
+ * @throws {RangeError} If any property value is not within its allowedValues list.
+ * * @example
+ * validateProps({
+ * text: { value: text, type: 'string' },
+ * level: { value: level, type: 'number', allowedValues: [1, 2, 3] },
+ * top: { value: top, type: ['number', 'null'] }
+ * });
+ */
+export function validateProps(schema) {
+  Object.entries(schema).forEach(([name, config]) => {
+    validateProp(name, config.value, config.type, config.allowedValues);
+  });
+  return true;
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>

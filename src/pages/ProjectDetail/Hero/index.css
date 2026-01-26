@@ -1,0 +1,97 @@
+.pd-hero {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 0 var(--padding-page);
+    background-color: rgb(var(--bcc-white));
+}
+.pd-hero__title {
+    color: rgb(var(--bcc-black));
+    text-transform: uppercase;
+    font-family: Geologica-bold;
+    font-size: clamp(
+        3rem,
+        calc(
+            3rem +
+                (
+                    (6.5rem - 3rem) /
+                        (var(--viewport-max-width) - var(--viewport-min-width)) *
+                        (100vw - var(--viewport-min-width))
+                )
+        ),
+        6.5rem
+    );
+    text-align: center;
+}
+.pd-hero__desc {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    padding: 0 var(--padding-page);
+}
+.pd-hero__desc-type-web {
+    color: rgb(var(--bcc-black));
+    text-transform: capitalize;
+    font-family: Geologica-light;
+    font-style: italic;
+    opacity: 0.7;
+    font-size: clamp(
+        1.1rem,
+        calc(
+            1.1rem +
+                (
+                    (1.2rem - 1.1rem) /
+                        (var(--viewport-max-width) - var(--viewport-min-width)) *
+                        (100vw - var(--viewport-min-width))
+                )
+        ),
+        1.2rem
+    );
+
+    text-align: center;
+}
+.pd-hero__type-proyect-year {
+    color: rgb(var(--bcc-black));
+    text-transform: capitalize;
+    font-family: Geologica-light;
+    opacity: 0.5;
+    font-style: italic;
+    font-size: 1.1rem;
+    text-align: center;
+}
+.pd-hero__actions {
+    display: flex;
+    gap: 20px;
+}
+
+.pd-hero__actions-demo,
+.pd-hero__actions-code {
+    color: rgb(var(--bcc-black)) !important;
+    border-color: rgb(var(--bcc-black)) !important;
+}
+
+.pd-hero__actions-demo svg,
+.pd-hero__actions-code svg {
+    width: 25px;
+    height: 25px;
+}
+
+@media all and (max-height: 500px) {
+    .pd-hero {
+        gap: 15px;
+    }
+    .pd-hero__title {
+        font-size: 2.5rem;
+    }
+    .pd-hero__desc-type-web {
+        font-size: 1.1rem;
+    }
+    .pd-hero__type-proyect-year {
+        font-size: 1rem;
+    }
+}

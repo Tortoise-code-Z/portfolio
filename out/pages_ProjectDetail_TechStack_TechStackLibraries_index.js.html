@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: pages/ProjectDetail/TechStack/TechStackLibraries/index.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: pages/ProjectDetail/TechStack/TechStackLibraries/index.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import InfiniteSlider from "../../../../components/InfiniteSlider";
+import { validateProps } from "../../../../js/utils/argumentsValidation";
+import { createElement } from "../../../../js/utils/createElementsHelper";
+import { append } from "../../../../js/utils/domHelpers";
+import { fadeInObserver } from "../../../../js/utils/utils";
+import "./index.css";
+
+/**
+ * @typedef {Object} LibraryItem
+ * @property {string} item - The name of the library or utility (e.g., "React", "Axios").
+ */
+
+/**
+ * Component that renders the "Libraries and Utilities" subsection within the Tech Stack.
+ * * This component displays an infinite scrolling title moving to the right and
+ * a collection of tags representing the libraries used. Each tag includes
+ * entrance animations that alternate between fading in from the top or bottom.
+ * * @function TechStackLibraries
+ * @param {Object} props - Component properties.
+ * @param {LibraryItem[]} props.libraries - Array of library objects used in the project.
+ * @returns {HTMLDivElement|undefined} The container element or null if the libraries array is empty.
+ */
+
+export default function TechStackLibraries(props = {}) {
+  const { libraries } = props;
+
+  validateProps({
+    libraries: { value: libraries, type: "array" },
+  });
+
+  if (libraries.length === 0) return undefined;
+
+  libraries.forEach(({ item }) =>
+    validateProps({
+      librarie: { value: item, type: "string" },
+    }),
+  );
+
+  const container = createElement({
+    tag: "div",
+    classNames: ["pd-s-tech-stack__libraries"],
+  });
+
+  const librariesTitle = InfiniteSlider({
+    slideComponent: (data) => {
+      return createElement({
+        tag: "h3",
+        classNames: ["pd-s-tech-stack__libraries-title"],
+        innerText: data.data,
+      });
+    },
+    dataSlides: ["Librerías y utilidades"],
+    duplicationSlides: 5,
+    direction: "right",
+  });
+
+  fadeInObserver(librariesTitle, `animated-element--fade-in-right`);
+
+  const librariesTags = createElement({
+    tag: "div",
+    classNames: ["pd-s-tech-stack__libraries-tags"],
+  });
+
+  libraries.forEach(({ item }, index) => {
+    const span = createElement({
+      tag: "span",
+      classNames: ["pd-s-tech-stack__libraries-tag"],
+      innerText: item,
+    });
+
+    fadeInObserver(
+      span,
+      `animated-element--fade-in-${index % 2 === 0 ? "top" : "bottom"}`,
+    );
+
+    append(librariesTags, [span]);
+  });
+
+  append(container, [librariesTitle, librariesTags]);
+
+  return container;
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Button">Button</a></li><li><a href="global.html#Card">Card</a></li><li><a href="global.html#Career">Career</a></li><li><a href="global.html#CareerCourse">CareerCourse</a></li><li><a href="global.html#CareerSlide">CareerSlide</a></li><li><a href="global.html#DefaultFooter">DefaultFooter</a></li><li><a href="global.html#FlipCard">FlipCard</a></li><li><a href="global.html#FloatingTitle">FloatingTitle</a></li><li><a href="global.html#Hero">Hero</a></li><li><a href="global.html#ImagesSlider">ImagesSlider</a></li><li><a href="global.html#InfiniteSlider">InfiniteSlider</a></li><li><a href="global.html#Link">Link</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#NavbarProductDetail">NavbarProductDetail</a></li><li><a href="global.html#NoteMsg">NoteMsg</a></li><li><a href="global.html#ProductDetailFooter">ProductDetailFooter</a></li><li><a href="global.html#Profile">Profile</a></li><li><a href="global.html#ProfileData">ProfileData</a></li><li><a href="global.html#Skill">Skill</a></li><li><a href="global.html#Skills">Skills</a></li><li><a href="global.html#StrengthSlide">StrengthSlide</a></li><li><a href="global.html#Strengths">Strengths</a></li><li><a href="global.html#Work">Work</a></li><li><a href="global.html#WorkBackFlipCard">WorkBackFlipCard</a></li><li><a href="global.html#WorkFlipCard">WorkFlipCard</a></li><li><a href="global.html#WorkItemsContainer">WorkItemsContainer</a></li><li><a href="global.html#Works">Works</a></li><li><a href="global.html#WritteMachineTitle">WritteMachineTitle</a></li><li><a href="global.html#addClass">addClass</a></li><li><a href="global.html#append">append</a></li><li><a href="global.html#attachEvent">attachEvent</a></li><li><a href="global.html#containsClass">containsClass</a></li><li><a href="global.html#createElement">createElement</a></li><li><a href="global.html#createFragment">createFragment</a></li><li><a href="global.html#createHtag">createHtag</a></li><li><a href="global.html#createIntersectionObserver">createIntersectionObserver</a></li><li><a href="global.html#deleteMachine">deleteMachine</a></li><li><a href="global.html#fadeInObserver">fadeInObserver</a></li><li><a href="global.html#getElement">getElement</a></li><li><a href="global.html#getElements">getElements</a></li><li><a href="global.html#getImage">getImage</a></li><li><a href="global.html#getImageSize">getImageSize</a></li><li><a href="global.html#getQueryParams">getQueryParams</a></li><li><a href="global.html#images">images</a></li><li><a href="global.html#navbarObserver">navbarObserver</a></li><li><a href="global.html#navbarObserverCallback">navbarObserverCallback</a></li><li><a href="global.html#removeClass">removeClass</a></li><li><a href="global.html#replaceClass">replaceClass</a></li><li><a href="global.html#scrollVisibilitty">scrollVisibilitty</a></li><li><a href="global.html#setAttribute">setAttribute</a></li><li><a href="global.html#setAttributes">setAttributes</a></li><li><a href="global.html#setHTML">setHTML</a></li><li><a href="global.html#setStyle">setStyle</a></li><li><a href="global.html#setStyles">setStyles</a></li><li><a href="global.html#setText">setText</a></li><li><a href="global.html#toggleClass">toggleClass</a></li><li><a href="global.html#validateProp">validateProp</a></li><li><a href="global.html#validateProps">validateProps</a></li><li><a href="global.html#writteDeleteMachine">writteDeleteMachine</a></li><li><a href="global.html#writteMachine">writteMachine</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Mon Jan 26 2026 10:38:11 GMT+0000 (hora estándar de Europa occidental)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

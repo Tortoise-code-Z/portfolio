@@ -1,0 +1,84 @@
+.pd-s-tech-stack__design {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.pd-s-tech-stack__design-title {
+    opacity: 0.2;
+    width: max-content;
+    font-family: Geologica-thin;
+    font-size: 3rem;
+    font-weight: 100;
+}
+
+.pd-s-tech-stack__design-targets {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    gap: 50px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 var(--padding-page);
+}
+
+.pd-s-tech-stack__design-targets:hover .tech-stack__design-target {
+    opacity: 0.5;
+    transform: scale(0.9);
+}
+
+.tech-stack__design-target:hover {
+    opacity: 1 !important;
+    transform: scale(1.1) !important;
+}
+
+.tech-stack__design-target {
+    transition: 0.3s all ease;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 2px 0px rgba(0, 0, 0, 0.13);
+}
+
+.tech-stack__design-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: Geologica-thin;
+    text-transform: capitalize;
+}
+
+.tech-stack__design-icon {
+    margin: 0 auto;
+}
+
+.tech-stack__design-icon svg {
+    width: 100px;
+    height: 100px;
+}
+
+@media all and (max-width: 500px) {
+    .tech-stack__design-target {
+        width: auto;
+        flex: 1;
+    }
+
+    .pd-s-tech-stack__design-targets {
+        gap: 20px;
+    }
+
+    .tech-stack__design-icon svg {
+        width: 50px;
+        height: 50px;
+    }
+}

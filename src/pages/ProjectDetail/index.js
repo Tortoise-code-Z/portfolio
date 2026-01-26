@@ -1,0 +1,38 @@
+import { NavbarProductDetail } from "../../components/Navbar";
+import { ProductDetailFooter } from "../../components/Footer/ProductDetailFooter";
+import { append } from "../../js/utils/domHelpers";
+import AboutProject from "./About";
+import AditionalConfigs from "./AditionalConfigs";
+import DevelopmentProcess from "./DevelopmentProcess";
+import Gallery from "./Gallery";
+import Hero from "./Hero";
+import "./index.css";
+import TechStack from "./TechStack";
+
+/**
+ * Entry point for the Project Detail page.
+ * This script initializes and orchestrates the layout for the specific project view,
+ * populating the header, main, and footer sections with specialized components.
+ * * It builds the following structure:
+ * - **Header**: Specific product detail navbar and a project-focused Hero.
+ * - **Main**: Comprehensive project breakdown including "About", Tech Stack,
+ * Development Process, Image Gallery, and Additional Configurations.
+ * - **Footer**: Specialized footer for the project detail context.
+ */
+
+append(document.querySelector(".project-detail__header"), [
+  NavbarProductDetail(),
+  Hero(),
+]);
+
+append(document.querySelector(".project-detail__main"), [
+  AboutProject(),
+  TechStack(),
+  DevelopmentProcess(),
+  Gallery(),
+  AditionalConfigs(),
+]);
+
+append(document.querySelector(".project-detail__footer"), [
+  ProductDetailFooter(),
+]);

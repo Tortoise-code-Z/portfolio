@@ -1,0 +1,30 @@
+.s-about__strengths-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+.s-about__strengths-item-title {
+    text-align: center;
+    font-family: Geologica-light;
+    color: rgb(var(--text-black));
+    font-size: clamp(
+        1rem,
+        calc(
+            1.2rem +
+                (
+                    (1.2rem - 1rem) /
+                        (var(--viewport-max-width) - var(--viewport-min-width)) *
+                        (100vw - var(--viewport-min-width))
+                )
+        ),
+        1.2rem
+    );
+}
+
+.s-about__strengths-item-icon svg {
+    width: 100px;
+    height: 100px;
+    color: rgb(var(--text-black));
+}

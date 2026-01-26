@@ -6,9 +6,16 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build-docs": "jsdoc -c jsdoc.json"
   },
   "devDependencies": {
+    "better-docs": "^2.7.3",
+    "jsdoc": "^4.0.5",
     "vite": "^6.0.1"
+  },
+  "dependencies": {
+    "colorthief": "^2.6.0",
+    "prismjs": "^1.30.0"
   }
 }

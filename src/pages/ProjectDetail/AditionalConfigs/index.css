@@ -1,0 +1,91 @@
+.pd-s-config {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    padding: var(--section-vertical-padding) 0;
+    background-color: rgb(var(--bcc-white));
+    color: rgb(var(--bcc-black));
+}
+.pd-s-config__desc {
+    padding: 0 var(--padding-page);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.pd-s-config__desc-paragraph {
+    font-family: Geologica-light;
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+.pd-s-config__steps {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+    padding: 0 var(--padding-page);
+}
+
+.pd-s-config__step {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.config__step-title-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.config__step-pre {
+    /* 1. Define la altura máxima */
+    max-height: 400px; /* Puedes ajustar este valor (ej. 300px, 50vh, etc.) */
+
+    /* 2. Activa la barra de desplazamiento vertical (scroll) */
+    /* 'auto' mostrará el scroll solo si el contenido excede la altura máxima */
+    overflow-y: auto;
+
+    /* 3. Mantiene el scroll horizontal (como ya habíamos visto) */
+    overflow-x: auto;
+
+    /* Opcional: Estilo básico para que se vea bien */
+    padding: 15px;
+    white-space: pre-wrap;
+}
+
+.config__step-title-text {
+    line-height: 1.5;
+    font-family: Geologica-light;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.config__step-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    line-height: 1.5;
+}
+
+.config__step-desc {
+    font-family: Geologica-light;
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+@media all and (max-width: 500px) {
+    .config__step-desc {
+        text-align: center;
+    }
+    .pd-s-config__desc-paragraph {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+}
