@@ -52,15 +52,13 @@ export default function Hero({} = {}) {
     `${currentWork.shortDescription} · ${currentWork.projectRole}`,
   );
 
-  setText(
-    typeProyectYear,
-    `${currentWork.visibility} Project · ${currentWork.year}`,
-  );
+  setText(typeProyectYear, `${currentWork.visibility} · ${currentWork.year}`);
 
   let demo;
 
   if (currentWork.links.demo)
     demo = Link({
+      title: "Ir a demo",
       isButton: true,
       icon: svg.demo,
       variant: "primary",
@@ -72,6 +70,7 @@ export default function Hero({} = {}) {
     });
 
   const github = Link({
+    title: "Ir a código",
     isButton: true,
     icon: svg.code,
     variant: "primary",
@@ -79,7 +78,7 @@ export default function Hero({} = {}) {
     classNames: ["pd-hero__actions-code"],
     href: currentWork.links.github,
     target: "_blank",
-    text: "Code",
+    text: "Código",
   });
 
   navbarObserver(hero);

@@ -36,7 +36,7 @@ export default function AboutProject({} = {}) {
   navbarObserver(section);
 
   const title = FloatingTitle({
-    text: "About proyect",
+    text: "Sobre el proyecto",
     icon: svg.info,
     theme: "light",
     iconPosition: "left",

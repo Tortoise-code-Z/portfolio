@@ -96,7 +96,7 @@ export default function WorkBackFlipCard(props = {}) {
   });
 
   setText(title, name);
-  setText(type, `${visibility} project · ${projectRole}`);
+  setText(type, `${projectRole} · ${visibility}`);
   setText(yearNode, year);
   setText(
     tools,
@@ -114,7 +114,7 @@ export default function WorkBackFlipCard(props = {}) {
     isButton: true,
     theme: "light",
     variant: "secondary",
-    text: "Code",
+    text: "Código",
     href: githubLink,
     target: "_blank",
     icon: svg.code,
@@ -126,7 +126,7 @@ export default function WorkBackFlipCard(props = {}) {
     isButton: true,
     theme: "light",
     variant: "secondary",
-    text: "More details",
+    text: "Más detalles",
     href: projectDetailUrl,
     params: {
       id: `${id}`,

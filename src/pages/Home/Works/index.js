@@ -29,9 +29,9 @@ export default function Works({} = {}) {
 
   const title = WritteMachineTitle({
     classNames: ["s-works__title"],
-    fixText: "W",
-    dinamicInitText: "rkos",
-    dinamicFinalText: "orks",
+    fixText: "Proy",
+    dinamicInitText: "stoec",
+    dinamicFinalText: "ectos",
   });
 
   append(section, [title, WorkItemsContainer()]);

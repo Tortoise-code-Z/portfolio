@@ -28,9 +28,9 @@ export default function Career() {
 
   const title = WritteMachineTitle({
     classNames: ["s-career__title"],
-    fixText: "C",
-    dinamicInitText: "reera",
-    dinamicFinalText: "areer",
+    fixText: "Car",
+    dinamicInitText: "arer",
+    dinamicFinalText: "rera",
   });
 
   const courses = createElement({
