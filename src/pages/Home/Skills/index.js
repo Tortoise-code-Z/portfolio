@@ -30,7 +30,7 @@ export default function Skills({} = {}) {
 
   const title = FloatingTitle({
     upperCase: true,
-    text: "Skills",
+    text: "Habilidades",
     icon: svg.arrowRightDown,
     theme: "dark",
     iconPosition: "right",

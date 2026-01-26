@@ -29,7 +29,7 @@ export default function Profile({} = {}) {
 
   const title = FloatingTitle({
     upperCase: true,
-    text: "Profile",
+    text: "Perfil",
     icon: svg.arrowRightDown,
     theme: "dark",
     iconPosition: "right",

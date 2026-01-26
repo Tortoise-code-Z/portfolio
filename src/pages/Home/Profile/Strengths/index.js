@@ -25,7 +25,7 @@ export default function Strengths() {
   const strengthsTitle = createElement({
     tag: "h4",
     classNames: ["s-about__strengths-title"],
-    innerText: "Strengths",
+    innerText: "Fortalezas",
   });
 
   fadeInObserver(strengthsTitle, "animated-element--fade-in-top");

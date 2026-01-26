@@ -34,7 +34,7 @@ export default function Gallery({} = {}) {
   navbarObserver(section);
 
   const title = FloatingTitle({
-    text: "Gallery",
+    text: "Galería",
     icon: svg.gallery,
     theme: "light",
     iconPosition: "left",
