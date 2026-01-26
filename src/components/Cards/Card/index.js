@@ -1,7 +1,7 @@
 import { validateProps } from "../../../js/utils/argumentsValidation";
 import { createElement } from "../../../js/utils/createElementsHelper";
 import { append } from "../../../js/utils/domHelpers";
-import "./card.css";
+import "./index.css";
 
 /**
  * @typedef {Object} CardProps

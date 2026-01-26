@@ -1,5 +1,5 @@
 import { append, getElement } from "../../js/utils/domHelpers";
-import Navbar from "../../components/Navbar/navbar.js";
+import Navbar from "../../components/Navbar";
 import DefaultFooter from "../../components/Footer/DefaultFooter";
 import Hero from "./Hero";
 import Profile from "./Profile";

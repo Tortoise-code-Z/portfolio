@@ -1,5 +1,5 @@
-import InfiniteSlider from "../../../../components/InfiniteSlider/infiniteSlider";
-import { validateProp } from "../../../../js/utils/argumentsValidation";
+import InfiniteSlider from "../../../../components/InfiniteSlider";
+import { validateProps } from "../../../../js/utils/argumentsValidation";
 import { createElement } from "../../../../js/utils/createElementsHelper";
 import { append } from "../../../../js/utils/domHelpers";
 import { fadeInObserver } from "../../../../js/utils/utils";
@@ -21,10 +21,20 @@ import "./index.css";
  * @returns {HTMLDivElement|undefined} The container element or null if the libraries array is empty.
  */
 
-export default function TechStackLibraries({ libraries } = {}) {
-  validateProp("libraries", libraries, "array");
+export default function TechStackLibraries(props = {}) {
+  const { libraries } = props;
+
+  validateProps({
+    libraries: { value: libraries, type: "array" },
+  });
 
   if (libraries.length === 0) return undefined;
+
+  libraries.forEach(({ item }) =>
+    validateProps({
+      librarie: { value: item, type: "string" },
+    }),
+  );
 
   const container = createElement({
     tag: "div",
@@ -51,11 +61,11 @@ export default function TechStackLibraries({ libraries } = {}) {
     classNames: ["pd-s-tech-stack__libraries-tags"],
   });
 
-  libraries.forEach((librarie, index) => {
+  libraries.forEach(({ item }, index) => {
     const span = createElement({
       tag: "span",
       classNames: ["pd-s-tech-stack__libraries-tag"],
-      innerText: librarie.item,
+      innerText: item,
     });
 
     fadeInObserver(

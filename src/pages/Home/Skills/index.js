@@ -1,4 +1,4 @@
-import FloatingTitle from "../../../components/FloatingTitle/floatingTitle";
+import FloatingTitle from "../../../components/FloatingTitle";
 import bbdd from "../../../const/database/bbdd";
 import { svg } from "../../../const/database/bbdd_consts";
 import { createElement } from "../../../js/utils/createElementsHelper";

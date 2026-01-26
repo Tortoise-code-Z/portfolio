@@ -10,14 +10,13 @@ import {
   setAttributes,
   setText,
 } from "../../js/utils/domHelpers";
-import "./imagesSlider.css";
-import "./imagesSlider.html?raw";
 import cloneTemplate from "../../js/utils/cloneTemplate";
-import template from "./imagesSlider.html?raw";
 import { attachEvent, fadeInObserver } from "../../js/utils/utils";
-import Button from "../Button/button";
 import { svg } from "../../const/database/bbdd_consts";
 import { validateProps } from "../../js/utils/argumentsValidation";
+import "./index.css";
+import Button from "../Button";
+import template from "./index.html?raw";
 
 /**
  * @typedef {Object} SliderImage

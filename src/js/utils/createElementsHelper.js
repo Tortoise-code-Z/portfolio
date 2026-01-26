@@ -1,6 +1,4 @@
 import { validateProps } from "./argumentsValidation";
-import { append, setAttribute } from "./domHelpers";
-import { attachEvent } from "./utils";
 
 /**
  * @typedef {Object} ElementConfig
@@ -44,17 +42,17 @@ export const createElement = ({
   if (classNames.length) element.className = classNames.join(" ");
 
   for (const [key, value] of Object.entries(attributes)) {
-    setAttribute(element, key, value);
+    element.setAttribute(key, value);
   }
 
   if (innerText) element.textContent = innerText;
   if (innerHTML) element.insertAdjacentHTML("beforeend", innerHTML);
 
   for (const [event, handler] of Object.entries(events)) {
-    attachEvent(element, event, handler);
+    element.addEventListener(event, handler);
   }
 
-  if (parent) append(parent, [element]);
+  if (parent) parent.append(element);
 
   return element;
 };

@@ -1,8 +1,8 @@
 import { createElement } from "../../../js/utils/createElementsHelper.js";
-import FloatingTitle from "../../../components/FloatingTitle/floatingTitle.js";
+import FloatingTitle from "../../../components/FloatingTitle";
 import { append } from "../../../js/utils/domHelpers.js";
-import ProfileData from "./ProfileData/index.js";
-import Strengths from "./Strengths/index.js";
+import ProfileData from "./ProfileData";
+import Strengths from "./Strengths";
 import "./index.css";
 import { navbarObserver } from "../../../js/utils/utils.js";
 import { svg } from "../../../const/database/bbdd_consts.js";

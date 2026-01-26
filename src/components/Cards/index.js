@@ -2,8 +2,8 @@ import { validateProps } from "../../js/utils/argumentsValidation";
 import { createElement } from "../../js/utils/createElementsHelper";
 import { append } from "../../js/utils/domHelpers";
 import { fadeInObserver } from "../../js/utils/utils";
-import Card from "./Card/card";
-import "./cards.css";
+import Card from "./Card";
+import "./index.css";
 
 /**
  * @typedef {Object} CardData

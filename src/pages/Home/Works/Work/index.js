@@ -2,10 +2,10 @@ import { getImage } from "../../../../js/utils/images.js";
 import "./index.css";
 import { createElement } from "../../../../js/utils/createElementsHelper.js";
 import { append } from "../../../../js/utils/domHelpers.js";
-import FlipCard from "../../../../components/FlipCard/index.js";
-import WorkFrontFlipCard from "./WorkFrontFlipCard/index.js";
-import WorkBackFlipCard from "./WorkBackFlipCard/index.js";
-import FeaturedTag from "../../../../components/FeaturedTag/index.js";
+import FlipCard from "../../../../components/FlipCard";
+import WorkFrontFlipCard from "./WorkFrontFlipCard";
+import WorkBackFlipCard from "./WorkBackFlipCard";
+import FeaturedTag from "../../../../components/FeaturedTag";
 import { validateProps } from "../../../../js/utils/argumentsValidation.js";
 
 /**

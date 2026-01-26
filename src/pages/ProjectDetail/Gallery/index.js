@@ -1,9 +1,9 @@
-import FloatingTitle from "../../../components/FloatingTitle/floatingTitle";
+import FloatingTitle from "../../../components/FloatingTitle";
 import { svg } from "../../../const/database/bbdd_consts";
 import { createElement } from "../../../js/utils/createElementsHelper";
 import { getQueryParams, navbarObserver } from "../../../js/utils/utils";
 import "./index.css";
-import ImagesSlider from "../../../components/ImagesSlider/imagesSlider";
+import ImagesSlider from "../../../components/ImagesSlider";
 import bbdd from "../../../const/database/bbdd";
 import { append } from "../../../js/utils/domHelpers";
 

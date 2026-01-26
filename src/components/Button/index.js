@@ -1,6 +1,6 @@
 import { validateProps } from "../../js/utils/argumentsValidation";
 import { createElement } from "../../js/utils/createElementsHelper";
-import "./button.css";
+import "./index.css";
 /**
  * @typedef {Object} ButtonProps
  * @property {"primary"|"secondary"|"arrow"} [variant="primary"] - The visual style of the button.

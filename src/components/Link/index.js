@@ -1,7 +1,7 @@
 import { validateProps } from "../../js/utils/argumentsValidation";
 import { createElement } from "../../js/utils/createElementsHelper";
-import "../Button/button.css";
-import "./link.css";
+import "../Button/index.css";
+import "./index.css";
 
 /**
  * @typedef {Object} LinkProps

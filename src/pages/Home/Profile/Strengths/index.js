@@ -1,4 +1,4 @@
-import InfiniteSlider from "../../../../components/InfiniteSlider/infiniteSlider";
+import InfiniteSlider from "../../../../components/InfiniteSlider";
 import bbdd from "../../../../const/database/bbdd";
 import { createElement } from "../../../../js/utils/createElementsHelper";
 import { append } from "../../../../js/utils/domHelpers";

@@ -78,6 +78,7 @@ export const createIntersectionObserver = (
     options: { value: options, type: "object" },
     observeOnce: { value: observeOnce, type: "boolean" },
   });
+
   const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
       const itemParametersCallback = parametersCallback.find(
@@ -129,7 +130,7 @@ export const fadeInObserver = (
       if (entry.isIntersecting) {
         element.classList.remove("animated-element");
         entry.target.classList.add(classToAdd);
-        attachEvent(entry.target, "animationend", () => {
+        entry.target.addEventListener("animationend", () => {
           entry.target.classList.remove(classToAdd);
           if (currentAnimatedClass)
             entry.target.classList.add(currentAnimatedClass);

@@ -5,7 +5,7 @@ import {
 } from "../../../js/utils/utils.js";
 import { append, getElement } from "../../../js/utils/domHelpers.js";
 import cloneTemplate from "../../../js/utils/cloneTemplate.js";
-import Link from "../../../components/Link/link.js";
+import Link from "../../Link/index.js";
 import { svg } from "../../../const/database/bbdd_consts.js";
 import bbdd from "../../../const/database/bbdd.js";
 import template from "./index.html?raw";

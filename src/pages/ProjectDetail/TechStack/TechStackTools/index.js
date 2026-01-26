@@ -1,5 +1,5 @@
-import InfiniteSlider from "../../../../components/InfiniteSlider/infiniteSlider";
-import { validateProp } from "../../../../js/utils/argumentsValidation";
+import InfiniteSlider from "../../../../components/InfiniteSlider";
+import { validateProps } from "../../../../js/utils/argumentsValidation";
 import { createElement } from "../../../../js/utils/createElementsHelper";
 import { append } from "../../../../js/utils/domHelpers";
 import { fadeInObserver } from "../../../../js/utils/utils";
@@ -22,9 +22,21 @@ import "./index.css";
  * @returns {HTMLDivElement} The container element for the tools subsection.
  */
 
-export default function TechStackTools({ tools } = {}) {
-  // validations
-  validateProp("tools", tools, "array");
+export default function TechStackTools(props = {}) {
+  const { tools } = props;
+
+  validateProps({
+    tools: { value: tools, type: "array" },
+  });
+
+  if (tools.length === 0) return undefined;
+
+  tools.forEach(({ icon, tool }) =>
+    validateProps({
+      icon: { value: icon, type: "string" },
+      tool: { value: tool, type: "string" },
+    }),
+  );
 
   const container = createElement({
     tag: "div",

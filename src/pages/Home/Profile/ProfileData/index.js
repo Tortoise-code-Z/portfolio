@@ -5,7 +5,7 @@ import {
   getElement,
   setAttributes,
 } from "../../../../js/utils/domHelpers";
-import template from "./profile.html?raw";
+import template from "./index.html?raw";
 import bbdd from "../../../../const/database/bbdd";
 import AboutImg from "../../../../assets/images/about.gif";
 import { fadeInObserver, parseMarkdownBold } from "../../../../js/utils/utils";

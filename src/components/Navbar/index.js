@@ -1,8 +1,7 @@
 import cloneTemplate from "../../js/utils/cloneTemplate";
 import template from "./navbarProductDetail.html?raw";
 import templateDefault from "./navbar.html?raw";
-import "./navbar.css";
-import "../Link/link.css";
+import "./index.css";
 import { scrollVisibilitty } from "../../js/utils/utils";
 import { getElement } from "../../js/utils/domHelpers";
 

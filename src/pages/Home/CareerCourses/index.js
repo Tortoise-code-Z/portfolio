@@ -1,4 +1,4 @@
-import WritteMachineTitle from "../../../components/WritteMachineTitle/writteMachineTitle";
+import WritteMachineTitle from "../../../components/WritteMachineTitle";
 import bbdd from "../../../const/database/bbdd";
 import { createElement } from "../../../js/utils/createElementsHelper";
 import { append } from "../../../js/utils/domHelpers";

@@ -9,7 +9,7 @@ import {
 import template from "./index.html?raw";
 import cloneTemplate from "../../../../../js/utils/cloneTemplate";
 import { svg } from "../../../../../const/database/bbdd_consts";
-import Link from "../../../../../components/Link/link";
+import Link from "../../../../../components/Link";
 import projectDetailUrl from "../../../../ProjectDetail/index.html?url";
 import { validateProps } from "../../../../../js/utils/argumentsValidation";
 

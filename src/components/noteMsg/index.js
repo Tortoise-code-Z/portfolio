@@ -1,5 +1,5 @@
 import { fadeInObserver } from "../../js/utils/utils";
-import "./noteMsg.css";
+import "./index.css";
 import { svg } from "../../const/database/bbdd_consts";
 import { append } from "../../js/utils/domHelpers";
 import { createElement } from "../../js/utils/createElementsHelper";

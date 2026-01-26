@@ -1,9 +1,9 @@
 import { createElement } from "../../../js/utils/createElementsHelper";
 import { navbarObserver } from "../../../js/utils/utils";
-import WritteMachineTitle from "../../../components/WritteMachineTitle/writteMachineTitle.js";
+import WritteMachineTitle from "../../../components/WritteMachineTitle";
 import "./index.css";
 import { append } from "../../../js/utils/domHelpers.js";
-import WorkItemsContainer from "./WorkItemsContainer/index.js";
+import WorkItemsContainer from "./WorkItemsContainer";
 
 /**
  * Component that generates the main Projects (Works) section of the portfolio.

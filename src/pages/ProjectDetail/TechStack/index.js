@@ -1,4 +1,4 @@
-import FloatingTitle from "../../../components/FloatingTitle/floatingTitle";
+import FloatingTitle from "../../../components/FloatingTitle";
 import bbdd from "../../../const/database/bbdd";
 import { svg } from "../../../const/database/bbdd_consts";
 import { createElement } from "../../../js/utils/createElementsHelper";
@@ -8,7 +8,6 @@ import "./index.css";
 import TechStackLibraries from "./TechStackLibraries";
 import TechStackTools from "./TechStackTools";
 import TechStackDesign from "./TechStackDesign";
-import { validateProp } from "../../../js/utils/argumentsValidation";
 
 /**
  * Renders the "Tech Stack" section for the project detail view.

@@ -1,4 +1,4 @@
-import { NavbarProductDetail } from "../../components/Navbar/navbar";
+import { NavbarProductDetail } from "../../components/Navbar";
 import { ProductDetailFooter } from "../../components/Footer/ProductDetailFooter";
 import { append } from "../../js/utils/domHelpers";
 import AboutProject from "./About";

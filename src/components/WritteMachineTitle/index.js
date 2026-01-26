@@ -6,7 +6,7 @@ import {
   fadeInObserver,
   writteDeleteMachine,
 } from "../../js/utils/utils";
-import "./writteMachineTitle.css";
+import "./index.css";
 
 /**
  * @typedef {Object} WritteMachineTitleProps

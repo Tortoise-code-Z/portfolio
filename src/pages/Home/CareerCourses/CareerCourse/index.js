@@ -1,5 +1,5 @@
 import { fadeInObserver } from "../../../../js/utils/utils";
-import InfiniteSlider from "../../../../components/InfiniteSlider/infiniteSlider";
+import InfiniteSlider from "../../../../components/InfiniteSlider";
 import CareerSlide from "./CareerSlide";
 import { append } from "../../../../js/utils/domHelpers";
 import { createElement } from "../../../../js/utils/createElementsHelper";
@@ -33,6 +33,7 @@ export default function CareerCourse(props = {}) {
     academy,
     curse,
     hours,
+
     tools,
     year,
     noteState,

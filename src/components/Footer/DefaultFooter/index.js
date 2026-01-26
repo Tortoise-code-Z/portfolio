@@ -1,10 +1,10 @@
 import { fadeInObserver, navbarObserver } from "../../../js/utils/utils.js";
 import { append, getElement } from "../../../js/utils/domHelpers.js";
 import cloneTemplate from "../../../js/utils/cloneTemplate.js";
-import template from "./defaultFooter.html?raw";
-import Link from "../../../components/Link/link.js";
+import template from "./index.html?raw";
+import Link from "../../Link/index.js";
 import { svg } from "../../../const/database/bbdd_consts.js";
-import "./defaultFooter.css";
+import "./index.css";
 
 /**
  * Component that generates the site's default footer.

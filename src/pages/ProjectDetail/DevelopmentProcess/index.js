@@ -7,10 +7,10 @@ import {
 import "./index.css";
 import bbdd from "../../../const/database/bbdd";
 import { append } from "../../../js/utils/domHelpers";
-import FloatingTitle from "../../../components/FloatingTitle/floatingTitle";
+import FloatingTitle from "../../../components/FloatingTitle";
 import { svg } from "../../../const/database/bbdd_consts";
-import Cards from "../../../components/Cards/cards";
-import NoteMsg from "../../../components/noteMsg/noteMsg";
+import Cards from "../../../components/Cards";
+import NoteMsg from "../../../components/noteMsg";
 
 /**
  * Renders the "Development Process" section for the project detail view.

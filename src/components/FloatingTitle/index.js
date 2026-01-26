@@ -2,7 +2,7 @@ import { validateProps } from "../../js/utils/argumentsValidation";
 import { createElement, createHtag } from "../../js/utils/createElementsHelper";
 import { append, setStyles } from "../../js/utils/domHelpers";
 import { fadeInObserver } from "../../js/utils/utils";
-import "./floatingTitle.css";
+import "./index.css";
 
 /**
  * @typedef {Object} FloatingTitleProps
