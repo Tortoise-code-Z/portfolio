@@ -1,13 +1,13 @@
-import { NavbarProductDetail } from "../../components/Navbar";
-import { ProductDetailFooter } from "../../components/Footer/ProductDetailFooter";
+import { NavbarProductDetail } from "../../components/Navbar/index.js";
+import { ProductDetailFooter } from "../../components/Footer/ProductDetailFooter/index.js";
 import { append } from "../../js/utils/domHelpers.js";
-import AboutProject from "./About";
-import AditionalConfigs from "./AditionalConfigs";
-import DevelopmentProcess from "./DevelopmentProcess";
-import Gallery from "./Gallery";
-import Hero from "./Hero";
+import AboutProject from "./About/index.js";
+import AditionalConfigs from "./AditionalConfigs/index.js";
+import DevelopmentProcess from "./DevelopmentProcess/index.js";
+import Gallery from "./Gallery/index.js";
+import Hero from "./Hero/index.js";
 import "./index.css";
-import TechStack from "./TechStack";
+import TechStack from "./TechStack/index.js";
 
 /**
  * Entry point for the Project Detail page.
