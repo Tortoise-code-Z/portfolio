@@ -38,7 +38,7 @@ En él encontrarás **proyectos reales** construidos con tecnologías modernas c
   ![TechStack-Project_Detail](./src/assets/images/screenshots/screenshot-project-detail-techStack.png)
   ![Development_Process-Project_Detail](./src/assets/images/screenshots/screenshot-project-detail-devProcess.png)
   ![Gallery-Project_Detail](./src/assets/images/screenshots/screenshot-project-detail-gallery.png)
-  ![Aditional_Configs-Project_Detail](./src/assets/images/screenshots/screenshot-project-detail-AditionalConfigs.png)
+  ![Aditional_Configs-Project_Detail](./src/assets/images/screenshots/screenshot-project-detail-aditionalConfigs.png)
   ![Footer-Project_Detail](./src/assets/images/screenshots/screenshot-project-detail-footer.png)
 
 ---
