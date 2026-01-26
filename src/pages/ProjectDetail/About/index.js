@@ -1,21 +1,27 @@
 import "./index.css";
 import {
-  attachEvent,
   fadeInObserver,
   getQueryParams,
   navbarObserver,
-  validateProp,
-  warningUnknownKeys,
 } from "../../../js/utils/utils";
 import { createElement } from "../../../js/utils/createElementsHelper";
 import { svg } from "../../../const/database/bbdd_consts";
-import FloatingTitle from "../../../components/FloatingTitle/floatingTitle";
+import FloatingTitle from "../../../components/FloatingTitle";
 import bbdd from "../../../const/database/bbdd";
 import { append } from "../../../js/utils/domHelpers";
-import Cards from "../../../components/Cards/cards.js";
+import Cards from "../../../components/Cards";
+
+/**
+ * Renders the "About Project" section for the Project Detail page.
+ * * Retrieves project details from the database using the 'id' URL parameter,
+ * creates a section with scroll animations for text paragraphs, and
+ * integrates information cards.
+ * * @function AboutProject
+ * @param {Object} [props={}] - Component properties.
+ * @returns {HTMLElement} The constructed section element containing project details.
+ */
 
 export default function AboutProject({} = {}) {
-  // validations
   const id = getQueryParams("id");
   const work = bbdd.works.find((work) => work.id === Number(id));
 

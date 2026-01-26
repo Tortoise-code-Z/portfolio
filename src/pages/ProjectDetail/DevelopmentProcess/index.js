@@ -3,25 +3,26 @@ import {
   fadeInObserver,
   getQueryParams,
   navbarObserver,
-  validateProp,
-  warningUnknownKeys,
 } from "../../../js/utils/utils";
 import "./index.css";
 import bbdd from "../../../const/database/bbdd";
 import { append } from "../../../js/utils/domHelpers";
-import FloatingTitle from "../../../components/FloatingTitle/floatingTitle";
+import FloatingTitle from "../../../components/FloatingTitle";
 import { svg } from "../../../const/database/bbdd_consts";
-import Cards from "../../../components/Cards/cards";
-import NoteMsg from "../../../components/noteMsg/noteMsg";
+import Cards from "../../../components/Cards";
+import NoteMsg from "../../../components/noteMsg";
+
+/**
+ * Renders the "Development Process" section for the project detail view.
+ * * This component identifies the current project via URL parameters, generates
+ * animated descriptive paragraphs, populates highlight cards, and conditionally
+ * appends status messages (warnings or notes) based on the database content.
+ * * @function DevelopmentProcess
+ * @param {Object} [props={}] - Component properties.
+ * @returns {HTMLElement} The section element containing the development process documentation.
+ */
 
 export default function DevelopmentProcess({} = {}) {
-  warningUnknownKeys(arguments, []);
-
-  // options of each prop
-  //   const validProps = [];
-
-  // validations
-
   const id = getQueryParams("id");
   const work = bbdd.works.find((work) => work.id === Number(id));
 

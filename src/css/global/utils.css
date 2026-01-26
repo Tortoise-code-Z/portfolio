@@ -5,3 +5,7 @@
 .u-flex-column-reverse {
   flex-direction: column-reverse !important;
 }
+
+.u-text-regular {
+  font-family: Geologica-regular;
+}

@@ -1,20 +1,24 @@
-import Navbar from "../../components/Navbar/navbar";
+import { append, getElement } from "../../js/utils/domHelpers";
+import Navbar from "../../components/Navbar";
 import DefaultFooter from "../../components/Footer/DefaultFooter";
-import { append } from "../../js/utils/domHelpers";
-import Career from "./components/CareerCourses";
-import Hero from "./components/Hero";
-import Profile from "./components/Profile";
-import Skills from "./components/Skills";
-import Works from "./components/Works";
+import Hero from "./Hero";
+import Profile from "./Profile";
+import Works from "./Works";
+import Skills from "./Skills";
+import Career from "./CareerCourses";
 import "./index.css";
 
-append(document.querySelector(".home__header"), [Navbar(), Hero()]);
+/**
+ * Entry point for the Home page.
+ * This script orchestrates the assembly of the main landing page by selecting
+ * specific DOM containers (header, main, footer) and appending their
+ * corresponding functional components.
+ * * It initializes the following structure:
+ * - **Header**: Navbar and Hero section.
+ * - **Main**: Profile, Works (Projects), Skills, and Career (Courses/Experience).
+ * - **Footer**: Default footer component.
+ */
 
-append(document.querySelector(".home__main"), [
-  Profile(),
-  Works(),
-  Skills(),
-  Career(),
-]);
-
-append(document.querySelector(".home__footer"), [DefaultFooter()]);
+append(getElement(".home__header"), [Navbar(), Hero()]);
+append(getElement(".home__main"), [Profile(), Works(), Skills(), Career()]);
+append(getElement(".home__footer"), [DefaultFooter()]);

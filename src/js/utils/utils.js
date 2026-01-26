@@ -1,6 +1,17 @@
+import { validateProps } from "./argumentsValidation";
+
+/**
+ * Toggles the visibility of an element based on the scroll direction.
+ *
+ * @function scrollVisibilitty
+ * @param {HTMLElement} element - The target element to show/hide.
+ * @param {string} classToHidden - The CSS class applied to hide the element.
+ */
 export function scrollVisibilitty(element, classToHidden) {
-  if ((!element) instanceof HTMLElement && (!classToHidden) instanceof String)
-    return;
+  validateProps({
+    element: { value: element, type: "HTMLElement" },
+    classToHidden: { value: classToHidden, type: "string" },
+  });
 
   let lastScrollPosition = window.scrollY;
 
@@ -23,23 +34,36 @@ export function scrollVisibilitty(element, classToHidden) {
 }
 
 /**
- * Obtiene uno o todos los parámetros de la URL actual.
- * @param {string|null} param - El nombre del parámetro a obtener. Si es null, devuelve un objeto con todos.
- * @returns {string|object|null} - El valor del parámetro, un objeto con todos, o null si no existe.
+ * Retrieves one or all query parameters from the current URL.
+ *
+ * @function getQueryParams
+ * @param {string|null} [param=null] - The name of the specific parameter to retrieve. If null, returns all parameters as an object.
+ * @returns {string|Object|null} The parameter value, an object with all parameters, or null if not found.
  */
 export const getQueryParams = (param = null) => {
+  validateProps({
+    param: { value: param, type: ["string", "null"] },
+  });
+
   const params = new URLSearchParams(window.location.search);
 
-  // Si pides un parámetro específico (ej: 'id')
   if (param) {
     return params.get(param);
   }
 
-  // Si no pasas parámetro, devolvemos un objeto con todos (útil para desestructurar)
   return Object.fromEntries(params.entries());
 };
 
-// Modificación en tu archivo de utilidad:
+/**
+ * Creates and initializes an IntersectionObserver for a set of elements.
+ *
+ * @function createIntersectionObserver
+ * @param {HTMLElement[]} elements - Array of elements to observe.
+ * @param {Function} callback - Function to execute when an intersection occurs.
+ * @param {Object[]} [parametersCallback=[]] - Custom parameters to pass to the callback for specific elements.
+ * @param {IntersectionObserverInit} [options={}] - Configuration options for the observer (root, margin, threshold).
+ * @param {boolean} [observeOnce=false] - If true, the observer stops watching the element after the first intersection.
+ */
 export const createIntersectionObserver = (
   elements,
   callback,
@@ -47,6 +71,14 @@ export const createIntersectionObserver = (
   options = {},
   observeOnce = false,
 ) => {
+  validateProps({
+    elements: { value: elements, type: "array" },
+    callback: { value: callback, type: "function" },
+    parametersCallback: { value: parametersCallback, type: "array" },
+    options: { value: options, type: "object" },
+    observeOnce: { value: observeOnce, type: "boolean" },
+  });
+
   const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
       const itemParametersCallback = parametersCallback.find(
@@ -54,9 +86,9 @@ export const createIntersectionObserver = (
       );
 
       if (itemParametersCallback) {
-        callback(itemParametersCallback, entry); // Pasamos 'entry' también
+        callback(itemParametersCallback, entry);
       } else {
-        callback(entry); // El 'entry' es el argumento principal
+        callback(entry);
       }
 
       if (observeOnce && entry.isIntersecting) {
@@ -68,15 +100,37 @@ export const createIntersectionObserver = (
   elements.forEach((element) => observer.observe(element));
 };
 
-export const fadeInObserver = (element, classToAdd, currentAnimatedClass) => {
+/**
+ * Observes an element and triggers a fade-in animation when it enters the viewport.
+ *
+ * @function fadeInObserver
+ * @param {HTMLElement} element - The element to animate.
+ * @param {string} classToAdd - The CSS class that triggers the animation.
+ * @param {string|null} [currentAnimatedClass=null] - An optional class to add after the initial animation ends.
+ */
+export const fadeInObserver = (
+  element,
+  classToAdd,
+  currentAnimatedClass = null,
+) => {
+  validateProps({
+    element: { value: element, type: "HTMLElement" },
+    classToAdd: { value: classToAdd, type: "string" },
+    currentAnimatedClass: {
+      value: currentAnimatedClass,
+      type: ["string", "null"],
+    },
+  });
+
   element.classList.add("animated-element");
+
   createIntersectionObserver(
     [element],
     (entry) => {
       if (entry.isIntersecting) {
         element.classList.remove("animated-element");
         entry.target.classList.add(classToAdd);
-        attachEvent(entry.target, "animationend", () => {
+        entry.target.addEventListener("animationend", () => {
           entry.target.classList.remove(classToAdd);
           if (currentAnimatedClass)
             entry.target.classList.add(currentAnimatedClass);
@@ -89,7 +143,17 @@ export const fadeInObserver = (element, classToAdd, currentAnimatedClass) => {
   );
 };
 
+/**
+ * Initializes an IntersectionObserver specifically for the navbar logic.
+ *
+ * @function navbarObserver
+ * @param {HTMLElement} element - The section element to observe to trigger navbar changes.
+ */
 export const navbarObserver = (element) => {
+  validateProps({
+    element: { value: element, type: "HTMLElement" },
+  });
+
   setTimeout(() => {
     createIntersectionObserver(
       [element],
@@ -101,51 +165,68 @@ export const navbarObserver = (element) => {
   }, 0);
 };
 
+/**
+ * Callback handled by the navbar observer to change navbar colors based on section attributes.
+ *
+ * @function navbarObserverCallback
+ * @param {IntersectionObserverEntry} entry - The intersection entry object.
+ */
 export const navbarObserverCallback = (entry) => {
+  validateProps({
+    entry: { value: entry, type: "object" },
+  });
+
   const navbar = document.querySelector(".navbar");
-  // Obtenemos el color requerido de la sección que acaba de cambiar de estado
   const requiredColor = entry.target.getAttribute("data-navbar-color");
 
-  // La clase a añadir o quitar
   const colorClass = `navbar--color-${requiredColor}`;
 
-  // La clase de color opuesto (asumiendo que solo tienes 'white' y 'black')
   const oppositeColorClass =
     requiredColor === "white" ? "navbar--color-black" : "navbar--color-white";
 
   if (entry.isIntersecting) {
-    // Acción principal: Cuando la sección ENTRA
-    // ------------------------------------------
-
-    // Quitar el color opuesto (si existe)
     if (navbar.classList.contains(oppositeColorClass)) {
       navbar.classList.remove(oppositeColorClass);
     }
 
-    // Añadir el color de la sección actual
     navbar.classList.add(colorClass);
-
-    //
-  } else {
-    // Acción secundaria: Cuando la sección SALE
-    // -------------------------------------------
-    // Si la sección sale, NO HACEMOS NADA aquí.
-    // Esto es porque la *siguiente* sección (que estará entrando)
-    // o la *anterior* (que estará saliendo por el otro extremo)
-    // activará su propio 'entry.isIntersecting = true' y establecerá el color correcto.
-    // Si intentas cambiar el color en 'else' (salida),
-    // la barra parpadeará, porque dos secciones a la vez
-    // pueden estar 'no intersectando' por un momento.
   }
 };
 
+/**
+ * Orchestrates a typewriter effect by first deleting text and then writing new text.
+ *
+ * @function writteDeleteMachine
+ * @param {Object} data - Configuration object containing element, texts, and delays.
+ * @returns {Promise<void>}
+ */
 export const writteDeleteMachine = async (data) => {
   await deleteMachine(data);
   await writteMachine(data);
 };
 
+/**
+ * Deletes text from an element character by character to simulate a backspace effect.
+ *
+ * @function deleteMachine
+ * @param {Object} data - Configuration object.
+ * @param {HTMLElement} data.element - The target element.
+ * @param {string} data.textToDelete - The string to be erased.
+ * @param {number} data.delayToDelete - Milliseconds to wait between each character deletion.
+ * @returns {Promise<void>}
+ */
 export const deleteMachine = async (data) => {
+  validateProps({
+    data: { value: data, type: "object" },
+  });
+
   const { element, textToDelete, delayToDelete } = data;
+
+  validateProps({
+    element: { value: element, type: "HTMLElement" },
+    textToDelete: { value: textToDelete, type: "string" },
+    delayToDelete: { value: delayToDelete, type: "number" },
+  });
 
   for (let i = textToDelete.length; i >= 0; i--) {
     element.textContent = textToDelete.substring(0, i);
@@ -153,8 +234,26 @@ export const deleteMachine = async (data) => {
   }
 };
 
+/**
+ * Writes text into an element character by character to simulate a typing effect.
+ *
+ * @function writteMachine
+ * @param {Object} data - Configuration object.
+ * @param {HTMLElement} data.element - The target element.
+ * @param {string} data.textToWrite - The string to be typed.
+ * @param {number} data.delayToWrite - Milliseconds to wait between each character.
+ * @returns {Promise<void>}
+ */
 export const writteMachine = async (data) => {
+  validateProps({
+    data: { value: data, type: "object" },
+  });
   const { element, textToWrite, delayToWrite } = data;
+  validateProps({
+    element: { value: element, type: "HTMLElement" },
+    textToWrite: { value: textToWrite, type: "string" },
+    delayToWrite: { value: delayToWrite, type: "number" },
+  });
 
   for (let i = 0; i < textToWrite.length; i++) {
     element.textContent += textToWrite[i];
@@ -162,103 +261,27 @@ export const writteMachine = async (data) => {
   }
 };
 
-export const isOnRange = (valueToCheck, min, max) => {
-  return valueToCheck >= min && valueToCheck <= max;
-};
-
-export const isEqualMajor = (valueToCheck, valueToCompare) => {
-  return valueToCheck >= valueToCompare;
-};
-
-export const isMajor = (valueToCheck, valueToCompare) => {
-  return valueToCheck > valueToCompare;
-};
-
-export const isEqualMinor = (valueToCheck, valueToCompare) => {
-  return valueToCheck <= valueToCompare;
-};
-
-export const isMinor = (valueToCheck, valueToCompare) => {
-  return valueToCheck < valueToCompare;
-};
+/**
+ * Attaches an event listener to a DOM element.
+ *
+ * @function attachEvent
+ * @param {HTMLElement} element - The target element.
+ * @param {string} event - The event type (e.g., 'click').
+ * @param {EventListenerOrEventListenerObject} functionToAttach - The handler function.
+ */
 
 export const attachEvent = (element, event, functionToAttach) => {
+  validateProps({
+    element: { value: element, type: "HTMLElement" },
+    event: { value: event, type: "string" },
+    functionToAttach: { value: functionToAttach, type: "function" },
+  });
   element.addEventListener(event, functionToAttach);
 };
 
-export function validateProp(name, value, type, allowedValues = null) {
-  // Permitir múltiples tipos (por ejemplo, ['string', 'number'])
-  const types = Array.isArray(type) ? type : [type];
-
-  // Determinar si 'null' es un tipo permitido
-  const isNullAllowed = types.includes("null");
-
-  // Si 'null' está permitido Y el valor ES null, devolvemos true inmediatamente
-  if (isNullAllowed && value === null) {
-    return true; // ✅ Valor es null y está permitido.
-  }
-
-  // El resto de la lógica debe ejecutarse solo si el valor NO es null
-  // O si 'null' no estaba permitido (para que se lance el TypeError si es null).
-
-  const isHTMLElementType = types.includes("HTMLElement");
-
-  // --- 1. Validar HTMLElement ---
-  if (isHTMLElementType) {
-    const isHTMLElement =
-      typeof HTMLElement !== "undefined" && value instanceof HTMLElement;
-
-    if (!isHTMLElement) {
-      throw new TypeError(
-        `"${name}" → Debe ser de tipo HTMLElement. Recibido: ${
-          value?.constructor?.name || typeof value
-        }`,
-      );
-    }
-  }
-
-  // --- 2. Validar arrays ---
-  else if (types.includes("array")) {
-    if (!Array.isArray(value)) {
-      throw new TypeError(
-        `"${name}" → Debe ser un array. Recibido: ${typeof value}`,
-      );
-    }
-  }
-
-  // --- 3. Validar tipos primitivos ---
-  else {
-    const valueType = typeof value;
-
-    // Excluimos la comprobación de tipos si el valor es null,
-    // ya que el caso 'null' ya se manejó al inicio
-    // y typeof null devuelve "object", lo que podría fallar si "object" no está en types.
-    if (!types.includes(valueType)) {
-      throw new TypeError(
-        `"${name}" → Debe ser de tipo ${types.join(
-          " o ",
-        )}. Recibido: ${valueType}`,
-      );
-    }
-  }
-
-  // --- 4. Validar valores permitidos ---
-  if (allowedValues && !allowedValues.includes(value)) {
-    throw new RangeError(
-      `"${name}" → Solo se permiten los valores: ${allowedValues.join(
-        ", ",
-      )}. Recibido: ${value}`,
-    );
-  }
-
-  return true; // ✅ Si pasa todas las validaciones
-}
-
-export const warningUnknownKeys = (args, allowedKeys) => {
-  // warning unknown keys
-  Object.keys(args[0] || {}).forEach((key) => {
-    if (!allowedKeys.includes(key)) {
-      console.warn("Propiedad desconocida: ", key, "en Home. Será ignorada.");
-    }
-  });
+export const parseMarkdownBold = (text) => {
+  return text.replace(
+    /\*\*(.*?)\*\*/g,
+    "<span class= 'u-text-regular'>$1</span>",
+  );
 };

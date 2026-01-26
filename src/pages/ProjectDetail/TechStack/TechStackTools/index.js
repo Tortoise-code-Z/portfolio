@@ -1,65 +1,86 @@
-import InfiniteSlider from "../../../../components/InfiniteSlider/infiniteSlider";
+import InfiniteSlider from "../../../../components/InfiniteSlider";
+import { validateProps } from "../../../../js/utils/argumentsValidation";
 import { createElement } from "../../../../js/utils/createElementsHelper";
 import { append } from "../../../../js/utils/domHelpers";
-import {
-    fadeInObserver,
-    validateProp,
-    warningUnknownKeys,
-} from "../../../../js/utils/utils";
+import { fadeInObserver } from "../../../../js/utils/utils";
 import "./index.css";
 
-export default function TechStackTools({ tools } = {}) {
-    warningUnknownKeys(arguments, ["tools"]);
+/**
+ * @typedef {Object} ToolItem
+ * @property {string} tool - The name of the programming language or tool.
+ * @property {string} icon - SVG string representing the tool's icon.
+ */
 
-    // options of each prop
-    // const validProps = [];
+/**
+ * Component that renders the "Programming and Tools" subsection within the Tech Stack.
+ * * This component displays an infinite horizontal slider with the section title
+ * and a grid of icons representing the technical tools. Each icon includes
+ * a native tooltip and staggered entrance animations (alternating top/bottom).
+ * * @function TechStackTools
+ * @param {Object} props - Component properties.
+ * @param {ToolItem[]} props.tools - Array of tool objects to be displayed.
+ * @returns {HTMLDivElement} The container element for the tools subsection.
+ */
 
-    // validations
-    validateProp("tools", tools, "array");
+export default function TechStackTools(props = {}) {
+  const { tools } = props;
 
-    const container = createElement({
-        tag: "div",
-        classNames: ["pd-s-tech-stack__tools"],
+  validateProps({
+    tools: { value: tools, type: "array" },
+  });
+
+  if (tools.length === 0) return undefined;
+
+  tools.forEach(({ icon, tool }) =>
+    validateProps({
+      icon: { value: icon, type: "string" },
+      tool: { value: tool, type: "string" },
+    }),
+  );
+
+  const container = createElement({
+    tag: "div",
+    classNames: ["pd-s-tech-stack__tools"],
+  });
+
+  const toolsTitle = InfiniteSlider({
+    slideComponent: (data) => {
+      return createElement({
+        tag: "h3",
+        classNames: ["tech-stack__tools-title"],
+        innerText: data.data,
+      });
+    },
+    dataSlides: ["Programación y herramientas"],
+    duplicationSlides: 5,
+  });
+
+  fadeInObserver(toolsTitle, `animated-element--fade-in-left`);
+
+  const toolsIcons = createElement({
+    tag: "div",
+    classNames: ["tech-stack__tools-icons"],
+  });
+
+  tools.forEach((tool, index) => {
+    const span = createElement({
+      tag: "span",
+      classNames: ["tech-stack__tools-icon"],
+      innerHTML: tool.icon,
+      attributes: {
+        title: tool.tool,
+      },
     });
 
-    const toolsTitle = InfiniteSlider({
-        slideComponent: (data) => {
-            return createElement({
-                tag: "h3",
-                classNames: ["tech-stack__tools-title"],
-                innerText: data.data,
-            });
-        },
-        dataSlides: ["Programación y herramientas"],
-        duplicationSlides: 5,
-    });
+    fadeInObserver(
+      span,
+      `animated-element--fade-in-${index % 2 === 0 ? "top" : "bottom"}`,
+    );
 
-    fadeInObserver(toolsTitle, `animated-element--fade-in-left`);
+    append(toolsIcons, [span]);
+  });
 
-    const toolsIcons = createElement({
-        tag: "div",
-        classNames: ["tech-stack__tools-icons"],
-    });
+  append(container, [toolsTitle, toolsIcons]);
 
-    tools.forEach((tool, index) => {
-        const span = createElement({
-            tag: "span",
-            classNames: ["tech-stack__tools-icon"],
-            innerHTML: tool.icon,
-            attributes: {
-                title: tool.tool,
-            },
-        });
-
-        fadeInObserver(
-            span,
-            `animated-element--fade-in-${index % 2 === 0 ? "top" : "bottom"}`
-        );
-
-        append(toolsIcons, [span]);
-    });
-
-    append(container, [toolsTitle, toolsIcons]);
-
-    return container;
+  return container;
 }

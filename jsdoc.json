@@ -1,0 +1,17 @@
+{
+  "source": {
+    "include": ["src"],
+    "includePattern": ".+\\.js(doc|x)?$",
+    "excludePattern": "(^|\\/|\\\\)_|node_modules"
+  },
+  "plugins": [
+    "node_modules/better-docs/component",
+    "node_modules/better-docs/category"
+  ],
+  "opts": {
+    "template": "node_modules/better-docs",
+    "destination": "./docs",
+    "recurse": true,
+    "readme": "README.md"
+  }
+}

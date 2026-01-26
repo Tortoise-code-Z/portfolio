@@ -1,22 +1,32 @@
 import { fadeInObserver, navbarObserver } from "../../../js/utils/utils.js";
-import { append } from "../../../js/utils/domHelpers.js";
+import { append, getElement } from "../../../js/utils/domHelpers.js";
 import cloneTemplate from "../../../js/utils/cloneTemplate.js";
-import template from "./defaultFooter.html?raw";
-import Link from "../../../components/Link/link.js";
+import template from "./index.html?raw";
+import Link from "../../Link/index.js";
 import { svg } from "../../../const/database/bbdd_consts.js";
-import "./defaultFooter.css";
+import "./index.css";
+
+/**
+ * Component that generates the site's default footer.
+ * Includes acknowledgments, personal information, animation observers,
+ * and links to social media or contact information.
+ *
+ * @function DefaultFooter
+ * @param {Object} [props={}] - Properties object (currently empty but maintained for consistency).
+ * @returns {HTMLElement} The DOM element representing the footer.
+ */
 
 export default function DefaultFooter({} = {}) {
-  const defaultFooter = cloneTemplate(
-    template,
-    "default-footer-template",
-  ).querySelector(".default-fouter");
+  const defaultFooter = getElement(
+    ".default-fouter",
+    cloneTemplate(template, "default-footer-template"),
+  );
 
-  const thanks = defaultFooter.querySelector(".default-footer__thanks");
-  const nick = defaultFooter.querySelector(".default-footer__nick");
-  const occupation = defaultFooter.querySelector(".default-footer__occupation");
-  const year = defaultFooter.querySelector(".default-footer__year");
-  const signature = defaultFooter.querySelector(".default-footer__signature");
+  const thanks = getElement(".default-footer__thanks", defaultFooter);
+  const nick = getElement(".default-footer__nick", defaultFooter);
+  const occupation = getElement(".default-footer__occupation", defaultFooter);
+  const year = getElement(".default-footer__year", defaultFooter);
+  const signature = getElement(".default-footer__signature", defaultFooter);
 
   fadeInObserver(thanks, `animated-element--fade-in-right`);
   fadeInObserver(nick, `animated-element--fade-in-left`);
@@ -26,7 +36,7 @@ export default function DefaultFooter({} = {}) {
 
   navbarObserver(defaultFooter);
 
-  const actions = defaultFooter.querySelector(".default-footer__actions");
+  const actions = getElement(".default-footer__actions", defaultFooter);
   fadeInObserver(actions, `animated-element--fade-in-top`);
 
   const github = Link({
