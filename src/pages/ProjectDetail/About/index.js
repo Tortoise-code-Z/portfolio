@@ -3,12 +3,12 @@ import {
   fadeInObserver,
   getQueryParams,
   navbarObserver,
-} from "../../../js/utils/utils";
-import { createElement } from "../../../js/utils/createElementsHelper";
-import { svg } from "../../../const/database/bbdd_consts";
+} from "../../../js/utils/utils.js";
+import { createElement } from "../../../js/utils/createElementsHelper.js";
+import { svg } from "../../../const/database/bbdd_consts.js";
 import FloatingTitle from "../../../components/FloatingTitle";
-import bbdd from "../../../const/database/bbdd";
-import { append } from "../../../js/utils/domHelpers";
+import bbdd from "../../../const/database/bbdd.js";
+import { append } from "../../../js/utils/domHelpers.js";
 import Cards from "../../../components/Cards";
 
 /**

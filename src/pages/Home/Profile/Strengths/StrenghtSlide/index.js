@@ -1,6 +1,6 @@
-import { validateProps } from "../../../../../js/utils/argumentsValidation";
-import { createElement } from "../../../../../js/utils/createElementsHelper";
-import { append } from "../../../../../js/utils/domHelpers";
+import { validateProps } from "../../../../../js/utils/argumentsValidation.js";
+import { createElement } from "../../../../../js/utils/createElementsHelper.js";
+import { append } from "../../../../../js/utils/domHelpers.js";
 import "./index.css";
 
 /**

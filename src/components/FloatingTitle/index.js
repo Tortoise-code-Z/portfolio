@@ -1,7 +1,10 @@
-import { validateProps } from "../../js/utils/argumentsValidation";
-import { createElement, createHtag } from "../../js/utils/createElementsHelper";
-import { append, setStyles } from "../../js/utils/domHelpers";
-import { fadeInObserver } from "../../js/utils/utils";
+import { validateProps } from "../../js/utils/argumentsValidation.js";
+import {
+  createElement,
+  createHtag,
+} from "../../js/utils/createElementsHelper.js";
+import { append, setStyles } from "../../js/utils/domHelpers.js";
+import { fadeInObserver } from "../../js/utils/utils.js";
 import "./index.css";
 
 /**

@@ -1,6 +1,6 @@
 import { NavbarProductDetail } from "../../components/Navbar";
 import { ProductDetailFooter } from "../../components/Footer/ProductDetailFooter";
-import { append } from "../../js/utils/domHelpers";
+import { append } from "../../js/utils/domHelpers.js";
 import AboutProject from "./About";
 import AditionalConfigs from "./AditionalConfigs";
 import DevelopmentProcess from "./DevelopmentProcess";

@@ -1,9 +1,9 @@
-import { fadeInObserver } from "../../js/utils/utils";
+import { fadeInObserver } from "../../js/utils/utils.js";
 import "./index.css";
-import { svg } from "../../const/database/bbdd_consts";
-import { append } from "../../js/utils/domHelpers";
-import { createElement } from "../../js/utils/createElementsHelper";
-import { validateProps } from "../../js/utils/argumentsValidation";
+import { svg } from "../../const/database/bbdd_consts.js";
+import { append } from "../../js/utils/domHelpers.js";
+import { createElement } from "../../js/utils/createElementsHelper.js";
+import { validateProps } from "../../js/utils/argumentsValidation.js";
 
 /**
  * @typedef {Object} NoteMsgProps

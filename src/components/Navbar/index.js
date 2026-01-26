@@ -1,9 +1,9 @@
-import cloneTemplate from "../../js/utils/cloneTemplate";
+import cloneTemplate from "../../js/utils/cloneTemplate.js";
 import template from "./navbarProductDetail.html?raw";
 import templateDefault from "./navbar.html?raw";
 import "./index.css";
-import { scrollVisibilitty } from "../../js/utils/utils";
-import { getElement } from "../../js/utils/domHelpers";
+import { scrollVisibilitty } from "../../js/utils/utils.js";
+import { getElement } from "../../js/utils/domHelpers.js";
 
 /**
  * Component that generates the site's main navigation bar.

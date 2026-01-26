@@ -1,5 +1,5 @@
-import { createElement } from "../../../js/utils/createElementsHelper";
-import { navbarObserver } from "../../../js/utils/utils";
+import { createElement } from "../../../js/utils/createElementsHelper.js";
+import { navbarObserver } from "../../../js/utils/utils.js";
 import WritteMachineTitle from "../../../components/WritteMachineTitle";
 import "./index.css";
 import { append } from "../../../js/utils/domHelpers.js";

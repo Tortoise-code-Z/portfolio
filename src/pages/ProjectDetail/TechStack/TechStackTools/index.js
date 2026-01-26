@@ -1,8 +1,8 @@
 import InfiniteSlider from "../../../../components/InfiniteSlider";
-import { validateProps } from "../../../../js/utils/argumentsValidation";
-import { createElement } from "../../../../js/utils/createElementsHelper";
-import { append } from "../../../../js/utils/domHelpers";
-import { fadeInObserver } from "../../../../js/utils/utils";
+import { validateProps } from "../../../../js/utils/argumentsValidation.js";
+import { createElement } from "../../../../js/utils/createElementsHelper.js";
+import { append } from "../../../../js/utils/domHelpers.js";
+import { fadeInObserver } from "../../../../js/utils/utils.js";
 import "./index.css";
 
 /**

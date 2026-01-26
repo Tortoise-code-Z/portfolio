@@ -1,4 +1,4 @@
-import { validateProps } from "./argumentsValidation";
+import { validateProps } from "./argumentsValidation.js";
 
 /**
  * Adds a specific class to a DOM element.

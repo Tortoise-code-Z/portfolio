@@ -1,13 +1,13 @@
 import FloatingTitle from "../../../components/FloatingTitle";
-import bbdd from "../../../const/database/bbdd";
-import { svg } from "../../../const/database/bbdd_consts";
-import { createElement } from "../../../js/utils/createElementsHelper";
-import { append } from "../../../js/utils/domHelpers";
+import bbdd from "../../../const/database/bbdd.js";
+import { svg } from "../../../const/database/bbdd_consts.js";
+import { createElement } from "../../../js/utils/createElementsHelper.js";
+import { append } from "../../../js/utils/domHelpers.js";
 import {
   fadeInObserver,
   getQueryParams,
   navbarObserver,
-} from "../../../js/utils/utils";
+} from "../../../js/utils/utils.js";
 import "./index.css";
 import Prism from "prismjs";
 import "prismjs/components/prism-javascript";

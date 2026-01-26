@@ -1,8 +1,8 @@
 import WritteMachineTitle from "../../../components/WritteMachineTitle";
-import bbdd from "../../../const/database/bbdd";
-import { createElement } from "../../../js/utils/createElementsHelper";
-import { append } from "../../../js/utils/domHelpers";
-import { navbarObserver } from "../../../js/utils/utils";
+import bbdd from "../../../const/database/bbdd.js";
+import { createElement } from "../../../js/utils/createElementsHelper.js";
+import { append } from "../../../js/utils/domHelpers.js";
+import { navbarObserver } from "../../../js/utils/utils.js";
 import CareerCourse from "./CareerCourse";
 import "./index.css";
 

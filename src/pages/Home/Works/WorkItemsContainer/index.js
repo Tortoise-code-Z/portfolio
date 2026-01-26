@@ -1,6 +1,6 @@
-import bbdd from "../../../../const/database/bbdd";
-import { createElement } from "../../../../js/utils/createElementsHelper";
-import { append } from "../../../../js/utils/domHelpers";
+import bbdd from "../../../../const/database/bbdd.js";
+import { createElement } from "../../../../js/utils/createElementsHelper.js";
+import { append } from "../../../../js/utils/domHelpers.js";
 import Work from "../Work";
 import "./index.css";
 

@@ -1,4 +1,4 @@
-import { validateProps } from "./argumentsValidation";
+import { validateProps } from "./argumentsValidation.js";
 
 /**
  * Parses a template string and clones the content of a specific template element.

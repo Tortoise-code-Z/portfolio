@@ -1,5 +1,5 @@
-import { createElement } from "../../js/utils/createElementsHelper";
-import { getImage } from "../../js/utils/images";
+import { createElement } from "../../js/utils/createElementsHelper.js";
+import { getImage } from "../../js/utils/images.js";
 import {
   addClass,
   append,
@@ -9,11 +9,11 @@ import {
   removeClass,
   setAttributes,
   setText,
-} from "../../js/utils/domHelpers";
-import cloneTemplate from "../../js/utils/cloneTemplate";
-import { attachEvent, fadeInObserver } from "../../js/utils/utils";
-import { svg } from "../../const/database/bbdd_consts";
-import { validateProps } from "../../js/utils/argumentsValidation";
+} from "../../js/utils/domHelpers.js";
+import cloneTemplate from "../../js/utils/cloneTemplate.js";
+import { attachEvent, fadeInObserver } from "../../js/utils/utils.js";
+import { svg } from "../../const/database/bbdd_consts.js";
+import { validateProps } from "../../js/utils/argumentsValidation.js";
 import "./index.css";
 import Button from "../Button";
 import template from "./index.html?raw";

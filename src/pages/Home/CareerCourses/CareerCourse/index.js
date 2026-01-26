@@ -1,10 +1,10 @@
-import { fadeInObserver } from "../../../../js/utils/utils";
+import { fadeInObserver } from "../../../../js/utils/utils.js";
 import InfiniteSlider from "../../../../components/InfiniteSlider";
 import CareerSlide from "./CareerSlide";
-import { append } from "../../../../js/utils/domHelpers";
-import { createElement } from "../../../../js/utils/createElementsHelper";
+import { append } from "../../../../js/utils/domHelpers.js";
+import { createElement } from "../../../../js/utils/createElementsHelper.js";
 import "./index.css";
-import { validateProps } from "../../../../js/utils/argumentsValidation";
+import { validateProps } from "../../../../js/utils/argumentsValidation.js";
 
 /**
  * @typedef {Object} CareerCourseProps

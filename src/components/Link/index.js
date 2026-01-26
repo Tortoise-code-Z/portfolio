@@ -1,5 +1,5 @@
-import { validateProps } from "../../js/utils/argumentsValidation";
-import { createElement } from "../../js/utils/createElementsHelper";
+import { validateProps } from "../../js/utils/argumentsValidation.js";
+import { createElement } from "../../js/utils/createElementsHelper.js";
 import "../Button/index.css";
 import "./index.css";
 

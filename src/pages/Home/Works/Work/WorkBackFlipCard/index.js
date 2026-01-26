@@ -1,17 +1,17 @@
 import "./index.css";
-import { getImage } from "../../../../../js/utils/images";
+import { getImage } from "../../../../../js/utils/images.js";
 import {
   append,
   getElement,
   setAttributes,
   setText,
-} from "../../../../../js/utils/domHelpers";
+} from "../../../../../js/utils/domHelpers.js";
 import template from "./index.html?raw";
-import cloneTemplate from "../../../../../js/utils/cloneTemplate";
-import { svg } from "../../../../../const/database/bbdd_consts";
+import cloneTemplate from "../../../../../js/utils/cloneTemplate.js";
+import { svg } from "../../../../../const/database/bbdd_consts.js";
 import Link from "../../../../../components/Link";
 import projectDetailUrl from "../../../../ProjectDetail/index.html?url";
-import { validateProps } from "../../../../../js/utils/argumentsValidation";
+import { validateProps } from "../../../../../js/utils/argumentsValidation.js";
 
 /**
  * @typedef {Object} WorkBackFlipCardProps

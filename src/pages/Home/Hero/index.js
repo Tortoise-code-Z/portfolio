@@ -1,6 +1,6 @@
-import cloneTemplate from "../../../js/utils/cloneTemplate";
-import { getElement } from "../../../js/utils/domHelpers";
-import { fadeInObserver, navbarObserver } from "../../../js/utils/utils";
+import cloneTemplate from "../../../js/utils/cloneTemplate.js";
+import { getElement } from "../../../js/utils/domHelpers.js";
+import { fadeInObserver, navbarObserver } from "../../../js/utils/utils.js";
 import "./index.css";
 import template from "./index.html?raw";
 

@@ -1,14 +1,14 @@
-import { createElement } from "../../../js/utils/createElementsHelper";
+import { createElement } from "../../../js/utils/createElementsHelper.js";
 import {
   fadeInObserver,
   getQueryParams,
   navbarObserver,
-} from "../../../js/utils/utils";
+} from "../../../js/utils/utils.js";
 import "./index.css";
-import bbdd from "../../../const/database/bbdd";
-import { append } from "../../../js/utils/domHelpers";
+import bbdd from "../../../const/database/bbdd.js";
+import { append } from "../../../js/utils/domHelpers.js";
 import FloatingTitle from "../../../components/FloatingTitle";
-import { svg } from "../../../const/database/bbdd_consts";
+import { svg } from "../../../const/database/bbdd_consts.js";
 import Cards from "../../../components/Cards";
 import NoteMsg from "../../../components/noteMsg";
 

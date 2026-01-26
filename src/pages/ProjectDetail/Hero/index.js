@@ -1,18 +1,18 @@
 import Link from "../../../components/Link";
-import bbdd from "../../../const/database/bbdd";
-import { svg } from "../../../const/database/bbdd_consts";
-import cloneTemplate from "../../../js/utils/cloneTemplate";
+import bbdd from "../../../const/database/bbdd.js";
+import { svg } from "../../../const/database/bbdd_consts.js";
+import cloneTemplate from "../../../js/utils/cloneTemplate.js";
 import {
   append,
   getElement,
   setHTML,
   setText,
-} from "../../../js/utils/domHelpers";
+} from "../../../js/utils/domHelpers.js";
 import {
   fadeInObserver,
   getQueryParams,
   navbarObserver,
-} from "../../../js/utils/utils";
+} from "../../../js/utils/utils.js";
 import "./index.css";
 import template from "./index.html?raw";
 

@@ -1,9 +1,9 @@
 import FloatingTitle from "../../../components/FloatingTitle";
-import bbdd from "../../../const/database/bbdd";
-import { svg } from "../../../const/database/bbdd_consts";
-import { createElement } from "../../../js/utils/createElementsHelper";
-import { append } from "../../../js/utils/domHelpers";
-import { getQueryParams, navbarObserver } from "../../../js/utils/utils";
+import bbdd from "../../../const/database/bbdd.js";
+import { svg } from "../../../const/database/bbdd_consts.js";
+import { createElement } from "../../../js/utils/createElementsHelper.js";
+import { append } from "../../../js/utils/domHelpers.js";
+import { getQueryParams, navbarObserver } from "../../../js/utils/utils.js";
 import "./index.css";
 import TechStackLibraries from "./TechStackLibraries";
 import TechStackTools from "./TechStackTools";
