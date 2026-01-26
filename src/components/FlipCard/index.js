@@ -1,45 +1,55 @@
-import { validateProp, warningUnknownKeys } from "../../js/utils/utils";
+import { attachEvent } from "../../js/utils/utils";
 import "./index.css";
 import template from "./index.html?raw";
 import cloneTemplate from "../../js/utils/cloneTemplate";
+import {
+  addClass,
+  append,
+  getElement,
+  toggleClass,
+} from "../../js/utils/domHelpers";
+import { validateProps } from "../../js/utils/argumentsValidation";
 
-import { append } from "../../js/utils/domHelpers";
+/**
+ * @typedef {Object} FlipCardProps
+ * @property {string} typeFlipCardClass - CSS class to identify the card and its flip style.
+ * @property {HTMLElement} frontCard - The DOM element to be displayed on the front face.
+ * @property {HTMLElement} backCard - The DOM element to be displayed on the back face.
+ */
+
+/**
+ * Component that creates a card with a flip effect when clicked.
+ *
+ * @function FlipCard
+ * @param {FlipCardProps} [props={}] - Configuration properties for the card.
+ * @returns {HTMLElement} The DOM element containing the rotating card structure.
+ */
 
 export default function FlipCard({
-    typeFlipCardClass,
-    frontCard,
-    backCard,
+  typeFlipCardClass,
+  frontCard,
+  backCard,
 } = {}) {
-    warningUnknownKeys(arguments, [
-        "frontCard",
-        "backCard",
-        "typeFlipCardClass",
-    ]);
+  validateProps({
+    typeFlipCardClass: { value: typeFlipCardClass, type: "string" },
+    frontCard: { value: frontCard, type: "HTMLElement" },
+    backCard: { value: backCard, type: "HTMLElement" },
+  });
 
-    // options of each prop
-    // const validProps = [];
+  const flipCard = getElement(
+    ".flip-card",
+    cloneTemplate(template, "flip-card-template"),
+  );
 
-    // validations
-    validateProp("typeFlipCardClass", typeFlipCardClass, "string");
-    validateProp("frontCard", frontCard, "HTMLElement");
-    validateProp("backCard", backCard, "HTMLElement");
+  addClass(flipCard, typeFlipCardClass);
 
-    const flipCard = cloneTemplate(
-        template,
-        "flip-card-template"
-    ).querySelector(".flip-card");
+  const flipCardFront = getElement(".flip-card-front", flipCard);
+  const flipCardBack = getElement(".flip-card-back", flipCard);
 
-    flipCard.classList.add(typeFlipCardClass);
+  append(flipCardFront, [frontCard]);
+  append(flipCardBack, [backCard]);
 
-    const flipCardFront = flipCard.querySelector(".flip-card-front");
-    const flipCardBack = flipCard.querySelector(".flip-card-back");
+  attachEvent(flipCard, "click", () => toggleClass(flipCard, "flipped"));
 
-    append(flipCardFront, [frontCard]);
-    append(flipCardBack, [backCard]);
-
-    flipCard.addEventListener("click", () => {
-        flipCard.classList.toggle("flipped");
-    });
-
-    return flipCard;
+  return flipCard;
 }

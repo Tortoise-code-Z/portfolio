@@ -1,27 +1,24 @@
-import { createFragment } from "../../js/utils/createElementsHelper";
-import { append } from "../../js/utils/domHelpers";
-import {
-    createIntersectionObserver,
-    warningUnknownKeys,
-} from "../../js/utils/utils";
-import Career from "./components/CareerCourses";
-import Hero from "./components/Hero";
-import Profile from "./components/Profile";
-import Skills from "./components/Skills";
-import Works from "./components/Works";
+import { append, getElement } from "../../js/utils/domHelpers";
+import Navbar from "../../components/Navbar";
+import DefaultFooter from "../../components/Footer/DefaultFooter";
+import Hero from "./Hero";
+import Profile from "./Profile";
+import Works from "./Works";
+import Skills from "./Skills";
+import Career from "./CareerCourses";
 import "./index.css";
 
-export default function Home({ ...props } = {}) {
-    warningUnknownKeys(arguments, [
-        "currentPath",
-        "params",
-        "queries",
-        "navigate",
-    ]);
+/**
+ * Entry point for the Home page.
+ * This script orchestrates the assembly of the main landing page by selecting
+ * specific DOM containers (header, main, footer) and appending their
+ * corresponding functional components.
+ * * It initializes the following structure:
+ * - **Header**: Navbar and Hero section.
+ * - **Main**: Profile, Works (Projects), Skills, and Career (Courses/Experience).
+ * - **Footer**: Default footer component.
+ */
 
-    const fragment = createFragment();
-
-    append(fragment, [Hero(), Profile(), Works(), Skills(), Career()]);
-
-    return fragment;
-}
+append(getElement(".home__header"), [Navbar(), Hero()]);
+append(getElement(".home__main"), [Profile(), Works(), Skills(), Career()]);
+append(getElement(".home__footer"), [DefaultFooter()]);

@@ -1,0 +1,73 @@
+:root {
+  --rotate: -10deg;
+}
+
+.featured-tag {
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 70px;
+  left: 50px;
+  z-index: 9999;
+}
+
+.featured-tag span {
+  max-width: max-content;
+  padding: 15px 25px;
+  background-color: rgb(230, 67, 35);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row-reverse;
+  gap: 10px;
+  box-shadow: 5px 3px 3px rgba(0, 0, 0, 0.1);
+  transform: rotate(var(--rotate));
+  font-family: Geologica-bold;
+  animation: latido 2s infinite ease-in-out;
+}
+
+@keyframes latido {
+  0% {
+    transform: scale(1) rotate(var(--rotate));
+  }
+  50% {
+    transform: scale(1.1) rotate(var(--rotate));
+  }
+  100% {
+    transform: scale(1) rotate(var(--rotate));
+  }
+}
+
+@media all and (max-width: 750px) {
+  :root {
+    --rotate: 0;
+  }
+
+  .featured-tag {
+    width: 100%;
+    font-size: 0.8rem;
+    left: 0;
+  }
+  .featured-tag span {
+    padding: 10px 15px;
+  }
+}
+
+@media all and (max-height: 500px) {
+  :root {
+    --rotate: -10deg;
+  }
+
+  .featured-tag {
+    font-size: 0.8rem;
+    left: 25px;
+    width: fit-content;
+  }
+
+  .featured-tag span {
+    padding: 10px 15px;
+  }
+}

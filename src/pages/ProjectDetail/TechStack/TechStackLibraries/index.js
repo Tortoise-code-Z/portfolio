@@ -1,65 +1,82 @@
-import InfiniteSlider from "../../../../components/InfiniteSlider/infiniteSlider";
+import InfiniteSlider from "../../../../components/InfiniteSlider";
+import { validateProps } from "../../../../js/utils/argumentsValidation";
 import { createElement } from "../../../../js/utils/createElementsHelper";
 import { append } from "../../../../js/utils/domHelpers";
-import {
-    fadeInObserver,
-    validateProp,
-    warningUnknownKeys,
-} from "../../../../js/utils/utils";
+import { fadeInObserver } from "../../../../js/utils/utils";
 import "./index.css";
 
-export default function TechStackLibraries({ libraries } = {}) {
-    warningUnknownKeys(arguments, ["libraries"]);
+/**
+ * @typedef {Object} LibraryItem
+ * @property {string} item - The name of the library or utility (e.g., "React", "Axios").
+ */
 
-    // options of each prop
-    // const validProps = [];
+/**
+ * Component that renders the "Libraries and Utilities" subsection within the Tech Stack.
+ * * This component displays an infinite scrolling title moving to the right and
+ * a collection of tags representing the libraries used. Each tag includes
+ * entrance animations that alternate between fading in from the top or bottom.
+ * * @function TechStackLibraries
+ * @param {Object} props - Component properties.
+ * @param {LibraryItem[]} props.libraries - Array of library objects used in the project.
+ * @returns {HTMLDivElement|undefined} The container element or null if the libraries array is empty.
+ */
 
-    // validations
-    validateProp("libraries", libraries, "array");
+export default function TechStackLibraries(props = {}) {
+  const { libraries } = props;
 
-    if (libraries.length === 0) return null;
+  validateProps({
+    libraries: { value: libraries, type: "array" },
+  });
 
-    const container = createElement({
-        tag: "div",
-        classNames: ["pd-s-tech-stack__libraries"],
+  if (libraries.length === 0) return undefined;
+
+  libraries.forEach(({ item }) =>
+    validateProps({
+      librarie: { value: item, type: "string" },
+    }),
+  );
+
+  const container = createElement({
+    tag: "div",
+    classNames: ["pd-s-tech-stack__libraries"],
+  });
+
+  const librariesTitle = InfiniteSlider({
+    slideComponent: (data) => {
+      return createElement({
+        tag: "h3",
+        classNames: ["pd-s-tech-stack__libraries-title"],
+        innerText: data.data,
+      });
+    },
+    dataSlides: ["Librerías y utilidades"],
+    duplicationSlides: 5,
+    direction: "right",
+  });
+
+  fadeInObserver(librariesTitle, `animated-element--fade-in-right`);
+
+  const librariesTags = createElement({
+    tag: "div",
+    classNames: ["pd-s-tech-stack__libraries-tags"],
+  });
+
+  libraries.forEach(({ item }, index) => {
+    const span = createElement({
+      tag: "span",
+      classNames: ["pd-s-tech-stack__libraries-tag"],
+      innerText: item,
     });
 
-    const librariesTitle = InfiniteSlider({
-        slideComponent: (data) => {
-            return createElement({
-                tag: "h3",
-                classNames: ["pd-s-tech-stack__libraries-title"],
-                innerText: data.data,
-            });
-        },
-        dataSlides: ["Librerías y utilidades"],
-        duplicationSlides: 5,
-        direction: "right",
-    });
+    fadeInObserver(
+      span,
+      `animated-element--fade-in-${index % 2 === 0 ? "top" : "bottom"}`,
+    );
 
-    fadeInObserver(librariesTitle, `animated-element--fade-in-right`);
+    append(librariesTags, [span]);
+  });
 
-    const librariesTags = createElement({
-        tag: "div",
-        classNames: ["pd-s-tech-stack__libraries-tags"],
-    });
+  append(container, [librariesTitle, librariesTags]);
 
-    libraries.forEach((librarie, index) => {
-        const span = createElement({
-            tag: "span",
-            classNames: ["pd-s-tech-stack__libraries-tag"],
-            innerText: librarie.item,
-        });
-
-        fadeInObserver(
-            span,
-            `animated-element--fade-in-${index % 2 === 0 ? "top" : "bottom"}`
-        );
-
-        append(librariesTags, [span]);
-    });
-
-    append(container, [librariesTitle, librariesTags]);
-
-    return container;
+  return container;
 }

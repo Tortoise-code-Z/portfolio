@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: pages/Home/Works/Work/index.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: pages/Home/Works/Work/index.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { getImage } from "../../../../js/utils/images.js";
+import "./index.css";
+import { createElement } from "../../../../js/utils/createElementsHelper.js";
+import { append } from "../../../../js/utils/domHelpers.js";
+import FlipCard from "../../../../components/FlipCard";
+import WorkFrontFlipCard from "./WorkFrontFlipCard";
+import WorkBackFlipCard from "./WorkBackFlipCard";
+import FeaturedTag from "../../../../components/FeaturedTag";
+import { validateProps } from "../../../../js/utils/argumentsValidation.js";
+
+/**
+ * @typedef {Object} WorkData
+ * @property {Object} bgSrcImage - Src image data.
+ * @property {Object} bgAltImage - Alt image data.
+ * @property {Object} bgWidthImage - Width image data.
+ * @property {Object} bgHeightImage - Height image data.
+ * @property {boolean} featured - Is a featured project.
+ * @property {WorkBackFlipData} backCard - Data of the back flip card.
+ * @property {WorkFrontFlipCardProps} frontCard - Data of the front flip card.
+ */
+
+/**
+ * @typedef {Object} WorkBackFlipData
+ * @property {string} id - Unique identifier used for the project detail URL.
+ * @property {string} name - The title of the project.
+ * @property {string} visibility - The visibility status (e.g., "Public", "Private").
+ * @property {string} projectRole - The role held during the project (e.g., "Frontend Developer").
+ * @property {string} year - The year the project was completed.
+ * @property {Object} bgSrcImage - Src image data.
+ * @property {Object} bgAltImage - Alt image data.
+ * @property {Object} bgWidthImage - Width image data.
+ * @property {Object} bgHeightImage - Height image data.
+ * @property {object[]} fastTools - List of fast tools to display.
+ * @property {string} fastTools.tool - Tool icon to display.
+ * @property {string} demoLink - URL for demo live project.
+ * @property {string} githubLink - URL for github repo project.
+ */
+
+/**
+ * @typedef {Object} WorkFrontFlipCardProps
+ * @property {string} imgSrc - The filename for the foreground/logo image of the project.
+ * @property {string} imgAlt - Alternative text description for the image.
+ * @property {number} imgWidth - Natural width of the image.
+ * @property {number} imgHeight - Natural height of the image.
+ */
+
+/**
+ * Component that renders an individual work item (project) for the works gallery.
+ * It consists of a background image container and a flip card interaction.
+ * The flip card displays basic project info on the front and more details on the back.
+ *
+ * @function Work
+ * @param {WorkData} props - Component properties.
+ * @returns {HTMLDivElement} The container element for the specific work item.
+ */
+
+export default function Work(props = {}) {
+  const {
+    bgAltImage,
+    bgHeightImage,
+    bgSrcImage,
+    bgWidthImage,
+    backCard,
+    frontCard,
+    featured,
+  } = props;
+
+  validateProps({
+    bgSrcImage: { value: bgSrcImage, type: "string" },
+    bgAltImage: { value: bgAltImage, type: "string" },
+    bgWidthImage: { value: bgWidthImage, type: "number" },
+    bgHeightImage: { value: bgHeightImage, type: "number" },
+    featured: { value: featured, type: "boolean" },
+  });
+
+  const container = createElement({
+    tag: "div",
+    classNames: ["s-works__item"],
+  });
+
+  const bgImgContainer = createElement({
+    tag: "figure",
+    classNames: ["s-works__item-bg-img-container"],
+  });
+
+  const bgImg = createElement({
+    tag: "img",
+    classNames: ["s-works__item-bg-img"],
+    attributes: {
+      src: getImage(bgSrcImage),
+      alt: bgAltImage,
+      title: bgAltImage,
+      width: bgWidthImage,
+      height: bgHeightImage,
+    },
+  });
+
+  const flipCard = FlipCard({
+    typeFlipCardClass: "work-flip-card",
+    frontCard: WorkFrontFlipCard(frontCard),
+    backCard: WorkBackFlipCard(backCard),
+  });
+
+  append(bgImgContainer, [bgImg]);
+  append(container, [flipCard, bgImgContainer]);
+
+  if (featured) append(container, [FeaturedTag()]);
+
+  return container;
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Button">Button</a></li><li><a href="global.html#Card">Card</a></li><li><a href="global.html#Career">Career</a></li><li><a href="global.html#CareerCourse">CareerCourse</a></li><li><a href="global.html#CareerSlide">CareerSlide</a></li><li><a href="global.html#DefaultFooter">DefaultFooter</a></li><li><a href="global.html#FlipCard">FlipCard</a></li><li><a href="global.html#FloatingTitle">FloatingTitle</a></li><li><a href="global.html#Hero">Hero</a></li><li><a href="global.html#ImagesSlider">ImagesSlider</a></li><li><a href="global.html#InfiniteSlider">InfiniteSlider</a></li><li><a href="global.html#Link">Link</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#NavbarProductDetail">NavbarProductDetail</a></li><li><a href="global.html#NoteMsg">NoteMsg</a></li><li><a href="global.html#ProductDetailFooter">ProductDetailFooter</a></li><li><a href="global.html#Profile">Profile</a></li><li><a href="global.html#ProfileData">ProfileData</a></li><li><a href="global.html#Skill">Skill</a></li><li><a href="global.html#Skills">Skills</a></li><li><a href="global.html#StrengthSlide">StrengthSlide</a></li><li><a href="global.html#Strengths">Strengths</a></li><li><a href="global.html#Work">Work</a></li><li><a href="global.html#WorkBackFlipCard">WorkBackFlipCard</a></li><li><a href="global.html#WorkFlipCard">WorkFlipCard</a></li><li><a href="global.html#WorkItemsContainer">WorkItemsContainer</a></li><li><a href="global.html#Works">Works</a></li><li><a href="global.html#WritteMachineTitle">WritteMachineTitle</a></li><li><a href="global.html#addClass">addClass</a></li><li><a href="global.html#append">append</a></li><li><a href="global.html#attachEvent">attachEvent</a></li><li><a href="global.html#containsClass">containsClass</a></li><li><a href="global.html#createElement">createElement</a></li><li><a href="global.html#createFragment">createFragment</a></li><li><a href="global.html#createHtag">createHtag</a></li><li><a href="global.html#createIntersectionObserver">createIntersectionObserver</a></li><li><a href="global.html#deleteMachine">deleteMachine</a></li><li><a href="global.html#fadeInObserver">fadeInObserver</a></li><li><a href="global.html#getElement">getElement</a></li><li><a href="global.html#getElements">getElements</a></li><li><a href="global.html#getImage">getImage</a></li><li><a href="global.html#getImageSize">getImageSize</a></li><li><a href="global.html#getQueryParams">getQueryParams</a></li><li><a href="global.html#images">images</a></li><li><a href="global.html#navbarObserver">navbarObserver</a></li><li><a href="global.html#navbarObserverCallback">navbarObserverCallback</a></li><li><a href="global.html#removeClass">removeClass</a></li><li><a href="global.html#replaceClass">replaceClass</a></li><li><a href="global.html#scrollVisibilitty">scrollVisibilitty</a></li><li><a href="global.html#setAttribute">setAttribute</a></li><li><a href="global.html#setAttributes">setAttributes</a></li><li><a href="global.html#setHTML">setHTML</a></li><li><a href="global.html#setStyle">setStyle</a></li><li><a href="global.html#setStyles">setStyles</a></li><li><a href="global.html#setText">setText</a></li><li><a href="global.html#toggleClass">toggleClass</a></li><li><a href="global.html#validateProp">validateProp</a></li><li><a href="global.html#validateProps">validateProps</a></li><li><a href="global.html#writteDeleteMachine">writteDeleteMachine</a></li><li><a href="global.html#writteMachine">writteMachine</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Mon Jan 26 2026 10:38:11 GMT+0000 (hora estándar de Europa occidental)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

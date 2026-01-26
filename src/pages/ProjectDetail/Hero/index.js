@@ -1,74 +1,90 @@
-import { router } from "../../../../main";
-import Link from "../../../components/Link/link";
+import Link from "../../../components/Link";
 import bbdd from "../../../const/database/bbdd";
 import { svg } from "../../../const/database/bbdd_consts";
 import cloneTemplate from "../../../js/utils/cloneTemplate";
-import { append } from "../../../js/utils/domHelpers";
 import {
-    attachEvent,
-    fadeInObserver,
-    navbarObserver,
-    warningUnknownKeys,
+  append,
+  getElement,
+  setHTML,
+  setText,
+} from "../../../js/utils/domHelpers";
+import {
+  fadeInObserver,
+  getQueryParams,
+  navbarObserver,
 } from "../../../js/utils/utils";
 import "./index.css";
 import template from "./index.html?raw";
 
+/**
+ * Renders the Hero section for the Project Detail page.
+ * * It clones a template, populates project metadata (title, role, year),
+ * applies specific entrance animations (fade-in directions), and generates
+ * action buttons for demo and code links.
+ * * @function Hero
+ * @param {Object} [props={}] - Component properties.
+ * @returns {HTMLElement} The populated Hero section element.
+ */
+
 export default function Hero({} = {}) {
-    warningUnknownKeys(arguments, []);
-    const id = router.getParams().id;
-    const work = bbdd.works.find((work) => work.id === Number(id));
-    // options of each prop
-    // const validProps = [];
+  const id = getQueryParams("id");
+  const currentWork = bbdd.works.find((work) => work.id === Number(id));
 
-    // validations
-    // validateProp('prop', prop, 'string', validProps);
+  const hero = getElement(".pd-hero", cloneTemplate(template, "hero-template"));
 
-    const hero = cloneTemplate(template, "hero-template").querySelector(
-        ".pd-hero"
-    );
+  const title = getElement(".pd-hero__title", hero);
+  const descTypeWeb = getElement(".pd-hero__desc-type-web", hero);
+  const typeProyectYear = getElement(".pd-hero__type-proyect-year", hero);
+  const actions = getElement(".pd-hero__actions", hero);
 
-    const title = hero.querySelector(".pd-hero__title");
-    const descTypeWeb = hero.querySelector(".pd-hero__desc-type-web");
-    const typeProyectYear = hero.querySelector(".pd-hero__type-proyect-year");
-    const actions = hero.querySelector(".pd-hero__actions");
+  fadeInObserver(title, `animated-element--fade-in-right`);
+  fadeInObserver(descTypeWeb, `animated-element--fade-in-left`);
+  fadeInObserver(typeProyectYear, `animated-element--fade-in-right`);
+  fadeInObserver(actions, `animated-element--fade-in-top`);
 
-    fadeInObserver(title, `animated-element--fade-in-right`);
-    fadeInObserver(descTypeWeb, `animated-element--fade-in-left`);
-    fadeInObserver(typeProyectYear, `animated-element--fade-in-right`);
-    fadeInObserver(actions, `animated-element--fade-in-top`);
+  setHTML(
+    title,
+    `${currentWork.emphasisName.name[0]}<span style= "color: ${currentWork.emphasisName.color}" class="pd-hero__title-accent">${currentWork.emphasisName.name[1]}</span>`,
+  );
 
-    title.innerHTML = `${work.emphasisName.name[0]}<span style= "color: ${work.emphasisName.color}" class="pd-hero__title-accent">${work.emphasisName.name[1]}</span>`;
-    descTypeWeb.innerText = `${work.shortDescription} · ${work.projectRole}`;
-    typeProyectYear.innerText = `${work.visibility} Project · ${work.year}`;
+  setText(
+    descTypeWeb,
+    `${currentWork.shortDescription} · ${currentWork.projectRole}`,
+  );
 
-    let demo;
+  setText(typeProyectYear, `${currentWork.visibility} · ${currentWork.year}`);
 
-    if (work.links.demo)
-        demo = Link({
-            isButton: true,
-            icon: svg.demo,
-            variant: "primary",
-            theme: "dark",
-            classNames: ["pd-hero__actions-demo"],
-            href: work.links.demo,
-            target: "_blank",
-            text: "Demo",
-        });
+  let demo;
 
-    const github = Link({
-        isButton: true,
-        icon: svg.code,
-        variant: "primary",
-        theme: "dark",
-        classNames: ["pd-hero__actions-code"],
-        href: work.links.github,
-        target: "_blank",
-        text: "Code",
+  if (currentWork.links.demo)
+    demo = Link({
+      title: "Ir a demo",
+      isButton: true,
+      icon: svg.demo,
+      variant: "primary",
+      theme: "dark",
+      classNames: ["pd-hero__actions-demo"],
+      href: currentWork.links.demo,
+      target: "_blank",
+      text: "Demo",
     });
 
-    navbarObserver(hero);
+  const github = Link({
+    title: "Ir a código",
+    isButton: true,
+    icon: svg.code,
+    variant: "primary",
+    theme: "dark",
+    classNames: ["pd-hero__actions-code"],
+    href: currentWork.links.github,
+    target: "_blank",
+    text: "Código",
+  });
 
-    append(actions, [demo, github]);
+  navbarObserver(hero);
 
-    return hero;
+  append(actions, [github]);
+  if (demo) append(actions, [demo]);
+
+  return hero;
 }
