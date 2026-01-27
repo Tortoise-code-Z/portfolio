@@ -10,7 +10,6 @@ import template from "./index.html?raw";
 import cloneTemplate from "../../../../../js/utils/cloneTemplate.js";
 import { svg } from "../../../../../const/database/bbdd_consts.js";
 import Link from "../../../../../components/Link/index.js";
-import projectDetailUrl from "../../../../ProjectDetail/index.html?url";
 import { validateProps } from "../../../../../js/utils/argumentsValidation.js";
 
 /**
@@ -119,6 +118,8 @@ export default function WorkBackFlipCard(props = {}) {
     target: "_blank",
     icon: svg.code,
   });
+
+  const projectDetailUrl = `${import.meta.env.BASE_URL}src/pages/ProjectDetail/index.html`;
 
   const moreInfo = Link({
     title: "Ir a detalle",
