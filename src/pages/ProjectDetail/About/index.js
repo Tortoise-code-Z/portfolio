@@ -6,10 +6,10 @@ import {
 } from "../../../js/utils/utils.js";
 import { createElement } from "../../../js/utils/createElementsHelper.js";
 import { svg } from "../../../const/database/bbdd_consts.js";
-import FloatingTitle from "../../../components/FloatingTitle";
+import FloatingTitle from "../../../components/FloatingTitle/index.js";
 import bbdd from "../../../const/database/bbdd.js";
 import { append } from "../../../js/utils/domHelpers.js";
-import Cards from "../../../components/Cards";
+import Cards from "../../../components/Cards/index.js";
 
 /**
  * Renders the "About Project" section for the Project Detail page.

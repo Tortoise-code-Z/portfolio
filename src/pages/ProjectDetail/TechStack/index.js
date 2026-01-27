@@ -1,13 +1,13 @@
-import FloatingTitle from "../../../components/FloatingTitle";
+import FloatingTitle from "../../../components/FloatingTitle/index.js";
 import bbdd from "../../../const/database/bbdd.js";
 import { svg } from "../../../const/database/bbdd_consts.js";
 import { createElement } from "../../../js/utils/createElementsHelper.js";
 import { append } from "../../../js/utils/domHelpers.js";
 import { getQueryParams, navbarObserver } from "../../../js/utils/utils.js";
 import "./index.css";
-import TechStackLibraries from "./TechStackLibraries";
-import TechStackTools from "./TechStackTools";
-import TechStackDesign from "./TechStackDesign";
+import TechStackLibraries from "./TechStackLibraries/index.js";
+import TechStackTools from "./TechStackTools/index.js";
+import TechStackDesign from "./TechStackDesign/index.js";
 
 /**
  * Renders the "Tech Stack" section for the project detail view.

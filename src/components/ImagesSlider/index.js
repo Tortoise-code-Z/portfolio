@@ -15,7 +15,7 @@ import { attachEvent, fadeInObserver } from "../../js/utils/utils.js";
 import { svg } from "../../const/database/bbdd_consts.js";
 import { validateProps } from "../../js/utils/argumentsValidation.js";
 import "./index.css";
-import Button from "../Button";
+import Button from "../Button/index.js";
 import template from "./index.html?raw";
 
 /**

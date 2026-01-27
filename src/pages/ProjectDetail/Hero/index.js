@@ -1,4 +1,4 @@
-import Link from "../../../components/Link";
+import Link from "../../../components/Link/index.js";
 import bbdd from "../../../const/database/bbdd.js";
 import { svg } from "../../../const/database/bbdd_consts.js";
 import cloneTemplate from "../../../js/utils/cloneTemplate.js";

@@ -1,4 +1,4 @@
-import InfiniteSlider from "../../../../components/InfiniteSlider";
+import InfiniteSlider from "../../../../components/InfiniteSlider/index.js";
 import { validateProps } from "../../../../js/utils/argumentsValidation.js";
 import { createElement } from "../../../../js/utils/createElementsHelper.js";
 import { append } from "../../../../js/utils/domHelpers.js";

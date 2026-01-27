@@ -2,7 +2,7 @@ import { validateProps } from "../../js/utils/argumentsValidation.js";
 import { createElement } from "../../js/utils/createElementsHelper.js";
 import { append } from "../../js/utils/domHelpers.js";
 import { fadeInObserver } from "../../js/utils/utils.js";
-import Card from "./Card";
+import Card from "./Card/index.js";
 import "./index.css";
 
 /**

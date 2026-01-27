@@ -1,4 +1,4 @@
-import FloatingTitle from "../../../components/FloatingTitle";
+import FloatingTitle from "../../../components/FloatingTitle/index.js";
 import bbdd from "../../../const/database/bbdd.js";
 import { svg } from "../../../const/database/bbdd_consts.js";
 import { createElement } from "../../../js/utils/createElementsHelper.js";
@@ -14,7 +14,7 @@ import "prismjs/components/prism-javascript";
 import "prismjs/components/prism-css";
 import "prismjs/themes/prism-twilight.css";
 import "prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard";
-import NoteMsg from "../../../components/noteMsg";
+import NoteMsg from "../../../components/noteMsg/index.js";
 
 /**
  * Renders the "Additional Configurations" section for a project.

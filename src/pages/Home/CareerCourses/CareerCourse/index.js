@@ -1,6 +1,6 @@
 import { fadeInObserver } from "../../../../js/utils/utils.js";
-import InfiniteSlider from "../../../../components/InfiniteSlider";
-import CareerSlide from "./CareerSlide";
+import InfiniteSlider from "../../../../components/InfiniteSlider/index.js";
+import CareerSlide from "./CareerSlide/index.js";
 import { append } from "../../../../js/utils/domHelpers.js";
 import { createElement } from "../../../../js/utils/createElementsHelper.js";
 import "./index.css";

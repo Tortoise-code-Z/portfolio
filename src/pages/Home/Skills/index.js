@@ -1,11 +1,11 @@
-import FloatingTitle from "../../../components/FloatingTitle";
+import FloatingTitle from "../../../components/FloatingTitle/index.js";
 import bbdd from "../../../const/database/bbdd.js";
 import { svg } from "../../../const/database/bbdd_consts.js";
 import { createElement } from "../../../js/utils/createElementsHelper.js";
 import { append } from "../../../js/utils/domHelpers.js";
 import { navbarObserver } from "../../../js/utils/utils.js";
 import "./index.css";
-import Skill from "./Skill";
+import Skill from "./Skill/index.js";
 
 /**
  * Component that generates the Skills section of the website.

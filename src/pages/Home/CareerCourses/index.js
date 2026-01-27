@@ -1,9 +1,9 @@
-import WritteMachineTitle from "../../../components/WritteMachineTitle";
+import WritteMachineTitle from "../../../components/WritteMachineTitle/index.js";
 import bbdd from "../../../const/database/bbdd.js";
 import { createElement } from "../../../js/utils/createElementsHelper.js";
 import { append } from "../../../js/utils/domHelpers.js";
 import { navbarObserver } from "../../../js/utils/utils.js";
-import CareerCourse from "./CareerCourse";
+import CareerCourse from "./CareerCourse/index.js";
 import "./index.css";
 
 /**
