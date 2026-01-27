@@ -1,6 +1,6 @@
 // vite.config.js
 import { defineConfig } from "vite";
-import { resolve } from "path"; // Necesitarás importar esto
+import { resolve } from "path";
 
 export default defineConfig({
   base: "/",
@@ -8,7 +8,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, "index.html"),
-        detail: resolve(__dirname, "./src/pages/ProjectDetail/index.html"),
+        projectDetail: resolve(__dirname, "src/pages/ProjectDetail/index.html"),
       },
     },
   },
