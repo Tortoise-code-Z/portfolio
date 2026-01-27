@@ -71,3 +71,20 @@
     padding: 10px 15px;
   }
 }
+
+@media all and (max-width: 350px) {
+  :root {
+    --rotate: 0;
+  }
+
+  .featured-tag {
+    width: 100%;
+    font-size: 0.8rem;
+    left: 0;
+    top: 20px;
+  }
+
+  .featured-tag span {
+    padding: 10px 15px;
+  }
+}
