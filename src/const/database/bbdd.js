@@ -6,25 +6,33 @@ import {
   typeWeb,
   visibility,
 } from "./bbdd_consts.js";
+import { localizeDeep } from "../../js/i18n/index.js";
 
-const bbdd = {
-  aboutDesc: [
-    "Mi camino en la programación empezó de forma autodidacta en 2022. Lo que comenzó como pura curiosidad por el código se convirtió en mi profesión tras completar mi formación Fullstack, graduándome con una nota de **9.86/10**.",
-    "Aunque domino ambos lados del desarrollo, mi verdadera pasión es el **Frontend**. Me fascina el reto de transformar diseños complejos en layouts impecables, centrándome siempre en la precisión técnica y en la experiencia de quien utiliza la web.",
-    "Actualmente, sigo evolucionando mi stack tecnológico con **React, TypeScript y Git**. Mi objetivo es ofrecer mi mejor versión profesional, aportando soluciones limpias, escalables y visualmente atractivas a cada proyecto.",
-  ],
+const bbddRaw = {
+  aboutDesc: {
+    es: [
+      "Mi camino en la programación empezó de forma autodidacta en 2022. Lo que comenzó como pura curiosidad por el código se convirtió en mi profesión tras completar mi formación Fullstack, graduándome con una nota de **9.86/10**.",
+      "Aunque domino ambos lados del desarrollo, mi verdadera pasión es el **Frontend**. Me fascina el reto de transformar diseños complejos en layouts impecables, centrándome siempre en la precisión técnica y en la experiencia de quien utiliza la web.",
+      "Actualmente, sigo evolucionando mi stack tecnológico con **React, TypeScript y Git**. Mi objetivo es ofrecer mi mejor versión profesional, aportando soluciones limpias, escalables y visualmente atractivas a cada proyecto.",
+    ],
+    en: [
+      "My journey in programming began self-taught in 2022. What started as pure curiosity about code became my profession after completing my Fullstack training, graduating with a grade of **9.86/10**.",
+      "Although I work across both sides of development, my true passion is the **Frontend**. I love the challenge of turning complex designs into flawless layouts, always focusing on technical precision and on the experience of whoever uses the site.",
+      "I'm currently evolving my tech stack with **React, TypeScript and Git**. My goal is to deliver my best professional work, bringing clean, scalable and visually appealing solutions to every project.",
+    ],
+  },
 
   strengths: [
     {
-      name: "Trabajador",
+      name: { es: "Trabajador", en: "Hard-working" },
       iconRef: svg.worker,
     },
     {
-      name: "Comunicación",
+      name: { es: "Comunicación", en: "Communication" },
       iconRef: svg.comunication,
     },
     {
-      name: "Perseverancia",
+      name: { es: "Perseverancia", en: "Perseverance" },
       iconRef: svg.perseverance,
     },
   ],
@@ -37,41 +45,56 @@ const bbdd = {
         name: ["Chess", "mate"],
         color: "#D56719",
       },
-      shortDescription: "Página de aprendizaje de ajedrez",
+      shortDescription: {
+        es: "Página de aprendizaje de ajedrez",
+        en: "A chess learning platform",
+      },
       about: {
-        description: [
-          "Chessmate es una plataforma web moderna para aprender ajedrez online mediante cursos interactivos.",
-          "Fue diseñada desde cero en Figma y desarrollada con React + TypeScript, simulando un backend completo desde el cliente.",
-        ],
+        description: {
+          es: [
+            "Chessmate es una plataforma web moderna para aprender ajedrez online mediante cursos interactivos.",
+            "Fue diseñada desde cero en Figma y desarrollada con React + TypeScript, simulando un backend completo desde el cliente.",
+          ],
+          en: [
+            "Chessmate is a modern web platform to learn chess online through interactive courses.",
+            "It was designed from scratch in Figma and built with React + TypeScript, simulating a complete backend from the client side.",
+          ],
+        },
         cards: [
           {
             id: 1,
-            title: "Registro y login",
+            title: { es: "Registro y login", en: "Sign up and login" },
             svg: svg.key,
           },
           {
             id: 2,
-            title: "Filtro y búsqueda de cursos",
+            title: {
+              es: "Filtro y búsqueda de cursos",
+              en: "Course filtering and search",
+            },
             svg: svg.search,
           },
           {
             id: 3,
-            title: "Compra de cursos",
+            title: { es: "Compra de cursos", en: "Course purchasing" },
             svg: svg.shop,
           },
           {
             id: 4,
-            title: "Dashboard personalizado",
+            title: {
+              es: "Dashboard personalizado",
+              en: "Personalized dashboard",
+            },
             svg: svg.dashboard,
           },
           {
             id: 5,
-            title: "Classrooms virtuales",
+            title: { es: "Classrooms virtuales", en: "Virtual classrooms" },
             svg: svg.study,
           },
           {
             id: 6,
-            title: "Seguimiento de progreso",
+            title: { es: "Seguimiento de progreso", en: "Progress tracking" },
             svg: svg.progressCheck,
           },
         ],
@@ -117,36 +140,54 @@ const bbdd = {
         ],
       },
       development_process: {
-        description: [
-          "Chessmate se diseñó y desarrolló desde cero con el objetivo de simular una plataforma real de aprendizaje online, pero completamente del lado del cliente, sin backend. El enfoque principal fue rehacer un proyecto anterior de Chessmate e implementarlo con mis nuevos conocimientos actuales de diseño y código.",
-          "La arquitectura se planificó  desde Figma, definiendo componentes reutilizables para cada sección (Home, Courses, Dashboard, Classroom, etc). En el desarrollo, utilicé React + TypeScript junto con Zustand para el estado global y React Query para manejar los datos simulados desde localStorage, imitando llamadas a una API real. Con este sistema podría realizar compras, progreso y autenticación sin depender de un servidor, mostrando mensajes y comportamientos dinámicos ante errores o rutas inválidas.",
-          "Las rutas privadas se implementaron con React Router Dom, mientras que los formularios se validaron con React Hook Form y Zod. En el apartado visual, CSS Modules, Embla Carousel y React Player ayudaron a mantener un diseño con animaciones suaves y buena performance gracias a la optimización con Vite.",
-        ],
+        description: {
+          es: [
+            "Chessmate se diseñó y desarrolló desde cero con el objetivo de simular una plataforma real de aprendizaje online, pero completamente del lado del cliente, sin backend. El enfoque principal fue rehacer un proyecto anterior de Chessmate e implementarlo con mis nuevos conocimientos actuales de diseño y código.",
+            "La arquitectura se planificó  desde Figma, definiendo componentes reutilizables para cada sección (Home, Courses, Dashboard, Classroom, etc). En el desarrollo, utilicé React + TypeScript junto con Zustand para el estado global y React Query para manejar los datos simulados desde localStorage, imitando llamadas a una API real. Con este sistema podría realizar compras, progreso y autenticación sin depender de un servidor, mostrando mensajes y comportamientos dinámicos ante errores o rutas inválidas.",
+            "Las rutas privadas se implementaron con React Router Dom, mientras que los formularios se validaron con React Hook Form y Zod. En el apartado visual, CSS Modules, Embla Carousel y React Player ayudaron a mantener un diseño con animaciones suaves y buena performance gracias a la optimización con Vite.",
+          ],
+          en: [
+            "Chessmate was designed and built from scratch with the goal of simulating a real online learning platform, but entirely on the client side, with no backend. The main aim was to rebuild an earlier Chessmate project and implement it with my current design and coding knowledge.",
+            "The architecture was planned in Figma, defining reusable components for each section (Home, Courses, Dashboard, Classroom, etc). During development, I used React + TypeScript together with Zustand for global state and React Query to handle the data simulated from localStorage, mimicking calls to a real API. With this system I could handle purchases, progress and authentication without relying on a server, showing dynamic messages and behaviors for errors or invalid routes.",
+            "Private routes were implemented with React Router Dom, while forms were validated with React Hook Form and Zod. On the visual side, CSS Modules, Embla Carousel and React Player helped keep a design with smooth animations and good performance thanks to Vite's optimization.",
+          ],
+        },
         cards: [
           {
             id: 1,
-            title: "Validación y feedback visual ante posibles errores",
+            title: {
+              es: "Validación y feedback visual ante posibles errores",
+              en: "Validation and visual feedback for potential errors",
+            },
             svg: svg.warning,
           },
           {
             id: 2,
-            title: "Protección de rutas",
+            title: { es: "Protección de rutas", en: "Route protection" },
             svg: svg.padlock,
           },
           {
             id: 3,
-            title: "Sincronización en tiempo real entre componentes",
+            title: {
+              es: "Sincronización en tiempo real entre componentes",
+              en: "Real-time synchronization between components",
+            },
             svg: svg.sync,
           },
           {
             id: 4,
-            title: "Optimización de rendimiento con React-Query",
+            title: {
+              es: "Optimización de rendimiento con React-Query",
+              en: "Performance optimization with React-Query",
+            },
             svg: svg.tachometer,
           },
         ],
         warningMsg: {
-          description:
-            "En la versión desplegada en GitHub Pages, se utiliza createHashRouter porque GitHub solo sirve contenido estático y no permite redirecciones dinámicas a rutas profundas. Sin embargo, en desarrollo local, puedes cambiar a createBrowserRouter para probar la navegación real con URLs limpias. Esto te permitirá probar protección de rutas y navegación directa (/dashboard, /course/:id, /classroom) como en un entorno de backend real.",
+          description: {
+            es: "En la versión desplegada en GitHub Pages, se utiliza createHashRouter porque GitHub solo sirve contenido estático y no permite redirecciones dinámicas a rutas profundas. Sin embargo, en desarrollo local, puedes cambiar a createBrowserRouter para probar la navegación real con URLs limpias. Esto te permitirá probar protección de rutas y navegación directa (/dashboard, /course/:id, /classroom) como en un entorno de backend real.",
+            en: "In the version deployed on GitHub Pages, createHashRouter is used because GitHub only serves static content and does not allow dynamic redirects to deep routes. However, in local development you can switch to createBrowserRouter to test real navigation with clean URLs. This lets you test route protection and direct navigation (/dashboard, /course/:id, /classroom) as in a real backend environment.",
+          },
         },
       },
       images: {
@@ -156,63 +197,66 @@ const bbdd = {
             src: "chessmate/screenshot-index.png",
             width: "1920",
             height: "922",
-            alt: "Inicio",
+            alt: { es: "Inicio", en: "Home" },
           },
           {
             id: 2,
             src: "chessmate/screenshot-classroom.png",
             width: "1920",
             height: "911",
-            alt: "Classroom",
+            alt: { es: "Classroom", en: "Classroom" },
           },
           {
             id: 3,
             src: "chessmate/screenshot-contact.png",
             width: "1920",
             height: "911",
-            alt: "Contacto",
+            alt: { es: "Contacto", en: "Contact" },
           },
           {
             id: 4,
             src: "chessmate/screenshot-course-detail.png",
             width: "1920",
             height: "914",
-            alt: "Detalle del curso",
+            alt: { es: "Detalle del curso", en: "Course detail" },
           },
           {
             id: 5,
             src: "chessmate/screenshot-course-obtained-classroom.png",
             width: "1920",
             height: "909",
-            alt: "Classroom Cursos Obtenidos",
+            alt: {
+              es: "Classroom Cursos Obtenidos",
+              en: "Classroom - Obtained courses",
+            },
           },
           {
             id: 6,
             src: "chessmate/screenshot-courses.png",
             width: "1920",
             height: "916",
-            alt: "Cursos",
+            alt: { es: "Cursos", en: "Courses" },
           },
           {
             id: 7,
             src: "chessmate/screenshot-dashboard.png",
             width: "1920",
             height: "906",
-            alt: "Dashboard",
+            alt: { es: "Dashboard", en: "Dashboard" },
           },
           {
             id: 8,
             src: "chessmate/screenshot-login.png",
             width: "1920",
             height: "911",
-            alt: "Inicio de sesión",
+            alt: { es: "Inicio de sesión", en: "Login" },
           },
           {
             id: 9,
             src: "chessmate/screenshot-register.png",
             width: "1920",
             height: "909",
-            alt: "Registro",
+            alt: { es: "Registro", en: "Sign up" },
           },
         ],
         backgroundImg: {
@@ -229,26 +273,45 @@ const bbdd = {
         },
       },
       config: {
-        description: [
-          "Para probar comportamientos de error o feedback dinámico, puedes ejecutar directamente código en la consola del navegador para manipular los datos simulados de la “base de datos local”.",
-          "Asegúrate de tener la aplicación abierta en modo desarrollo (npm run dev) o en la demo activa.",
-        ],
+        description: {
+          es: [
+            "Para probar comportamientos de error o feedback dinámico, puedes ejecutar directamente código en la consola del navegador para manipular los datos simulados de la “base de datos local”.",
+            "Asegúrate de tener la aplicación abierta en modo desarrollo (npm run dev) o en la demo activa.",
+          ],
+          en: [
+            "To test error behaviors or dynamic feedback, you can run code directly in the browser console to manipulate the simulated data of the “local database”.",
+            "Make sure you have the application open in development mode (npm run dev) or in the active demo.",
+          ],
+        },
         steps: [
           {
             id: 1,
-            title: "Iniciar sesión o registrarte",
-            description:
-              "Recuerda iniciar sesión en la web (puedes registrarte o usar: usuario -> admin, contraseña -> 1234; si quieres saltarte el paso del registro), para poder estar en el Dashboard y ver toda la lógica de una vez.",
+            title: {
+              es: "Iniciar sesión o registrarte",
+              en: "Log in or sign up",
+            },
+            description: {
+              es: "Recuerda iniciar sesión en la web (puedes registrarte o usar: usuario -> admin, contraseña -> 1234; si quieres saltarte el paso del registro), para poder estar en el Dashboard y ver toda la lógica de una vez.",
+              en: "Remember to log in to the site (you can sign up or use: username -> admin, password -> 1234, if you want to skip the sign-up step), so you can reach the Dashboard and see all the logic at once.",
+            },
           },
           {
             id: 2,
-            title: "'Compra' varios cursos",
-            description:
-              "Una vez inicias sesión, ve a la page 'Cursos' y en la sección 'Todos los cursos' compra los 2 primeros.",
+            title: {
+              es: "'Compra' varios cursos",
+              en: "'Buy' several courses",
+            },
+            description: {
+              es: "Una vez inicias sesión, ve a la page 'Cursos' y en la sección 'Todos los cursos' compra los 2 primeros.",
+              en: "Once you log in, go to the 'Courses' page and, in the 'All courses' section, buy the first 2.",
+            },
           },
           {
             id: 3,
-            title: "Código para ejecutar en la consola del navegador",
+            title: {
+              es: "Código para ejecutar en la consola del navegador",
+              en: "Code to run in the browser console",
+            },
             type: "code",
             description: `// Simular base de datos de cursos en localStorage
 const bbdd = JSON.parse(localStorage.getItem("DATA_BASE"));
@@ -331,26 +394,43 @@ console.log(
           },
           {
             id: 4,
-            title: "Refrescar la página y explorar la aplicación",
-            description:
-              "Después de guardar los cambios en localStorage, simplemente refresca la página. Podrás observar mensajes por defecto y feedback visual en las secciones que lo requieran.",
+            title: {
+              es: "Refrescar la página y explorar la aplicación",
+              en: "Refresh the page and explore the application",
+            },
+            description: {
+              es: "Después de guardar los cambios en localStorage, simplemente refresca la página. Podrás observar mensajes por defecto y feedback visual en las secciones que lo requieran.",
+              en: "After saving the changes in localStorage, simply refresh the page. You'll see default messages and visual feedback in the sections that require it.",
+            },
           },
           {
             id: 5,
-            title: "Ver feedback en cursos por defecto",
-            description:
-              "Ingresa a 'Caballos' para ver el mensaje de feedback en su Classroom.",
+            title: {
+              es: "Ver feedback en cursos por defecto",
+              en: "See feedback on default courses",
+            },
+            description: {
+              es: "Ingresa a 'Caballos' para ver el mensaje de feedback en su Classroom.",
+              en: "Go into 'Caballos' to see the feedback message in its Classroom.",
+            },
           },
           {
             id: 6,
-            title: "Ver feedback en cursos por obtenidos/comprados",
-            description:
-              "Ingresa a 'Aperturas fundamentales'(ID: 2, previamente comprado en el Paso 2) para observar: Mensajes de feedback.Temas desactivados por seguridad.",
+            title: {
+              es: "Ver feedback en cursos por obtenidos/comprados",
+              en: "See feedback on obtained/purchased courses",
+            },
+            description: {
+              es: "Ingresa a 'Aperturas fundamentales'(ID: 2, previamente comprado en el Paso 2) para observar: Mensajes de feedback.Temas desactivados por seguridad.",
+              en: "Go into 'Aperturas fundamentales' (ID: 2, previously purchased in Step 2) to observe: Feedback messages. Themes disabled for safety.",
+            },
           },
         ],
         noteMsg: {
-          description:
-            "Para mantener la interfaz limpia, no se han forzado errores en todos los elementos, solo en algunos, con el objetivo de mostrar la funcionalidad de manera clara.",
+          description: {
+            es: "Para mantener la interfaz limpia, no se han forzado errores en todos los elementos, solo en algunos, con el objetivo de mostrar la funcionalidad de manera clara.",
+            en: "To keep the interface clean, errors have not been forced on every element, only on some, in order to show the functionality clearly.",
+          },
         },
       },
       links: {
@@ -366,43 +446,72 @@ console.log(
         name: ["Astro", "hub"],
         color: "#4819D5",
       },
-      shortDescription: "Aplicación web completa sobre el universo",
+      shortDescription: {
+        es: "Aplicación web completa sobre el universo",
+        en: "A complete web application about the universe",
+      },
       about: {
-        description: [
-          "Astrohub es una aplicación web dinámica y completa desarrollada como proyecto final del módulo de desarrollo web del curso FullStack, MasterD.",
-          "Inspirada en el universo y la exploración espacial, combina: frontend, backend y base de datos.",
-          "El sistema permite registro de usuarios, gestión de perfiles, administración de noticias y control de citas astronómicas, todo desarrollado con HTML, CSS, JavaScript, PHP y MySQL.",
-          "El proyecto fue probado y ejecutado en entorno local utilizando XAMPP, integrando tanto la parte pública como los paneles internos de usuario y administrador.",
-        ],
+        description: {
+          es: [
+            "Astrohub es una aplicación web dinámica y completa desarrollada como proyecto final del módulo de desarrollo web del curso FullStack, MasterD.",
+            "Inspirada en el universo y la exploración espacial, combina: frontend, backend y base de datos.",
+            "El sistema permite registro de usuarios, gestión de perfiles, administración de noticias y control de citas astronómicas, todo desarrollado con HTML, CSS, JavaScript, PHP y MySQL.",
+            "El proyecto fue probado y ejecutado en entorno local utilizando XAMPP, integrando tanto la parte pública como los paneles internos de usuario y administrador.",
+          ],
+          en: [
+            "Astrohub is a dynamic, complete web application developed as the final project of the web development module of the FullStack course at MasterD.",
+            "Inspired by the universe and space exploration, it combines: frontend, backend and database.",
+            "The system allows user registration, profile management, news administration and control of astronomical appointments, all developed with HTML, CSS, JavaScript, PHP and MySQL.",
+            "The project was tested and run in a local environment using XAMPP, integrating both the public side and the internal user and admin panels.",
+          ],
+        },
         cards: [
           {
             id: 1,
-            title: "Registro y autenticación de usuarios",
+            title: {
+              es: "Registro y autenticación de usuarios",
+              en: "User registration and authentication",
+            },
             svg: svg.key,
           },
           {
             id: 2,
-            title: "Gestión de noticias astronómicas",
+            title: {
+              es: "Gestión de noticias astronómicas",
+              en: "Astronomical news management",
+            },
             svg: svg.news,
           },
           {
             id: 3,
-            title: "Panel de administración completo",
+            title: {
+              es: "Panel de administración completo",
+              en: "Complete administration panel",
+            },
             svg: svg.dashboard,
           },
           {
             id: 4,
-            title: "Citas astronómicas interactivas",
+            title: {
+              es: "Citas astronómicas interactivas",
+              en: "Interactive astronomical appointments",
+            },
             svg: svg.calendar,
           },
           {
             id: 5,
-            title: "Validación de formularios y contraseñas cifradas",
+            title: {
+              es: "Validación de formularios y contraseñas cifradas",
+              en: "Form validation and encrypted passwords",
+            },
             svg: svg.security,
           },
           {
             id: 6,
-            title: "Diseño responsive con HTML5 y CSS3",
+            title: {
+              es: "Diseño responsive con HTML5 y CSS3",
+              en: "Responsive design with HTML5 and CSS3",
+            },
             svg: svg.responsive,
           },
         ],
@@ -440,36 +549,57 @@ console.log(
         ],
       },
       development_process: {
-        description: [
-          "Astrohub se desarrolló con un enfoque completo, abarcando tanto frontend como backend. La parte visual fue implementada con HTML5, CSS3 y JavaScript, mientras que la lógica del servidor y la gestión de datos se manejaron mediante PHP y MySQL.",
-          "El sistema de autenticación y roles (visitante, usuario y administrador) permite controlar el acceso a cada sección del sitio, gestionando noticias, citas y perfiles desde paneles diferenciados.",
-          "La base de datos se creó e importó desde phpMyAdmin y se ejecutó localmente en XAMPP, garantizando un entorno de pruebas funcional y realista.",
-        ],
+        description: {
+          es: [
+            "Astrohub se desarrolló con un enfoque completo, abarcando tanto frontend como backend. La parte visual fue implementada con HTML5, CSS3 y JavaScript, mientras que la lógica del servidor y la gestión de datos se manejaron mediante PHP y MySQL.",
+            "El sistema de autenticación y roles (visitante, usuario y administrador) permite controlar el acceso a cada sección del sitio, gestionando noticias, citas y perfiles desde paneles diferenciados.",
+            "La base de datos se creó e importó desde phpMyAdmin y se ejecutó localmente en XAMPP, garantizando un entorno de pruebas funcional y realista.",
+          ],
+          en: [
+            "Astrohub was developed with a complete approach, covering both frontend and backend. The visual side was implemented with HTML5, CSS3 and JavaScript, while the server logic and data management were handled with PHP and MySQL.",
+            "The authentication and roles system (visitor, user and administrator) makes it possible to control access to each section of the site, managing news, appointments and profiles from separate panels.",
+            "The database was created and imported from phpMyAdmin and run locally on XAMPP, ensuring a functional and realistic testing environment.",
+          ],
+        },
         cards: [
           {
             id: 1,
-            title: "Autenticación y roles de usuario",
+            title: {
+              es: "Autenticación y roles de usuario",
+              en: "User authentication and roles",
+            },
             svg: svg.key,
           },
           {
             id: 2,
-            title: "Paneles separados para usuarios y administradores",
+            title: {
+              es: "Paneles separados para usuarios y administradores",
+              en: "Separate panels for users and administrators",
+            },
             svg: svg.dashboard,
           },
           {
             id: 3,
-            title: "Gestión completa de base de datos con MySQL",
+            title: {
+              es: "Gestión completa de base de datos con MySQL",
+              en: "Complete database management with MySQL",
+            },
             svg: svg.database,
           },
           {
             id: 4,
-            title: "Integración local con XAMPP",
+            title: {
+              es: "Integración local con XAMPP",
+              en: "Local integration with XAMPP",
+            },
             svg: svg.server,
           },
         ],
         warningMsg: {
-          description:
-            "El proyecto funciona en entorno local. Astrohub está diseñado para ejecutarse con XAMPP (Apache + PHP + MySQL). Para probarlo, es necesario importar la base de datos y acceder desde http://localhost/astrohub/.",
+          description: {
+            es: "El proyecto funciona en entorno local. Astrohub está diseñado para ejecutarse con XAMPP (Apache + PHP + MySQL). Para probarlo, es necesario importar la base de datos y acceder desde http://localhost/astrohub/.",
+            en: "The project runs in a local environment. Astrohub is designed to run with XAMPP (Apache + PHP + MySQL). To test it, you need to import the database and access it from http://localhost/astrohub/.",
+          },
         },
       },
       images: {
@@ -479,84 +609,102 @@ console.log(
             src: "astrohub/screenshot-inicio.png",
             width: "1920",
             height: "916",
-            alt: "Inicio",
+            alt: { es: "Inicio", en: "Home" },
           },
           {
             id: 2,
             src: "astrohub/screenshot-noticias.png",
             width: "1920",
             height: "913",
-            alt: "Noticias",
+            alt: { es: "Noticias", en: "News" },
           },
           {
             id: 3,
             src: "astrohub/screenshot-citas.png",
             width: "1920",
             height: "911",
-            alt: "Citas",
+            alt: { es: "Citas", en: "Appointments" },
           },
           {
             id: 4,
             src: "astrohub/screenshot--login.png",
             width: "1920",
             height: "914",
-            alt: "Inicio de sesión",
+            alt: { es: "Inicio de sesión", en: "Login" },
           },
           {
             id: 5,
             src: "astrohub/screenshot-registro.png",
             width: "1920",
             height: "911",
-            alt: "Registro",
+            alt: { es: "Registro", en: "Sign up" },
           },
           {
             id: 6,
             src: "astrohub/screenshot-perfil.png",
             width: "1920",
             height: "913",
-            alt: "Perfil",
+            alt: { es: "Perfil", en: "Profile" },
           },
           {
             id: 7,
             src: "astrohub/screenshot-admin-usuarios.png",
             width: "1920",
             height: "916",
-            alt: "Administración de Usuarios",
+            alt: {
+              es: "Administración de Usuarios",
+              en: "User administration",
+            },
           },
           {
             id: 8,
             src: "astrohub/screenshot-admin-noticias.png",
             width: "1920",
             height: "914",
-            alt: "Administración de Noticias",
+            alt: {
+              es: "Administración de Noticias",
+              en: "News administration",
+            },
           },
           {
             id: 9,
             src: "astrohub/screenshot-admin-citas.png",
             width: "1920",
             height: "911",
-            alt: "Administración de citas",
+            alt: {
+              es: "Administración de citas",
+              en: "Appointment administration",
+            },
           },
           {
             id: 10,
             src: "astrohub/screenshot-admin-editar-usuarios.png",
             width: "1920",
             height: "911",
-            alt: "Panel de edición de usuarios",
+            alt: {
+              es: "Panel de edición de usuarios",
+              en: "User editing panel",
+            },
           },
           {
             id: 11,
             src: "astrohub/screenshot-admin-editar-noticias.png",
             width: "1920",
             height: "913",
-            alt: "Panel de edición de noticias",
+            alt: {
+              es: "Panel de edición de noticias",
+              en: "News editing panel",
+            },
           },
           {
             id: 12,
             src: "astrohub/screenshot-admin-editar-cita.png",
             width: "1920",
             height: "913",
-            alt: "Panel de edición de citas",
+            alt: {
+              es: "Panel de edición de citas",
+              en: "Appointment editing panel",
+            },
           },
         ],
         backgroundImg: {
@@ -573,49 +721,80 @@ console.log(
         },
       },
       config: {
-        description: [
-          "Astrohub se ejecuta localmente mediante XAMPP. Para instalarlo, copia la carpeta del proyecto dentro de `htdocs` y configura la base de datos en phpMyAdmin.",
-          "El archivo `astrohub.sql` incluido permite importar toda la estructura y los datos necesarios.",
-        ],
+        description: {
+          es: [
+            "Astrohub se ejecuta localmente mediante XAMPP. Para instalarlo, copia la carpeta del proyecto dentro de `htdocs` y configura la base de datos en phpMyAdmin.",
+            "El archivo `astrohub.sql` incluido permite importar toda la estructura y los datos necesarios.",
+          ],
+          en: [
+            "Astrohub runs locally through XAMPP. To install it, copy the project folder into `htdocs` and set up the database in phpMyAdmin.",
+            "The included `astrohub.sql` file lets you import the whole structure and the necessary data.",
+          ],
+        },
         steps: [
           {
             id: 1,
-            title: "Instalar XAMPP",
-            description: "Descarga e instala XAMPP (con Apache, PHP y MySQL).",
+            title: { es: "Instalar XAMPP", en: "Install XAMPP" },
+            description: {
+              es: "Descarga e instala XAMPP (con Apache, PHP y MySQL).",
+              en: "Download and install XAMPP (with Apache, PHP and MySQL).",
+            },
           },
           {
             id: 2,
-            title: "Mover carpeta del proyecto",
-            description:
-              "Copia la carpeta `astrohub` dentro de la carpeta `htdocs` de XAMPP.",
+            title: {
+              es: "Mover carpeta del proyecto",
+              en: "Move the project folder",
+            },
+            description: {
+              es: "Copia la carpeta `astrohub` dentro de la carpeta `htdocs` de XAMPP.",
+              en: "Copy the `astrohub` folder into XAMPP's `htdocs` folder.",
+            },
           },
           {
             id: 3,
-            title: "Iniciar servicios",
-            description: "Desde el panel de XAMPP, inicia Apache y MySQL.",
+            title: { es: "Iniciar servicios", en: "Start the services" },
+            description: {
+              es: "Desde el panel de XAMPP, inicia Apache y MySQL.",
+              en: "From the XAMPP panel, start Apache and MySQL.",
+            },
           },
           {
             id: 4,
-            title: "Configurar base de datos",
-            description:
-              "Abre phpMyAdmin, crea una base de datos y importa el archivo `astrohub.sql`.",
+            title: {
+              es: "Configurar base de datos",
+              en: "Set up the database",
+            },
+            description: {
+              es: "Abre phpMyAdmin, crea una base de datos e importa el archivo `astrohub.sql`.",
+              en: "Open phpMyAdmin, create a database and import the `astrohub.sql` file.",
+            },
           },
           {
             id: 5,
-            title: "Abrir el sitio en el navegador",
-            description:
-              "Visita http://localhost/astrohub/ para probar la aplicación.",
+            title: {
+              es: "Abrir el sitio en el navegador",
+              en: "Open the site in the browser",
+            },
+            description: {
+              es: "Visita http://localhost/astrohub/ para probar la aplicación.",
+              en: "Visit http://localhost/astrohub/ to try the application.",
+            },
           },
           {
             id: 6,
-            title: "Acceso de prueba",
-            description:
-              "Usuario: `lisa12` / Contraseña: `123456` (usuario normal) — Usuario: `root` / Contraseña: `1234567` (administrador).",
+            title: { es: "Acceso de prueba", en: "Test access" },
+            description: {
+              es: "Usuario: `lisa12` / Contraseña: `123456` (usuario normal) — Usuario: `root` / Contraseña: `1234567` (administrador).",
+              en: "Username: `lisa12` / Password: `123456` (regular user) — Username: `root` / Password: `1234567` (administrator).",
+            },
           },
         ],
         noteMsg: {
-          description:
-            "Este proyecto fue desarrollado con fines educativos y está pensado para su ejecución local. Puede ser modificado libremente para aprendizaje o demostraciones personales.",
+          description: {
+            es: "Este proyecto fue desarrollado con fines educativos y está pensado para su ejecución local. Puede ser modificado libremente para aprendizaje o demostraciones personales.",
+            en: "This project was developed for educational purposes and is intended to run locally. It can be freely modified for learning or personal demos.",
+          },
         },
       },
       links: {
@@ -631,43 +810,67 @@ console.log(
         name: ["Port", "folio"],
         color: "#1958D5",
       },
-      shortDescription:
-        "Sitio personal de presentación y proyectos de Víctor Pérez",
+      shortDescription: {
+        es: "Sitio personal de presentación y proyectos de Víctor Pérez",
+        en: "Víctor Pérez's personal presentation and projects site",
+      },
       about: {
-        description: [
-          "Este Portfolio Web es una página personal desarrollada desde cero para mostrar proyectos, habilidades y experiencia como desarrollador frontend.",
-          "El sitio fue diseñado en Figma y desarrollado con HTML, CSS y JavaScript puro, priorizando la optimización, la claridad del código y la fluidez en la experiencia de usuario.",
-          "Incluye animaciones suaves y un diseño completamente responsive para adaptarse a cualquier dispositivo.",
-        ],
+        description: {
+          es: [
+            "Este Portfolio Web es una página personal desarrollada desde cero para mostrar proyectos, habilidades y experiencia como desarrollador frontend.",
+            "El sitio fue diseñado en Figma y desarrollado con HTML, CSS y JavaScript puro, priorizando la optimización, la claridad del código y la fluidez en la experiencia de usuario.",
+            "Incluye animaciones suaves y un diseño completamente responsive para adaptarse a cualquier dispositivo.",
+          ],
+          en: [
+            "This Portfolio Web is a personal site built from scratch to showcase projects, skills and experience as a frontend developer.",
+            "The site was designed in Figma and built with plain HTML, CSS and JavaScript, prioritizing optimization, code clarity and a smooth user experience.",
+            "It includes smooth animations and a fully responsive design to adapt to any device.",
+          ],
+        },
         cards: [
           {
             id: 1,
-            title: "Diseño responsive",
+            title: { es: "Diseño responsive", en: "Responsive design" },
             svg: svg.responsive,
           },
           {
             id: 2,
-            title: "Frontend puro sin frameworks",
+            title: {
+              es: "Frontend puro sin frameworks",
+              en: "Pure frontend with no frameworks",
+            },
             svg: svg.code,
           },
           {
             id: 3,
-            title: "Animaciones suaves y transiciones",
+            title: {
+              es: "Animaciones suaves y transiciones",
+              en: "Smooth animations and transitions",
+            },
             svg: svg.motion,
           },
           {
             id: 4,
-            title: "Optimización de rendimiento",
+            title: {
+              es: "Optimización de rendimiento",
+              en: "Performance optimization",
+            },
             svg: svg.tachometer,
           },
           {
             id: 5,
-            title: "Estructura modular y escalable",
+            title: {
+              es: "Estructura modular y escalable",
+              en: "Modular, scalable structure",
+            },
             svg: svg.structure,
           },
           {
             id: 6,
-            title: "Diseño atractivo e intuitivo",
+            title: {
+              es: "Diseño atractivo e intuitivo",
+              en: "Attractive, intuitive design",
+            },
             svg: svg.design,
           },
         ],
@@ -704,36 +907,57 @@ console.log(
         ],
       },
       development_process: {
-        description: [
-          "El desarrollo del portfolio comenzó con un enfoque centrado en la simplicidad y la velocidad, construyendo toda la arquitectura con HTML, CSS y JavaScript puro para mantener un control total sobre el código.",
-          "Se empleó Vite como entorno de desarrollo moderno para acelerar la carga y permitir un flujo de trabajo fluido. Cada sección (Hero, About, Works, Skills, Career, Contact) fue estructurada con código modular y reutilizable.",
-          "El diseño se planificó en Figma antes de la implementación, buscando una experiencia limpia y profesional, con animaciones suaves y buena jerarquía visual.",
-        ],
+        description: {
+          es: [
+            "El desarrollo del portfolio comenzó con un enfoque centrado en la simplicidad y la velocidad, construyendo toda la arquitectura con HTML, CSS y JavaScript puro para mantener un control total sobre el código.",
+            "Se empleó Vite como entorno de desarrollo moderno para acelerar la carga y permitir un flujo de trabajo fluido. Cada sección (Hero, About, Works, Skills, Career, Contact) fue estructurada con código modular y reutilizable.",
+            "El diseño se planificó en Figma antes de la implementación, buscando una experiencia limpia y profesional, con animaciones suaves y buena jerarquía visual.",
+          ],
+          en: [
+            "Development of the portfolio started with a focus on simplicity and speed, building the whole architecture with plain HTML, CSS and JavaScript to keep full control over the code.",
+            "Vite was used as a modern development environment to speed up loading and enable a smooth workflow. Each section (Hero, About, Works, Skills, Career, Contact) was structured with modular, reusable code.",
+            "The design was planned in Figma before implementation, aiming for a clean, professional experience with smooth animations and good visual hierarchy.",
+          ],
+        },
         cards: [
           {
             id: 1,
-            title: "Diseño planificado desde Figma",
+            title: {
+              es: "Diseño planificado desde Figma",
+              en: "Design planned in Figma",
+            },
             svg: svg.design,
           },
           {
             id: 2,
-            title: "Estructura semántica en HTML5",
+            title: {
+              es: "Estructura semántica en HTML5",
+              en: "Semantic HTML5 structure",
+            },
             svg: svg.structure,
           },
           {
             id: 3,
-            title: "CSS modular para escalabilidad",
+            title: {
+              es: "CSS modular para escalabilidad",
+              en: "Modular CSS for scalability",
+            },
             svg: svg.brush,
           },
           {
             id: 4,
-            title: "Optimización de rendimiento con Vite",
+            title: {
+              es: "Optimización de rendimiento con Vite",
+              en: "Performance optimization with Vite",
+            },
             svg: svg.tachometer,
           },
         ],
         noteMsg: {
-          description:
-            "Este portfolio está construido íntegramente en frontend. No utiliza frameworks ni dependencias complejas para mantener su rendimiento óptimo y simplicidad de mantenimiento.",
+          description: {
+            es: "Este portfolio está construido íntegramente en frontend. No utiliza frameworks ni dependencias complejas para mantener su rendimiento óptimo y simplicidad de mantenimiento.",
+            en: "This portfolio is built entirely in frontend. It uses no frameworks or complex dependencies in order to keep its performance optimal and maintenance simple.",
+          },
         },
       },
       images: {
@@ -743,105 +967,126 @@ console.log(
             src: "screenshot-home-hero.png",
             width: "1920",
             height: "950",
-            alt: "Inicio",
+            alt: { es: "Inicio", en: "Home" },
           },
           {
             id: 2,
             src: "screenshot-home-profile.png",
             width: "1920",
             height: "952",
-            alt: "Sobre mi",
+            alt: { es: "Sobre mi", en: "About me" },
           },
           {
             id: 3,
             src: "screenshot-home-profile-strengths.png",
             width: "1920",
             height: "954",
-            alt: "Fortalezas",
+            alt: { es: "Fortalezas", en: "Strengths" },
           },
           {
             id: 4,
             src: "screenshot-home-works.png",
             width: "1920",
             height: "957",
-            alt: "Proyectos",
+            alt: { es: "Proyectos", en: "Projects" },
           },
           {
             id: 5,
             src: "screenshot-home-works-backCard.png",
             width: "1920",
             height: "957",
-            alt: "Reverso de tarjeta",
+            alt: { es: "Reverso de tarjeta", en: "Card back" },
           },
           {
             id: 6,
             src: "screenshot-home-skills.png",
             width: "1920",
             height: "952",
-            alt: "Habilidades",
+            alt: { es: "Habilidades", en: "Skills" },
           },
           {
             id: 7,
             src: "screenshot-home-career.png",
             width: "1920",
             height: "946",
-            alt: "Carrera",
+            alt: { es: "Carrera", en: "Career" },
           },
           {
             id: 8,
             src: "screenshot-home-footer.png",
             width: "1920",
             height: "953",
-            alt: "Pie de página",
+            alt: { es: "Pie de página", en: "Footer" },
           },
           {
             id: 9,
             src: "screenshot-project-detail-hero.png",
             width: "1920",
             height: "954",
-            alt: "Inicio - Detalle de Proyecto",
+            alt: {
+              es: "Inicio - Detalle de Proyecto",
+              en: "Home - Project detail",
+            },
           },
           {
             id: 10,
             src: "screenshot-project-detail-about.png",
             width: "1920",
             height: "955",
-            alt: "Sobre el Proyecto - Detalle de Projecto",
+            alt: {
+              es: "Sobre el Proyecto - Detalle de Projecto",
+              en: "About the project - Project detail",
+            },
           },
           {
             id: 11,
             src: "screenshot-project-detail-techStack.png",
             width: "1920",
             height: "952",
-            alt: "Stack Tecnológico - Detalle de Projecto",
+            alt: {
+              es: "Stack Tecnológico - Detalle de Projecto",
+              en: "Tech stack - Project detail",
+            },
           },
           {
             id: 12,
             src: "screenshot-project-detail-devProcess.png",
             width: "1920",
             height: "954",
-            alt: "Proceso de Desarrollo - Detalle de Projecto",
+            alt: {
+              es: "Proceso de Desarrollo - Detalle de Projecto",
+              en: "Development process - Project detail",
+            },
           },
           {
             id: 13,
             src: "screenshot-project-detail-gallery.png",
             width: "1920",
             height: "948",
-            alt: "Galería - Detalle de Projecto",
+            alt: {
+              es: "Galería - Detalle de Projecto",
+              en: "Gallery - Project detail",
+            },
           },
           {
             id: 14,
             src: "screenshot-project-detail-aditionalConfigs.png",
             width: "1920",
             height: "951",
-            alt: "Configuraciones adicionales - Detalle de Projecto",
+            alt: {
+              es: "Configuraciones adicionales - Detalle de Projecto",
+              en: "Additional settings - Project detail",
+            },
           },
           {
             id: 15,
             src: "screenshot-project-detail-footer.png",
             width: "1920",
             height: "955",
-            alt: "Pie de página - Detalle de Projecto",
+            alt: {
+              es: "Pie de página - Detalle de Projecto",
+              en: "Footer - Project detail",
+            },
           },
         ],
         backgroundImg: {
@@ -858,34 +1103,54 @@ console.log(
         },
       },
       config: {
-        description: [
-          "El proyecto puede ejecutarse fácilmente en entorno local para explorarlo/modificarlo o en la demo web directamente.",
-          "En caso de querer ejecutarlo en local, asegúrate de tener Node.js y npm instalados antes de comenzar.",
-        ],
+        description: {
+          es: [
+            "El proyecto puede ejecutarse fácilmente en entorno local para explorarlo/modificarlo o en la demo web directamente.",
+            "En caso de querer ejecutarlo en local, asegúrate de tener Node.js y npm instalados antes de comenzar.",
+          ],
+          en: [
+            "The project can easily be run locally to explore/modify it, or viewed directly in the web demo.",
+            "If you want to run it locally, make sure you have Node.js and npm installed before starting.",
+          ],
+        },
         steps: [
           {
             id: 1,
-            title: "Clonar el repositorio",
-            description:
-              "Ejecuta `git clone https://github.com/Tortoise-code-Z/portfolio` en tu terminal.",
+            title: { es: "Clonar el repositorio", en: "Clone the repository" },
+            description: {
+              es: "Ejecuta `git clone https://github.com/Tortoise-code-Z/portfolio` en tu terminal.",
+              en: "Run `git clone https://github.com/Tortoise-code-Z/portfolio` in your terminal.",
+            },
           },
           {
             id: 2,
-            title: "Instalar dependencias",
-            description:
-              "Navega al directorio del proyecto (`cd portfolio`) y ejecuta `npm install`.",
+            title: {
+              es: "Instalar dependencias",
+              en: "Install dependencies",
+            },
+            description: {
+              es: "Navega al directorio del proyecto (`cd portfolio`) y ejecuta `npm install`.",
+              en: "Navigate to the project directory (`cd portfolio`) and run `npm install`.",
+            },
           },
           {
             id: 3,
-            title: "Ejecutar en modo desarrollo",
-            description:
-              "Corre `npm run dev` y abre el enlace local en tu navegador para ver el portfolio.",
+            title: {
+              es: "Ejecutar en modo desarrollo",
+              en: "Run in development mode",
+            },
+            description: {
+              es: "Corre `npm run dev` y abre el enlace local en tu navegador para ver el portfolio.",
+              en: "Run `npm run dev` and open the local link in your browser to see the portfolio.",
+            },
           },
           {
             id: 4,
-            title: "Personalización",
-            description:
-              "Puedes editar los archivos en `/src/js/` y `/src/css/` para cambiar estilos, texto o estructura.",
+            title: { es: "Personalización", en: "Customization" },
+            description: {
+              es: "Puedes editar los archivos en `/src/js/` y `/src/css/` para cambiar estilos, texto o estructura.",
+              en: "You can edit the files in `/src/js/` and `/src/css/` to change styles, text or structure.",
+            },
           },
         ],
       },
@@ -897,7 +1162,7 @@ console.log(
   ],
   skills: [
     {
-      title: "Desarrollo web",
+      title: { es: "Desarrollo web", en: "Web development" },
       tools: [
         "html",
         "css",
@@ -910,11 +1175,11 @@ console.log(
     },
 
     {
-      title: "Librerías / Frameworks ",
+      title: { es: "Librerías / Frameworks ", en: "Libraries / Frameworks" },
       tools: ["bootstrap", "tailwind", "react + typescript"],
     },
     {
-      title: "Herramientas / Workflow",
+      title: { es: "Herramientas / Workflow", en: "Tools / Workflow" },
       tools: ["git", "github", "figma", "virtual machines"],
     },
   ],
@@ -922,7 +1187,10 @@ console.log(
   career: [
     {
       academy: "Academia#MasterD",
-      curse: "Curso de programación FullStack",
+      curse: {
+        es: "Curso de programación FullStack",
+        en: "FullStack programming course",
+      },
       tools: ["html", "css", "javascript", "php", "mysql", "apache", "git"],
       note: {
         state: true,
@@ -932,12 +1200,15 @@ console.log(
       year: "2023/2024",
       isFinished: {
         state: true,
-        msg: "En progreso",
+        msg: { es: "En progreso", en: "In progress" },
       },
     },
     {
       academy: "Academia#Hola#Mundo",
-      curse: "Curso de React / Typescript",
+      curse: {
+        es: "Curso de React / Typescript",
+        en: "React / Typescript course",
+      },
       tools: ["react", "typescript"],
       note: {
         state: false,
@@ -947,10 +1218,17 @@ console.log(
       year: "2025",
       isFinished: {
         state: true,
-        msg: "En progreso",
+        msg: { es: "En progreso", en: "In progress" },
       },
     },
   ],
 };
+
+/**
+ * Content database resolved to the active locale. Every `{ es, en }` field in
+ * `bbddRaw` is collapsed to its active-locale value, so consumers keep importing
+ * the default export and reading plain strings/arrays as before.
+ */
+const bbdd = localizeDeep(bbddRaw);
 
 export default bbdd;

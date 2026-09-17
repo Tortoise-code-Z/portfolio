@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach } from "vitest";
 import {
   isSupportedLocale,
   localize,
+  localizeDeep,
   setLocale,
   getLocale,
   t,
@@ -70,6 +71,61 @@ describe("t (UI strings)", () => {
   it("returns the key itself when the translation is missing", () => {
     setLocale("es", false);
     expect(t("nav.does.not.exist")).toBe("nav.does.not.exist");
+  });
+});
+
+describe("localizeDeep", () => {
+  it("resolves nested locale fields to the requested locale", () => {
+    const data = {
+      id: 7,
+      title: { es: "Hola", en: "Hi" },
+      about: {
+        description: { es: ["uno", "dos"], en: ["one", "two"] },
+      },
+    };
+    expect(localizeDeep(data, "en")).toEqual({
+      id: 7,
+      title: "Hi",
+      about: { description: ["one", "two"] },
+    });
+    expect(localizeDeep(data, "es")).toEqual({
+      id: 7,
+      title: "Hola",
+      about: { description: ["uno", "dos"] },
+    });
+  });
+
+  it("resolves locale fields inside arrays", () => {
+    const cards = [
+      { id: 1, title: { es: "Login", en: "Login" } },
+      { id: 2, title: { es: "Compra", en: "Purchase" } },
+    ];
+    expect(localizeDeep(cards, "en")).toEqual([
+      { id: 1, title: "Login" },
+      { id: 2, title: "Purchase" },
+    ]);
+  });
+
+  it("leaves non-translatable leaves untouched (code, urls, numbers)", () => {
+    const step = {
+      title: { es: "Ejecuta", en: "Run" },
+      type: "code",
+      description: "const x = { es: 1 };",
+      url: "https://example.com",
+      rating: 9.86,
+    };
+    expect(localizeDeep(step, "en")).toEqual({
+      title: "Run",
+      type: "code",
+      description: "const x = { es: 1 };",
+      url: "https://example.com",
+      rating: 9.86,
+    });
+  });
+
+  it("falls back to the default locale for a missing entry", () => {
+    const data = { label: { es: "Solo español" } };
+    expect(localizeDeep(data, "en")).toEqual({ label: "Solo español" });
   });
 });
 

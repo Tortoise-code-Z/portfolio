@@ -203,7 +203,9 @@ export function t(key) {
     getByPath(dictionaries[DEFAULT_LOCALE], key);
 
   if (typeof value !== "string") {
-    console.warn(`[i18n] Missing translation for key "${key}" (locale "${locale}").`);
+    console.warn(
+      `[i18n] Missing translation for key "${key}" (locale "${locale}").`
+    );
     return key;
   }
   return value;
@@ -222,7 +224,9 @@ function isLocaleField(value) {
     return false;
   }
   const keys = Object.keys(value);
-  return keys.length > 0 && keys.every((key) => SUPPORTED_LOCALES.includes(key));
+  return (
+    keys.length > 0 && keys.every((key) => SUPPORTED_LOCALES.includes(key))
+  );
 }
 
 /**
@@ -240,4 +244,34 @@ export function localize(field, locale = getLocale()) {
   if (!isLocaleField(field)) return field;
   const value = field[locale];
   return value !== undefined ? value : field[DEFAULT_LOCALE];
+}
+
+/**
+ * Deeply resolves every per-field locale object within a data structure to the
+ * active locale, leaving non-translatable values untouched.
+ *
+ * Walks objects and arrays recursively. At each node, if the value is a locale
+ * field (`{ es, en }`) it is resolved with {@link localize}; otherwise the walk
+ * continues into its children. Plain values (strings, numbers, code snippets,
+ * URLs) pass through unchanged. Used to expose the content database (`bbdd.js`)
+ * pre-resolved so consumers never deal with locale objects.
+ *
+ * @function localizeDeep
+ * @param {*} value - Any value: a locale field, an object, an array, or a leaf.
+ * @param {string} [locale=getLocale()] - Optional explicit locale (for tests).
+ * @returns {*} A structurally-equivalent value with locale fields resolved.
+ */
+export function localizeDeep(value, locale = getLocale()) {
+  if (isLocaleField(value)) return localize(value, locale);
+  if (Array.isArray(value)) {
+    return value.map((item) => localizeDeep(item, locale));
+  }
+  if (value !== null && typeof value === "object") {
+    const result = {};
+    for (const [key, val] of Object.entries(value)) {
+      result[key] = localizeDeep(val, locale);
+    }
+    return result;
+  }
+  return value;
 }
