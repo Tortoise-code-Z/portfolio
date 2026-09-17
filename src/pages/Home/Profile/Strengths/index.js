@@ -1,9 +1,9 @@
-import InfiniteSlider from "../../../../components/InfiniteSlider";
-import bbdd from "../../../../const/database/bbdd";
-import { createElement } from "../../../../js/utils/createElementsHelper";
-import { append } from "../../../../js/utils/domHelpers";
-import { fadeInObserver } from "../../../../js/utils/utils";
-import StrengthSlide from "./StrenghtSlide";
+import InfiniteSlider from "../../../../components/InfiniteSlider/index.js";
+import bbdd from "../../../../const/database/bbdd.js";
+import { createElement } from "../../../../js/utils/createElementsHelper.js";
+import { append } from "../../../../js/utils/domHelpers.js";
+import { fadeInObserver } from "../../../../js/utils/utils.js";
+import StrengthSlide from "./StrenghtSlide/index.js";
 import "./index.css";
 
 /**

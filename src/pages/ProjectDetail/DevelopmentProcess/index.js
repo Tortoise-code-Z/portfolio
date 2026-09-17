@@ -1,16 +1,16 @@
-import { createElement } from "../../../js/utils/createElementsHelper";
+import { createElement } from "../../../js/utils/createElementsHelper.js";
 import {
   fadeInObserver,
   getQueryParams,
   navbarObserver,
-} from "../../../js/utils/utils";
+} from "../../../js/utils/utils.js";
 import "./index.css";
-import bbdd from "../../../const/database/bbdd";
-import { append } from "../../../js/utils/domHelpers";
-import FloatingTitle from "../../../components/FloatingTitle";
-import { svg } from "../../../const/database/bbdd_consts";
-import Cards from "../../../components/Cards";
-import NoteMsg from "../../../components/noteMsg";
+import bbdd from "../../../const/database/bbdd.js";
+import { append } from "../../../js/utils/domHelpers.js";
+import FloatingTitle from "../../../components/FloatingTitle/index.js";
+import { svg } from "../../../const/database/bbdd_consts.js";
+import Cards from "../../../components/Cards/index.js";
+import NoteMsg from "../../../components/noteMsg/index.js";
 
 /**
  * Renders the "Development Process" section for the project detail view.
@@ -22,7 +22,7 @@ import NoteMsg from "../../../components/noteMsg";
  * @returns {HTMLElement} The section element containing the development process documentation.
  */
 
-export default function DevelopmentProcess({} = {}) {
+export default function DevelopmentProcess() {
   const id = getQueryParams("id");
   const work = bbdd.works.find((work) => work.id === Number(id));
 

@@ -1,9 +1,9 @@
 import "./index.css";
-import { createElement } from "../../../../../js/utils/createElementsHelper";
-import { append } from "../../../../../js/utils/domHelpers";
-import { getImage } from "../../../../../js/utils/images";
-import { svg } from "../../../../../const/database/bbdd_consts";
-import { validateProps } from "../../../../../js/utils/argumentsValidation";
+import { createElement } from "../../../../../js/utils/createElementsHelper.js";
+import { append } from "../../../../../js/utils/domHelpers.js";
+import { getImage } from "../../../../../js/utils/images.js";
+import { svg } from "../../../../../const/database/bbdd_consts.js";
+import { validateProps } from "../../../../../js/utils/argumentsValidation.js";
 
 /**
  * @typedef {Object} WorkFrontFlipCardProps

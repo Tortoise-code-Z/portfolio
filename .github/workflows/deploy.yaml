@@ -1,4 +1,4 @@
-name: Despliegue Portfolio a GitHub Pages
+name: Deploy Portfolio to GitHub Pages
 
 on:
     push:
@@ -11,7 +11,6 @@ jobs:
         environment:
             name: github-pages
 
-        # Ya no necesitamos 'packages: read'
         permissions:
             contents: read
             pages: write
@@ -26,12 +25,11 @@ jobs:
               with:
                   node-version: "20"
 
-            - name: Instalar Dependencias Restantes (Si hay otras)
+            - name: Install dependencies
               run: npm install
 
-            - name: Limpiar Caché de Vite y Compilación Anterior
+            - name: Clean Vite cache and previous build
               run: |
-                  # Necesario para que Vite genere el build limpio
                   rm -rf .vite
                   rm -rf dist
 

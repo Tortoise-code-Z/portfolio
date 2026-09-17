@@ -52,6 +52,12 @@
 
 @media all and (max-width: 500px) {
   .work-flip-card {
-    height: min(80%, 80vw) !important;
+    height: min(100%, 85vw) !important;
+  }
+}
+
+@media all and (max-height: 500px) {
+  .work-flip-card {
+    height: min(85%, 70vw) !important;
   }
 }

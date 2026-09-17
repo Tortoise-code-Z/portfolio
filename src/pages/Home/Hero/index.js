@@ -1,6 +1,6 @@
-import cloneTemplate from "../../../js/utils/cloneTemplate";
-import { getElement } from "../../../js/utils/domHelpers";
-import { fadeInObserver, navbarObserver } from "../../../js/utils/utils";
+import cloneTemplate from "../../../js/utils/cloneTemplate.js";
+import { getElement } from "../../../js/utils/domHelpers.js";
+import { fadeInObserver, navbarObserver } from "../../../js/utils/utils.js";
 import "./index.css";
 import template from "./index.html?raw";
 
@@ -14,7 +14,7 @@ import template from "./index.html?raw";
  * @returns {HTMLElement} The hero section element with initialized observers and animations.
  */
 
-export default function Hero({} = {}) {
+export default function Hero() {
   const hero = getElement(
     ".hero",
     cloneTemplate(template, "home-hero-template"),

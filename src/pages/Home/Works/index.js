@@ -1,9 +1,9 @@
-import { createElement } from "../../../js/utils/createElementsHelper";
-import { navbarObserver } from "../../../js/utils/utils";
-import WritteMachineTitle from "../../../components/WritteMachineTitle";
+import { createElement } from "../../../js/utils/createElementsHelper.js";
+import { navbarObserver } from "../../../js/utils/utils.js";
+import WritteMachineTitle from "../../../components/WritteMachineTitle/index.js";
 import "./index.css";
 import { append } from "../../../js/utils/domHelpers.js";
-import WorkItemsContainer from "./WorkItemsContainer";
+import WorkItemsContainer from "./WorkItemsContainer/index.js";
 
 /**
  * Component that generates the main Projects (Works) section of the portfolio.
@@ -15,7 +15,7 @@ import WorkItemsContainer from "./WorkItemsContainer";
  * @returns {HTMLElement} The section element containing the project gallery.
  */
 
-export default function Works({} = {}) {
+export default function Works() {
   const section = createElement({
     tag: "section",
     classNames: ["s-works"],

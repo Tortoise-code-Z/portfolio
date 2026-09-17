@@ -1,11 +1,14 @@
-import { validateProps } from "../../js/utils/argumentsValidation";
-import { createElement, createHtag } from "../../js/utils/createElementsHelper";
-import { append } from "../../js/utils/domHelpers";
+import { validateProps } from "../../js/utils/argumentsValidation.js";
+import {
+  createElement,
+  createHtag,
+} from "../../js/utils/createElementsHelper.js";
+import { append } from "../../js/utils/domHelpers.js";
 import {
   createIntersectionObserver,
   fadeInObserver,
   writteDeleteMachine,
-} from "../../js/utils/utils";
+} from "../../js/utils/utils.js";
 import "./index.css";
 
 /**

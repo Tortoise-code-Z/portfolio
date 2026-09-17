@@ -1,20 +1,20 @@
-import FloatingTitle from "../../../components/FloatingTitle";
-import bbdd from "../../../const/database/bbdd";
-import { svg } from "../../../const/database/bbdd_consts";
-import { createElement } from "../../../js/utils/createElementsHelper";
-import { append } from "../../../js/utils/domHelpers";
+import FloatingTitle from "../../../components/FloatingTitle/index.js";
+import bbdd from "../../../const/database/bbdd.js";
+import { svg } from "../../../const/database/bbdd_consts.js";
+import { createElement } from "../../../js/utils/createElementsHelper.js";
+import { append } from "../../../js/utils/domHelpers.js";
 import {
   fadeInObserver,
   getQueryParams,
   navbarObserver,
-} from "../../../js/utils/utils";
+} from "../../../js/utils/utils.js";
 import "./index.css";
 import Prism from "prismjs";
 import "prismjs/components/prism-javascript";
 import "prismjs/components/prism-css";
 import "prismjs/themes/prism-twilight.css";
 import "prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard";
-import NoteMsg from "../../../components/noteMsg";
+import NoteMsg from "../../../components/noteMsg/index.js";
 
 /**
  * Renders the "Additional Configurations" section for a project.
@@ -26,7 +26,7 @@ import NoteMsg from "../../../components/noteMsg";
  * @returns {HTMLElement} The section element containing the technical documentation and steps.
  */
 
-export default function AditionalConfigs({} = {}) {
+export default function AditionalConfigs() {
   const id = getQueryParams("id");
   const currentWork = bbdd.works.find((w) => w.id === Number(id));
 
@@ -143,7 +143,7 @@ export default function AditionalConfigs({} = {}) {
       desc: workWarningMsg.description,
     });
 
-    append(container, [warningMsg]);
+    append(section, [warningMsg]);
   }
 
   const workNoteMsg = currentWork.config?.noteMsg;

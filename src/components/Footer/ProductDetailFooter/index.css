@@ -49,3 +49,8 @@
   gap: 20px;
   flex-wrap: wrap;
 }
+
+.default-footer__email {
+  display: flex;
+  flex-wrap: wrap;
+}

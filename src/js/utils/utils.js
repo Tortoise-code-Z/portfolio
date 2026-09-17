@@ -1,4 +1,4 @@
-import { validateProps } from "./argumentsValidation";
+import { validateProps } from "./argumentsValidation.js";
 
 /**
  * Toggles the visibility of an element based on the scroll direction.

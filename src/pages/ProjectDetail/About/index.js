@@ -3,13 +3,13 @@ import {
   fadeInObserver,
   getQueryParams,
   navbarObserver,
-} from "../../../js/utils/utils";
-import { createElement } from "../../../js/utils/createElementsHelper";
-import { svg } from "../../../const/database/bbdd_consts";
-import FloatingTitle from "../../../components/FloatingTitle";
-import bbdd from "../../../const/database/bbdd";
-import { append } from "../../../js/utils/domHelpers";
-import Cards from "../../../components/Cards";
+} from "../../../js/utils/utils.js";
+import { createElement } from "../../../js/utils/createElementsHelper.js";
+import { svg } from "../../../const/database/bbdd_consts.js";
+import FloatingTitle from "../../../components/FloatingTitle/index.js";
+import bbdd from "../../../const/database/bbdd.js";
+import { append } from "../../../js/utils/domHelpers.js";
+import Cards from "../../../components/Cards/index.js";
 
 /**
  * Renders the "About Project" section for the Project Detail page.
@@ -21,7 +21,7 @@ import Cards from "../../../components/Cards";
  * @returns {HTMLElement} The constructed section element containing project details.
  */
 
-export default function AboutProject({} = {}) {
+export default function AboutProject() {
   const id = getQueryParams("id");
   const work = bbdd.works.find((work) => work.id === Number(id));
 

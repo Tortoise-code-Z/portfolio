@@ -1,11 +1,11 @@
-import FloatingTitle from "../../../components/FloatingTitle";
-import { svg } from "../../../const/database/bbdd_consts";
-import { createElement } from "../../../js/utils/createElementsHelper";
-import { getQueryParams, navbarObserver } from "../../../js/utils/utils";
+import FloatingTitle from "../../../components/FloatingTitle/index.js";
+import { svg } from "../../../const/database/bbdd_consts.js";
+import { createElement } from "../../../js/utils/createElementsHelper.js";
+import { getQueryParams, navbarObserver } from "../../../js/utils/utils.js";
 import "./index.css";
-import ImagesSlider from "../../../components/ImagesSlider";
-import bbdd from "../../../const/database/bbdd";
-import { append } from "../../../js/utils/domHelpers";
+import ImagesSlider from "../../../components/ImagesSlider/index.js";
+import bbdd from "../../../const/database/bbdd.js";
+import { append } from "../../../js/utils/domHelpers.js";
 
 /**
  * Renders the "Gallery" section for the project detail view.
@@ -17,7 +17,7 @@ import { append } from "../../../js/utils/domHelpers";
  * @returns {HTMLElement} The section element containing the project screenshot gallery.
  */
 
-export default function Gallery({} = {}) {
+export default function Gallery() {
   // validations
 
   const id = getQueryParams("id");

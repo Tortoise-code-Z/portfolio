@@ -1,9 +1,9 @@
-import cloneTemplate from "../../js/utils/cloneTemplate";
+import cloneTemplate from "../../js/utils/cloneTemplate.js";
 import template from "./navbarProductDetail.html?raw";
 import templateDefault from "./navbar.html?raw";
-import "./index.css";
-import { scrollVisibilitty } from "../../js/utils/utils";
-import { getElement } from "../../js/utils/domHelpers";
+import "./Navbar.css";
+import { scrollVisibilitty } from "../../js/utils/utils.js";
+import { getElement } from "../../js/utils/domHelpers.js";
 
 /**
  * Component that generates the site's main navigation bar.
@@ -14,7 +14,7 @@ import { getElement } from "../../js/utils/domHelpers";
  * @returns {HTMLElement} The DOM element representing the main navigation.
  */
 
-export default function Navbar({} = {}) {
+export default function Navbar() {
   const navbar = getElement(
     ".navbar",
     cloneTemplate(templateDefault, "navbar-template"),
@@ -34,7 +34,7 @@ export default function Navbar({} = {}) {
  * @returns {HTMLElement} The DOM element representing the product detail navigation.
  */
 
-export function NavbarProductDetail({} = {}) {
+export function NavbarProductDetail() {
   const navbar = getElement(
     ".navbar",
     cloneTemplate(template, "navbar-template-pd"),

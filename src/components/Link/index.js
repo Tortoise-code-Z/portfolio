@@ -1,5 +1,5 @@
-import { validateProps } from "../../js/utils/argumentsValidation";
-import { createElement } from "../../js/utils/createElementsHelper";
+import { validateProps } from "../../js/utils/argumentsValidation.js";
+import { createElement } from "../../js/utils/createElementsHelper.js";
 import "../Button/index.css";
 import "./index.css";
 
@@ -71,7 +71,7 @@ export default function Link({
     },
   });
 
-  // Si hay parámetros, los añadimos a la URL
+  // If there are params, append them to the URL
   let finalHref = href;
   if (Object.keys(params).length > 0) {
     const urlObj = new URL(href, window.location.origin);

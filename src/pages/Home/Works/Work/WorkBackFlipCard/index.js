@@ -1,17 +1,16 @@
 import "./index.css";
-import { getImage } from "../../../../../js/utils/images";
+import { getImage } from "../../../../../js/utils/images.js";
 import {
   append,
   getElement,
   setAttributes,
   setText,
-} from "../../../../../js/utils/domHelpers";
+} from "../../../../../js/utils/domHelpers.js";
 import template from "./index.html?raw";
-import cloneTemplate from "../../../../../js/utils/cloneTemplate";
-import { svg } from "../../../../../const/database/bbdd_consts";
-import Link from "../../../../../components/Link";
-import projectDetailUrl from "../../../../ProjectDetail/index.html?url";
-import { validateProps } from "../../../../../js/utils/argumentsValidation";
+import cloneTemplate from "../../../../../js/utils/cloneTemplate.js";
+import { svg } from "../../../../../const/database/bbdd_consts.js";
+import Link from "../../../../../components/Link/index.js";
+import { validateProps } from "../../../../../js/utils/argumentsValidation.js";
 
 /**
  * @typedef {Object} WorkBackFlipCardProps
@@ -119,6 +118,8 @@ export default function WorkBackFlipCard(props = {}) {
     target: "_blank",
     icon: svg.code,
   });
+
+  const projectDetailUrl = `${import.meta.env.BASE_URL}src/pages/ProjectDetail/index.html`;
 
   const moreInfo = Link({
     title: "Ir a detalle",

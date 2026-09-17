@@ -1,14 +1,14 @@
-import { attachEvent } from "../../js/utils/utils";
+import { attachEvent } from "../../js/utils/utils.js";
 import "./index.css";
 import template from "./index.html?raw";
-import cloneTemplate from "../../js/utils/cloneTemplate";
+import cloneTemplate from "../../js/utils/cloneTemplate.js";
 import {
   addClass,
   append,
   getElement,
   toggleClass,
-} from "../../js/utils/domHelpers";
-import { validateProps } from "../../js/utils/argumentsValidation";
+} from "../../js/utils/domHelpers.js";
+import { validateProps } from "../../js/utils/argumentsValidation.js";
 
 /**
  * @typedef {Object} FlipCardProps

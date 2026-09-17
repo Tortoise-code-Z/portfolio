@@ -1,14 +1,17 @@
-import cloneTemplate from "../../../../js/utils/cloneTemplate";
-import { createElement } from "../../../../js/utils/createElementsHelper";
+import cloneTemplate from "../../../../js/utils/cloneTemplate.js";
+import { createElement } from "../../../../js/utils/createElementsHelper.js";
 import {
   append,
   getElement,
   setAttributes,
-} from "../../../../js/utils/domHelpers";
+} from "../../../../js/utils/domHelpers.js";
 import template from "./index.html?raw";
-import bbdd from "../../../../const/database/bbdd";
+import bbdd from "../../../../const/database/bbdd.js";
 import AboutImg from "../../../../assets/images/about.gif";
-import { fadeInObserver, parseMarkdownBold } from "../../../../js/utils/utils";
+import {
+  fadeInObserver,
+  parseMarkdownBold,
+} from "../../../../js/utils/utils.js";
 import "./index.css";
 
 /**
