@@ -70,6 +70,9 @@ export const es = {
   misc: {
     noDescription: "Sin descripción",
   },
+  config: {
+    step: "Paso",
+  },
   meta: {
     title: "Portfolio - Desarrollador Frontend Web",
     description:

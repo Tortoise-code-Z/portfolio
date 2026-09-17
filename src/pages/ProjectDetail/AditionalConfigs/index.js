@@ -65,7 +65,7 @@ export default function AditionalConfigs() {
 
     fadeInObserver(
       item,
-      `animated-element--fade-in-${index % 2 === 0 ? "left" : "right"}`,
+      `animated-element--fade-in-${index % 2 === 0 ? "left" : "right"}`
     );
 
     append(description, [item]);
@@ -97,7 +97,7 @@ export default function AditionalConfigs() {
     const titleText = createElement({
       tag: "span",
       classNames: ["config__step-title-text"],
-      innerText: `Paso ${index + 1}: ${step.title}`,
+      innerText: `${t("config.step")} ${index + 1}: ${step.title}`,
     });
 
     const title = createElement({
