@@ -13,28 +13,28 @@
 export function validateProp(name, value, type, allowedValues = null) {
   const types = Array.isArray(type) ? type : [type];
 
-  // 1. Manejo de nulos y indefinidos (Short-circuit)
+  // 1. Handle null and undefined (short-circuit)
   if (value === null && types.includes("null")) return true;
   if (value === undefined && types.includes("undefined")) return true;
 
-  // 2. Validación de tipos técnica
+  // 2. Technical type validation
   const isValid = types.some((t) => {
-    // Caso especial: Arrays
+    // Special case: Arrays
     if (t === "array") return Array.isArray(value);
 
-    // Caso especial: DOM Nodes (Seguro para Node.js y Navegador)
+    // Special case: DOM Nodes (safe for Node.js and the browser)
     if (t === "HTMLElement" || t === "Node") {
       return typeof value === "object" && value !== null && "nodeType" in value;
     }
 
-    // Caso especial: Funciones y Clases
+    // Special case: Functions and Classes
     if (t === "function") return typeof value === "function";
 
-    // Verificación por Constructor (Date, RegExp, AsyncFunction, etc.)
+    // Check by constructor (Date, RegExp, AsyncFunction, etc.)
     const constructorName = value?.constructor?.name?.toLowerCase();
     if (constructorName === t.toLowerCase()) return true;
 
-    // Verificación por typeof estándar (string, number, boolean, etc.)
+    // Check by standard typeof (string, number, boolean, etc.)
     return typeof value === t;
   });
 
@@ -46,7 +46,7 @@ export function validateProp(name, value, type, allowedValues = null) {
     );
   }
 
-  // 3. Validación de valores permitidos
+  // 3. Allowed-values validation
   if (allowedValues && !allowedValues.includes(value)) {
     throw new RangeError(
       `"${name}" → Solo se permiten los valores: ${allowedValues.join(", ")}. Recibido: ${value}`,
