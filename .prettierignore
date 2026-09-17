@@ -1,7 +1,0 @@
-dist
-docs
-out
-node_modules
-package-lock.json
-favicon.ico
-*.min.js

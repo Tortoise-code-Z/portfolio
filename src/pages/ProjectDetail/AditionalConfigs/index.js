@@ -26,7 +26,7 @@ import NoteMsg from "../../../components/noteMsg/index.js";
  * @returns {HTMLElement} The section element containing the technical documentation and steps.
  */
 
-export default function AditionalConfigs() {
+export default function AditionalConfigs({} = {}) {
   const id = getQueryParams("id");
   const currentWork = bbdd.works.find((w) => w.id === Number(id));
 
@@ -143,7 +143,7 @@ export default function AditionalConfigs() {
       desc: workWarningMsg.description,
     });
 
-    append(section, [warningMsg]);
+    append(container, [warningMsg]);
   }
 
   const workNoteMsg = currentWork.config?.noteMsg;

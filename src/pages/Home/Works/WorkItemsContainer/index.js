@@ -14,7 +14,7 @@ import "./index.css";
  * @returns {HTMLDivElement} The container element holding the collection of project cards.
  */
 
-export default function WorkItemsContainer() {
+export default function WorkItemsContainer({} = {}) {
   const container = createElement({
     tag: "div",
     classNames: ["s-works__items-container"],

@@ -14,7 +14,7 @@ import { getElement } from "../../js/utils/domHelpers.js";
  * @returns {HTMLElement} The DOM element representing the main navigation.
  */
 
-export default function Navbar() {
+export default function Navbar({} = {}) {
   const navbar = getElement(
     ".navbar",
     cloneTemplate(templateDefault, "navbar-template"),
@@ -34,7 +34,7 @@ export default function Navbar() {
  * @returns {HTMLElement} The DOM element representing the product detail navigation.
  */
 
-export function NavbarProductDetail() {
+export function NavbarProductDetail({} = {}) {
   const navbar = getElement(
     ".navbar",
     cloneTemplate(template, "navbar-template-pd"),

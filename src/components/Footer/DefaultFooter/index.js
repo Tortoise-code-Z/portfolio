@@ -16,7 +16,7 @@ import "./index.css";
  * @returns {HTMLElement} The DOM element representing the footer.
  */
 
-export default function DefaultFooter() {
+export default function DefaultFooter({} = {}) {
   const defaultFooter = getElement(
     ".default-fouter",
     cloneTemplate(template, "default-footer-template"),
