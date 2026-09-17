@@ -71,7 +71,7 @@ export default function Link({
     },
   });
 
-  // Si hay parámetros, los añadimos a la URL
+  // If there are params, append them to the URL
   let finalHref = href;
   if (Object.keys(params).length > 0) {
     const urlObj = new URL(href, window.location.origin);

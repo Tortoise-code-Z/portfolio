@@ -16,7 +16,7 @@ import { svg } from "../../../const/database/bbdd_consts.js";
  * @returns {HTMLElement} The section element containing the profile information and strengths.
  */
 
-export default function Profile({} = {}) {
+export default function Profile() {
   const section = createElement({
     tag: "section",
     classNames: ["s-about"],

@@ -27,7 +27,7 @@ import "./index.css";
  */
 
 export default function InfiniteSlider({
-  slideComponent = ({ data }) => HTMLElement,
+  slideComponent = () => HTMLElement,
   dataSlides = [],
   duplicationSlides = 3,
   direction = "left",

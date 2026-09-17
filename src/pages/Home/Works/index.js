@@ -15,7 +15,7 @@ import WorkItemsContainer from "./WorkItemsContainer/index.js";
  * @returns {HTMLElement} The section element containing the project gallery.
  */
 
-export default function Works({} = {}) {
+export default function Works() {
   const section = createElement({
     tag: "section",
     classNames: ["s-works"],
