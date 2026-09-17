@@ -19,11 +19,11 @@ import LanguageSwitcher from "../LanguageSwitcher/index.js";
 export default function Navbar() {
   const navbar = getElement(
     ".navbar",
-    cloneTemplate(templateDefault, "navbar-template"),
+    cloneTemplate(templateDefault, "navbar-template")
   );
 
   getElement('a[href="#works"]', navbar).textContent = t("nav.works");
-  append(navbar, [LanguageSwitcher()]);
+  append(getElement(".navbar__group", navbar), [LanguageSwitcher()]);
 
   scrollVisibilitty(navbar, "navbar--hidden", "navbar--visible");
 
@@ -42,11 +42,11 @@ export default function Navbar() {
 export function NavbarProductDetail() {
   const navbar = getElement(
     ".navbar",
-    cloneTemplate(template, "navbar-template-pd"),
+    cloneTemplate(template, "navbar-template-pd")
   );
 
   getElement('a[href="#tech-stack"]', navbar).textContent = t("nav.techStack");
-  append(navbar, [LanguageSwitcher()]);
+  append(getElement(".navbar__group", navbar), [LanguageSwitcher()]);
 
   scrollVisibilitty(navbar, "navbar--hidden", "navbar--visible");
 
