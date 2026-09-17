@@ -197,7 +197,7 @@ export function append(parent, children) {
  * @throws {TypeError} If the element is not an HTMLElement or the htmlString is not a string.
  * * @example
  * const container = getElement('#container');
- * setHTML(container, '<h1>Hola Mundo</h1><p>Esto es contenido dinámico.</p>');
+ * setHTML(container, '<h1>Hello World</h1><p>This is dynamic content.</p>');
  */
 export const setHTML = (element, htmlString) => {
   validateProps({

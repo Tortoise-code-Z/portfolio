@@ -41,17 +41,17 @@
 }
 
 .config__step-pre {
-    /* 1. Define la altura máxima */
-    max-height: 400px; /* Puedes ajustar este valor (ej. 300px, 50vh, etc.) */
+    /* 1. Define the max height */
+    max-height: 400px; /* You can adjust this value (e.g. 300px, 50vh, etc.) */
 
-    /* 2. Activa la barra de desplazamiento vertical (scroll) */
-    /* 'auto' mostrará el scroll solo si el contenido excede la altura máxima */
+    /* 2. Enable the vertical scrollbar */
+    /* 'auto' shows the scrollbar only if the content exceeds the max height */
     overflow-y: auto;
 
-    /* 3. Mantiene el scroll horizontal (como ya habíamos visto) */
+    /* 3. Keep the horizontal scroll (as seen before) */
     overflow-x: auto;
 
-    /* Opcional: Estilo básico para que se vea bien */
+    /* Optional: basic styling so it looks good */
     padding: 15px;
     white-space: pre-wrap;
 }

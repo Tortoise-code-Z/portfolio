@@ -14,7 +14,7 @@ import template from "./index.html?raw";
  * @returns {HTMLElement} The hero section element with initialized observers and animations.
  */
 
-export default function Hero({} = {}) {
+export default function Hero() {
   const hero = getElement(
     ".hero",
     cloneTemplate(template, "home-hero-template"),

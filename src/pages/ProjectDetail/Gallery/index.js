@@ -17,7 +17,7 @@ import { append } from "../../../js/utils/domHelpers.js";
  * @returns {HTMLElement} The section element containing the project screenshot gallery.
  */
 
-export default function Gallery({} = {}) {
+export default function Gallery() {
   // validations
 
   const id = getQueryParams("id");
