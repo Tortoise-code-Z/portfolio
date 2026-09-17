@@ -1,4 +1,4 @@
-/* 1. Outer container: sets up the 3D context */
+/* 1. Contenedor Exterior: Establece el contexto 3D */
 .flip-card {
   background-color: transparent;
   width: 300px;
@@ -7,62 +7,62 @@
   cursor: pointer;
 }
 
-/* 2. Inner container: this is the one that actually rotates */
+/* 2. Contenedor Interior: Es el que realmente rota */
 .flip-card-inner {
   position: relative;
   width: 100%;
   height: 100%;
-  transition: transform 0.6s ease-in-out; /* Animation speed */
-  transform-style: preserve-3d; /* Allows children to live in a 3D space */
+  transition: transform 0.6s ease-in-out; /* Velocidad de la animación */
+  transform-style: preserve-3d; /* Permite que los hijos estén en un espacio 3D */
 }
 
-/* 3. Flip class: added with JavaScript */
+/* 3. Clase de Volteo: Se añade con JavaScript */
 .flip-card.flipped .flip-card-inner {
   transform: rotateY(180deg);
 }
 
-/* 2. EDGE STYLES (the thickness) */
+/* 2. ESTILOS DE BORDE (El Espesor) */
 .flip-card-edge {
-  /* Positioning: covers the left side of the card */
+  /* Posicionamiento: Cubre el lado izquierdo de la tarjeta */
   position: absolute;
   top: 0;
   left: 0;
 
-  /* Dimensions: card height, and 10px wide for the thickness */
-  width: 20px; /* <--- VISIBLE THICKNESS */
+  /* Dimensiones: Alto de la tarjeta, y 10px de ancho para el grosor */
+  width: 20px; /* <--- GROSOR VISIBLE */
   height: 100%;
 
-  background-color: rgb(var(--bcc-black)); /* Edge color */
+  background-color: rgb(var(--bcc-black)); /* Color del borde */
 
-  /* 3. INITIAL 3D PLACEMENT */
-  /* Moves the side face to its final 3D position */
+  /* 3. COLOCACIÓN 3D INICIAL */
+  /* Mueve la cara lateral a su posición 3D final */
   transform: rotateY(-90deg) translateZ(10px);
-  /* - rotateY(-90deg): rotates 90 degrees so the long side (200px) is horizontal.
-       - translateZ(5px): moves the edge toward the center. (5px is half of 10px)
+  /* - rotateY(-90deg): Gira 90 grados para que el lado largo (200px) esté horizontal.
+       - translateZ(5px): Mueve el borde hacia el centro. (5px es la mitad de 10px)
     */
 
-  /* 4. Visibility while rotating */
+  /* 4. Visibilidad al rotar */
   backface-visibility: hidden;
 }
 
-/* 4. Faces: positioning and visibility */
+/* 4. Caras: Posicionamiento y Visibilidad */
 .flip-card-front,
 .flip-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
-  /* Hides the back of the face while rotating */
+  /* Oculta la parte trasera de la cara al rotar */
   backface-visibility: hidden;
   border-radius: 5px;
   overflow: hidden;
 }
 
-/* 5. Face-specific styles */
+/* 5. Estilos Específicos de las Caras */
 .flip-card-front {
   transform: translateZ(10px);
 }
 
 .flip-card-back {
-  /* Rotates 180deg to place it 'behind' the front face at the start */
+  /* Rota 180deg para colocarla 'detrás' de la cara frontal en el inicio */
   transform: rotateY(180deg) translateZ(10px);
 }

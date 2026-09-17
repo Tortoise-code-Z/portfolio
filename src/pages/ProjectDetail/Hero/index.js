@@ -26,7 +26,7 @@ import template from "./index.html?raw";
  * @returns {HTMLElement} The populated Hero section element.
  */
 
-export default function Hero() {
+export default function Hero({} = {}) {
   const id = getQueryParams("id");
   const currentWork = bbdd.works.find((work) => work.id === Number(id));
 

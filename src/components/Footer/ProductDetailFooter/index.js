@@ -21,7 +21,7 @@ import "./index.css";
  * @returns {HTMLElement} The DOM element representing the product detail footer.
  */
 
-export function ProductDetailFooter() {
+export function ProductDetailFooter({} = {}) {
   const footer = getElement(
     ".footer-proyect-detail",
     cloneTemplate(template, "proyect-detail-footer-template"),

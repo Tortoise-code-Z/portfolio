@@ -20,7 +20,7 @@ import TechStackDesign from "./TechStackDesign/index.js";
  * @returns {HTMLElement} The section element containing the categorized tech stack.
  */
 
-export default function TechStack() {
+export default function TechStack({} = {}) {
   const id = getQueryParams("id");
   const currentWork = bbdd.works.find((work) => work.id === Number(id));
 

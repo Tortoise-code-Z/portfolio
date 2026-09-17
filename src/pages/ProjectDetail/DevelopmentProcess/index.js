@@ -22,7 +22,7 @@ import NoteMsg from "../../../components/noteMsg/index.js";
  * @returns {HTMLElement} The section element containing the development process documentation.
  */
 
-export default function DevelopmentProcess() {
+export default function DevelopmentProcess({} = {}) {
   const id = getQueryParams("id");
   const work = bbdd.works.find((work) => work.id === Number(id));
 
