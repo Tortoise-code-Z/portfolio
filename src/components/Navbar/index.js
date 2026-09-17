@@ -3,7 +3,9 @@ import template from "./navbarProductDetail.html?raw";
 import templateDefault from "./navbar.html?raw";
 import "./Navbar.css";
 import { scrollVisibilitty } from "../../js/utils/utils.js";
-import { getElement } from "../../js/utils/domHelpers.js";
+import { append, getElement } from "../../js/utils/domHelpers.js";
+import { t } from "../../js/i18n/index.js";
+import LanguageSwitcher from "../LanguageSwitcher/index.js";
 
 /**
  * Component that generates the site's main navigation bar.
@@ -19,6 +21,9 @@ export default function Navbar() {
     ".navbar",
     cloneTemplate(templateDefault, "navbar-template"),
   );
+
+  getElement('a[href="#works"]', navbar).textContent = t("nav.works");
+  append(navbar, [LanguageSwitcher()]);
 
   scrollVisibilitty(navbar, "navbar--hidden", "navbar--visible");
 
@@ -39,6 +44,9 @@ export function NavbarProductDetail() {
     ".navbar",
     cloneTemplate(template, "navbar-template-pd"),
   );
+
+  getElement('a[href="#tech-stack"]', navbar).textContent = t("nav.techStack");
+  append(navbar, [LanguageSwitcher()]);
 
   scrollVisibilitty(navbar, "navbar--hidden", "navbar--visible");
 

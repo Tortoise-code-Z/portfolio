@@ -1,3 +1,4 @@
+import { t } from "../../../js/i18n/index.js";
 import { createElement } from "../../../js/utils/createElementsHelper.js";
 import {
   fadeInObserver,
@@ -37,7 +38,7 @@ export default function DevelopmentProcess() {
   navbarObserver(container);
 
   const title = FloatingTitle({
-    text: "Proceso de desarrollo",
+    text: t("sections.developmentProcess"),
     icon: svg.process,
     theme: "light",
     iconPosition: "left",

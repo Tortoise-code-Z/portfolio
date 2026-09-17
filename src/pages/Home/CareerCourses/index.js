@@ -1,3 +1,4 @@
+import { t } from "../../../js/i18n/index.js";
 import WritteMachineTitle from "../../../components/WritteMachineTitle/index.js";
 import bbdd from "../../../const/database/bbdd.js";
 import { createElement } from "../../../js/utils/createElementsHelper.js";
@@ -28,9 +29,9 @@ export default function Career() {
 
   const title = WritteMachineTitle({
     classNames: ["s-career__title"],
-    fixText: "Car",
-    dinamicInitText: "arer",
-    dinamicFinalText: "rera",
+    fixText: t("machineTitle.career.fix"),
+    dinamicInitText: t("machineTitle.career.init"),
+    dinamicFinalText: t("machineTitle.career.final"),
   });
 
   const courses = createElement({

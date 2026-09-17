@@ -1,3 +1,4 @@
+import { t } from "../../../../js/i18n/index.js";
 import InfiniteSlider from "../../../../components/InfiniteSlider/index.js";
 import { validateProps } from "../../../../js/utils/argumentsValidation.js";
 import { createElement } from "../../../../js/utils/createElementsHelper.js";
@@ -51,7 +52,7 @@ export default function TechStackTools(props = {}) {
         innerText: data.data,
       });
     },
-    dataSlides: ["Programación y herramientas"],
+    dataSlides: [t("techStackSlides.tools")],
     duplicationSlides: 5,
   });
 

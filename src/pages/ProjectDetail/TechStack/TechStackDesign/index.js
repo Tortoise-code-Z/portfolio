@@ -1,3 +1,4 @@
+import { t } from "../../../../js/i18n/index.js";
 import InfiniteSlider from "../../../../components/InfiniteSlider/index.js";
 import { validateProps } from "../../../../js/utils/argumentsValidation.js";
 import { createElement } from "../../../../js/utils/createElementsHelper.js";
@@ -51,7 +52,7 @@ export default function TechStackDesign(props = {}) {
         innerText: data.data,
       });
     },
-    dataSlides: ["Estilos y diseño"],
+    dataSlides: [t("techStackSlides.design")],
     duplicationSlides: 5,
   });
 

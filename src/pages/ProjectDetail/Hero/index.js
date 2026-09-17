@@ -1,3 +1,4 @@
+import { t } from "../../../js/i18n/index.js";
 import Link from "../../../components/Link/index.js";
 import bbdd from "../../../const/database/bbdd.js";
 import { svg } from "../../../const/database/bbdd_consts.js";
@@ -66,11 +67,11 @@ export default function Hero() {
       classNames: ["pd-hero__actions-demo"],
       href: currentWork.links.demo,
       target: "_blank",
-      text: "Demo",
+      text: t("actions.demo"),
     });
 
   const github = Link({
-    title: "Ir a código",
+    title: t("actions.goToCode"),
     isButton: true,
     icon: svg.code,
     variant: "primary",
@@ -78,7 +79,7 @@ export default function Hero() {
     classNames: ["pd-hero__actions-code"],
     href: currentWork.links.github,
     target: "_blank",
-    text: "Código",
+    text: t("actions.code"),
   });
 
   navbarObserver(hero);

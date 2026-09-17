@@ -1,3 +1,4 @@
+import { t } from "../../../js/i18n/index.js";
 import "./index.css";
 import {
   fadeInObserver,
@@ -36,7 +37,7 @@ export default function AboutProject() {
   navbarObserver(section);
 
   const title = FloatingTitle({
-    text: "Sobre el proyecto",
+    text: t("sections.about"),
     icon: svg.info,
     theme: "light",
     iconPosition: "left",

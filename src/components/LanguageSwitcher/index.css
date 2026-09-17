@@ -1,0 +1,39 @@
+.lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-left: auto;
+}
+
+/*
+ * Buttons inherit color from the navbar, which flips between white/black
+ * depending on the section in view. To stay legible in both themes the active
+ * state is signalled with opacity, weight and an underline (never a color
+ * fill, which could clash with the current navbar color).
+ */
+.lang-switcher__btn {
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 0.15rem 0.5rem;
+  border: 1px solid currentColor;
+  border-radius: 0.35rem;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  opacity: 0.55;
+  transition: opacity 0.2s ease;
+}
+
+.lang-switcher__btn:hover {
+  opacity: 1;
+}
+
+.lang-switcher__btn--active {
+  opacity: 1;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.2rem;
+  cursor: default;
+}

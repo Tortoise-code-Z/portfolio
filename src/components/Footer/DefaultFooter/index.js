@@ -4,6 +4,7 @@ import cloneTemplate from "../../../js/utils/cloneTemplate.js";
 import template from "./index.html?raw";
 import Link from "../../Link/index.js";
 import { svg } from "../../../const/database/bbdd_consts.js";
+import { t } from "../../../js/i18n/index.js";
 import "./index.css";
 
 /**
@@ -27,6 +28,9 @@ export default function DefaultFooter() {
   const occupation = getElement(".default-footer__occupation", defaultFooter);
   const year = getElement(".default-footer__year", defaultFooter);
   const signature = getElement(".default-footer__signature", defaultFooter);
+
+  thanks.textContent = t("footer.thanks");
+  occupation.textContent = t("footer.role");
 
   fadeInObserver(thanks, `animated-element--fade-in-right`);
   fadeInObserver(nick, `animated-element--fade-in-left`);

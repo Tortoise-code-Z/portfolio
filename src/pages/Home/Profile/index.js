@@ -1,3 +1,4 @@
+import { t } from "../../../js/i18n/index.js";
 import { createElement } from "../../../js/utils/createElementsHelper.js";
 import FloatingTitle from "../../../components/FloatingTitle/index.js";
 import { append } from "../../../js/utils/domHelpers.js";
@@ -29,7 +30,7 @@ export default function Profile() {
 
   const title = FloatingTitle({
     upperCase: true,
-    text: "Perfil",
+    text: t("sections.profile"),
     icon: svg.arrowRightDown,
     theme: "dark",
     iconPosition: "right",

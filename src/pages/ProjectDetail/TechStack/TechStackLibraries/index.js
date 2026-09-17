@@ -1,3 +1,4 @@
+import { t } from "../../../../js/i18n/index.js";
 import InfiniteSlider from "../../../../components/InfiniteSlider/index.js";
 import { validateProps } from "../../../../js/utils/argumentsValidation.js";
 import { createElement } from "../../../../js/utils/createElementsHelper.js";
@@ -49,7 +50,7 @@ export default function TechStackLibraries(props = {}) {
         innerText: data.data,
       });
     },
-    dataSlides: ["Librerías y utilidades"],
+    dataSlides: [t("techStackSlides.libraries")],
     duplicationSlides: 5,
     direction: "right",
   });

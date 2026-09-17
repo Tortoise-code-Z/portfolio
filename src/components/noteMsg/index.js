@@ -1,3 +1,4 @@
+import { t } from "../../js/i18n/index.js";
 import { fadeInObserver } from "../../js/utils/utils.js";
 import "./index.css";
 import { svg } from "../../const/database/bbdd_consts.js";
@@ -49,7 +50,7 @@ export default function NoteMsg({ type = "note", desc = "" } = {}) {
   const titleNode = createElement({
     tag: "p",
     classNames: ["note-msg__title"].filter(Boolean),
-    innerText: type === "note" ? "Nota" : "Importante",
+    innerText: type === "note" ? t("note.note") : t("note.important"),
   });
 
   const description = createElement({

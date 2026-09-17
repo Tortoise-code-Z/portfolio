@@ -1,3 +1,4 @@
+import { t } from "../../../js/i18n/index.js";
 import { createElement } from "../../../js/utils/createElementsHelper.js";
 import { navbarObserver } from "../../../js/utils/utils.js";
 import WritteMachineTitle from "../../../components/WritteMachineTitle/index.js";
@@ -29,9 +30,9 @@ export default function Works() {
 
   const title = WritteMachineTitle({
     classNames: ["s-works__title"],
-    fixText: "Proy",
-    dinamicInitText: "stoec",
-    dinamicFinalText: "ectos",
+    fixText: t("machineTitle.works.fix"),
+    dinamicInitText: t("machineTitle.works.init"),
+    dinamicFinalText: t("machineTitle.works.final"),
   });
 
   append(section, [title, WorkItemsContainer()]);

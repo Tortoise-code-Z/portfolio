@@ -1,3 +1,4 @@
+import { t } from "../../../../js/i18n/index.js";
 import InfiniteSlider from "../../../../components/InfiniteSlider/index.js";
 import bbdd from "../../../../const/database/bbdd.js";
 import { createElement } from "../../../../js/utils/createElementsHelper.js";
@@ -25,7 +26,7 @@ export default function Strengths() {
   const strengthsTitle = createElement({
     tag: "h4",
     classNames: ["s-about__strengths-title"],
-    innerText: "Fortalezas",
+    innerText: t("sections.strengths"),
   });
 
   fadeInObserver(strengthsTitle, "animated-element--fade-in-top");
