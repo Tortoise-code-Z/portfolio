@@ -24,7 +24,8 @@ import TechStack from "./TechStack/index.js";
 initI18n();
 document.title = t("meta.title");
 const metaDescription = document.querySelector('meta[name="description"]');
-if (metaDescription) metaDescription.setAttribute("content", t("meta.description"));
+if (metaDescription)
+  metaDescription.setAttribute("content", t("meta.description"));
 
 append(document.querySelector(".project-detail__header"), [
   NavbarProductDetail(),

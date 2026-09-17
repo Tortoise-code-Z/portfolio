@@ -42,14 +42,14 @@ export function validateProp(name, value, type, allowedValues = null) {
     const actualType =
       value === null ? "null" : value?.constructor?.name || typeof value;
     throw new TypeError(
-      `"${name}" → Debe ser de tipo ${types.join(" o ")}. Recibido: ${actualType}`,
+      `"${name}" → Debe ser de tipo ${types.join(" o ")}. Recibido: ${actualType}`
     );
   }
 
   // 3. Allowed-values validation
   if (allowedValues && !allowedValues.includes(value)) {
     throw new RangeError(
-      `"${name}" → Solo se permiten los valores: ${allowedValues.join(", ")}. Recibido: ${value}`,
+      `"${name}" → Solo se permiten los valores: ${allowedValues.join(", ")}. Recibido: ${value}`
     );
   }
 

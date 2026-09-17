@@ -58,7 +58,7 @@ export default function AboutProject() {
 
     fadeInObserver(
       paragraphElement,
-      `animated-element--fade-in-${index % 2 === 0 ? "left" : "right"}`,
+      `animated-element--fade-in-${index % 2 === 0 ? "left" : "right"}`
     );
 
     append(description, [paragraphElement]);

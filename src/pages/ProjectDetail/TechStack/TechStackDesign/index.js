@@ -36,7 +36,7 @@ export default function TechStackDesign(props = {}) {
     validateProps({
       icon: { value: icon, type: "string" },
       item: { value: item, type: "string" },
-    }),
+    })
   );
 
   const container = createElement({
@@ -83,7 +83,7 @@ export default function TechStackDesign(props = {}) {
 
     fadeInObserver(
       target,
-      `animated-element--fade-in-${index % 2 === 0 ? "top" : "bottom"}`,
+      `animated-element--fade-in-${index % 2 === 0 ? "top" : "bottom"}`
     );
 
     append(target, [title, span]);

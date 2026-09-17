@@ -59,7 +59,7 @@ export default function DevelopmentProcess() {
 
     fadeInObserver(
       item,
-      `animated-element--fade-in-${index % 2 === 0 ? "left" : "right"}`,
+      `animated-element--fade-in-${index % 2 === 0 ? "left" : "right"}`
     );
 
     append(description, [item]);

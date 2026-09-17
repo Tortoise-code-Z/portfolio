@@ -34,7 +34,7 @@ export default function TechStackLibraries(props = {}) {
   libraries.forEach(({ item }) =>
     validateProps({
       librarie: { value: item, type: "string" },
-    }),
+    })
   );
 
   const container = createElement({
@@ -71,7 +71,7 @@ export default function TechStackLibraries(props = {}) {
 
     fadeInObserver(
       span,
-      `animated-element--fade-in-${index % 2 === 0 ? "top" : "bottom"}`,
+      `animated-element--fade-in-${index % 2 === 0 ? "top" : "bottom"}`
     );
 
     append(librariesTags, [span]);

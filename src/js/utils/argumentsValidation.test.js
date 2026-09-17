@@ -8,13 +8,13 @@ describe("validateProp", () => {
 
   it("throws TypeError when the type does not match", () => {
     expect(() => validateProp("age", "not-a-number", "number")).toThrow(
-      TypeError,
+      TypeError
     );
   });
 
   it("throws RangeError when the value is not allowed", () => {
     expect(() =>
-      validateProp("variant", "ghost", "string", ["primary", "secondary"]),
+      validateProp("variant", "ghost", "string", ["primary", "secondary"])
     ).toThrow(RangeError);
   });
 });
@@ -25,7 +25,7 @@ describe("validateProps", () => {
       validateProps({
         text: { value: "Click", type: "string" },
         disabled: { value: false, type: "boolean" },
-      }),
+      })
     ).toBe(true);
   });
 });

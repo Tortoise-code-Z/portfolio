@@ -28,7 +28,7 @@ import "./index.css";
 export default function ProfileData() {
   const profile = getElement(
     ".s-about__profile",
-    cloneTemplate(template, "about-profile-template"),
+    cloneTemplate(template, "about-profile-template")
   );
 
   const image = getElement(".s-about__profile-image", profile);

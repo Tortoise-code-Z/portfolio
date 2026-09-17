@@ -45,12 +45,12 @@ export default function Hero() {
 
   setHTML(
     title,
-    `${currentWork.emphasisName.name[0]}<span style= "color: ${currentWork.emphasisName.color}" class="pd-hero__title-accent">${currentWork.emphasisName.name[1]}</span>`,
+    `${currentWork.emphasisName.name[0]}<span style= "color: ${currentWork.emphasisName.color}" class="pd-hero__title-accent">${currentWork.emphasisName.name[1]}</span>`
   );
 
   setText(
     descTypeWeb,
-    `${currentWork.shortDescription} · ${currentWork.projectRole}`,
+    `${currentWork.shortDescription} · ${currentWork.projectRole}`
   );
 
   setText(typeProyectYear, `${currentWork.visibility} · ${currentWork.year}`);

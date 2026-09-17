@@ -49,7 +49,7 @@ export default function Skills() {
         tools: skill.tools,
         flexReverse: index % 2 !== 0,
       }),
-    ]),
+    ])
   );
 
   append(section, [title, skillItemsContainer]);

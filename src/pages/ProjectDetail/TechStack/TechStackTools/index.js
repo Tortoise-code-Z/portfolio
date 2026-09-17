@@ -36,7 +36,7 @@ export default function TechStackTools(props = {}) {
     validateProps({
       icon: { value: icon, type: "string" },
       tool: { value: tool, type: "string" },
-    }),
+    })
   );
 
   const container = createElement({
@@ -75,7 +75,7 @@ export default function TechStackTools(props = {}) {
 
     fadeInObserver(
       span,
-      `animated-element--fade-in-${index % 2 === 0 ? "top" : "bottom"}`,
+      `animated-element--fade-in-${index % 2 === 0 ? "top" : "bottom"}`
     );
 
     append(toolsIcons, [span]);

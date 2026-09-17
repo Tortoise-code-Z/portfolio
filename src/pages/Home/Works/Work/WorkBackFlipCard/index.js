@@ -73,12 +73,12 @@ export default function WorkBackFlipCard(props = {}) {
   });
 
   fastTools.forEach((t) =>
-    validateProps({ tool: { value: t.tool, type: "string" } }),
+    validateProps({ tool: { value: t.tool, type: "string" } })
   );
 
   const container = getElement(
     ".s-works__back-card",
-    cloneTemplate(template, "back-flip-card-template"),
+    cloneTemplate(template, "back-flip-card-template")
   );
 
   const image = getElement(".s-works__back-card-image", container);
@@ -103,7 +103,7 @@ export default function WorkBackFlipCard(props = {}) {
     fastTools
       .map((tool) => tool.tool)
       .join(" · ")
-      .toUpperCase(),
+      .toUpperCase()
   );
 
   const actions = getElement(".s-works__back-card-actions", container);

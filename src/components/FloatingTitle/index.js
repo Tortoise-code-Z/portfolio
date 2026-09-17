@@ -63,7 +63,7 @@ export default function FloatingTitle({
   fadeInObserver(
     container,
     "animated-element--fade-in-right",
-    "floating-title--animation",
+    "floating-title--animation"
   );
 
   if (top || top === 0 || left || left === 0) {

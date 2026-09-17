@@ -25,7 +25,7 @@ import "./index.css";
 export function ProductDetailFooter() {
   const footer = getElement(
     ".footer-proyect-detail",
-    cloneTemplate(template, "proyect-detail-footer-template"),
+    cloneTemplate(template, "proyect-detail-footer-template")
   );
 
   const thanks = getElement(".footer-proyect-detail__thanks", footer);

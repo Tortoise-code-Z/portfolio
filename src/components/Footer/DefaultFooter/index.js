@@ -20,7 +20,7 @@ import "./index.css";
 export default function DefaultFooter() {
   const defaultFooter = getElement(
     ".default-fouter",
-    cloneTemplate(template, "default-footer-template"),
+    cloneTemplate(template, "default-footer-template")
   );
 
   const thanks = getElement(".default-footer__thanks", defaultFooter);

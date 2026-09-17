@@ -38,7 +38,7 @@ export default function FlipCard({
 
   const flipCard = getElement(
     ".flip-card",
-    cloneTemplate(template, "flip-card-template"),
+    cloneTemplate(template, "flip-card-template")
   );
 
   addClass(flipCard, typeFlipCardClass);

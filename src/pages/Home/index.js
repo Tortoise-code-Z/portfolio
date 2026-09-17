@@ -23,7 +23,8 @@ import "./index.css";
 initI18n();
 document.title = t("meta.title");
 const metaDescription = document.querySelector('meta[name="description"]');
-if (metaDescription) metaDescription.setAttribute("content", t("meta.description"));
+if (metaDescription)
+  metaDescription.setAttribute("content", t("meta.description"));
 
 append(getElement(".home__header"), [Navbar(), Hero()]);
 append(getElement(".home__main"), [Profile(), Works(), Skills(), Career()]);

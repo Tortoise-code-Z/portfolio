@@ -18,7 +18,7 @@ import template from "./index.html?raw";
 export default function Hero() {
   const hero = getElement(
     ".hero",
-    cloneTemplate(template, "home-hero-template"),
+    cloneTemplate(template, "home-hero-template")
   );
 
   const title = getElement(".hero__title", hero);
