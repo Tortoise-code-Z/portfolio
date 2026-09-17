@@ -23,3 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 clamp.txt
+
+# Variables de entorno
+.env
+.env.*.local
