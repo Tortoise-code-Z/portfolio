@@ -2,7 +2,7 @@ import { svg } from "../../const/database/bbdd_consts.js";
 import { createElement } from "../../js/utils/createElementsHelper.js";
 import "./index.css";
 
-export default function FeaturedTag({} = {}) {
+export default function FeaturedTag() {
   const tag = createElement({
     tag: "div",
     classNames: ["featured-tag"],

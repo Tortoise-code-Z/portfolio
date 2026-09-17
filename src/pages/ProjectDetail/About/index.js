@@ -21,7 +21,7 @@ import Cards from "../../../components/Cards/index.js";
  * @returns {HTMLElement} The constructed section element containing project details.
  */
 
-export default function AboutProject({} = {}) {
+export default function AboutProject() {
   const id = getQueryParams("id");
   const work = bbdd.works.find((work) => work.id === Number(id));
 

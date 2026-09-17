@@ -17,7 +17,7 @@ import Skill from "./Skill/index.js";
  * @returns {HTMLElement} The section element containing the skills grid and animations.
  */
 
-export default function Skills({} = {}) {
+export default function Skills() {
   const section = createElement({
     tag: "section",
     classNames: ["s-skills"],
