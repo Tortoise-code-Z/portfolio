@@ -1,0 +1,80 @@
+import { describe, it, expect, beforeEach } from "vitest";
+import {
+  isSupportedLocale,
+  localize,
+  setLocale,
+  getLocale,
+  t,
+  SUPPORTED_LOCALES,
+  DEFAULT_LOCALE,
+} from "./index.js";
+
+beforeEach(() => {
+  // Reset any persisted preference so tests are independent.
+  try {
+    window.localStorage.clear();
+  } catch {
+    /* ignore */
+  }
+});
+
+describe("isSupportedLocale", () => {
+  it("accepts supported locales", () => {
+    expect(isSupportedLocale("es")).toBe(true);
+    expect(isSupportedLocale("en")).toBe(true);
+  });
+
+  it("rejects unsupported values", () => {
+    expect(isSupportedLocale("fr")).toBe(false);
+    expect(isSupportedLocale(null)).toBe(false);
+    expect(isSupportedLocale(42)).toBe(false);
+  });
+});
+
+describe("localize", () => {
+  it("resolves a locale field to the requested locale", () => {
+    const field = { es: "Hola", en: "Hi" };
+    expect(localize(field, "es")).toBe("Hola");
+    expect(localize(field, "en")).toBe("Hi");
+  });
+
+  it("falls back to the default locale when the entry is missing", () => {
+    const field = { es: "Solo español" };
+    expect(localize(field, "en")).toBe("Solo español");
+  });
+
+  it("returns plain values untouched", () => {
+    expect(localize("plain", "en")).toBe("plain");
+    expect(localize(123, "en")).toBe(123);
+    const arr = ["a", "b"];
+    expect(localize(arr, "en")).toBe(arr);
+    const data = { id: 1, color: "#fff" };
+    expect(localize(data, "en")).toBe(data);
+  });
+
+  it("resolves array-valued locale fields", () => {
+    const field = { es: ["uno", "dos"], en: ["one", "two"] };
+    expect(localize(field, "en")).toEqual(["one", "two"]);
+  });
+});
+
+describe("t (UI strings)", () => {
+  it("returns the string for the active locale", () => {
+    setLocale("en", false);
+    expect(getLocale()).toBe("en");
+    expect(t("nav.works")).toBe("PROJECTS");
+    setLocale("es", false);
+    expect(t("nav.works")).toBe("PROYECTOS");
+  });
+
+  it("returns the key itself when the translation is missing", () => {
+    setLocale("es", false);
+    expect(t("nav.does.not.exist")).toBe("nav.does.not.exist");
+  });
+});
+
+describe("constants", () => {
+  it("exposes a supported default locale", () => {
+    expect(SUPPORTED_LOCALES).toContain(DEFAULT_LOCALE);
+  });
+});
