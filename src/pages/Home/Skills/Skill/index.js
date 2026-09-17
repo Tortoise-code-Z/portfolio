@@ -42,7 +42,7 @@ export default function Skill(props = {}) {
 
   fadeInObserver(
     container,
-    `animated-element--fade-in-${flexReverse ? "left" : "right"}`,
+    `animated-element--fade-in-${flexReverse ? "left" : "right"}`
   );
 
   const titleNode = createElement({

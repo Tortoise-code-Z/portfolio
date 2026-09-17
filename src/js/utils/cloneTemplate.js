@@ -12,7 +12,7 @@ import { validateProps } from "./argumentsValidation.js";
 export default function cloneTemplate(
   template,
   templateID,
-  typeDoc = "text/html",
+  typeDoc = "text/html"
 ) {
   validateProps({
     template: { value: template, type: "string" },

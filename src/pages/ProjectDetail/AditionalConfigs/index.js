@@ -1,3 +1,4 @@
+import { t } from "../../../js/i18n/index.js";
 import FloatingTitle from "../../../components/FloatingTitle/index.js";
 import bbdd from "../../../const/database/bbdd.js";
 import { svg } from "../../../const/database/bbdd_consts.js";
@@ -41,7 +42,7 @@ export default function AditionalConfigs() {
   navbarObserver(section);
 
   const title = FloatingTitle({
-    text: "Configuraciones adicionales",
+    text: t("sections.additionalConfigs"),
     icon: svg.config,
     iconPosition: "left",
     theme: "dark",
@@ -64,7 +65,7 @@ export default function AditionalConfigs() {
 
     fadeInObserver(
       item,
-      `animated-element--fade-in-${index % 2 === 0 ? "left" : "right"}`,
+      `animated-element--fade-in-${index % 2 === 0 ? "left" : "right"}`
     );
 
     append(description, [item]);
@@ -96,7 +97,7 @@ export default function AditionalConfigs() {
     const titleText = createElement({
       tag: "span",
       classNames: ["config__step-title-text"],
-      innerText: `Paso ${index + 1}: ${step.title}`,
+      innerText: `${t("config.step")} ${index + 1}: ${step.title}`,
     });
 
     const title = createElement({

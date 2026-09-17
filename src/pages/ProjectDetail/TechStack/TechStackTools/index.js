@@ -1,3 +1,4 @@
+import { t } from "../../../../js/i18n/index.js";
 import InfiniteSlider from "../../../../components/InfiniteSlider/index.js";
 import { validateProps } from "../../../../js/utils/argumentsValidation.js";
 import { createElement } from "../../../../js/utils/createElementsHelper.js";
@@ -35,7 +36,7 @@ export default function TechStackTools(props = {}) {
     validateProps({
       icon: { value: icon, type: "string" },
       tool: { value: tool, type: "string" },
-    }),
+    })
   );
 
   const container = createElement({
@@ -51,7 +52,7 @@ export default function TechStackTools(props = {}) {
         innerText: data.data,
       });
     },
-    dataSlides: ["Programación y herramientas"],
+    dataSlides: [t("techStackSlides.tools")],
     duplicationSlides: 5,
   });
 
@@ -74,7 +75,7 @@ export default function TechStackTools(props = {}) {
 
     fadeInObserver(
       span,
-      `animated-element--fade-in-${index % 2 === 0 ? "top" : "bottom"}`,
+      `animated-element--fade-in-${index % 2 === 0 ? "top" : "bottom"}`
     );
 
     append(toolsIcons, [span]);

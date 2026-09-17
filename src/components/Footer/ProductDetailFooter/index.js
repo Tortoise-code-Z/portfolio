@@ -9,6 +9,7 @@ import Link from "../../Link/index.js";
 import { svg } from "../../../const/database/bbdd_consts.js";
 import bbdd from "../../../const/database/bbdd.js";
 import template from "./index.html?raw";
+import { t } from "../../../js/i18n/index.js";
 import "./index.css";
 
 /**
@@ -24,11 +25,14 @@ import "./index.css";
 export function ProductDetailFooter() {
   const footer = getElement(
     ".footer-proyect-detail",
-    cloneTemplate(template, "proyect-detail-footer-template"),
+    cloneTemplate(template, "proyect-detail-footer-template")
   );
 
   const thanks = getElement(".footer-proyect-detail__thanks", footer);
   const readme = getElement(".footer-proyect-detail__readme", footer);
+
+  thanks.textContent = t("footer.thanks");
+  readme.textContent = t("footer.readme");
 
   fadeInObserver(thanks, "animated-element--fade-in-right");
   fadeInObserver(readme, "animated-element--fade-in-left");
@@ -49,7 +53,7 @@ export function ProductDetailFooter() {
     target: "_blank",
     href: bbdd.works[id - 1].links.github,
     title: "Github",
-    text: "Ver en Github",
+    text: t("actions.viewOnGithub"),
   });
 
   const linkedin = Link({
@@ -72,8 +76,8 @@ export function ProductDetailFooter() {
       icon: svg.demo,
       target: "_blank",
       href: bbdd.works[id - 1].links.demo,
-      title: "Demo",
-      text: "Demo",
+      title: t("actions.demo"),
+      text: t("actions.demo"),
     });
   }
 

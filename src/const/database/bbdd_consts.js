@@ -5,9 +5,9 @@ export const typeWeb = {
 };
 
 export const visibility = {
-  public: "público",
-  private: "privado",
-  course: "Curso",
+  public: { es: "público", en: "Public" },
+  private: { es: "privado", en: "Private" },
+  course: { es: "Curso", en: "Course" },
 };
 
 export const tools = {

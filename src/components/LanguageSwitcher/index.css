@@ -1,0 +1,129 @@
+.lang-switcher {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+/*
+ * Trigger: looks like a select control. It inherits the navbar color (white on
+ * dark sections, black on light ones via `.navbar--color-black`, see Navbar.css)
+ * through `currentColor`, which also drives its border and the chevron stroke.
+ */
+.lang-switcher__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: "Geologica-bold";
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid currentColor;
+  border-radius: 0.35rem;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.lang-switcher__trigger:hover {
+  opacity: 0.7;
+}
+
+.lang-switcher__flag {
+  display: inline-flex;
+  width: 1.2rem;
+  height: 0.85rem;
+  flex: none;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+.lang-switcher__flag svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lang-switcher__code {
+  line-height: 1;
+}
+
+.lang-switcher__chevron {
+  display: inline-flex;
+  width: 0.7rem;
+  height: 0.7rem;
+  transition: transform 0.2s ease;
+}
+
+.lang-switcher__chevron svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.lang-switcher--open .lang-switcher__chevron {
+  transform: rotate(180deg);
+}
+
+/*
+ * Menu: absolutely positioned under the trigger, anchored to its right edge.
+ * It carries its own dark background and light text so flags and labels stay
+ * legible over any section, independent of the navbar color flip.
+ */
+.lang-switcher__menu {
+  position: absolute;
+  top: calc(100% + 0.4rem);
+  right: 0;
+  min-width: 100%;
+  margin: 0;
+  padding: 0.25rem;
+  list-style: none;
+  display: none;
+  flex-direction: column;
+  gap: 0.15rem;
+  background: rgb(var(--bcc-black));
+  border: 1px solid rgba(var(--bcc-white), 0.25);
+  border-radius: 0.4rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  z-index: 100000;
+}
+
+.lang-switcher--open .lang-switcher__menu {
+  display: flex;
+}
+
+.lang-switcher__option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 0.3rem;
+  font-family: "Geologica-bold";
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  color: rgb(var(--text-white));
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.lang-switcher__option:hover {
+  background: rgba(var(--bcc-white), 0.1);
+}
+
+.lang-switcher__option:focus-visible {
+  outline: 2px solid rgb(var(--text-white));
+  outline-offset: -2px;
+}
+
+.lang-switcher__option--active {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.lang-switcher__option--active:hover {
+  background: transparent;
+}

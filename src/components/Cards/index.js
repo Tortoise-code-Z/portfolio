@@ -43,7 +43,7 @@ export default function Cards({ data = [], classNames = [] } = {}) {
 
     fadeInObserver(
       cardItem,
-      `animated-element--fade-in-${index % 2 === 0 ? "top" : "bottom"}`,
+      `animated-element--fade-in-${index % 2 === 0 ? "top" : "bottom"}`
     );
 
     return cardItem;

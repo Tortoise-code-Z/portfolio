@@ -69,7 +69,7 @@ export const createIntersectionObserver = (
   callback,
   parametersCallback = [],
   options = {},
-  observeOnce = false,
+  observeOnce = false
 ) => {
   validateProps({
     elements: { value: elements, type: "array" },
@@ -82,7 +82,7 @@ export const createIntersectionObserver = (
   const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
       const itemParametersCallback = parametersCallback.find(
-        (item) => item?.element === entry?.target,
+        (item) => item?.element === entry?.target
       );
 
       if (itemParametersCallback) {
@@ -111,7 +111,7 @@ export const createIntersectionObserver = (
 export const fadeInObserver = (
   element,
   classToAdd,
-  currentAnimatedClass = null,
+  currentAnimatedClass = null
 ) => {
   validateProps({
     element: { value: element, type: "HTMLElement" },
@@ -139,7 +139,7 @@ export const fadeInObserver = (
     },
     [],
     {},
-    true,
+    true
   );
 };
 
@@ -160,7 +160,7 @@ export const navbarObserver = (element) => {
       (entry) => navbarObserverCallback(entry),
       [],
       { threshold: 0, rootMargin: "-100px 0px -90% 0px" },
-      false,
+      false
     );
   }, 0);
 };
@@ -282,6 +282,6 @@ export const attachEvent = (element, event, functionToAttach) => {
 export const parseMarkdownBold = (text) => {
   return text.replace(
     /\*\*(.*?)\*\*/g,
-    "<span class= 'u-text-regular'>$1</span>",
+    "<span class= 'u-text-regular'>$1</span>"
   );
 };

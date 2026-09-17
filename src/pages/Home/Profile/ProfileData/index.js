@@ -1,3 +1,4 @@
+import { t } from "../../../../js/i18n/index.js";
 import cloneTemplate from "../../../../js/utils/cloneTemplate.js";
 import { createElement } from "../../../../js/utils/createElementsHelper.js";
 import {
@@ -27,7 +28,7 @@ import "./index.css";
 export default function ProfileData() {
   const profile = getElement(
     ".s-about__profile",
-    cloneTemplate(template, "about-profile-template"),
+    cloneTemplate(template, "about-profile-template")
   );
 
   const image = getElement(".s-about__profile-image", profile);
@@ -40,7 +41,7 @@ export default function ProfileData() {
     return createElement({
       tag: "p",
       classNames: ["s-about__profile-text-item"],
-      innerHTML: parseMarkdownBold(text) || "Sin descripción",
+      innerHTML: parseMarkdownBold(text) || t("misc.noDescription"),
     });
   });
 

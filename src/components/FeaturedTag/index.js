@@ -1,3 +1,4 @@
+import { t } from "../../js/i18n/index.js";
 import { svg } from "../../const/database/bbdd_consts.js";
 import { createElement } from "../../js/utils/createElementsHelper.js";
 import "./index.css";
@@ -11,7 +12,7 @@ export default function FeaturedTag() {
   createElement({
     tag: "span",
     innerHTML: svg.info,
-    innerText: "¡Proyecto Destacado!",
+    innerText: t("featured.tag"),
     parent: tag,
   });
 

@@ -36,3 +36,20 @@
     padding: 30px 5%;
   }
 }
+
+/* Right-hand group: the section nav link + the language switcher, kept together
+   at the far end so the two navbar links sit at opposite extremes as before. */
+.navbar__group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Language switcher follows the same white/black flip as the nav links: they
+   inherit the body's white color by default and turn black on light sections
+   (when the scroll observer adds `navbar--color-black`). Border uses
+   currentColor, so it tracks the text color automatically. */
+.navbar--color-black .lang-switcher__trigger {
+  color: rgb(var(--bcc-black)) !important;
+}

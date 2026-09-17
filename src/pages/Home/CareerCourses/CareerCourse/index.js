@@ -79,7 +79,7 @@ export default function CareerCourse(props = {}) {
 
   fadeInObserver(
     dataCourse,
-    `animated-element--fade-in-${directionSlide === "left" ? "right" : "left"}`,
+    `animated-element--fade-in-${directionSlide === "left" ? "right" : "left"}`
   );
 
   const courseName = createElement({

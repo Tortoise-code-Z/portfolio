@@ -1,3 +1,4 @@
+import { t } from "../../../js/i18n/index.js";
 import FloatingTitle from "../../../components/FloatingTitle/index.js";
 import bbdd from "../../../const/database/bbdd.js";
 import { svg } from "../../../const/database/bbdd_consts.js";
@@ -36,7 +37,7 @@ export default function TechStack() {
   navbarObserver(section);
 
   const title = FloatingTitle({
-    text: "Stack Tecnológico",
+    text: t("sections.techStack"),
     icon: svg.stack,
     theme: "light",
     iconPosition: "left",

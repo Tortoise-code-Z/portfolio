@@ -1,3 +1,4 @@
+import { t } from "../../../js/i18n/index.js";
 import FloatingTitle from "../../../components/FloatingTitle/index.js";
 import bbdd from "../../../const/database/bbdd.js";
 import { svg } from "../../../const/database/bbdd_consts.js";
@@ -30,7 +31,7 @@ export default function Skills() {
 
   const title = FloatingTitle({
     upperCase: true,
-    text: "Habilidades",
+    text: t("sections.skills"),
     icon: svg.arrowRightDown,
     theme: "dark",
     iconPosition: "right",
@@ -48,7 +49,7 @@ export default function Skills() {
         tools: skill.tools,
         flexReverse: index % 2 !== 0,
       }),
-    ]),
+    ])
   );
 
   append(section, [title, skillItemsContainer]);

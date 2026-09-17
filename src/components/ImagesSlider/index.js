@@ -50,7 +50,7 @@ export default function ImagesSlider({ images = [] } = {}) {
 
   const root = getElement(
     ".images-slider",
-    cloneTemplate(template, "images-slider-template"),
+    cloneTemplate(template, "images-slider-template")
   );
 
   const imageLabel = getElement(".images-slider__label", root);
@@ -186,7 +186,7 @@ export default function ImagesSlider({ images = [] } = {}) {
       const bullets = getElements(".images-slider__bullet", root);
 
       const bulletActive = bullets.find((bullet) =>
-        containsClass(bullet, "images-slider__bullet--active") ? bullet : null,
+        containsClass(bullet, "images-slider__bullet--active") ? bullet : null
       );
 
       const imageInDom = getElement(".images-slider__slide--active", root);
@@ -212,7 +212,7 @@ export default function ImagesSlider({ images = [] } = {}) {
           removeClass(imageToShow, `images-slider__slide--in-to-${direction}`);
           addClass(imageToShow, "images-slider__slide--active");
         },
-        { once: true },
+        { once: true }
       );
 
       attachEvent(
@@ -222,7 +222,7 @@ export default function ImagesSlider({ images = [] } = {}) {
           imageInDom.remove();
           canClick = true;
         },
-        { once: true },
+        { once: true }
       );
     }
   };

@@ -1,4 +1,5 @@
 import cloneTemplate from "../../../js/utils/cloneTemplate.js";
+import { t } from "../../../js/i18n/index.js";
 import { getElement } from "../../../js/utils/domHelpers.js";
 import { fadeInObserver, navbarObserver } from "../../../js/utils/utils.js";
 import "./index.css";
@@ -17,11 +18,14 @@ import template from "./index.html?raw";
 export default function Hero() {
   const hero = getElement(
     ".hero",
-    cloneTemplate(template, "home-hero-template"),
+    cloneTemplate(template, "home-hero-template")
   );
 
   const title = getElement(".hero__title", hero);
   const dev = getElement(".hero__dev", hero);
+
+  title.textContent = t("hero.title");
+  dev.textContent = t("hero.subtitle");
 
   navbarObserver(hero);
   fadeInObserver(title, "animated-element--fade-in-right");

@@ -1,3 +1,4 @@
+import { t } from "../../../js/i18n/index.js";
 import FloatingTitle from "../../../components/FloatingTitle/index.js";
 import { svg } from "../../../const/database/bbdd_consts.js";
 import { createElement } from "../../../js/utils/createElementsHelper.js";
@@ -34,7 +35,7 @@ export default function Gallery() {
   navbarObserver(section);
 
   const title = FloatingTitle({
-    text: "Galería",
+    text: t("sections.gallery"),
     icon: svg.gallery,
     theme: "light",
     iconPosition: "left",

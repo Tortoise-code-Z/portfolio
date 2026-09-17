@@ -1,3 +1,4 @@
+import { t } from "../../../../js/i18n/index.js";
 import InfiniteSlider from "../../../../components/InfiniteSlider/index.js";
 import { validateProps } from "../../../../js/utils/argumentsValidation.js";
 import { createElement } from "../../../../js/utils/createElementsHelper.js";
@@ -35,7 +36,7 @@ export default function TechStackDesign(props = {}) {
     validateProps({
       icon: { value: icon, type: "string" },
       item: { value: item, type: "string" },
-    }),
+    })
   );
 
   const container = createElement({
@@ -51,7 +52,7 @@ export default function TechStackDesign(props = {}) {
         innerText: data.data,
       });
     },
-    dataSlides: ["Estilos y diseño"],
+    dataSlides: [t("techStackSlides.design")],
     duplicationSlides: 5,
   });
 
@@ -82,7 +83,7 @@ export default function TechStackDesign(props = {}) {
 
     fadeInObserver(
       target,
-      `animated-element--fade-in-${index % 2 === 0 ? "top" : "bottom"}`,
+      `animated-element--fade-in-${index % 2 === 0 ? "top" : "bottom"}`
     );
 
     append(target, [title, span]);

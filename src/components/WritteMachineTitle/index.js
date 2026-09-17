@@ -84,7 +84,7 @@ export default function WritteMachineTitle({
     {
       threshold: 1,
     },
-    true,
+    true
   );
 
   return title;

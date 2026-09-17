@@ -1,3 +1,4 @@
+import { t } from "../../../../../js/i18n/index.js";
 import "./index.css";
 import { getImage } from "../../../../../js/utils/images.js";
 import {
@@ -72,12 +73,12 @@ export default function WorkBackFlipCard(props = {}) {
   });
 
   fastTools.forEach((t) =>
-    validateProps({ tool: { value: t.tool, type: "string" } }),
+    validateProps({ tool: { value: t.tool, type: "string" } })
   );
 
   const container = getElement(
     ".s-works__back-card",
-    cloneTemplate(template, "back-flip-card-template"),
+    cloneTemplate(template, "back-flip-card-template")
   );
 
   const image = getElement(".s-works__back-card-image", container);
@@ -102,7 +103,7 @@ export default function WorkBackFlipCard(props = {}) {
     fastTools
       .map((tool) => tool.tool)
       .join(" · ")
-      .toUpperCase(),
+      .toUpperCase()
   );
 
   const actions = getElement(".s-works__back-card-actions", container);
@@ -113,7 +114,7 @@ export default function WorkBackFlipCard(props = {}) {
     isButton: true,
     theme: "light",
     variant: "secondary",
-    text: "Código",
+    text: t("actions.code"),
     href: githubLink,
     target: "_blank",
     icon: svg.code,
@@ -127,7 +128,7 @@ export default function WorkBackFlipCard(props = {}) {
     isButton: true,
     theme: "light",
     variant: "secondary",
-    text: "Más detalles",
+    text: t("actions.moreDetails"),
     href: projectDetailUrl,
     params: {
       id: `${id}`,
@@ -143,7 +144,7 @@ export default function WorkBackFlipCard(props = {}) {
       isButton: true,
       theme: "light",
       variant: "secondary",
-      text: "Demo",
+      text: t("actions.demo"),
       href: demoLink,
       target: "_blank",
       icon: svg.demo,
